@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE product-profile
+        SYSTEM "http://helpserver.labs.intellij.net/help/product-profile.dtd">
+
+<product-profile id="kmd"
+                 name="Kotlin Mobile Docs"
+                 start-page="quick-start.md"
+                 status="eap">
+
+    <toc-element id="quick-start.md"/>
+</product-profile>
