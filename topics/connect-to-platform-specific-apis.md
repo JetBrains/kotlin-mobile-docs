@@ -1,4 +1,4 @@
-[//]: # (title: Connect to platform-specific APIs in Kotlin Multiplatform Mobile)
+[//]: # (title: Connect to platform-specific APIs)
 [//]: # (auxiliary-id: Connect_to_Platform-Specific_APIs)
 
 If you’re developing mobile applications for different platforms with Kotlin Multiplatform Mobile and need to access 
@@ -8,17 +8,17 @@ you can use the Kotlin mechanism of [expected and actual declarations](https://k
 With this mechanism, a common module defines an _expected declaration_, and platform modules must provide _actual declarations_ 
 that correspond to the expected one. This works for most Kotlin declarations, such as functions, classes, interfaces, enums, properties, and annotations.
 
-<img src="expect-actual-general.png" alt="Expect/actual declarations in common and platform-specific modules" width="500"/>
+<img src="expect-actual-general.png" alt="Expect/actual declarations in common and platform-specific modules" width="600"/>
 **Figure 1.** Expect/actual declarations in common and platform-specific modules
 
 The compiler ensures that every declaration marked with the `expect` keyword in the common module has the corresponding 
 declarations marked with the `actual` keyword in all platform modules. The IDE provides tools that help you create the missing actual declarations.
 
 <note>
-    <p> We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. 
+    We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. 
     It is better to implement all possible functionality in the common module even if doing so takes more time.
-    </p>
-    <p>Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.</p>
+    
+    Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
 </note>
 
 ## Examples
@@ -30,18 +30,16 @@ you need to use a specific target name from [the list of supported targets](http
 * [Generate a UUID](#Example%3A+Generate+a+UUID)
 * [Send and receive messages from a WebSocket](#Example%3A+Send+and+receive+messages+from+a+WebSocket)
 
-
 ### Example: Get the current time in milliseconds
 
 Let’s assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to get the current time in milliseconds.
 
-<img src="expect-actual-example.png" alt="Expect/actual declarations for getting the timestamp" width="500"/>
+<img src="expect-actual-example.png" alt="Expect/actual declarations for getting the timestamp" width="600"/>
 **Figure 2.** Expect/actual declarations for getting the timestamp
 
 For this purpose, you should declare the expected function `getTimestamp()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
 
-**Common**
 ```kotlin
 internal expect fun getTimestamp(): Long
 ```
@@ -52,16 +50,19 @@ expected in the common module. Use the `actual` keyword to mark the actual imple
 The following examples show the implementation of this for iOS and Android. 
 Platform-specific code uses the actual keyword and the expected name for the function.
 
-**iOS**
-```kotlin
-import kotlin.system.getTimeMillis
-internal actual fun getTimestamp(): Long = getTimeMillis()
-```
-
-**Android**
-```kotlin
-internal actual fun getTimestamp(): Long = System.currentTimeMillis()
-```
+<tabs>
+    <tab title="Android">
+        <code style="block" lang="Kotlin">
+            internal actual fun getTimestamp(): Long = System.currentTimeMillis()
+        </code>
+    </tab>
+    <tab title="iOS">
+        <code  style="block" lang="Kotlin">
+            import kotlin.system.getTimeMillis
+            internal actual fun getTimestamp(): Long = getTimeMillis()
+         </code>
+    </tab>
+</tabs>
 
 ### Example: Generate a UUID
 
@@ -71,7 +72,7 @@ generate a universally unique identifier (UUID).
 For this purpose, declare the expected function `randomUUID()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
 
-**Common**
+
 ```kotlin
 expect fun randomUUID(): String
 ```
@@ -103,7 +104,6 @@ you can just add it once to the common module. However, the actual implementatio
 
 In the common module, declare the expected class `PlatformSocket()` with the `expect` keyword. Don’t include any implementation code.
 
-**Common**
 ```kotlin
 internal expect class PlatformSocket(
    url: String
@@ -220,7 +220,6 @@ internal actual class PlatformSocket actual constructor(url: String) {
 
 And here is the common logic in the common module that uses the platform-specific class `PlatformSocket().`
 
-**Common**
 ```kotlin
 class AppSocket(url: String) {
    private val ws = PlatformSocket(url)
