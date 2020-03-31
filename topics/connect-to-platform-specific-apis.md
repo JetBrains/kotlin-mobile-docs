@@ -26,9 +26,9 @@ Don’t overuse expected and actual declarations – in some cases, an interface
 For simplicity, the following examples use the intuitive target names iOS and Android. However, in your Gradle build files, 
 you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#supported-platforms).
 
-* [Get the current time in milliseconds](#Example%3A+Get+the+current+time+in+milliseconds)
-* [Generate a UUID](#Example%3A+Generate+a+UUID)
-* [Send and receive messages from a WebSocket](#Example%3A+Send+and+receive+messages+from+a+WebSocket)
+* [Get the current time in milliseconds](#Example:+Get+the+current+time+in+milliseconds)
+* [Generate a UUID](#Example:+Generate+a+UUID)
+* [Send and receive messages from a WebSocket](#Example:+Send+and+receive+messages+from+a+WebSocket)
 
 ### Example: Get the current time in milliseconds
 
