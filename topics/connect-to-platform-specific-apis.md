@@ -15,10 +15,10 @@ The compiler ensures that every declaration marked with the `expect` keyword in 
 declarations marked with the `actual` keyword in all platform modules. The IDE provides tools that help you create the missing actual declarations.
 
 <note>
-    We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. 
-    It is better to implement all possible functionality in the common module even if doing so takes more time.
+We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. 
+It is better to implement all possible functionality in the common module even if doing so takes more time.
     
-    Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
+Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
 </note>
 
 ## Examples
@@ -40,27 +40,27 @@ Let’s assume that you are developing iOS and Android applications using Kotlin
 For this purpose, you should declare the expected function `getTimestamp()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
 
-```kotlin
+```Kotlin
 internal expect fun getTimestamp(): Long
 ```
 
 In each platform-specific module (iOS and Android), provide actual implementation for the  `getTimestamp()` function 
 expected in the common module. Use the `actual` keyword to mark the actual implementation.
 
-The following examples show the implementation of this for iOS and Android. 
+The following examples show the implementation of this for Android and iOS. 
 Platform-specific code uses the actual keyword and the expected name for the function.
 
 <tabs>
     <tab title="Android">
-        <code style="block" lang="Kotlin">
+        ```Kotlin
             internal actual fun getTimestamp(): Long = System.currentTimeMillis()
-        </code>
+        ```
     </tab>
     <tab title="iOS">
-        <code  style="block" lang="Kotlin">
+        ```Kotlin
             import kotlin.system.getTimeMillis
             internal actual fun getTimestamp(): Long = getTimeMillis()
-         </code>
+         ```
     </tab>
 </tabs>
 
@@ -72,26 +72,28 @@ generate a universally unique identifier (UUID).
 For this purpose, declare the expected function `randomUUID()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
 
-
-```kotlin
+```Kotlin
 expect fun randomUUID(): String
 ```
 
 In each platform-specific module (iOS and Android), provide the actual implementation for the function `randomUUID()` 
 expected in the common module. Use the `actual` keyword to mark the actual implementation. 
-The following examples show the implementation of this for iOS and Android.
+The following examples show the implementation of this for Android and iOS.
 
-**iOS**
-```kotlin
-import platform.Foundation.NSUUID
-actual fun randomUUID(): String = NSUUID().UUIDString()
-```
-
-**Android**
-```kotlin
-import java.util.*
-actual fun randomUUID() = UUID.randomUUID().toString()
-```
+<tabs>
+    <tab title="Android">
+        ```Kotlin
+            import java.util.*
+            actual fun randomUUID() = UUID.randomUUID().toString()
+        ```
+    </tab>
+    <tab title="iOS">
+        ```Kotlin
+            import platform.Foundation.NSUUID
+            actual fun randomUUID(): String = NSUUID().UUIDString()
+         ```
+    </tab>
+</tabs>
 
 ### Example: Send and receive messages from a WebSocket
 
@@ -104,7 +106,7 @@ you can just add it once to the common module. However, the actual implementatio
 
 In the common module, declare the expected class `PlatformSocket()` with the `expect` keyword. Don’t include any implementation code.
 
-```kotlin
+```Kotlin
 internal expect class PlatformSocket(
    url: String
 ) {
@@ -124,103 +126,106 @@ interface PlatformSocketListener {
 In each platform-specific module (iOS and Android), provide the actual implementation for the class `PlatformSocket()` 
 expected in the common module. Use the `actual` keyword to mark the actual implementation.
 
-The following examples show the implementation of this for iOS and Android.
+The following examples show the implementation of this for Android and iOS.
 
-**iOS**
-```kotlin
-import platform.Foundation.*
-import platform.darwin.NSObject
-internal actual class PlatformSocket actual constructor(url: String) {
-   private val socketEndpoint = NSURL.URLWithString(url)!!
-   private var webSocket: NSURLSessionWebSocketTask? = null
-   actual fun openSocket(listener: PlatformSocketListener) {
-       val urlSession = NSURLSession.sessionWithConfiguration(
-           configuration = NSURLSessionConfiguration.defaultSessionConfiguration(),
-           delegate = object : NSObject(), NSURLSessionWebSocketDelegateProtocol {
-               override fun URLSession(
-                   session: NSURLSession,
-                   webSocketTask: NSURLSessionWebSocketTask,
-                   didOpenWithProtocol: String?
-               ) {
-                   listener.onOpen()
+<tabs>
+    <tab title="Android">
+        ```Kotlin
+            import okhttp3.OkHttpClient
+            import okhttp3.Request
+            import okhttp3.Response
+            import okhttp3.WebSocket
+            internal actual class PlatformSocket actual constructor(url: String) {
+               private val socketEndpoint = url
+               private var webSocket: WebSocket? = null
+               actual fun openSocket(listener: PlatformSocketListener) {
+                   val socketRequest = Request.Builder().url(socketEndpoint).build()
+                   val webClient = OkHttpClient().newBuilder().build()
+                   webSocket = webClient.newWebSocket(
+                       socketRequest,
+                       object : okhttp3.WebSocketListener() {
+                           override fun onOpen(webSocket: WebSocket, response: Response) = listener.onOpen()
+                           override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) = listener.onFailure(t)
+                           override fun onMessage(webSocket: WebSocket, text: String) = listener.onMessage(text)
+                           override fun onClosing(webSocket: WebSocket, code: Int, reason: String) = listener.onClosing(code, reason)
+                           override fun onClosed(webSocket: WebSocket, code: Int, reason: String) = listener.onClosed(code, reason)
+                       }
+                   )
                }
-               override fun URLSession(
-                   session: NSURLSession,
-                   webSocketTask: NSURLSessionWebSocketTask,
-                   didCloseWithCode: NSURLSessionWebSocketCloseCode,
-                   reason: NSData?
-               ) {
-                   listener.onClosed(didCloseWithCode.toInt(), reason.toString())
+               actual fun closeSocket(code: Int, reason: String) {
+                   webSocket?.close(code, reason)
+                   webSocket = null
                }
-           },
-           delegateQueue = NSOperationQueue.currentQueue()
-       )
-       webSocket = urlSession.webSocketTaskWithURL(socketEndpoint)
-       listenMessages(listener)
-       webSocket?.resume()
-   }
-   private fun listenMessages(listener: PlatformSocketListener) {
-       webSocket?.receiveMessageWithCompletionHandler { message, nsError ->
-           when {
-               nsError != null -> {
-                   listener.onFailure(Throwable(nsError.description))
+               actual fun sendMessage(msg: String) {
+                   webSocket?.send(msg)
                }
-               message != null -> {
-                   message.string?.let { listener.onMessage(it) }
+            }
+        ```
+    </tab>
+    <tab title="iOS">
+        ```Kotlin
+            import platform.Foundation.*
+            import platform.darwin.NSObject
+            internal actual class PlatformSocket actual constructor(url: String) {
+               private val socketEndpoint = NSURL.URLWithString(url)!!
+               private var webSocket: NSURLSessionWebSocketTask? = null
+               actual fun openSocket(listener: PlatformSocketListener) {
+                   val urlSession = NSURLSession.sessionWithConfiguration(
+                       configuration = NSURLSessionConfiguration.defaultSessionConfiguration(),
+                       delegate = object : NSObject(), NSURLSessionWebSocketDelegateProtocol {
+                           override fun URLSession(
+                               session: NSURLSession,
+                               webSocketTask: NSURLSessionWebSocketTask,
+                               didOpenWithProtocol: String?
+                           ) {
+                               listener.onOpen()
+                           }
+                           override fun URLSession(
+                               session: NSURLSession,
+                               webSocketTask: NSURLSessionWebSocketTask,
+                               didCloseWithCode: NSURLSessionWebSocketCloseCode,
+                               reason: NSData?
+                           ) {
+                               listener.onClosed(didCloseWithCode.toInt(), reason.toString())
+                           }
+                       },
+                       delegateQueue = NSOperationQueue.currentQueue()
+                   )
+                   webSocket = urlSession.webSocketTaskWithURL(socketEndpoint)
+                   listenMessages(listener)
+                   webSocket?.resume()
                }
-           }
-           listenMessages(listener)
-       }
-   }
-   actual fun closeSocket(code: Int, reason: String) {
-       webSocket?.cancelWithCloseCode(code.toLong(), null)
-       webSocket = null
-   }
-   actual fun sendMessage(msg: String) {
-       val message = NSURLSessionWebSocketMessage(msg)
-       webSocket?.sendMessage(message) { err ->
-           err?.let { println("send $msg error: $it") }
-       }
-   }
-}
-```
-
-**Android**
-```kotlin
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import okhttp3.WebSocket
-internal actual class PlatformSocket actual constructor(url: String) {
-   private val socketEndpoint = url
-   private var webSocket: WebSocket? = null
-   actual fun openSocket(listener: PlatformSocketListener) {
-       val socketRequest = Request.Builder().url(socketEndpoint).build()
-       val webClient = OkHttpClient().newBuilder().build()
-       webSocket = webClient.newWebSocket(
-           socketRequest,
-           object : okhttp3.WebSocketListener() {
-               override fun onOpen(webSocket: WebSocket, response: Response) = listener.onOpen()
-               override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) = listener.onFailure(t)
-               override fun onMessage(webSocket: WebSocket, text: String) = listener.onMessage(text)
-               override fun onClosing(webSocket: WebSocket, code: Int, reason: String) = listener.onClosing(code, reason)
-               override fun onClosed(webSocket: WebSocket, code: Int, reason: String) = listener.onClosed(code, reason)
-           }
-       )
-   }
-   actual fun closeSocket(code: Int, reason: String) {
-       webSocket?.close(code, reason)
-       webSocket = null
-   }
-   actual fun sendMessage(msg: String) {
-       webSocket?.send(msg)
-   }
-}
-```
+               private fun listenMessages(listener: PlatformSocketListener) {
+                   webSocket?.receiveMessageWithCompletionHandler { message, nsError ->
+                       when {
+                           nsError != null -> {
+                               listener.onFailure(Throwable(nsError.description))
+                           }
+                           message != null -> {
+                               message.string?.let { listener.onMessage(it) }
+                           }
+                       }
+                       listenMessages(listener)
+                   }
+               }
+               actual fun closeSocket(code: Int, reason: String) {
+                   webSocket?.cancelWithCloseCode(code.toLong(), null)
+                   webSocket = null
+               }
+               actual fun sendMessage(msg: String) {
+                   val message = NSURLSessionWebSocketMessage(msg)
+                   webSocket?.sendMessage(message) { err ->
+                       err?.let { println("send $msg error: $it") }
+                   }
+               }
+            }
+         ```
+    </tab>
+</tabs>
 
 And here is the common logic in the common module that uses the platform-specific class `PlatformSocket().`
 
-```kotlin
+```Kotlin
 class AppSocket(url: String) {
    private val ws = PlatformSocket(url)
    var socketError: Throwable? = null
