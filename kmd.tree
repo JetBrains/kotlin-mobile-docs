@@ -7,5 +7,5 @@
                  start-page="connect-to-platform-specific-apis.md"
                  status="eap">
 
-    <toc-element id="connect-to-platform-specific-apis.md"/>
+    <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
 </product-profile>
