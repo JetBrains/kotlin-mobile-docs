@@ -15,8 +15,7 @@ The compiler ensures that every declaration marked with the `expect` keyword in 
 declarations marked with the `actual` keyword in all platform modules. The IDE provides tools that help you create the missing actual declarations.
 
 <note>
-We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. 
-It is better to implement all possible functionality in the common module even if doing so takes more time.
+We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. It is better to implement all possible functionality in the common module even if doing so takes more time.
     
 Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
 </note>
