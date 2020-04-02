@@ -101,8 +101,8 @@ The following examples show the implementation of this for Android and iOS.
 
 ### Example: Send and receive messages from a WebSocket
 
-Finally, let’s assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and 
-you want to create a simple chat platform that supports sending and receiving messages from a WebSocket.
+Finally, let’s assume that you are developing a chat platform for iOS and Android using Kotlin Multiplatform Mobile. 
+Let's see how you can implement sending and receiving messages from a WebSocket.
 
 For this purpose, define a common logic that you don’t need to duplicate in all platform modules – 
 just add it once to the common module. However, the actual implementation of the WebSocket class differs
