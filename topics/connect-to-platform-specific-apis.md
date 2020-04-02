@@ -48,14 +48,14 @@ The following examples show the implementation of this for Android and iOS.
 Platform-specific code uses the actual keyword and the expected name for the function.
 
 <tabs>
-    <tab title="Android">
+<tab title="Android">
     
 ```Kotlin
     actual fun getTimestamp(): Long = System.currentTimeMillis()
 ```
         
-    </tab>
-    <tab title="iOS">
+</tab>
+<tab title="iOS">
     
 ```Kotlin
     import kotlin.system.getTimeMillis
@@ -63,7 +63,7 @@ Platform-specific code uses the actual keyword and the expected name for the fun
     actual fun getTimestamp(): Long = getTimeMillis()
  ```
          
-    </tab>
+</tab>
 </tabs>
 
 ### Example: Generate a UUID
