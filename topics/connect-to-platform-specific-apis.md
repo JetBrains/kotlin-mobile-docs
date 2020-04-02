@@ -50,18 +50,18 @@ Platform-specific code uses the actual keyword and the expected name for the fun
 <tabs>
     <tab title="Android">
     
-        ```Kotlin
-            actual fun getTimestamp(): Long = System.currentTimeMillis()
-        ```
+```Kotlin
+    actual fun getTimestamp(): Long = System.currentTimeMillis()
+```
         
     </tab>
     <tab title="iOS">
     
-        ```Kotlin
-            import kotlin.system.getTimeMillis
-            
-            actual fun getTimestamp(): Long = getTimeMillis()
-         ```
+```Kotlin
+    import kotlin.system.getTimeMillis
+    
+    actual fun getTimestamp(): Long = getTimeMillis()
+ ```
          
     </tab>
 </tabs>
