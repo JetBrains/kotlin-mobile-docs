@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.ihp" beforeDir="false" afterPath="$PROJECT_DIR$/project.ihp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kmd.tree" beforeDir="false" afterPath="$PROJECT_DIR$/kmd.tree" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,9 +14,27 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="MessagesViewTool">
+    <option name="defaultListState">
+      <MessageListState>
+        <option name="autoscrollToSource" value="true" />
+        <option name="info" value="true" />
+        <option name="warnings" value="true" />
+      </MessageListState>
+    </option>
   </component>
   <component name="ProjectId" id="1Wk4okd9vumGiIyjfUAXQDDBc9q" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,9 +43,35 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="stardust.first.run4" value="yes" />
+  </component>
+  <component name="RunManager" selected="Stardust Article Preview.Preview connect-to-platform-specific-apis.md">
+    <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
+      <method v="2" />
+    </configuration>
+    <configuration name="Preview connect-to-platform-specific-apis.md" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
+      <option name="previewWhat" value="$PROJECT_DIR$/topics/connect-to-platform-specific-apis.md" />
+      <option name="autoOpen" value="true" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -41,6 +85,9 @@
       </list>
     </option>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="" />
@@ -48,7 +95,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579680435169</updated>
-      <workItem from="1579680436720" duration="810000" />
+      <workItem from="1579680436720" duration="1837000" />
+      <workItem from="1585576397513" duration="204000" />
+      <workItem from="1585576894195" duration="216000" />
+      <workItem from="1585577304552" duration="242000" />
+      <workItem from="1585577895516" duration="204000" />
+      <workItem from="1585582388564" duration="1388000" />
+      <workItem from="1585584097048" duration="778000" />
+      <workItem from="1585598583808" duration="142000" />
+      <workItem from="1585599039169" duration="854000" />
+      <workItem from="1585600025399" duration="459000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -57,26 +113,86 @@
       <option name="project" value="LOCAL" />
       <updated>1579680838392</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Images path updates">
+      <created>1579681252030</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579681252030</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Images path updates">
+      <created>1585690060051</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585690060051</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UsagesViewTool">
+    <version id="1" />
+    <tabs />
+    <default_view_options>
+      <options category_option="false" module_option="true" model_option="true" root_option="true" path_option="false" count_option="true" info_option="true" view_searched_nodes_option="true" group_searched_nodes_option="true" autoscroll_option="false" />
+    </default_view_options>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Images path updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Images path updates" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="538" y="215" key="CommitChangelistDialog2" timestamp="1579680838296">
+    <state x="424" y="273" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585576519007">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
-    <state x="538" y="215" key="CommitChangelistDialog2/1920.23.2560.1417/0.23.1920.1177@0.23.1920.1177" timestamp="1579680838296" />
-    <state x="560" y="351" key="Vcs.Push.Dialog.v2" timestamp="1579680843854">
+    <state x="424" y="273" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1177@0.23.1920.1177" timestamp="1585576519007" />
+    <state x="538" y="215" key="CommitChangelistDialog2" timestamp="1585690058086">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
-    <state x="560" y="351" key="Vcs.Push.Dialog.v2/1920.23.2560.1417/0.23.1920.1177@0.23.1920.1177" timestamp="1579680843854" />
+    <state x="538" y="215" key="CommitChangelistDialog2/0.23.1920.1177@0.23.1920.1177" timestamp="1585690058086" />
+    <state x="538" y="215" key="CommitChangelistDialog2/1920.23.2560.1417/0.23.1920.1177@0.23.1920.1177" timestamp="1579681251933" />
+    <state width="1878" height="328" key="GridCell.Tab.0.bottom" timestamp="1585689367816">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state width="1878" height="328" key="GridCell.Tab.0.bottom/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367816" />
+    <state width="1878" height="328" key="GridCell.Tab.0.center" timestamp="1585689367816">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state width="1878" height="328" key="GridCell.Tab.0.center/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367816" />
+    <state width="1878" height="328" key="GridCell.Tab.0.left" timestamp="1585689367815">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state width="1878" height="328" key="GridCell.Tab.0.left/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367815" />
+    <state width="1878" height="328" key="GridCell.Tab.0.right" timestamp="1585689367816">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state width="1878" height="328" key="GridCell.Tab.0.right/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367816" />
+    <state x="165" y="369" width="1372" height="560" key="IDE.errors.dialog" timestamp="1585598135406">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="165" y="369" width="1372" height="560" key="IDE.errors.dialog/0.23.1920.1177@0.23.1920.1177" timestamp="1585598135406" />
+    <state x="740" y="329" key="RollbackChangesDialog" timestamp="1585600475402">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="740" y="329" key="RollbackChangesDialog/0.23.1920.1177@0.23.1920.1177" timestamp="1585600475402" />
+    <state x="448" y="193" key="SettingsEditor" timestamp="1585600493815">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="448" y="193" key="SettingsEditor/0.23.1920.1177@0.23.1920.1177" timestamp="1585600493815" />
+    <state x="560" y="351" key="Vcs.Push.Dialog.v2" timestamp="1585690062633">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="560" y="351" key="Vcs.Push.Dialog.v2/0.23.1920.1177@0.23.1920.1177" timestamp="1585690062633" />
+    <state x="560" y="351" key="Vcs.Push.Dialog.v2/1920.23.2560.1417/0.23.1920.1177@0.23.1920.1177" timestamp="1579681256094" />
+    <state x="743" y="535" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585576435393">
+      <screen x="0" y="23" width="1920" height="1177" />
+    </state>
+    <state x="743" y="535" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1177@0.23.1920.1177" timestamp="1585576435393" />
   </component>
 </project>

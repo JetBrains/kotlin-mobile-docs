@@ -4,8 +4,8 @@
 
 <product-profile id="kmd"
                  name="Kotlin Mobile Docs"
-                 start-page="quick-start.md"
+                 start-page="connect-to-platform-specific-apis.md"
                  status="eap">
 
-    <toc-element id="quick-start.md"/>
+    <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
 </product-profile>
