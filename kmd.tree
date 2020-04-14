@@ -8,4 +8,5 @@
                  status="eap">
 
     <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
+    <toc-element id="supported-platforms.md" show-structure-depth="3"/>
 </product-profile>
