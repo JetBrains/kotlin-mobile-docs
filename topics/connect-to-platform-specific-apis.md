@@ -8,7 +8,7 @@ you can use the Kotlin mechanism of [expected and actual declarations](https://k
 With this mechanism, a common module defines an _expected declaration_, and platform modules must provide _actual declarations_ 
 that correspond to the expected one. This works for most Kotlin declarations, such as functions, classes, interfaces, enums, properties, and annotations.
 
-<img src="expect-actual-general.png" alt="Expect/actual declarations in common and platform-specific modules" width="600"/>
+<img src="expect-actual-general.png" alt="Expect/actual declarations in common and platform-specific modules" width="700"/>
 
 The compiler ensures that every declaration marked with the `expect` keyword in the common module has the corresponding 
 declarations marked with the `actual` keyword in all platform modules. The IDE provides tools that help you create the missing actual declarations.
@@ -32,7 +32,7 @@ you need to use a specific target name from [the list of supported targets](http
 
 Let’s assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to get the current time in milliseconds.
 
-<img src="expect-actual-example.png" alt="Expect/actual declarations for getting the timestamp" width="600"/>
+<img src="expect-actual-example.png" alt="Expect/actual declarations for getting the timestamp" width="700"/>
 
 For this purpose, declare the expected function `getTimestamp()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
