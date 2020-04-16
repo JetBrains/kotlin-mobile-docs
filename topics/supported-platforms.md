@@ -1,20 +1,15 @@
 [//]: # (title: Supported platforms)
 [//]: # (auxiliary-id: Supported_Platforms)
 
-Kotlin Multiplatform Mobile is an SDK designed to simplify creating multiplatform mobile applications. KMM supports the following mobile targets:
-* Android applications and libraries
-* Android NDK (arm32, arm64)
-* iOS (arm32, arm64, simulator x86_64)
-* watchOS (arm32, arm64, x86)
+Kotlin Multiplatform Mobile (_KMM_) is an SDK designed to simplify creating multiplatform mobile applications. KMM supports the following mobile targets:
 
-KMM is built on top of the [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) technology, which supports the following additional platforms:
-* Kotlin/JVM
-* Kotlin/JS
-* tvOS (arm64, x86_64)
-* Linux (x86_64, arm32, MIPS, MIPS little endian, Raspberry Pi)
-* macOS (x86_64)
-* Windows (mingw x86_64, x86)
-* WebAssembly (wasm32)
+* Android applications and libraries
+* [Android NDK](https://developer.android.com/ndk) on ARM32 and ARM64 platforms
+* Apple iOS on ARM64 (iPhone 5s and newer), ARM32 (earlier models) platforms, and desktop simulators
+* Apple watchOS on ARM64 (Apple Watch Series 4 and newer), ARM32 (earlier models) platforms, and desktop simulators
+
+KMM is built on top of the [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) technology, 
+which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [more](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#targets). 
 
 More information:
 * [Kotlin Multiplatform overview](https://kotlinlang.org/docs/reference/multiplatform.html)
