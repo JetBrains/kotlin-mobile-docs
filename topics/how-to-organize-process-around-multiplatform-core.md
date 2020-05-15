@@ -1,5 +1,5 @@
 [//]: # (title: How to Organize a Process Around Multiplatform Core)
-[//]: # (auxiliary-id: How_to_Organize_a_Process_Around_Multiplatform_Core)
+[//]: # (auxiliary-id: Organize_a_process_around_Kotlin_Multiplatform)
 
 Applications that target iOS and Android are usually developed independently for each platform, and synchronization is
 done at the level of requirements and the server API. Kotlin Multiplatform allows you to share code between multiple
