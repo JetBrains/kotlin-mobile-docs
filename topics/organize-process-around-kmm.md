@@ -1,4 +1,4 @@
-[//]: # (title: How to Organize a Process Around Multiplatform Core)
+[//]: # (title: Organize a process around Kotlin Multiplatform)
 [//]: # (auxiliary-id: Organize_a_process_around_Kotlin_Multiplatform)
 
 Applications that target iOS and Android are usually developed independently for each platform, and synchronization is
@@ -47,9 +47,9 @@ public API will be used for the shared code.
 
 There are three distinct approaches to organizing the way teams work on an MPP library:
 
-1. The Android team implements the Android application and the MPP module, which iOS developers use as a black box.
-2. Android and iOS developers work on the MPP library simultaneously.
-3. A dedicated team is allocated to work on the MPP library, and both Android and iOS developers use it as a black box.
+1. [The Android team implements the Android application and the MPP module, which iOS developers use as a black box](#only-android-developers-work-on-the-mpp-module).
+2. [Android and iOS developers work on the MPP library simultaneously](#android-and-ios-developers-work-on-the-mpp-module).
+3. [A dedicated team is allocated to work on the MPP library, and both Android and iOS developers use it as a black box](#the-mpp-module-is-developed-by-a-dedicated-team).
 
 To choose the right strategy for your project, consider how much of the planned functionality you're going to place in
 the MPP module:
