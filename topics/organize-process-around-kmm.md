@@ -49,7 +49,7 @@ There are three distinct approaches to organizing the way teams work on an MPP l
 
 1. [The Android team implements the Android application and the MPP module, which iOS developers use as a black box](#Only+Android+developers+work+on+the+MPP+module).
 2. [Android and iOS developers work on the MPP library simultaneously](#Android+and+iOS+developers+work+on+the+MPP+module).
-3. [A dedicated team is allocated to work on the MPP library, and both Android and iOS developers use it as a black box](#the-mpp-module-is-developed-by-a-dedicated-team).
+3. [A dedicated team is allocated to work on the MPP library, and both Android and iOS developers use it as a black box](#The+MPP+module+is+developed+by+a+dedicated+team).
 
 To choose the right strategy for your project, consider how much of the planned functionality you're going to place in
 the MPP module:
