@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kmd.tree" beforeDir="false" afterPath="$PROJECT_DIR$/kmd.tree" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +37,6 @@
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -72,18 +70,6 @@
       <option name="autoOpen" value="true" />
       <method v="2" />
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -131,7 +117,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="UsagesViewTool">
     <version id="1" />
@@ -156,7 +142,6 @@
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state x="538" y="215" key="CommitChangelistDialog2/0.23.1920.1177@0.23.1920.1177" timestamp="1585690058086" />
-    <state x="538" y="215" key="CommitChangelistDialog2/1920.23.2560.1417/0.23.1920.1177@0.23.1920.1177" timestamp="1579681251933" />
     <state width="1878" height="328" key="GridCell.Tab.0.bottom" timestamp="1585689367816">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
@@ -189,10 +174,13 @@
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state x="560" y="351" key="Vcs.Push.Dialog.v2/0.23.1920.1177@0.23.1920.1177" timestamp="1585690062633" />
-    <state x="560" y="351" key="Vcs.Push.Dialog.v2/1920.23.2560.1417/0.23.1920.1177@0.23.1920.1177" timestamp="1579681256094" />
     <state x="743" y="535" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585576435393">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state x="743" y="535" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1177@0.23.1920.1177" timestamp="1585576435393" />
+    <state x="392" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591734614568">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="392" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591734614568" />
   </component>
 </project>
