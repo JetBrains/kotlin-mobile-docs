@@ -1,8 +1,6 @@
 [//]: # (title: Publish KMM apps)
 [//]: # (auxiliary-id: Publish_KMM_apps)
 
-# Publish KMM Apps
-
 Once your mobile apps are ready for release, it’s time to deliver them to the users by publishing them in app stores.
 Multiple stores are available for each platform. However, in this article we’ll focus on the official ones:
 [Google Play Store](https://play.google.com/store) and [Apple App Store](https://www.apple.com/ios/app-store/).
