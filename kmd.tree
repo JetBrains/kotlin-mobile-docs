@@ -13,4 +13,5 @@
     <toc-element id="adding-dependencies.md" show-structure-depth="3"/>
     <toc-element id="supported-platforms.md" show-structure-depth="3"/>
     <toc-element id="security.md" show-structure-depth="3"/>
+    <toc-element id="data-storage.md" show-structure-depth="3"/>
 </product-profile>
