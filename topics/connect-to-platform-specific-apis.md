@@ -8,31 +8,31 @@ you can use the Kotlin mechanism of [expected and actual declarations](https://k
 With this mechanism, a common module defines an _expected declaration_, and platform modules must provide _actual declarations_ 
 that correspond to the expected one. This works for most Kotlin declarations, such as functions, classes, interfaces, enums, properties, and annotations.
 
-<img src="expect-actual-general.png" alt="Expect/actual declarations in common and platform-specific modules" width="700"/>
+![Expect/actual declarations in common and platform-specific modules](expect-actual-general.png){width=700}
 
 The compiler ensures that every declaration marked with the `expect` keyword in the common module has the corresponding 
 declarations marked with the `actual` keyword in all platform modules. The IDE provides tools that help you create the missing actual declarations.
 
-<note>
-We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. It is better to implement all possible functionality in the common module even if doing so takes more time.
-    
-Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
-</note>
+>We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. It is better to implement all possible functionality in the common module even if doing so takes more time.
+>    
+>Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
+>
+{type="note"}
 
 ## Examples
 
 For simplicity, the following examples use the intuitive target names iOS and Android. However, in your Gradle build files, 
 you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#supported-platforms).
 
-* [Get the current time in milliseconds](#Example:+Get+the+current+time+in+milliseconds)
-* [Generate a UUID](#Example:+Generate+a+UUID)
-* [Send and receive messages from a WebSocket](#Example:+Send+and+receive+messages+from+a+WebSocket)
+* [Get the current time in milliseconds](#example-get-the-current-time-in-milliseconds)
+* [Generate a UUID](#example-generate-a-uuid)
+* [Send and receive messages from a WebSocket](#example-send-and-receive-messages-from-a-websocket)
 
 ### Example: Get the current time in milliseconds
 
 Let’s assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to get the current time in milliseconds.
 
-<img src="expect-actual-example.png" alt="Expect/actual declarations for getting the timestamp" width="700"/>
+![Expect/actual declarations for getting the timestamp](eexpect-actual-example.png){width=700}
 
 For this purpose, declare the expected function `getTimestamp()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.

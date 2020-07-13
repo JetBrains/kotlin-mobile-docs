@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/common-kotlin-file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/first-kmm-on-android-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/first-kmm-on-android.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/kmm-project-wizard-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/kmm-project-wizard-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/kmm-project-wizard-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/mobile-multiplatform-plugin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/project-view.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/run-android.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/run-ios.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/select-project-view.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/topics/connect-to-platform-specific-apis.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/connect-to-platform-specific-apis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/topics/discover-kmm-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/discover-kmm-project.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +102,7 @@
       <workItem from="1591909402758" duration="783000" />
       <workItem from="1592307773904" duration="328000" />
       <workItem from="1592572699502" duration="703000" />
-      <workItem from="1594667310708" duration="6203000" />
+      <workItem from="1594667310708" duration="6775000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -156,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1594675189565</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update: committing images">
+      <created>1594675661147</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1594675661147</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: fixed anchors">
+      <created>1594675825390</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1594675825390</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,13 +181,15 @@
     <MESSAGE value="updated: updated the structure" />
     <MESSAGE value="update: described how to set up the environment" />
     <MESSAGE value="update: described how to create your first KMM app" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: described how to create your first KMM app" />
+    <MESSAGE value="update: committing images" />
+    <MESSAGE value="fix: fixed anchors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: fixed anchors" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="404" y="51" key="CommitChangelistDialog2" timestamp="1594675189396">
+    <state x="404" y="51" key="CommitChangelistDialog2" timestamp="1594675825254">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="404" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594675189396" />
+    <state x="404" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594675825254" />
     <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1594675127476">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -204,10 +210,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="336" y="130" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591862937107" />
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1594675192564">
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1594675826978">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594675192564" />
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594675826978" />
     <state x="418" y="205" width="604" height="490" key="find.popup" timestamp="1594672897842">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
