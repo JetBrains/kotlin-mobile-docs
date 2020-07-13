@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/kmd.tree" beforeDir="false" afterPath="$PROJECT_DIR$/kmd.tree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/topics/create-first-app.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +20,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MessagesViewTool">
     <option name="defaultListState">
@@ -59,14 +59,20 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="stardust.first.run4" value="yes" />
   </component>
-  <component name="RunManager" selected="Stardust Article Preview.Preview connect-to-platform-specific-apis.md">
+  <component name="RunManager" selected="Stardust Article Preview.Preview create-first-app.md">
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <method v="2" />
     </configuration>
     <configuration name="Preview connect-to-platform-specific-apis.md" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <option name="previewWhat" value="$PROJECT_DIR$/topics/connect-to-platform-specific-apis.md" />
+      <option name="autoOpen" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Preview create-first-app.md" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
+      <option name="previewWhat" value="$PROJECT_DIR$/topics/create-first-app.md" />
       <option name="autoOpen" value="true" />
       <method v="2" />
     </configuration>
@@ -91,6 +97,12 @@
       <workItem from="1585598583808" duration="142000" />
       <workItem from="1585599039169" duration="854000" />
       <workItem from="1585600025399" duration="459000" />
+      <workItem from="1591862962912" duration="268000" />
+      <workItem from="1591871879976" duration="597000" />
+      <workItem from="1591909402758" duration="783000" />
+      <workItem from="1592307773904" duration="328000" />
+      <workItem from="1592572699502" duration="703000" />
+      <workItem from="1594667310708" duration="1698000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -113,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585690060051</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated: updated the structure">
+      <created>1591736659808</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591736659808</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,56 +150,25 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Images path updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Images path updates" />
+    <MESSAGE value="updated: updated the structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated: updated the structure" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="424" y="273" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585576519007">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="424" y="273" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1177@0.23.1920.1177" timestamp="1585576519007" />
-    <state x="538" y="215" key="CommitChangelistDialog2" timestamp="1585690058086">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="538" y="215" key="CommitChangelistDialog2/0.23.1920.1177@0.23.1920.1177" timestamp="1585690058086" />
-    <state width="1878" height="328" key="GridCell.Tab.0.bottom" timestamp="1585689367816">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state width="1878" height="328" key="GridCell.Tab.0.bottom/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367816" />
-    <state width="1878" height="328" key="GridCell.Tab.0.center" timestamp="1585689367816">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state width="1878" height="328" key="GridCell.Tab.0.center/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367816" />
-    <state width="1878" height="328" key="GridCell.Tab.0.left" timestamp="1585689367815">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state width="1878" height="328" key="GridCell.Tab.0.left/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367815" />
-    <state width="1878" height="328" key="GridCell.Tab.0.right" timestamp="1585689367816">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state width="1878" height="328" key="GridCell.Tab.0.right/0.23.1920.1177@0.23.1920.1177" timestamp="1585689367816" />
-    <state x="165" y="369" width="1372" height="560" key="IDE.errors.dialog" timestamp="1585598135406">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="165" y="369" width="1372" height="560" key="IDE.errors.dialog/0.23.1920.1177@0.23.1920.1177" timestamp="1585598135406" />
-    <state x="740" y="329" key="RollbackChangesDialog" timestamp="1585600475402">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="740" y="329" key="RollbackChangesDialog/0.23.1920.1177@0.23.1920.1177" timestamp="1585600475402" />
-    <state x="448" y="193" key="SettingsEditor" timestamp="1585600493815">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="448" y="193" key="SettingsEditor/0.23.1920.1177@0.23.1920.1177" timestamp="1585600493815" />
-    <state x="560" y="351" key="Vcs.Push.Dialog.v2" timestamp="1585690062633">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="560" y="351" key="Vcs.Push.Dialog.v2/0.23.1920.1177@0.23.1920.1177" timestamp="1585690062633" />
-    <state x="743" y="535" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585576435393">
-      <screen x="0" y="23" width="1920" height="1177" />
-    </state>
-    <state x="743" y="535" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1177@0.23.1920.1177" timestamp="1585576435393" />
-    <state x="392" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591734614568">
+    <state x="404" y="51" key="CommitChangelistDialog2" timestamp="1591736659661">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="392" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591734614568" />
+    <state x="404" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591736659661" />
+    <state x="336" y="130" key="SettingsEditor" timestamp="1591862937107">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="336" y="130" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591862937107" />
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1591736663347">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591736663347" />
+    <state x="392" y="245" key="git4idea.merge.GitPullDialog" timestamp="1594667328883">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="392" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1594667328883" />
   </component>
 </project>
