@@ -1,21 +1,82 @@
-[//]: # (title: Create your first application)
-[//]: # (auxiliary-id: Create_First_Application)
+[//]: # (title: Create your first multiplatform application)
+[//]: # (auxiliary-id: Create_first_multiplatform_application)
 
-## Set up the multiplatform environment
-Before you start creating your first application that works on iOS and Android, set up the environment:
+Once you've [setup your mobile multiplatform environment](setup.md), it's time to create your first application.
 
-* Take a Mac with the macOS operating system. It is required for building iOS applications.
-* Install the latest version of [Android Studio](https://developer.android.com/studio). The recommended version is 4.1 
-or higher. You will use Android Studio for creating your multiplatform applications and running them on device simulators.
-* Install the latest version of [Xcode](https://apps.apple.com/us/app/xcode/id497799835). The recommended version is ... or higher. Xcode is required for building your iOS 
-applications. Most of the time, Xcode will work in the background. You will need to use it if you want to add Swift or 
-Objective-C code to your iOS app and run your iOS application on a real device.
-* Update the Kotlin plugin to the version 1.4.0 or higher.  
-    In Android Studio, select **Tools** | **Kotlin** | **Configure Kotlin Plugin Updates** and update to the latest 
-    version in the **Stable** update channel.
-* Install the *Mobile Multiplatform* plugin.  
-    Select  **Preferences** | **Plugins**, search for the plugin *Mobile Multiplatform* in **Marketplace** and install it.
+1. In Android Studio, select **File** | **New** | **New Project**.
+2. Select **Mobile Application** in the list of project templates, and click **Next**.  
+
+    ![Mobile Multiplatform project template](kmm-project-wizard-1.png)
     
-    ![Mobile Multiplatform plugin](/mobile-multiplatform-plugin.png){width=400}
+3. Specify a name for your first application, and click **Next**.  
 
-## Create your first multiplatform mobile application
+    ![Mobile Multiplatform project - general settings](kmm-project-wizard-2.png)
+
+4. Keep default names for application and shared folders, select a checkbox to generate sample tests for your project, 
+and click **Finish**.  
+
+    ![Mobile Multiplatform project - additional settings](kmm-project-wizard-3.png)  
+    
+    Wait a bit until your project is set up. It may take some time to download and set up required components when you 
+    do this for the first time.
+    
+## Run your application 
+
+You can run your multiplatform application on Android and iOS.
+
+### Run your application on Android
+
+* In the list of run configurations, select **androidApp**, and click **Run**.  
+    
+    ![Run multiplatform app on Android](run-android.png){width=400}
+    
+    ![First mobile multiplatform app on Android](first-kmm-on-android.png){width=300}
+    
+### Run your application on iOS
+
+* In the list of run configurations, select **iosApp**, and click **Run**.  
+    
+    ![Run multiplatform app on iOS](run-ios.png){width=450}
+    
+    > Due to technical limitations, iOS device names are shown in the first list. The second list is disabled for **iosApp**.
+    >
+    {type="note"}   
+    
+    IMAGE
+
+## Update your application
+
+1. Switch the view from **Android** to **Project**.  
+    The **Project** view correctly displays the structure of your mobile multiplatform project.  
+    
+    ![Select the Project view](select-project-view.png){width=200}  
+    
+    ![Project view](project-view.png){width=200}
+
+2. Open the file `common.kt` in **shared** | **src** | **commonMain** | **kotlin**.  
+    This file stores shared code for both platforms - Android and iOS. If you make changes to the common code, you will see
+    changes in both applications.
+
+    ![Common Kotlin file](common-kotlin-file.png)
+    
+3. Update the common code - use a Kotlin standard library function that works on all platforms and reverts text - `reversed()`.
+
+    ```kotlin
+    expect class Platform() {
+        val platform: String
+    }
+    
+    class Greeting {
+        fun greeting(): String {
+            return "Guess what it is! > ${Platform().platform.reversed()}!"
+        }
+    }
+    ```
+
+4. Run the updated application on Android.
+
+    ![Updated mobile multiplatform app on Android](first-kmm-on-android-2.png){width=300}
+    
+5. Run the updated application on iOS.  
+
+    IMAGE
