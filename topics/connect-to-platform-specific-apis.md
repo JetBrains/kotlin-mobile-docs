@@ -32,7 +32,7 @@ you need to use a specific target name from [the list of supported targets](http
 
 Let’s assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to get the current time in milliseconds.
 
-![Expect/actual declarations for getting the timestamp](eexpect-actual-example.png){width=700}
+![Expect/actual declarations for getting the timestamp](expect-actual-example.png){width=700}
 
 For this purpose, declare the expected function `getTimestamp()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
