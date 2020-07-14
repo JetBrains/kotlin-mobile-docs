@@ -1,34 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/common-kotlin-file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/first-kmm-on-android-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/first-kmm-on-ios-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/first-kmm-on-ios-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/ios-test-failed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/ios-test-kt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/ios-test-result.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/kmm-project-wizard-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/kmm-project-wizard-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/kmm-project-wizard-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/project-view.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/run-android.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/run-ios-test.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/run-ios.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/create-first-app/select-project-view.png" afterDir="false" />
+    <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="JD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/common-kotlin-file.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/first-kmm-on-android-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/first-kmm-on-android.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/create-first-app/first-kmm-on-android-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/kmm-project-wizard-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/kmm-project-wizard-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/kmm-project-wizard-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/project-view.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/run-android.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/run-ios.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/select-project-view.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/topics/create-first-app.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/create-first-app.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/topics/setup.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/setup.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,8 +62,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="stardust.first.run4" value="yes" />
   </component>
-  <component name="RunManager" selected="Stardust Article Preview.Preview create-first-app.md">
+  <component name="RunManager" selected="Stardust Article Preview.Current">
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
+      <method v="2" />
+    </configuration>
+    <configuration name="Preview [default]" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
+      <option name="autoOpen" value="true" />
       <method v="2" />
     </configuration>
     <configuration name="Preview connect-to-platform-specific-apis.md" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
@@ -128,7 +106,7 @@
       <workItem from="1591909402758" duration="783000" />
       <workItem from="1592307773904" duration="328000" />
       <workItem from="1592572699502" duration="703000" />
-      <workItem from="1594667310708" duration="9503000" />
+      <workItem from="1594667310708" duration="10324000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -200,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594676543346</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update: updated how to create your first app; added info about running tests; added screenshots for iOS; moved images to a subdirectory">
+      <created>1594729418793</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1594729418793</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,37 +209,38 @@
     <MESSAGE value="update: committing images" />
     <MESSAGE value="fix: fixed anchors" />
     <MESSAGE value="fix: fixed the image name" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: fixed the image name" />
+    <MESSAGE value="update: updated how to create your first app; added info about running tests; added screenshots for iOS; moved images to a subdirectory" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: updated how to create your first app; added info about running tests; added screenshots for iOS; moved images to a subdirectory" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="404" y="51" key="CommitChangelistDialog2" timestamp="1594676543175">
+    <state x="0" y="51" key="CommitChangelistDialog2" timestamp="1594729653621">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="404" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594676543175" />
-    <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1594729302982">
+    <state x="0" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594729653621" />
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1594730255608">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594729302982" />
-    <state width="1398" height="2" key="GridCell.Tab.0.center" timestamp="1594729302981">
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594730255608" />
+    <state width="1398" height="2" key="GridCell.Tab.0.center" timestamp="1594730255606">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1594729302981" />
-    <state width="1398" height="2" key="GridCell.Tab.0.left" timestamp="1594729302974">
+    <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1594730255606" />
+    <state width="1398" height="2" key="GridCell.Tab.0.left" timestamp="1594730255604">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1594729302974" />
-    <state width="1398" height="2" key="GridCell.Tab.0.right" timestamp="1594729302981">
+    <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1594730255604" />
+    <state width="1398" height="2" key="GridCell.Tab.0.right" timestamp="1594730255608">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1594729302981" />
+    <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1594730255608" />
     <state x="336" y="130" key="SettingsEditor" timestamp="1591862937107">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="336" y="130" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591862937107" />
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1594676544684">
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1594729428181">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594676544684" />
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594729428181" />
     <state x="418" y="205" width="604" height="490" key="find.popup" timestamp="1594672897842">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

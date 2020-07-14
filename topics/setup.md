@@ -18,5 +18,15 @@ Xcode is required for building your iOS applications. Most of the time, Xcode wi
     Select  **Preferences** | **Plugins**, search for the plugin *Mobile Multiplatform* in **Marketplace** and install it.
     
     ![Mobile Multiplatform plugin](mobile-multiplatform-plugin.png){width=500}
+    
+* Set `JAVA_HOME` for building mutliplatform applications.  
+     
+    1. Press COMMAND + ; to open **Project Structure** settings.
+    2. Open **SDK** in the left pane and copy your JDK location. 
+    
+    ![JDK location](jdk-location.png)
+    
+    3. Run in Terminal the following command:  
+        `export JAVA_HOME="YOUR-JDK-LOCATION"` 
 
 Now it's time to [create your first mobile multiplatform application](create-first-app.md).
