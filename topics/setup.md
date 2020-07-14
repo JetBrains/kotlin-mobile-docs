@@ -15,18 +15,17 @@ Xcode is required for building your iOS applications. Most of the time, Xcode wi
     In Android Studio, select **Tools** | **Kotlin** | **Configure Kotlin Plugin Updates** and update to the latest 
     version in the **Stable** update channel.
 * Install the *Mobile Multiplatform* plugin.  
-    Select  **Preferences** | **Plugins**, search for the plugin *Mobile Multiplatform* in **Marketplace** and install it.
+    In Android Studio, select  **Preferences** | **Plugins**, search for the plugin *Mobile Multiplatform* in 
+    **Marketplace** and install it.
     
     ![Mobile Multiplatform plugin](mobile-multiplatform-plugin.png){width=500}
     
 * Set `JAVA_HOME` for building mutliplatform applications.  
      
-    1. Press COMMAND + ; to open **Project Structure** settings.
-    2. Open **SDK** in the left pane and copy your JDK location. 
-    
+    1. In Android Studio, press COMMAND + ; to open **Project Structure** settings.
+    2. Open **SDK Location** in the left pane and copy your JDK location. 
     ![JDK location](jdk-location.png)
-    
-    3. Run in Terminal the following command:  
+    3. Run the following command in Terminal:  
         `export JAVA_HOME="YOUR-JDK-LOCATION"` 
 
 Now it's time to [create your first mobile multiplatform application](create-first-app.md).
