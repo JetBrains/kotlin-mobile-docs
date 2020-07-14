@@ -6,7 +6,7 @@ multiplatform environment:
 
 * Take a Mac with the macOS operating system. It is required for building iOS applications.
 * Install the latest version of [Android Studio](https://developer.android.com/studio). The recommended version is 4.1 
-or higher. You will use Android Studio for creating your multiplatform applications and running them on device emulators.
+or higher. You will use Android Studio for creating your multiplatform applications and running them on device simulators.
 * Install the latest version of [Xcode](https://apps.apple.com/us/app/xcode/id497799835). The recommended version is 11.5 
 or higher. 
 Xcode is required for building your iOS applications. Most of the time, Xcode will work in the background. You will need

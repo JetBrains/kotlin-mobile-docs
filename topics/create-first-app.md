@@ -30,7 +30,7 @@ You can run your multiplatform application on Android and iOS.
     
     ![Run multiplatform app on Android](run-android.png){width=400}
     
-    ![First mobile multiplatform app on Android](first-kmm-on-android.png){width=300}
+    ![First mobile multiplatform app on Android](first-kmm-on-android-1.png){width=300}
     
 ### Run your application on iOS
 
@@ -42,24 +42,52 @@ You can run your multiplatform application on Android and iOS.
     >
     {type="note"}   
     
-    IMAGE
+    ![First mobile multiplatform app on Android](first-kmm-on-ios-1.png){width=300}
 
-## Update your application
+## Run tests
+
+You can run tests to check that shared code works correctly on both platforms. Of course, you can also write and run tests to check 
+platform-specific code.
+
+### Run tests in iOS
 
 1. Switch the view from **Android** to **Project**.  
     The **Project** view correctly displays the structure of your mobile multiplatform project.  
     
     ![Select the Project view](select-project-view.png){width=200}  
     
-    ![Project view](project-view.png){width=200}
+2. Open the file `iosTest.kt` in **shared** | **src** | **iosTest** | **kotlin**.  
+    Directories with **Test** in their name contain tests.  
+    This file includes a sample test for iOS.  
+    
+    ![iOS test Kotlin file](ios-test-kt.png)
+   
+ 
+3. Click the **Run** gutter icon next to the test.  
 
-2. Open the file `common.kt` in **shared** | **src** | **commonMain** | **kotlin**.  
+    ![Run iOS test](run-ios-test.png)
+
+Congratulations! The test has passed.
+
+![iOS test result](ios-test-result.png){width=300}
+
+### Run test on Android
+
+Follow a similar procedure to running tests on iOS.
+
+1. Open the file `androidTest.kt` in **shared** | **src** | **androidTest** | **kotlin**.
+
+2. Click the **Run** gutter icon next to the test. 
+
+## Update your application
+
+1. Open the file `common.kt` in **shared** | **src** | **commonMain** | **kotlin**.  
     This file stores shared code for both platforms - Android and iOS. If you make changes to the common code, you will see
     changes in both applications.
 
     ![Common Kotlin file](common-kotlin-file.png)
     
-3. Update the common code - use a Kotlin standard library function that works on all platforms and reverts text - `reversed()`.
+2. Update the common code - use a Kotlin standard library function that works on all platforms and reverts text - `reversed()`.
 
     ```kotlin
     expect class Platform() {
@@ -73,10 +101,16 @@ You can run your multiplatform application on Android and iOS.
     }
     ```
 
-4. Run the updated application on Android.
+3. Run the updated application on Android.
 
     ![Updated mobile multiplatform app on Android](first-kmm-on-android-2.png){width=300}
     
-5. Run the updated application on iOS.  
+4. Run the updated application on iOS.  
 
-    IMAGE
+    ![Updated mobile multiplatform app on iOS](first-kmm-on-ios-2.png){width=300}
+    
+5. Run tests on Android and iOS.  
+    As you see, tests fail. Update the tests to pass. You know how to do this, right? ;)
+    
+    ![iOS test failed](ios-test-failed.png){width=300}
+    
