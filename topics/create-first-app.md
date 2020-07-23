@@ -1,7 +1,7 @@
 [//]: # (title: Create your first multiplatform application)
 [//]: # (auxiliary-id: Create_first_multiplatform_application)
 
-Once you've [set up your mobile multiplatform environment](setup.md), it's time to create your first application.
+Once you've [set up an environment for KMM development](setup.md), it's time to create your first application.
 
 1. In Android Studio, select **File** | **New** | **New Project**.
 2. Select **Mobile Application** in the list of project templates, and click **Next**.  
@@ -17,8 +17,13 @@ and click **Finish**.
 
     ![Mobile Multiplatform project - additional settings](kmm-project-wizard-3.png)  
     
-    Wait a bit until your project is set up. It may take some time to download and set up required components when you 
-    do this for the first time.
+Wait a bit until your project is set up. It may take some time to download and set up required components when you 
+do this for the first time.
+    
+To view the complete structure of your mobile multiplatform project, switch the view from **Android** to **Project**. 
+You can [discover what your project includes](discover-kmm-project.md) and how you can use this. 
+    
+![Select the Project view](select-project-view.png){width=200}  
     
 ## Run your application 
 
@@ -50,20 +55,15 @@ You can run tests to check that shared code works correctly on both platforms. O
 platform-specific code.
 
 ### Run tests on iOS
-
-1. Switch the view from **Android** to **Project**.  
-    The **Project** view correctly displays the structure of your mobile multiplatform project.  
     
-    ![Select the Project view](select-project-view.png){width=200}  
-    
-2. Open the file `iosTest.kt` in **shared** | **src** | **iosTest** | **kotlin**.  
+1. Open the file `iosTest.kt` in **shared** | **src** | **iosTest** | **kotlin**.  
     Directories with **Test** in their name contain tests.  
     This file includes a sample test for iOS.  
     
     ![iOS test Kotlin file](ios-test-kt.png)
    
  
-3. Click the **Run** gutter icon next to the test.  
+2. Click the **Run** gutter icon next to the test.  
 
     ![Run iOS test](run-ios-test.png)
 
