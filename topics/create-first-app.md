@@ -1,7 +1,7 @@
 [//]: # (title: Create your first multiplatform application)
-[//]: # (auxiliary-id: Create_first_multiplatform_application)
+[//]: # (auxiliary-id: Create_your_first_multiplatform_application)
 
-Once you've [set up an environment for KMM development](setup.md), it's time to create your first application.
+Now that you've [set up an environment for KMM development](setup.md), it's time to create your first application.
 
 1. In Android Studio, select **File** | **New** | **New Project**.
 2. Select **Mobile Application** in the list of project templates, and click **Next**.  
@@ -12,12 +12,12 @@ Once you've [set up an environment for KMM development](setup.md), it's time to 
 
     ![Mobile Multiplatform project - general settings](kmm-project-wizard-2.png)
 
-4. Keep default names for application and shared folders, select a checkbox to generate sample tests for your project, 
+4. Keep the default names for the application and shared folders, select the checkbox to generate sample tests for your project, 
 and click **Finish**.  
 
     ![Mobile Multiplatform project - additional settings](kmm-project-wizard-3.png)  
     
-Wait a bit until your project is set up. It may take some time to download and set up required components when you 
+Now wait while your project is set up. It may take some time to download and set up the required components when you 
 do this for the first time.
     
 To view the complete structure of your mobile multiplatform project, switch the view from **Android** to **Project**. 
@@ -51,7 +51,7 @@ You can run your multiplatform application on Android and iOS.
 
 ## Run tests
 
-You can run tests to check that shared code works correctly on both platforms. Of course, you can also write and run tests to check 
+You can run tests to check that the shared code works correctly on both platforms. Of course, you can also write and run tests to check the 
 platform-specific code.
 
 ### Run tests on iOS
@@ -63,7 +63,7 @@ platform-specific code.
     ![iOS test Kotlin file](ios-test-kt.png)
    
  
-2. Click the **Run** gutter icon next to the test.  
+2. Click the **Run** icon in the gutter next to the test.  
 
     ![Run iOS test](run-ios-test.png)
 
@@ -73,7 +73,7 @@ Congratulations! The test has passed.
 
 ### Run tests on Android
 
-Follow a similar procedure to running tests on iOS.
+Follow a very similar procedure for Android as running tests on iOS.
 
 1. Open the file `androidTest.kt` in **shared** | **src** | **androidTest** | **kotlin**.
 
@@ -82,12 +82,12 @@ Follow a similar procedure to running tests on iOS.
 ## Update your application
 
 1. Open the file `common.kt` in **shared** | **src** | **commonMain** | **kotlin**.  
-    This file stores shared code for both platforms - Android and iOS. If you make changes to the common code, you will see
+    This file stores the shared code for both platforms – Android and iOS. If you make changes to the shared code, you will see
     changes in both applications.
 
     ![Common Kotlin file](common-kotlin-file.png)
     
-2. Update the common code - use a Kotlin standard library function that works on all platforms and reverts text - `reversed()`.
+2. Update the shared code –- use the Kotlin standard library function that works on all platforms and reverts text - `reversed()`.
 
     ```kotlin
     expect class Platform() {
@@ -110,7 +110,6 @@ Follow a similar procedure to running tests on iOS.
     ![Updated mobile multiplatform app on iOS](first-kmm-on-ios-2.png){width=300}
     
 5. Run tests on Android and iOS.  
-    As you see, tests fail. Update the tests to pass. You know how to do this, right? ;)
+    As you see, the tests fail. Update the tests to pass. You know how to do this, right? ;)
     
     ![iOS test failed](ios-test-failed.png){width=300}
-    
