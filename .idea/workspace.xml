@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/topics/create-first-app.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/create-first-app.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/topics/setup.md" beforeDir="false" afterPath="$PROJECT_DIR$/topics/setup.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1594734410964" duration="555000" />
       <workItem from="1594846110874" duration="87000" />
       <workItem from="1594846211625" duration="1054000" />
-      <workItem from="1595501019687" duration="2523000" />
+      <workItem from="1595501019687" duration="2839000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -218,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594735053159</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update: updated based on feedback from A Kapanina, E Petrova, S Igushkin, K Shmakov.">
+      <created>1595506773279</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1595506773279</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,36 +251,43 @@
     <MESSAGE value="update: updated how to create your first app; added info about running tests; added screenshots for iOS; moved images to a subdirectory" />
     <MESSAGE value="update: added how to set JAVA_HOME" />
     <MESSAGE value="fix: fixed formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: fixed formatting" />
+    <MESSAGE value="update: updated based on feedback from A Kapanina, E Petrova, S Igushkin, K Shmakov." />
+    <option name="LAST_COMMIT_MESSAGE" value="update: updated based on feedback from A Kapanina, E Petrova, S Igushkin, K Shmakov." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="51" key="CommitChangelistDialog2" timestamp="1594735053010">
+    <state x="0" y="51" key="CommitChangelistDialog2" timestamp="1595506773170">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="0" y="51" key="CommitChangelistDialog2/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595506773170" />
     <state x="0" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594735053010" />
-    <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1594846047263">
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1595507001746">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595507001746" />
     <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594846047263" />
-    <state width="1398" height="2" key="GridCell.Tab.0.center" timestamp="1594846047262">
+    <state width="1398" height="2" key="GridCell.Tab.0.center" timestamp="1595507001744">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595507001744" />
     <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1594846047262" />
-    <state width="1398" height="2" key="GridCell.Tab.0.left" timestamp="1594846047261">
+    <state width="1398" height="2" key="GridCell.Tab.0.left" timestamp="1595507001743">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595507001743" />
     <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1594846047261" />
-    <state width="1398" height="2" key="GridCell.Tab.0.right" timestamp="1594846047262">
+    <state width="1398" height="2" key="GridCell.Tab.0.right" timestamp="1595507001745">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595507001745" />
     <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1594846047262" />
     <state x="336" y="130" key="SettingsEditor" timestamp="1591862937107">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="336" y="130" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591862937107" />
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1594735055072">
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1595506776087">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595506776087" />
     <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594735055072" />
     <state x="418" y="205" width="604" height="490" key="find.popup" timestamp="1594672897842">
       <screen x="0" y="0" width="1440" height="900" />

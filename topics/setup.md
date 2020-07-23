@@ -8,12 +8,12 @@ for mobile multiplatform development:
    system supported by [Android Studio](https://developer.android.com/studio).  
    If you also want to write iOS-specific code and run an iOS application on a simulator or real device, take a Mac with the 
    macOS operating system.  
-2. Install the latest version of [Android Studio](https://developer.android.com/studio). The recommended version is 4.1 
-or higher. You will use Android Studio for creating your multiplatform applications and running them on device simulators.
-3. If you need to work with the iOS-specific code and run an iOS application, install the latest version of [Xcode](https://apps.apple.com/us/app/xcode/id497799835). The recommended version is 11.5 
-or higher. 
-Most of the time, Xcode will work in the background. You will use it to add Swift or Objective-C code to your iOS application and 
-run it on a real device.
+2. Install the latest version of [Android Studio](https://developer.android.com/studio).  
+    The recommended version is 4.1 or higher. You will use Android Studio for creating your multiplatform applications and 
+    running them on device simulators.
+3. If you need to write iOS-specific code and run an iOS application, install the latest version of [Xcode](https://apps.apple.com/us/app/xcode/id497799835).  
+    The recommended version is 11.5 or higher. Most of the time, Xcode will work in the background. You will use it to add 
+    Swift or Objective-C code to your iOS application and run it on a real device.
 4. Update the Kotlin plugin to the version 1.4.0 or higher.  
     In Android Studio, select **Tools** | **Kotlin** | **Configure Kotlin Plugin Updates** and update to the latest 
     version in the **Stable** update channel.
