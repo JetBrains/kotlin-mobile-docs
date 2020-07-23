@@ -61,7 +61,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="stardust.first.run4" value="yes" />
   </component>
-  <component name="RunManager" selected="Stardust Article Preview.Preview connect-to-platform-specific-apis.md">
+  <component name="RunManager">
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <method v="2" />
     </configuration>
