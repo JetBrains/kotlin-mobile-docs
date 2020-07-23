@@ -49,7 +49,7 @@ You can run your multiplatform application on Android and iOS.
 You can run tests to check that shared code works correctly on both platforms. Of course, you can also write and run tests to check 
 platform-specific code.
 
-### Run tests in iOS
+### Run tests on iOS
 
 1. Switch the view from **Android** to **Project**.  
     The **Project** view correctly displays the structure of your mobile multiplatform project.  
@@ -71,7 +71,7 @@ Congratulations! The test has passed.
 
 ![iOS test result](ios-test-result.png){width=300}
 
-### Run test on Android
+### Run tests on Android
 
 Follow a similar procedure to running tests on iOS.
 
