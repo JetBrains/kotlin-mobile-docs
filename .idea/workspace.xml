@@ -116,7 +116,7 @@
       <workItem from="1594734410964" duration="555000" />
       <workItem from="1594846110874" duration="87000" />
       <workItem from="1594846211625" duration="1054000" />
-      <workItem from="1595501019687" duration="5229000" />
+      <workItem from="1595501019687" duration="5495000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -237,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595508127663</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update: updated after proofread">
+      <created>1595516822449</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1595516822449</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,13 +275,14 @@
     <MESSAGE value="update: updated based on feedback from A Kapanina, E Petrova, S Igushkin, K Shmakov." />
     <MESSAGE value="fix: minor formatting fixes" />
     <MESSAGE value="update: incorporated 2 more comments from S Igushkin and P Semyonov" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: incorporated 2 more comments from S Igushkin and P Semyonov" />
+    <MESSAGE value="update: updated after proofread" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: updated after proofread" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="51" key="CommitChangelistDialog2" timestamp="1595508127556">
+    <state x="0" y="51" key="CommitChangelistDialog2" timestamp="1595516822343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="0" y="51" key="CommitChangelistDialog2/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595508127556" />
+    <state x="0" y="51" key="CommitChangelistDialog2/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595516822343" />
     <state x="0" y="51" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1594735053010" />
     <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1595508061453">
       <screen x="0" y="0" width="1440" height="900" />
@@ -300,10 +308,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="336" y="130" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1591862937107" />
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1595508130292">
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2" timestamp="1595516824338">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595508130292" />
+    <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-432.1920.1080@0.0.1440.900" timestamp="1595516824338" />
     <state x="420" y="251" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1594735055072" />
     <state x="418" y="205" width="604" height="490" key="find.popup" timestamp="1594672897842">
       <screen x="0" y="0" width="1440" height="900" />

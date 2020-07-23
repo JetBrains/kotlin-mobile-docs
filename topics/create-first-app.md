@@ -73,7 +73,7 @@ Congratulations! The test has passed.
 
 ### Run tests on Android
 
-Follow a very similar procedure for Android as running tests on iOS.
+For Android, follow a procedure that is very similar to the one for running tests on iOS.
 
 1. Open the file `androidTest.kt` in **shared** | **src** | **androidTest** | **kotlin**.
 
@@ -87,7 +87,7 @@ Follow a very similar procedure for Android as running tests on iOS.
 
     ![Common Kotlin file](common-kotlin-file.png)
     
-2. Update the shared code –- use the Kotlin standard library function that works on all platforms and reverts text - `reversed()`.
+2. Update the shared code – use the Kotlin standard library function that works on all platforms and reverts text: `reversed()`.
 
     ```kotlin
     expect class Platform() {
