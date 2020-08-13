@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/kmd.tree" beforeDir="false" afterPath="$PROJECT_DIR$/kmd.tree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +19,12 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="KonanWorkspace">
+    <executables />
+  </component>
+  <component name="KotlinMultiplatform">
+    <executables />
   </component>
   <component name="MessagesViewTool">
     <option name="defaultListState">
@@ -61,7 +66,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="stardust.first.run4" value="yes" />
   </component>
-  <component name="RunManager" selected="Stardust Article Preview.Preview connect-to-platform-specific-apis.md">
+  <component name="RunManager">
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <method v="2" />
     </configuration>
@@ -71,6 +76,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -91,6 +97,8 @@
       <workItem from="1585598583808" duration="142000" />
       <workItem from="1585599039169" duration="854000" />
       <workItem from="1585600025399" duration="459000" />
+      <workItem from="1597079124893" duration="605000" />
+      <workItem from="1597175831050" duration="584000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -117,7 +125,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="UsagesViewTool">
     <version id="1" />
