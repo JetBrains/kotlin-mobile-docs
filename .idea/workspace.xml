@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="cb19dfc7-28fe-48e2-8f98-bb2aff5a3c68" name="Default Changelist" comment="" />
+>>>>>>> kpg/atomics_stately
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,10 +19,16 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="kpg/kn_concurrent_mutability" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
+=======
+  </component>
+  <component name="KotlinMultiplatform">
+    <executables />
+>>>>>>> kpg/atomics_stately
   </component>
   <component name="MessagesViewTool">
     <option name="defaultListState">
@@ -40,7 +50,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+=======
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+>>>>>>> kpg/atomics_stately
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -57,13 +71,18 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="stardust.first.run4" value="yes" />
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Stardust Article Preview.Preview create-first-app.md">
+=======
+  <component name="RunManager">
+>>>>>>> kpg/atomics_stately
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <method v="2" />
     </configuration>
@@ -87,6 +106,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -107,6 +127,7 @@
       <workItem from="1585598583808" duration="142000" />
       <workItem from="1585599039169" duration="854000" />
       <workItem from="1585600025399" duration="459000" />
+<<<<<<< HEAD
       <workItem from="1591862962912" duration="268000" />
       <workItem from="1591871879976" duration="597000" />
       <workItem from="1591909402758" duration="783000" />
@@ -117,6 +138,9 @@
       <workItem from="1594846110874" duration="87000" />
       <workItem from="1594846211625" duration="1054000" />
       <workItem from="1595501019687" duration="5495000" />
+=======
+      <workItem from="1595506189394" duration="395000" />
+>>>>>>> kpg/atomics_stately
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1579680838392</created>
@@ -248,7 +272,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="UsagesViewTool">
     <version id="1" />
@@ -279,6 +303,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="update: updated after proofread" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="0" y="51" key="CommitChangelistDialog2" timestamp="1595516822343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -322,6 +347,13 @@
     </state>
     <state x="392" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1594667328883" />
     <state x="385" y="112" width="670" height="676" key="search.everywhere.popup" timestamp="1594674605454">
+=======
+    <state x="2505" y="438" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595506526631">
+      <screen x="1680" y="23" width="2560" height="1417" />
+    </state>
+    <state x="2505" y="438" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1680.23.2560.1417/0.23.1680.1027@1680.23.2560.1417" timestamp="1595506526631" />
+    <state x="392" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591734614568">
+>>>>>>> kpg/atomics_stately
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="112" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1594674605454" />
