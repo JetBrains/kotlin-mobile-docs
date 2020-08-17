@@ -80,6 +80,7 @@
   </component>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="RunManager" selected="Stardust Article Preview.Preview create-first-app.md">
 =======
   <component name="RunManager">
@@ -87,6 +88,9 @@
 =======
   <component name="RunManager">
 >>>>>>> kpg/kn_concurrent_mutability
+=======
+  <component name="RunManager">
+>>>>>>> kpg/kn_concurrency_overview
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <method v="2" />
     </configuration>
