@@ -79,10 +79,14 @@
     <property name="stardust.first.run4" value="yes" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="RunManager" selected="Stardust Article Preview.Preview create-first-app.md">
 =======
   <component name="RunManager">
 >>>>>>> kpg/atomics_stately
+=======
+  <component name="RunManager">
+>>>>>>> kpg/kn_concurrent_mutability
     <configuration name="Current" type="STARDUST_ARTICLE_PREVIEW" factoryName="Stardust Article Preview Configuration Factory">
       <method v="2" />
     </configuration>
