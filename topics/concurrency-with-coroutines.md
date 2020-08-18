@@ -145,6 +145,10 @@ Calls to ktor need to be initiated from the main thread. That can make some situ
 
 There is an [issue](https://youtrack.jetbrains.com/issue/KTOR-499) to track the status of Ktor and multithreaded coroutines. Keep an eye on that for progress.
 
+### Complete Example
+
+For a more complete example of using the multithreaded version of `kotlinx.coroutines` in a native mobile application, see [KaMPKit](https://github.com/touchlab/KaMPKit).
+
 ## Alternatives
 
 For simpler background tasks, creating your own processor is always an option. As there does not appear to be a simple library available for this, we've published a basic one just for native mobile: [KMMWorker](https://github.com/touchlab/KMMWorker). It provides basic thread worker queues for Android and iOS/MacOS.
