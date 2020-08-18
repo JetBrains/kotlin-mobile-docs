@@ -92,7 +92,7 @@ val sd = SomeData(MoreData("abc", 10.0), 0)
 sd.freeze()
 ```
 
-![Freeze Annimation](freezesmall2.gif)
+GIF freezesmall2.gif
 
 * `freeze()` is a one-way operation. You can't _unfreeze_ something.
 * `freeze()` is not available in common Kotlin code, but several libraries  provide expect and actual declarations

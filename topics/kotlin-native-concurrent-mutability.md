@@ -14,7 +14,7 @@ However, in many other cases, you may need arbitrary thread access to state, or 
 to be available to the entire application. Or maybe you simply don't want to go through the potentially costly exercise of 
 rearchitecting existing code. Whatever the reason, *it will not always be feasible to constrain mutable state to a single thread*.
 
-There are various techniques to help you work around these restrictions, each with their own pros and cons:
+There are various techniques that help you work around these restrictions, each with their own pros and cons:
 
 * [Atomics](#atomics)
 * [Thread-isolated state](#thread-isolated-state)
@@ -149,7 +149,7 @@ mutable.
 Conceptually it looks like the following. One thread pushes some frozen state into the state worker, which stores it in 
 the mutable state container. Another thread later schedules work that gets that state out.
 
-![State diagram](concurrentmutability/isostate-diagram.gif)
+GIF isostate-diagram.gif
 
 Implementing thread-isolated state is somewhat complex, but there are libraries that provide this functionality.
 
@@ -184,7 +184,7 @@ C and C++ have no concept of _frozen_ and do not enforce the Kotlin/Native state
 
 That means that you can implement concurrent mutable state in a native language and have Kotlin/Native talk to it.
 
-You can [declare C code directly in a .def file](https://kotlinlang.org/docs/reference/native/concurrency.html#raw-shared-memory), 
+You can [declare C code directly in a `.def` file](https://kotlinlang.org/docs/reference/native/concurrency.html#raw-shared-memory), 
 or use [C and ObjC interop](https://kotlinlang.org/docs/reference/native/c_interop.html) to access low level code. 
 If on iOS specifically, you can use Swift to implement Kotlin interfaces or pass in lambdas that Kotlin code can call 
 from any thread.
