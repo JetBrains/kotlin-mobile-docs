@@ -3,14 +3,17 @@
 
 Kotlin/Native imposes restrictions on state, to help ensure safe concurrency. The rules, in summary:
 
-1. Mutable, non-frozen state is visible to only one thread at a time (i.e. [Thread confinement](https://dzone.com/articles/java-concurrency-thread-confinement))
+1. Mutable, non-frozen state is visible to only one thread at a time
 2. Immutable, frozen state can be shared between threads.
 
-Of course, sometimes multiple threads need to share some mutable state. There are multiple ways to accomplish this. The most straightforward way to do this is with atomics.
+Of course, sometimes multiple threads need to share some mutable state. There are [multiple ways to accomplish this](kotlin-native-concurrent-mutability.md). 
+The most straightforward way to do this is with atomics.
 
-Kotlin/Native provides a set of atomic classes that implement a special-case handling of mutable data. An instance of an atomic class can be frozen, and kept as a field of another object, but the value in the atomic can be changed.
+Kotlin/Native provides a set of atomic classes that implement a special-case handling of mutable data. An instance of an 
+atomic class can be frozen, and kept as a field of another object, but the value in the atomic can be changed.
 
-It is important to understand. This is a special case in Kotlin/Native's state model. Atomic classes allow you to modify frozen state.
+It is important to understand. This is a special case in Kotlin/Native's state model. Atomic classes allow you to modify 
+frozen state.
 
 ```kotlin
 object FrozenObject {
@@ -42,7 +45,8 @@ commonMain {
 }
 ```
 
-For our examples we'll be executing code on multiple threads. There are various ways to do that, but to make things simple we're going to create our own function called `background`, which takes a function block and returns a future.
+For our examples we'll be executing code on multiple threads. There are various ways to do that, but to make things simple 
+we're going to create our own function called `background`, which takes a function block and returns a future.
 
 ```kotlin
 fun <R> background(block: () -> R):MPFuture<R> 
@@ -50,15 +54,23 @@ fun <R> background(block: () -> R):MPFuture<R>
 
 Anything in the block is run on a different thread.
 
-The example code is pretty basic, and exists just to illustrate how to use the atomic classes. If you'd like to run these examples, you can clone [StatelyAtomicsSample](https://github.com/touchlab/StatelyAtomicsSample). It contains the dependencies you'll need to run these examples, as well as the example code itself.
+The example code is pretty basic, and exists just to illustrate how to use the atomic classes. If you'd like to run these 
+examples, you can clone [StatelyAtomicsSample](https://github.com/touchlab/StatelyAtomicsSample). It contains the dependencies 
+you'll need to run these examples, as well as the example code itself.
 
 ## Multiplatform
 
-Kotlin/Native provides atomic primitive classes that you can use directly, but only in native code. Stately's goal is to facilitate multiplatfom code by providing common classes that delegate to each platform. The examples provided are written in common Kotlin code, but the state rules imposed by Kotlin/Native will only apply when running in a native instance. JS and the JVM don't know about frozen state, so although the code will run on JS and JVM, using atomics isn't strictly necessary on those platforms. We'll be running the samples on iOS because that is a Kotlin/Native platform.
+Kotlin/Native provides atomic primitive classes that you can use directly, but only in native code. 
+Stately's goal is to facilitate multiplatfom code by providing common classes that delegate to each platform. The examples 
+provided are written in common Kotlin code, but the state rules imposed by Kotlin/Native will only apply when running in 
+a native instance. JS and the JVM don't know about frozen state, so although the code will run on JS and JVM, 
+using atomics isn't strictly necessary on those platforms. We'll be running the samples on iOS because that is a Kotlin/Native platform.
 
 ## Atomic Types
 
-There are atomic classes for `Int`  and `Long`, which provide basic numeric values, and `AtomicReference`, which can hold a reference to any arbitrary object instance[^1]. In the Kotlin/Native runtime, an atomic instance can be frozen, and shared with many threads, yet the value in that instance can be changed.
+There are atomic classes for `Int`  and `Long`, which provide basic numeric values, and `AtomicReference`, which can hold 
+a reference to any arbitrary object instance[^1]. In the Kotlin/Native runtime, an atomic instance can be frozen, and shared 
+with many threads, yet the value in that instance can be changed.
 
 ## AtomicInt and AtomicLong
 
@@ -74,7 +86,8 @@ object CounterObject {
 }
 ```
 
-Global objects in Kotlin/Native are frozen by default. This code would actually cause a runtime error if you tried to call `plusOne()`. Solving this particular issue is easy with `AtomicInt`.
+Global objects in Kotlin/Native are frozen by default. This code would actually cause a runtime error if you tried to call 
+`plusOne()`. Solving this particular issue is easy with `AtomicInt`.
 
 ```kotlin
 object CounterObject {
