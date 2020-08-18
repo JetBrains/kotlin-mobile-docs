@@ -18,4 +18,8 @@
     <toc-element id="supported-platforms.md" show-structure-depth="3"/>
     <toc-element id="security.md" show-structure-depth="3"/>
     <toc-element id="index.md" show-structure-depth="3"/>
+    <toc-element id="getting-started.md" show-structure-depth="3"/>
+    <toc-element id="kotlin-native-concurrency-overview.md" show-structure-depth="3"/>
+    <toc-element id="networking.md" show-structure-depth="3"/>
+
 </product-profile>
