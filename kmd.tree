@@ -4,7 +4,7 @@
 
 <product-profile id="kmd"
                  name="Kotlin Mobile Docs"
-                 start-page="setup.md"
+                 start-page="index.md"
                  status="eap">
 
     <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
@@ -17,4 +17,5 @@
     <toc-element id="data-storage.md" show-structure-depth="3"/>
     <toc-element id="supported-platforms.md" show-structure-depth="3"/>
     <toc-element id="security.md" show-structure-depth="3"/>
+    <toc-element id="index.md" show-structure-depth="3"/>
 </product-profile>

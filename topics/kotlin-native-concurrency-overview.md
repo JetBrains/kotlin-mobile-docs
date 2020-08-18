@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Native Concurrency Overview)
+[//]: # (title: Kotlin/Native Concurrency Overview)
 [//]: # (auxiliary-id: Kotlin_Native_Concurrency_Overview)
 
 One of the more confusing things about Kotlin/Native for new developers is the state and concurrency model. In general, Kotlin developers come to Native with experience from the JVM, and expect everything to be the same. It is not. State shared between threads on Native has restrictions imposed by the runtime that it would not in the JVM.
