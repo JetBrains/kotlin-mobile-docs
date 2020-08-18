@@ -7,7 +7,7 @@ on Native has restrictions imposed by the runtime that it would not have in the 
 ## Difference between concurrency models of Kotlin/Native and other languages
 
 Mutable memory available to multiple threads at the same time, if unrestricted, is known to be risky and error prone. 
-Languages like Java, C++, Swift/ObjectiveC, let multiple threads access the same state in an unrestricted fashion. It is up to 
+Languages like Java, C++, Swift/Objective-C, let multiple threads access the same state in an unrestricted fashion. It is up to 
 you to avoid causing problems. Concurrency issues are unlike other programming issues in that they are 
 often very difficult to reproduce. You may not see them locally while developing, or they only happen once in a while. 
 You may only see them in production under load.
