@@ -1,11 +1,25 @@
 [//]: # "title: Kotlin Native Concurrency Overview"
 [//]: # "auxiliary-id: Kotlin_Native_Concurrency_Overview"
 
-Using Coroutines for asynchronous and concurrent code is well documented for developers writing code for the JVM. For Native, the situation is in flux and is somewhat more complex. The library which is essential for using coroutines, 'kotlinx.coroutines', has two separate supported versions for Kotlin/Native. The "official" version cannot share data across threads. The other version implements data sharing across threads, but will remain an unmerged separate version for the forseeable future. Likely until the [concurrency model update](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/) is completed.
+Writing concurrent multithreaded code is important in many contexts. This is certainly true when writing shared Kotlin code for native mobile target platforms.
 
-What does that mean for writing concurrent Kotlin code that will run on native? Well, it's complicated. You'll need to evaluate the various options and pick which works best for you, but once you do, concurrent code in Kotlin Native is straightforward to create.
+It is important to note at the beginning that for Kotlin/Native, the [concurrency and memory model are unique]([kotlin-native-concurrency-overview.md](https://github.com/JetBrains/kotlin-mobile-docs/blob/master/topics/kotlin-native-concurrency-overview.md)), but they are [also in flux](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/). As a result, writing concurrent multiplatform code that targets native, and more specifically Apple targets, is a more complicated and evolving situation than it will likely be a little down the road. However, it is certainly possible to do so, and in a way that will be compatible with future changes.
 
-We're going to cover using the multithreaded release of 'kotlinx.coroutines', and will include links to other options that you can explore.
+This document will largely cover using `kotlinx.coroutines` for writing concurrent code, but we will discuss some other options you can explore. Ultimately you will need to review the pros and cons of any solution, and pick what works best for your situation.
+
+## Coroutines and Kotlin/Native
+
+Using Coroutines for asynchronous and concurrent code is well documented for developers writing code for the JVM. For Native, the situation is in flux and is somewhat more complex.
+
+For any reasonable use of coroutines in Kotlin, you will almost certainly need the `kotlinx.coroutines` library. It provides a number or features on top of the language-level coroutine primitives.
+
+The first, and currently "official", version of `kotlinx.coroutines` for Kotlin/Native is for single-threaded use only. You cannot send work to other threads by changing the `Dispatcher` instance. As of Kotlin 1.4, that official version is `1.3.9`.
+
+You can, of course, suspend execution, and work can be done on other threads, provided that a different mechanism schedules and manages that work. However, the main version of `kotlinx.coroutines` cannot change threads on it's own.
+
+There is an alternate branch and set of releases for `kotlinx.coroutines` that provide support for using multiple threads. It is a separate branch for the reasons listed in the [concurrency model update post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/), and will likely remain a separate branch until those updates are complete. However, with some considerations kept in mind, the multithreaded versions of `kotlinx.coroutines` works great, and can be used in production environments.
+
+This is a somewhat complicated, but temporary situation. You should understand the various options available and choose which works best for you. This document will largely cover the multithreaded version of `kotlinx.coroutines`, but we'll also list some other options to explore.
 
 ## Asynchronous vs Concurrent
 
@@ -36,7 +50,7 @@ suspend fun differentThread() = withContext(Dispatchers.Default){
 
 `withContext` takes a Dispatcher argument and a code block. Code within that block is executed by the thread defined by the Dispatcher. There are a number of other ways you can switch the Dispatcher, but we won't go through them in detail. They all generally take a Dispatcher argument and a block to be executed. See [Coroutine Context and Dispatchers](https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html) for a far more detailed description of how Distatchers work in general.
 
-With regards to using kotlinx.coroutines in Kotlin/Native, performing work on a different thread will follow that same basic pattern. Specify a different Dispatcher and a function block of work to execute. In general, that works the same as the JVM, but there are a few critical differences when running on Kotlin/Native.
+With regards to using kotlinx.coroutines in Kotlin/Native, performing work on a different thread will follow that same basic pattern. Specify a different Dispatcher and a function block of work to execute. In general, switching Dispatchers and threads works the same as it does with the JVM, but there are a few critical differences when running on Kotlin/Native.
 
 ## Captured and Frozen Data
 
@@ -79,11 +93,11 @@ class SomeModel(val id:IdRec){
 
 The code inside `saveData` will be run on another thread. That will freeze `id`, but becuause `id` is a field in the parent class, it will also freeze the parent class.
 
-Please reference the more detailed Kotlin/Native concurrency docs to understand how this works and how to resolve issues. As it pertains to coroutines, just understand that they follow the same rules as everything else.
+Please reference the more detailed Kotlin/Native concurrency docs to understand how this works and how to resolve issues. As it pertains to coroutines, just understand that they follow the same rules as everything else. Captured state will be frozen.
 
 ## Returned Data
 
-Data returned from a different thread is also frozen. This is generally fine.
+Data returned from a different thread is also frozen. This is generally fine, as the data returned is usually some form of data object. Common best practice advises immutable data, but even if you intend to return mutable state, you'll genenrally figure out right away that your returned value cannot be changed.
 
 ```kotlin
 val dc = runBlocking(Dispatchers.Default) {
@@ -93,25 +107,29 @@ val dc = runBlocking(Dispatchers.Default) {
 println("${dc.isFrozen}")
 ```
 
-This can become a problem if you are keeping some data unfrozen, and attempting to return something that retains a reference to it. That type of situation isn't very common, but be aware that returned values are frozen.
+Where this can present a problem is the situation where you are keeping mutable state isolated to a single thread and communicating with it by way of coroutine threading operations. If you attempt to return data that retains a reference to the mutable state, it will freeze it by association.
+
+Keeping thread-isolated state is beyond the scope of this document, but it's important to keep in mind that returned values are frozen.
 
 ## Using Multithreaded Coroutines
 
-To use the multithreaded version of coroutines for Kotlin/Native, you have to add a specific version of the library. The current version for the 1.4 release candidate is:
+To use the multithreaded version of `kotlinx.coroutines` for Kotlin/Native, you have to add a specific version of the library. The current version for Kotlin 1.4 is `1.3.9-native-mt`. You can add the dependency by including the following in your `commonMain` dependency section.
 
 ```kotlin
-implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8-native-mt-1.4.0-rc"
+implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9-native-mt"
 ```
 
 When using other libraries that also depend on `kotlinx.coroutines`, such as Ktor, you should make sure that the multiplatform one is used. One way to do that is with `strictly`:
 
 ```kotlin
-implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8-native-mt-1.4.0-rc"){
+implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9-native-mt"){
   version {
-    strictly("1.3.8-native-mt-1.4.0-rc")
+    strictly("1.3.9-native-mt")
   }
 }
 ```
+
+Because the "official" version of `kotlinx.coroutines` is the single-threaded one, any library that uses `kotlinx.coroutines` will almost certainly use the single-threaded release. If you see `InvalidMutabilityException` related to coroutine operation, it's very likely that your build is getting the wrong version.
 
 ## Special Notes
 
@@ -125,16 +143,65 @@ At present, Ktor is a special case. The current version of Ktor running on nativ
 
 Calls to ktor need to be initiated from the main thread. That can make some situations more complex, but in simpler cases, this is pretty straightforward. The more confusing situation is, the `CoroutineScope` used by Ktor cannot also have been used across threads. If you're going to use Ktor and coroutines that cross threads, you can keep a separate `CoroutineScope` for Ktor. As a more complex alternative, you can creat a child `CoroutineScope` with an isolated `Job`. If the `Job` gets frozen, Ktor will stop working. See [here](https://github.com/touchlab/KaMPKit/blob/master/shared/src/iosMain/kotlin/co/touchlab/kampkit/ktor/Platform.kt#L13) for an example.
 
+There is an [issue](https://youtrack.jetbrains.com/issue/KTOR-499) to track the status of Ktor and multithreaded coroutines. Keep an eye on that for progress.
+
 ## Alternatives
 
-For simpler background tasks, creating your own processor is always an option. For multiplatform between the JVM and Native, using `ExecutorService` and `Worker`, respectively. is reasonably simple to implement.
+For simpler background tasks, creating your own processor is always an option. As there does not appear to be a simple library available for this, we've published a basic one just for native mobile: [KMMWorker](https://github.com/touchlab/KMMWorker). It provides basic thread worker queues for Android and iOS/MacOS.
+
+To use the library, add the dependency to `commonMain`:
+
+```kotlin
+dependencies {
+    implementation("co.touchlab:kmmworker:0.1.1")
+}
+```
+
+Create a  `Worker` in common code with the following:
+
+```kotlin
+val worker = Worker()
+```
+
+You can schedule work and get a `Future` returned, or specifically useful for native mobile, run `backgroundTask`, which takes 2 function block arguments. The first is a task to run on a background thread, and the second is run on the main thread with the result. The main thread function block is *not* frozen, assuming you call this function from the main thread.
+
+```kotlin
+worker.backgroundTask({
+    SomeData("Hello")
+}) { result ->
+    when(result){
+        is Success -> println("${result.result}")
+        is Error -> println("${result.thrown}")
+    }
+}
+```
+
+This library is more of an example of how to create a simple job queue, but we may maintain it in the future if there's interest.
 
 ### CoroutineWorker
 
-[`CoroutinesWorker`](https://github.com/Autodesk/coroutineworker) is a library published by AutoDesk that implements some features of coroutines across threads, using the single-threaded version of `kotlinx.coroutines`.
+[`CoroutinesWorker`](https://github.com/Autodesk/coroutineworker) is a library published by AutoDesk that implements some features of coroutines across threads, using the single-threaded version of `kotlinx.coroutines`. For simple suspend functions this is a pretty good option, but does not support Flow and other structures.
 
 ### Reaktive
 
-[Reaktive](https://github.com/badoo/Reaktive) is an Rx-like library, implementing Reactive Extensions for Kotlin Multiplatform.
+[Reaktive](https://github.com/badoo/Reaktive) is an Rx-like library, implementing Reactive Extensions for Kotlin Multiplatform. It has some coroutine extensions, but is designed around RX and threads primarily.
+
+## Platform Concurrency
+
+The "other" major option in practice for some production use cases is to rely on the platform to handle concurrency. This is more common in situations where the shared Kotlin code will be used for business logic or data operations rather than architecture. In general, this will work as expected. The only major consideration for Kotlin/Native is thread-safe data passing.
+
+To share state in Kotlin/Native across threads, that state needs to be frozen. All of the concurrency libraries discussed in this document will freeze your data automatically. You will rarely, if ever, need to do so explicitly.
+
+If you are returning data to the native platform, and it will be sharing data across threads, you will need to ensure that data is frozen before leaving the Kotlin/Native boundary.
+
+Kotlin, on platforms other than Kotlin/Native, have no concept of frozen. To make `freeze` available in common code, you can create expect/actual implementations for `freeze`, or use `stately-common`, which provides this functionality for you. In Kotlin/Native, `freeze` will freeze your state, while on the JVM (or JS), it'll do nothing.
+
+```kotlin
+dependencies {
+  implementation 'co.touchlab:stately-common:1.0.x'
+}
+```
+
+See [stately-common](https://github.com/touchlab/Stately#stately-common) for more information.
 
 
