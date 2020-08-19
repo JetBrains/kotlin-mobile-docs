@@ -6,12 +6,13 @@ Kotlin/Native's state and concurrency model used for iOS has [two simple rules](
 1. Mutable, non-frozen state is visible to only one thread at a time.
 2. Immutable, frozen state can be shared between threads.
 
-The result of following these rules is that you can't change [global state](kotlin-native-concurrency-overview.md#global-state), and you can't change the same shared state 
-from multiple threads. In many cases, simply changing how you're used to architecting code will work fine, and you don't 
-need concurrent mutability. State was mutable from multiple threads in JVM code, but didn't *need* to be.
+The result of following these rules is that you can't change [global state](kotlin-native-concurrency-overview.md#global-state), 
+and you can't change the same shared state from multiple threads. In many cases, simply changing your approach to
+architecting code will work fine, and you don't need concurrent mutability. State was mutable from multiple threads in 
+JVM code, but didn't *need* to be.
 
-However, in many other cases, you may need arbitrary thread access to state, or you may have _service_ objects that need 
-to be available to the entire application. Or maybe you simply don't want to go through the potentially costly exercise of 
+However, in many other cases, you may need arbitrary thread access to state, or you may have _service_ objects that should be
+ available to the entire application. Or maybe you simply don't want to go through the potentially costly exercise of 
 rearchitecting existing code. Whatever the reason, *it will not always be feasible to constrain mutable state to a single thread*.
 
 There are various techniques that help you work around these restrictions, each with their own pros and cons:
@@ -86,16 +87,15 @@ will be frozen automatically. If you use the Kotlin/Native runtime's `AtomicRefe
 `AtomicReference` can be very useful when you need some shared state. There are some drawbacks to consider.
 
 Accessing and changing values in an `AtomicReference` is very costly performance-wise *relative to* standard mutable state. 
-If performance is a concern, keep that in mind when evaluating `AtomicReference`.
+If performance is a concern, consider another approach with [thread-isolated state](#thread-isolated-state).
 
-There is also a potential issue with memory leaks, which will be resolved in the future. `AtomicReference` may leak memory if you don't explicitly clear it out. 
-Keep the following in mind:
+There is also a potential issue with memory leaks, which will be resolved in the future. In situations where the object 
+kept in the `AtomicReference` has cyclical references, it may leak memory if you don't explicitly clear it out:
 
-1. This only applies to situations where the object kept in the `AtomicReference` has cyclical references.
-2. If you're keeping `AtomicReference` in a global object that never leaves scope, this won't matter (because the memory 
-never needs to be reclaimed during the life of the process).
-3. If you have state that may have cyclic references and needs to be reclaimed, you should use a nullable type in the 
+* If you have state that may have cyclic references and needs to be reclaimed, you should use a nullable type in the 
 `AtomicReference` and set it to null explicitly when you're done with it.
+* If you're keeping `AtomicReference` in a global object that never leaves scope, this won't matter (because the memory 
+never needs to be reclaimed during the life of the process).
 
 ```kotlin
 class Container(a:A) {
@@ -136,11 +136,12 @@ You will need to implement some form of locking or check-and-set logic to ensure
 
 ## Thread-isolated state
 
-Rule #1 of Kotlin/Native state is mutable state is visible to only one thread. Atomics allow mutability from any thread. 
+[Rule 1 of Kotlin/Native state](kotlin-native-concurrency-overview.md#rule-1-mutable-state-1-thread) is mutable state is 
+visible to only one thread. Atomics allow mutability from any thread. 
 Isolating mutable state to a single thread, and allowing other threads to communicate with that state, is an alternate 
 method of concurrent mutability.
 
-The concept is simple. Create a work queue that has exclusive access to a thread, and create some mutable state that 
+For this, create a work queue that has exclusive access to a thread, and create some mutable state that 
 lives in just that thread. Other threads communicate to the mutable thread by scheduling _work_ on the work queue.
 
 Data that goes in or comes out, if any, needs to be frozen, but the mutable state hidden in the worker thread remains 
@@ -162,16 +163,16 @@ mutable state implemented with `AtomicReference`.
 
 Thread-isolated state also avoids the consistency issues with `AtomicReference`. Because all operations happen in the 
 state thread, and because you're scheduling work, you can perform operations with multiple steps and guarantee consistency 
-without needing to manage thread exclusion. Thread isolation is a design feature of the Koltin/Native state rules, and 
+without managing thread exclusion. Thread isolation is a design feature of the Koltin/Native state rules, and 
 isolating mutable state works with those rules.
 
-Thread-isolated state is also  more flexible from the perspective that you can make mutable state concurrent. 
+Thread-isolated state is also more flexible from the perspective that you can make mutable state concurrent. 
 You can use any type of mutable state, rather than needing to create complex concurrent implementations.
 
 ## Low-level capabilities
 
-Kotlin/Native has some more advanced ways of sharing concurrent state. If you are doing things that require high levels 
-of performance you may occasionally need to avoid the concurrency rules altogether. 
+Kotlin/Native has some more advanced ways of sharing concurrent state. To reach high performance, you may need to avoid 
+the concurrency rules altogether. 
 
 > This is a more advanced topic. You should have a deep understanding of how concurrency in Kotlin/Native works, under 
 > the hood, and be very careful when using this approach. Learn more about [concurrency](https://kotlinlang.org/docs/reference/native/concurrency.html).
@@ -180,24 +181,21 @@ of performance you may occasionally need to avoid the concurrency rules altogeth
 
 Kotlin/Native runs on top of C++, and provides interop with C and Objective-C. If running on iOS, you can also pass lambda 
 arguments into your shared code from Swift. All of this native code runs outside of the Kotlin/Native state restrictions. 
-C and C++ have no concept of _frozen_ and do not enforce the Kotlin/Native state rules.
 
 That means that you can implement concurrent mutable state in a native language and have Kotlin/Native talk to it.
 
-You can [declare C code directly in a `.def` file](https://kotlinlang.org/docs/reference/native/concurrency.html#raw-shared-memory), 
-or use [C and ObjC interop](https://kotlinlang.org/docs/reference/native/c_interop.html) to access low level code. 
-If on iOS specifically, you can use Swift to implement Kotlin interfaces or pass in lambdas that Kotlin code can call 
+You can use [Objective-C interop](https://kotlinlang.org/docs/reference/native/c_interop.html) to access low level code. 
+You can also use Swift to implement Kotlin interfaces or pass in lambdas that Kotlin code can call 
 from any thread.
 
-One of platform native approach benefits is performance. An efficient C++ map implementation may be quite fast. Also, there are 
-many native library options available, as C/C++ have been used extensively for decades.
-
-On the negative side, you'll need to manage concurrency on your own. C does not know about `frozen`, but if you store 
-state from Kotlin in C structures, and share them between threads, the Kotlin state definitely needs to be frozen. 
-The same is true for the other languages. Kotlin/Native's runtime will generally warn you about issues, but it's possible 
-to cause concurrency problems in native code that are very, very difficult to track down. It is also very easy to creat 
+One of platform native approach benefits is performance. On the negative side, you'll need to manage concurrency on your own. 
+Objective-C does not know about `frozen`, but if you store state from Kotlin in Objective-C structures, and share them 
+between threads, the Kotlin state definitely needs to be frozen. 
+Kotlin/Native's runtime will generally warn you about issues, but it's possible 
+to cause concurrency problems in native code that are very, very difficult to track down. It is also very easy to create 
 memory leaks.
 
-Another concern, if you're targeting platforms other than native, such as the JVM or Javascript, you'll need alternate 
-implementations for whatever you implement with platform native code. That will obviously take more work and may lead to
- platform inconsistencies.
+Since in the KMM application you are also targeting the JVM, you'll need alternate implementations for whatever you implement 
+with platform native code. That will obviously take more work and may lead to platform inconsistencies.
+
+_We'd like to thank the Touchlab team for helping us write this article._
