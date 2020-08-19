@@ -1,5 +1,5 @@
 [//]: # (title: Kotlin Multiplatform Mobile documentation)
-[//]: # (auxiliary-id: Docs_landing)
+[//]: # (auxiliary-id: Home)
 
 ### Getting started
 

@@ -4,7 +4,7 @@
 <ihp version="2.0">
     <categories src="c.list"/>
     <topics dir="topics"/>
-    <images dir="images" version="1.0" web-path="/img/kotlin-mobile/1.0/"/>
+    <images dir="images" web-path="/img/docs/mobile"/>
     <vars src="v.list"/>
-    <product src="kmd.tree" version="1.0" web-path="/kotlin-mobile/1.0/"/>
+    <product src="kmd.tree" web-path="/docs/mobile/"/>
 </ihp>

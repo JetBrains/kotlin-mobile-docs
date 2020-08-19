@@ -4,12 +4,10 @@
 
 <product-profile id="kmd"
                  name="Kotlin Mobile Docs"
-                 start-page="index.md"
+                 start-page="home.md"
                  status="eap">
 
-    <toc-element id="index.md" show-structure-depth="3"/>
-
-
+    <toc-element id="home.md" show-structure-depth="3"/>
     <toc-element toc-title="Get started with KMM">
         <toc-element id="getting-started-faq.md" show-structure-depth="3"/>
         <toc-element id="setup.md" show-structure-depth="3"/>
@@ -38,9 +36,6 @@
             <toc-element id="performing-background-job.md" show-structure-depth="3"/>
         </toc-element>
     </toc-element>
-
-
-
 
     <toc-element id="supported-platforms.md" show-structure-depth="3"/>
     <toc-element id="kmm-evolution.md" show-structure-depth="3"/>
