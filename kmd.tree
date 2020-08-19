@@ -4,15 +4,17 @@
 
 <product-profile id="kmd"
                  name="Kotlin Mobile Docs"
-                 start-page="organize-process-around-kmm.md"
+                 start-page="setup.md"
                  status="eap">
 
     <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
+    <toc-element id="setup.md" show-structure-depth="3"/>
+    <toc-element id="create-first-app.md" show-structure-depth="3"/>
     <toc-element id="discover-kmm-project.md" show-structure-depth="3"/>
     <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
     <toc-element id="adding-dependencies.md" show-structure-depth="3"/>
-    <toc-element id="supported-platforms.md" show-structure-depth="3"/>
-    <toc-element id="security.md" show-structure-depth="3"/>
     <toc-element id="publish-kmm-apps.md" show-structure-depth="3"/>
     <toc-element id="data-storage.md" show-structure-depth="3"/>
+    <toc-element id="supported-platforms.md" show-structure-depth="3"/>
+    <toc-element id="security.md" show-structure-depth="3"/>
 </product-profile>

@@ -51,7 +51,7 @@ include(":androidApp")
 The iOS application is produced from an Xcode project. It’s stored in a separate directory within the root project.
 Xcode uses its own build system; thus, the iOS application project isn’t connected with other parts of the KMM project
 via Gradle. Instead, it uses the shared module as an external artifact - framework. For details on integration between
-the shared module and the iOS application, see [iOS application](#iOS+application).
+the shared module and the iOS application, see [iOS application](#ios-application).
 
 This is a basic structure of a KMM project:
 
@@ -107,7 +107,7 @@ kotlin {
 
 The shared module contains the code that is common for Android and iOS applications. However, to implement the same logic
  on Android and iOS, you sometimes need to write two platform-specific versions of it. 
- To handle such cases, Kotlin offers the [expect/actual](connect-to-platform-specific-apis.html) mechanism.
+ To handle such cases, Kotlin offers the [expect/actual](connect-to-platform-specific-apis.md) mechanism.
  The source code of the shared module is organized in three source sets accordingly:
 
 * `commonMain` stores the code that works on both platforms, including the `expect` declarations
@@ -408,7 +408,7 @@ val packForXcode by tasks.creating(Sync::class) {
 </tabs>
 
 The task executes upon each build of the Xcode project to provide the latest version of the framework for the iOS application.
-For details, see [iOS application](#iOS+application).
+For details, see [iOS application](#ios-application).
 
 <tabs>
 <tab title="Groovy">
@@ -581,7 +581,7 @@ the framework is added to the project on the **General** tab of the project sett
 <img src="framework-in-project-settings.png" alt="Framework in the Xcode project settings" width="800"/>
 
 For each build of the iOS application, the project obtains the latest version of the framework.
-To do this, it uses a **Run Script** build phase that executes the [packForXcode](#iOS+framework)
+To do this, it uses a **Run Script** build phase that executes the [packForXcode](#ios-framework)
 Gradle task from the shared module.
 
 <img src="packforxcode-in-project-settings.png" alt="Execution of packForXcode in the Xcode project settings" width="800"/>
