@@ -122,7 +122,7 @@ The concept is simple. Create a work queue that has exclusive access to a thread
 
 Data that goes in or comes out, if any, needs to be frozen, but the mutable state hidden in the worker thread remains mutable. Conceptually it looks like the following. One thread pushes some frozen state into the state worker, which stores it in the mutable state container. Another thread later schedules work that gets that state out
 
-![State diagram](concurrentmutability/isostate-diagram.gif)
+![State diagram](isostate-diagram.gif)
 
 Implementing thread-isolated state is somewhat complex, but there are libraries available to provide that functionality.
 
