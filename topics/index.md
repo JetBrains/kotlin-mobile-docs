@@ -29,5 +29,5 @@
 ### Videos
 
 * Walk through Multiplatform intro-by-example from Britt Barak: [https://youtu.be/6iO1KrSb9K4)](https://youtu.be/6iO1KrSb9K4)
-* Watch our production adopters Ben Asher and Alec strong talk about their experience with Multiplatform: [https://youtu.be/je8aqW48JiA](https://youtu.be/je8aqW48JiA)
+* Watch our production adopters Ben Asher and Alec Strong talk about their experience with Multiplatform: [https://youtu.be/je8aqW48JiA](https://youtu.be/je8aqW48JiA)
 * Learn how some Kotlin Multiplatform aspects work underhood and what challenges our team encountered while working on it: [https://youtu.be/oBv1QykLAXc](https://youtu.be/oBv1QykLAXc)
