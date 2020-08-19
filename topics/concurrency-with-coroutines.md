@@ -76,7 +76,7 @@ In the following example, the data class instance `dc` will be captured by the f
 
 ```kotlin
 val dc = DataClass("Hello")
-runBlocking(Dispatchers.Default) {
+withContext(Dispatchers.Default) {
     println("${dc.isFrozen}")
 }
 ```
@@ -100,7 +100,7 @@ Please reference the more detailed Kotlin/Native concurrency docs to understand 
 Data returned from a different thread is also frozen. This is generally fine, as the data returned is usually some form of data object. Common best practice advises immutable data, but even if you intend to return mutable state, you'll genenrally figure out right away that your returned value cannot be changed.
 
 ```kotlin
-val dc = runBlocking(Dispatchers.Default) {
+val dc = withContext(Dispatchers.Default) {
     DataClass("Hello Again")
 }
 
@@ -143,44 +143,13 @@ At present, Ktor is a special case. The current version of Ktor running on nativ
 
 Calls to ktor need to be initiated from the main thread. That can make some situations more complex, but in simpler cases, this is pretty straightforward. The more confusing situation is, the `CoroutineScope` used by Ktor cannot also have been used across threads. If you're going to use Ktor and coroutines that cross threads, you can keep a separate `CoroutineScope` for Ktor. As a more complex alternative, you can creat a child `CoroutineScope` with an isolated `Job`. If the `Job` gets frozen, Ktor will stop working. See [here](https://github.com/touchlab/KaMPKit/blob/master/shared/src/iosMain/kotlin/co/touchlab/kampkit/ktor/Platform.kt#L13) for an example.
 
-There is an [issue](https://youtrack.jetbrains.com/issue/KTOR-499) to track the status of Ktor and multithreaded coroutines. Keep an eye on that for progress.
+There is an [issue](https://youtrack.jetbrains.com/issue/KTOR-499) to track the status of Ktor and multithreaded coroutines. Keep an eye on that for progress. The most recent version of Ktor also includes multithreaded coroutines support in the CIO client, but that currently does not support HTTPS: [ktor-1-4-0-now-available](https://blog.jetbrains.com/ktor/2020/08/18/ktor-1-4-0-now-available/).
 
 ### Complete Example
 
 For a more complete example of using the multithreaded version of `kotlinx.coroutines` in a native mobile application, see [KaMPKit](https://github.com/touchlab/KaMPKit).
 
 ## Alternatives
-
-For simpler background tasks, creating your own processor is always an option. As there does not appear to be a simple library available for this, we've published a basic one just for native mobile: [KMMWorker](https://github.com/touchlab/KMMWorker). It provides basic thread worker queues for Android and iOS/MacOS.
-
-To use the library, add the dependency to `commonMain`:
-
-```kotlin
-dependencies {
-    implementation("co.touchlab:kmmworker:0.1.1")
-}
-```
-
-Create a  `Worker` in common code with the following:
-
-```kotlin
-val worker = Worker()
-```
-
-You can schedule work and get a `Future` returned, or specifically useful for native mobile, run `backgroundTask`, which takes 2 function block arguments. The first is a task to run on a background thread, and the second is run on the main thread with the result. The main thread function block is *not* frozen, assuming you call this function from the main thread.
-
-```kotlin
-worker.backgroundTask({
-    SomeData("Hello")
-}) { result ->
-    when(result){
-        is Success -> println("${result.result}")
-        is Error -> println("${result.thrown}")
-    }
-}
-```
-
-This library is more of an example of how to create a simple job queue, but we may maintain it in the future if there's interest.
 
 ### CoroutineWorker
 
@@ -190,7 +159,11 @@ This library is more of an example of how to create a simple job queue, but we m
 
 [Reaktive](https://github.com/badoo/Reaktive) is an Rx-like library, implementing Reactive Extensions for Kotlin Multiplatform. It has some coroutine extensions, but is designed around RX and threads primarily.
 
-## Platform Concurrency
+### Custom
+
+For simpler background tasks, creating your own processor is always an option. In the context of native mobile specifically, creating wrappers around platform-specific implementations is fairly straightforward. See a simple example here: [KMMWorker](https://github.com/touchlab/KMMWorker).
+
+### Platform Concurrency
 
 The "other" major option in practice for some production use cases is to rely on the platform to handle concurrency. This is more common in situations where the shared Kotlin code will be used for business logic or data operations rather than architecture. In general, this will work as expected. The only major consideration for Kotlin/Native is thread-safe data passing.
 
