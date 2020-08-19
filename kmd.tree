@@ -8,7 +8,7 @@
                  status="eap">
 
     <toc-element id="adding-dependencies.md" show-structure-depth="3"/>
-    <toc-element id="atomics-with-stately.md" show-structure-depth="3"/>
+<!--    <toc-element id="atomics-with-stately.md" show-structure-depth="3"/>-->
     <toc-element id="concurrency-hands-on.md" show-structure-depth="3"/>
     <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
     <toc-element id="create-first-app.md" show-structure-depth="3"/>
@@ -21,7 +21,7 @@
     <toc-element id="introduce-your-team-to-kmm.md" show-structure-depth="3"/>
     <toc-element id="kmm-evolution.md" show-structure-depth="3"/>
     <toc-element id="kotlin-native-concurrency-overview.md" show-structure-depth="3"/>
-    <toc-element id="kotlin-native-concurrent-mutability.md" show-structure-depth="3"/>
+<!--    <toc-element id="kotlin-native-concurrent-mutability.md" show-structure-depth="3"/>-->
     <toc-element id="networking.md" show-structure-depth="3"/>
     <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
     <toc-element id="performing-background-job.md" show-structure-depth="3"/>
