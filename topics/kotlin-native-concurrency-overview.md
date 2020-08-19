@@ -1,11 +1,12 @@
-[//]: # (title: Kotlin/Native concurrency overview)
-[//]: # (auxiliary-id: Kotlin_Native_Concurrency_Overview)
+[//]: # (title: KMM concurrency overview)
+[//]: # (auxiliary-id: KMM_Concurrency_Overview)
 
-Kotlin/Native state and concurrency model is different from models of other languages. For example, state shared between threads 
-on Native has restrictions imposed by the runtime that it would not have in the JVM.
+When you extend your development experience from Android to Kotlin Multiplatform Mobile, you will face a different state 
+and concurrency model for iOS. This is a Kotlin/Native model. [Kotlin/Native](https://kotlinlang.org/docs/reference/native-overview.html) 
+is a technology for compiling Kotlin code to native binaries, which can run without a virtual machine, for example, on iOS. 
 
 Mutable memory available to multiple threads at the same time, if unrestricted, is known to be risky and error prone. 
-Languages like Java, C++, Swift/Objective-C, let multiple threads access the same state in an unrestricted fashion. It is up to 
+Languages like Java, C++, Swift/Objective-C, let multiple threads access the same state in unrestricted fashion. It is up to 
 you to avoid causing problems. Concurrency issues are unlike other programming issues in that they are 
 often very difficult to reproduce. You may not see them locally while developing, or they only happen once in a while. 
 You may only see them in production under load.
@@ -16,16 +17,16 @@ Not all languages are designed this way. Javascript simply does not
 allow you to access the same state concurrently. On the other end of the spectrum, Rust's 
 language-level concurrency and state management makes it very popular. 
 
-Kotlin/Native introduces rules around how state is shared between threads. These rules exist to prevent unsafe shared 
-access to mutable state. If you are coming from a JVM background and write concurrent code, the way you architect your 
-data may need some modification, but in general, you can achieve the same results without the risky side effects.
+## Rules on sharing state
 
-It is also important to point out, if absolutely necessary, there are [ways to work around these rules](kotlin-native-concurrent-mutability.md). 
+Kotlin/Native introduces rules on sharing state between threads. These rules exist to prevent unsafe shared 
+access to mutable state. If you are coming from a JVM background and write concurrent code, you may need to change the way 
+you architect your data, but you can achieve the same results without risky side effects.
+
+It is also important to point out, there are [ways to work around these rules](kotlin-native-concurrent-mutability.md). 
 The intent is to make working around these rules something that you rarely, if ever do.
 
-## Two rules
-
-As mentioned, Kotlin/Native introduces new rules around state and concurrency. They are simple, and there are basically two of them.
+There are just two simple rules around state and concurrency.
 
 ### Rule 1: Mutable state == 1 thread
 
@@ -49,18 +50,18 @@ formalize that concept for all threads.
 
 ### Rule 2: Immutable state == many threads
 
-If state can't be changed, multiple threads can safely have access to it. This is also conceptually simple. 
+If state can't be changed, multiple threads can safely access it.
 In Kotlin/Native, _immutable_ doesn't mean everything is a `val`. It means _frozen state_.
 
-## Frozen state
+## Immutable and frozen state
 
-The following example is immutable, by its definition. 2 `val` elements, both of final immutable types.
+This example is immutable, by its definition – it has 2 `val` elements, both of final immutable types.
 
 ```kotlin
 data class SomeData(val s:String, val i:Int)
 ```
 
-The following example may be immutable or not. It is not clear what `SomeInterface` may do internally at compile time. 
+The next example may be immutable or mutable. It is not clear what `SomeInterface` may do internally at compile time. 
 In Kotlin, determining deep immutability, statically at compile time, is not possible.
 
 ```kotlin
@@ -68,7 +69,7 @@ data class SomeData(val s:String, val i:SomeInterface)
 ```
 
 Kotlin/Native needs to verify that some piece of state is really immutable, at runtime. The runtime could simply walk 
-through all the state and verify that each is deeply immutable, but that would be somewhat inflexible, and if you needed 
+through all the state and verify that each is deeply immutable, but that would be inflexible, and if you needed 
 to do that every time the runtime wanted to check mutability, it would have significant performance consequences.
 
 Kotlin/Native defines a new runtime state called _frozen_. Any instance of an object may be frozen. If an object is frozen:
@@ -79,8 +80,8 @@ A frozen object instance is 100%, runtime-verified, immutable.
 when the runtime needs to determine if an object can be shared with another thread, it only needs to check if that object 
 is frozen. If it is, the whole graph is also frozen and safe to be shared.
 
-The Native runtime adds an extension function `freeze()` to all classes. Calling `freeze()` will make an object frozen. 
-It will also freeze everything referenced by the object, recursively.
+The Native runtime adds an extension function `freeze()` to all classes. Calling `freeze()` will freeze an object and everything 
+referenced by the object, recursively.
 
 ```kotlin
 data class MoreData(val strData: String, var width: Float)
@@ -93,8 +94,8 @@ sd.freeze()
 GIF freezesmall2.gif
 
 * `freeze()` is a one-way operation. You can't _unfreeze_ something.
-* `freeze()` is not available in common Kotlin code, but several libraries  provide expect and actual declarations
- that allow you to use it in common code. However, if you're using a concurrency library, like `kotlinx.coroutines`, it will 
+* `freeze()` is not available in shared Kotlin code, but several libraries provide expect and actual declarations
+ for using it in shared code. However, if you're using a concurrency library, like [`kotlinx.coroutines`](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html), it will 
  likely freeze data that crosses thread boundaries automatically. This is convenient, but may be a source of errors and 
  confusion, especially if you are new to Kotlin/Native. There are techniques to avoid this and debug it when it happens.
 
@@ -102,7 +103,7 @@ GIF freezesmall2.gif
 
 ## Global state
 
-Kotlin allows you to define some globally available state. If left simply mutable, global state would violate _Rule 1_.  
+Kotlin allows you to define some globally available state. If left simply mutable, global state would violate [_Rule 1_](#rule-1-mutable-state-1-thread).  
 To conform to Kotlin/Native's state rules, global state has some special conditions. 
 These conditions make the state frozen or only visible to a single thread.
 
@@ -158,29 +159,35 @@ other threads will throw an exception.
 val hello = "Hello" //Only main thread can see this
 ```
 
-You can annotate with `@SharedImmutable`, which will make them globally available but frozen, or `@ThreadLocal`, which 
-will give each thread its own mutable copy.
+You can annotate with :
+
+* `@SharedImmutable`, which will make them globally available but frozen.
+* `@ThreadLocal`, which will give each thread its own mutable copy.
 
 This rule applies to global properties with backing fields. Computed properties and global functions do not have the main 
 thread restriction.
 
-## Concurrency in practice
+## Current and future models
 
-Kotlin/Native's concurrency rules will require some adjustment in architecture design, but with the help of libraries and 
-some new best practices, day to day development is basically unaffected. In fact, adhering to Kotlin/Native's rules with 
-multiplatform code, will result in safer concurrency across the application. Thread confinement is a common technique 
-for concurrency management. As mentioned above, modern UI frameworks tend to enforce a _main thread_ rule for modifying the UI.
+Kotlin/Native's concurrency rules will require some adjustment in architecture design, but with the help of libraries and
+ new best practices, day to day development is basically unaffected. In fact, adhering to Kotlin/Native's rules with 
+multiplatform code, will result in safer concurrency across the KMM application. 
 
-For applications that are written entirely in Kotlin/Native, you'll almost certainly use a concurrency library which will 
-automate most of the freezing of state and scheduling of work across threads. You'll need to be aware of frozen state 
-and how to debug issues as they arise, but having a single model will make the situation somewhat simpler.
+In the KMM application, you have Android and iOS targets with different state rules. Some teams, generally with 
+larger applications, are sharing code for very specific functionality, and often managing concurrency in the host platform. 
+This will require explicit freezing of state returned from Kotlin, but otherwise is straghtforward. 
 
-For shared multiplatform code, there will be multiple platform targets, with different state rules. For native targets, 
-there are general integration patterns emerging. Some teams, generally with larger applications, are sharing code for 
-very specific functionality, and often managing concurrency in the host platform. This will require explicit freezing of 
-state returned from Kotlin, but otherwise is straghtforward. A more extensive model, where concurrency is managed in Kotlin 
+A more extensive model, where concurrency is managed in Kotlin 
 and the host is communicating on its main thread to shared code, is simpler from the state management perspective. 
-Concurrency libraries, like `kotlinx.coroutines`, will help automate freezing. You'll also be able to leverage the power 
+Concurrency libraries, like [`kotlinx.coroutines`](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html), will help automate freezing. You'll also be able to leverage the power 
 of coroutines in your code, and gain more efficiencies by sharing more code.
 
-Adopting these rules and patterns will improve the safety of concurrent code for all of your target platforms.
+However, the current Kotlin/Native concurrency model has a number of deficiencies. For example, mobile developers are used to freely 
+share their objects between threads, and they have already developed a number of approaches and architectural patterns to 
+avoid data races while doing so. It is possible to write efficient applications that do not block the main thread using 
+Kotlin/Native, but the ability to do so comes with a steep learning curve.
+
+That's why we are working on the new memory manager and concurrency model for Kotlin/Native that will help us remove these 
+drawbacks. Learn more on [what we are doing in this direction](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/).
+
+_We'd like to thank the Touchlab team for helping us write this article._

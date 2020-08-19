@@ -1,7 +1,7 @@
-[//]: # (title: Kotlin/Native concurrent mutability)
-[//]: # (auxiliary-id: Kotlin_Native_Concurrent_Mutability)
+[//]: # (title: KMM concurrent mutability)
+[//]: # (auxiliary-id: KMM_Concurrent_Mutability)
 
-Kotlin/Native's state and concurrency model has [two simple rules](kotlin-native-concurrency-overview.md#two-rules).
+Kotlin/Native's state and concurrency model used for iOS has [two simple rules](kotlin-native-concurrency-overview.md#two-rules).
 
 1. Mutable, non-frozen state is visible to only one thread at a time.
 2. Immutable, frozen state can be shared between threads.
