@@ -66,7 +66,7 @@ object GlobalData {
 
 Some concepts above to highlight. The `AtomicReference` itself is frozen, which lets it live inside something that is frozen. The data we are passing into the `AtomicReference` instance is being explicitly frozen in the code above, but in the multiplatform libraries you'll likely use, the data will be frozen automatically. If you use the Kotlin/Native runtime's `AtomicReference`, you **must** remember to call `freeze()` explicitly.
 
-### Considerations
+### AtomicReference considerations
 
 `AtomicReference` can be very useful when you need some shared state. There are some drawbacks to consider.
 
@@ -122,11 +122,11 @@ The concept is simple. Create a work queue that has exclusive access to a thread
 
 Data that goes in or comes out, if any, needs to be frozen, but the mutable state hidden in the worker thread remains mutable. Conceptually it looks like the following. One thread pushes some frozen state into the state worker, which stores it in the mutable state container. Another thread later schedules work that gets that state out
 
-![State diagram](concurrentmutability/isostate-diagram.gif)
+![State diagram](isostate-diagram.gif)
 
 Implementing thread-isolated state is somewhat complex, but there are libraries available to provide that functionality.
 
-### Considerations
+### Thread-isolated state considerations
 
 For simple values, `AtomicReference` will likely be an easier option. For cases with significant state, and potentially significant state changes, thread-isolated state may be a better choice. The main performance penalty is actually crossing over threads, but in performance tests with collections, for example, thread-isolated state significantly outperforms mutable state implemented with `AtomicReference`.
 
@@ -146,7 +146,7 @@ Effectively, that means you can implement concurrent mutable state in a native l
 
 You can [declare C code directly in a .def file](https://kotlinlang.org/docs/reference/native/concurrency.html#raw-shared-memory), or use [C and ObjC Interop](https://kotlinlang.org/docs/reference/native/c_interop.html) to access low level code. If on iOS specifically, as mentioned, you can use Swift to implement Kotlin interfaces or pass in lambdas that Kotlin code can call from any thread.
 
-#### Considerations
+#### Platform-Native code considerations
 
 There are benefits to platform-native. The obvious one being performance. An efficient C++ map implementation will probably be quite fast. Also, there are likely to be many native library options available, as C/C++ have been used extensively for decades.
 
