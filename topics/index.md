@@ -10,9 +10,9 @@
 
 * [Discover your KMM project](discover-kmm-project.md)
 * [Connect to platform-specific APIs](connect-to-platform-specific-apis.md)
-* [Networking](networking.md)
-* [Data storage](data-storage.md)
-* [Kotlin/Native Concurrency Overview](kotlin-native-concurrency-overview.md)
+* [Networking](networking-with-ktor.md)
+* [Data storage](data-persistence-sqldelight.md)
+* [Kotlin/Native Concurrency Overview](kmm-concurrency-overview.md)
 * [Organize a process around Kotlin Multiplatform](organize-process-around-kmm.md)
 
 ### What’s new
