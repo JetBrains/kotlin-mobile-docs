@@ -1,5 +1,5 @@
-[//]: # (title: Getting started)
-[//]: # (auxiliary-id: Getting_started)
+[//]: # (title: Getting started FAQ)
+[//]: # (auxiliary-id: Getting_started_FAQ)
 
 There are many ways to start with Kotlin Multiplatform Mobile. You can follow our step-by-step guides, browse samples or start using it in already existing projects. This page will help you to choose the right option.
 
@@ -10,7 +10,7 @@ There are many ways to start with Kotlin Multiplatform Mobile. You can follow ou
 **A:** Check out our [hands-on](hands-on-networking-data-storage.md) and take your first app to the next level with Networking and Data storage. Browse through [Multiplatform technology reference](https://kotlinlang.org/docs/reference/mpp-intro.html) for advanced Multiplatform Gradle DSL configuration, publishing guides and other useful information.
 We also recommend reading more about [Kotlin/Native concurrency main concepts](kotlin-native-concurrency-overview.md) - it’s a common pitfall for KMM newbies. 
 
-### Q: I already have a project and I’d like to make it Multiplatform! How do I do it?
+### Q: I already have a mobile app, and I’d like to make it Multiplatform! How do I do it?
 **A:** Our [guide](integrate-in-existing-app.md) on integrating KMM in existing projects would be a good place to start. It contains step-by-step migration guide along with answers to some common questions, such as “which part of my app should be shared between platforms and which part should remain native”.
 
 ### Q: I don’t like to read documentation, I prefer digging through code. Do you have samples?*

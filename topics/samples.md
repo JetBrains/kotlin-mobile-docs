@@ -6,10 +6,10 @@ Would you like to add your sample to the list or have a great idea for a sample?
 Feel free to [reach us out](mailto:kmm.feedback@kotlinlang.org) and tell about it!
 
 
-## KMM-Sample
+## KMM Sample
 
-Official sample from Kotlin team. Demonstrates most basic Multiplatform concepts. Since Kotlin 1.4 this sample is guaranteed to be up-to-date with the latest release.  
-Learn how to configure Gradle to build a simple KMM project with Android and iOS targets, how to share code in common source set and how to use expect/actual mechanism in cases when code cannot be shared: [https://github.com/Kotlin/mpp-example](https://github.com/Kotlin/mpp-example)
+Official sample from Kotlin team. Demonstrates most basic Multiplatform concepts. 
+Learn how to configure Gradle to build a simple KMM project with Android and iOS targets, how to share code in common source set and how to use expect and actual declarations in cases when code cannot be shared: [https://github.com/Kotlin/mpp-example](https://github.com/Kotlin/mpp-example)
 
 ## CocoaPods integration samples
 
@@ -28,7 +28,7 @@ If you're interested in sharing not only business logic layer, but also a presen
 
 ## PeopleInSpace
 
-Want to learn how to set up your KMM project to work with modern UI frameworks, such as Swift UI and Jetpack Compose? Check out KMM samples from [John O'Reilly](https://johnoreilly.dev/), especially PeopleInSpace project. It's minimalistic, but powerful, goes along with series of interesting blogposts and has a nice bonus - watchOS target usage demonstration: [https://github.com/joreilly/PeopleInSpace](https://github.com/joreilly/PeopleInSpace)
+Minimalistic, but powerful sample. It demonstrates how KMM can be integrated with modern UI frameworks, such as Swift UI and Jetpack Compose, goes along with series of interesting blogposts and has a nice bonus - watchOS target usage: [https://github.com/joreilly/PeopleInSpace](https://github.com/joreilly/PeopleInSpace)
 
 ## GitFox SDK
 

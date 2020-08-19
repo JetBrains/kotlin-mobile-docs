@@ -3,8 +3,8 @@
 
 ### Getting started
 
+* Already familiar with Kotlin language and want to go Multiplatform? Check out our [getting started FAQ](getting-started.md)
 * New to Kotlin? [Language reference](https://kotlinlang.org/docs/reference/) or [Kotlin Playground](https://play.kotlinlang.org/koans/overview) are good places to learn about its basic concepts!
-* Already familiar with Kotlin language, but want to go Multiplatform? Check out our [getting started guide](getting-started.md)
 
 ### Popular docs
 
@@ -22,10 +22,9 @@
 
 ### Community
 
-* [Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/kotlin-multiplatform)
-* [Youtrack](https://youtrack.jetbrains.com/newIssue?project=KT)
-
+* Join the [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channel in **Kotlin Slack** and discuss Multiplatform with 1.7k+ developers from around the world.
+* Subscribe to the [“kotlin-multiplatform” tag](https://stackoverflow.com/questions/tagged/kotlin-multiplatform) on **StackOverflow**, ask questions about Multiplatform or help other developers with answers
+* If you encounter a bug or if you have a feature request, please don’t hesitate to create [a new issue](https://youtrack.jetbrains.com/newIssue?project=KT) in **Kotlin YouTrack**.
 ### Videos
 
 * Walk through Multiplatform intro-by-example from Britt Barak
