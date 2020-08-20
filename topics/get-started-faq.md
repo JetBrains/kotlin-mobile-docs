@@ -7,7 +7,7 @@ There are many ways to start with Kotlin Multiplatform Mobile. You can follow ou
 **A:** First of all, check if your environment is [set up correctly](setup.md). After that, use IDE wizard to [create your first KMM application](create-first-app.md), play around with it, and [explore its configuration](discover-kmm-project.md).
 
 ### Q: OK, I’ve got my very first KMM app up and running. What’s next?
-**A:** Check out our [hands-on](hands-on-networking-data-storage.md) and take your first app to the next level with Networking and Data storage. Browse through [Multiplatform technology reference](https://kotlinlang.org/docs/reference/mpp-intro.html) for advanced Multiplatform Gradle DSL configuration, publishing guides and other useful information.
+**A:** Check out our [hands-on tutorial](hands-on-networking-data-storage.md) and take your first app to the next level with Networking and Data storage. Browse through [Multiplatform technology reference](https://kotlinlang.org/docs/reference/mpp-intro.html) for advanced Multiplatform Gradle DSL configuration, publishing guides and other useful information.
 We also recommend reading more about [Kotlin/Native concurrency main concepts](kmm-concurrency-overview.md) - it’s a common pitfall for KMM newbies //TODO. 
 
 ### Q: I already have a mobile app, and I’d like to make it Multiplatform! How do I do it?

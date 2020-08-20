@@ -32,7 +32,7 @@
         </toc-element>
     </toc-element>
 
-    <toc-element toc-title="KMM by example">
+    <toc-element toc-title="Samples and Tutorials">
         <toc-element id="samples.md" show-structure-depth="3"/>
         <toc-element id="hands-on-networking-data-storage.md" show-structure-depth="3"/>
     </toc-element>
