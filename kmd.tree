@@ -9,7 +9,7 @@
 
     <toc-element id="home.md" show-structure-depth="3"/>
 
-    <toc-element toc-title="Get started with KMM">
+    <toc-element toc-title="Getting started with KMM">
         <toc-element id="get-started-faq.md" show-structure-depth="3"/>
         <toc-element id="setup.md" show-structure-depth="3"/>
         <toc-element id="create-first-app.md" show-structure-depth="3"/>
@@ -25,14 +25,14 @@
         <toc-element id="networking-with-ktor.md" show-structure-depth="3"/>
         <toc-element id="add-dependencies.md" show-structure-depth="3"/>
         <toc-element id="publish-kmm-apps.md" show-structure-depth="3"/>
-        <toc-element toc-title="Concurrency">
-            <toc-element id="kmm-concurrency-overview.md" show-structure-depth="3"/>
-            <toc-element id="kmm-concurrent-mutability.md" show-structure-depth="3"/>
+        <toc-element toc-title="KMM concurrency">
+            <toc-element id="kmm-concurrency-overview.md" toc-title="Concurrency overview" show-structure-depth="3"/>
+            <toc-element id="kmm-concurrent-mutability.md" toc-title="Concurrent mutability" show-structure-depth="3"/>
             <toc-element id="performing-background-job.md" show-structure-depth="3"/>
         </toc-element>
     </toc-element>
 
-    <toc-element toc-title="Samples and Tutorials">
+    <toc-element toc-title="Samples and tutorials">
         <toc-element id="samples.md" show-structure-depth="3"/>
         <toc-element id="hands-on-networking-data-storage.md" show-structure-depth="3"/>
     </toc-element>

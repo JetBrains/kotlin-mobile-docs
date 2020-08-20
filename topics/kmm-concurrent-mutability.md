@@ -1,12 +1,12 @@
 [//]: # (title: KMM concurrent mutability)
 [//]: # (auxiliary-id: KMM_Concurrent_Mutability)
 
-Kotlin/Native's state and concurrency model used for iOS has [two simple rules](kotlin-native-concurrency-overview.md#two-rules).
+[Kotlin/Native's state and concurrency model](kmm-concurrency-overview.md) used for iOS has [two simple rules](kmm-concurrency-overview.md#rules-on-sharing-state).
 
 1. Mutable, non-frozen state is visible to only one thread at a time.
 2. Immutable, frozen state can be shared between threads.
 
-The result of following these rules is that you can't change [global state](kotlin-native-concurrency-overview.md#global-state), 
+The result of following these rules is that you can't change [global state](kmm-concurrency-overview.md#global-state), 
 and you can't change the same shared state from multiple threads. In many cases, simply changing your approach to
 architecting code will work fine, and you don't need concurrent mutability. State was mutable from multiple threads in 
 JVM code, but didn't *need* to be.
@@ -65,7 +65,7 @@ object GlobalData {
 }
 ```
 
-According to the [rules of global state](kotlin-native-concurrency-overview.md#global-state), global `object` values are 
+According to the [rules of global state](kmm-concurrency-overview.md#global-state), global `object` values are 
 frozen in Kotlin/Native, so trying to modify `sd` will fail. You could implement that with `AtomicReference`:
 
 ```kotlin
@@ -137,7 +137,7 @@ You will need to implement some form of locking or check-and-set logic to ensure
 
 ## Thread-isolated state
 
-[Rule 1 of Kotlin/Native state](kotlin-native-concurrency-overview.md#rule-1-mutable-state-1-thread) is mutable state is 
+[Rule 1 of Kotlin/Native state](kmm-concurrency-overview.md#rule-1-mutable-state-1-thread) is mutable state is 
 visible to only one thread. Atomics allow mutability from any thread. 
 Isolating mutable state to a single thread, and allowing other threads to communicate with that state, is an alternate 
 method of concurrent mutability.
@@ -151,7 +151,7 @@ mutable.
 Conceptually it looks like the following. One thread pushes some frozen state into the state worker, which stores it in 
 the mutable state container. Another thread later schedules work that gets that state out.
 
-GIF isostate-diagram.gif
+![Thread-isolated state](isolated-state-diagram.gif)
 
 Implementing thread-isolated state is somewhat complex, but there are libraries that provide this functionality.
 
@@ -199,4 +199,4 @@ memory leaks.
 Since in the KMM application you are also targeting the JVM, you'll need alternate implementations for whatever you implement 
 with platform native code. That will obviously take more work and may lead to platform inconsistencies.
 
-_We'd like to thank the Touchlab team for helping us write this article._
+_We'd like to thank the [Touchlab team](https://twitter.com/touchlabhq) for helping us write this article._

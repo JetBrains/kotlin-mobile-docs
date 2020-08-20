@@ -91,11 +91,11 @@ val sd = SomeData(MoreData("abc", 10.0), 0)
 sd.freeze()
 ```
 
-GIF freezesmall2.gif
+![Freezing state](freezing-state.gif)
 
 * `freeze()` is a one-way operation. You can't _unfreeze_ something.
 * `freeze()` is not available in shared Kotlin code, but several libraries provide expect and actual declarations
- for using it in shared code. However, if you're using a concurrency library, like [`kotlinx.coroutines`](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html), it will 
+ for using it in shared code. However, if you're using a concurrency library, like [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines), it will 
  likely freeze data that crosses thread boundaries automatically. This is convenient, but may be a source of errors and 
  confusion, especially if you are new to Kotlin/Native. There are techniques to avoid this and debug it when it happens.
 
@@ -179,8 +179,9 @@ This will require explicit freezing of state returned from Kotlin, but otherwise
 
 A more extensive model, where concurrency is managed in Kotlin 
 and the host is communicating on its main thread to shared code, is simpler from the state management perspective. 
-Concurrency libraries, like [`kotlinx.coroutines`](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html), will help automate freezing. You'll also be able to leverage the power 
-of coroutines in your code, and gain more efficiencies by sharing more code.
+Concurrency libraries, like [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines), 
+will help automate freezing. You'll also be able to leverage the power of [coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html) 
+in your code, and gain more efficiencies by sharing more code.
 
 However, the current Kotlin/Native concurrency model has a number of deficiencies. For example, mobile developers are used to freely 
 share their objects between threads, and they have already developed a number of approaches and architectural patterns to 
@@ -190,4 +191,4 @@ Kotlin/Native, but the ability to do so comes with a steep learning curve.
 That's why we are working on the new memory manager and concurrency model for Kotlin/Native that will help us remove these 
 drawbacks. Learn more on [what we are doing in this direction](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/).
 
-_We'd like to thank the Touchlab team for helping us write this article._
+_We'd like to thank the [Touchlab team](https://twitter.com/touchlabhq) for helping us write this article._
