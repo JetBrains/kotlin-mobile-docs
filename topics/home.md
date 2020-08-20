@@ -3,16 +3,16 @@
 
 ### Get started
 
-* Already familiar with Kotlin language and want to go Multiplatform? Check out our [get started FAQ](getting-started-faq.md)
+* Already familiar with Kotlin language and want to go Multiplatform? Check out our [get started FAQ](get-started-faq.md)
 * New to Kotlin? [Language reference](https://kotlinlang.org/docs/reference/) or [Kotlin Playground](https://play.kotlinlang.org/koans/overview) are good places to learn about its basic concepts!
 
 ### Popular docs
-
+TODO: fix names and links
 * [Discover your KMM project](discover-kmm-project.md)
 * [Connect to platform-specific APIs](connect-to-platform-specific-apis.md)
-* [Networking](use-ktor-for-networking.md)
-* [Data storage](configure-sqldelight-for-data-storage.md)
-* [Kotlin/Native Concurrency Overview](concurrency-overview.md)
+* [Networking With Ktor](networking-with-ktor.md)
+* [Data Persistence with SQLDelight](data-persistence-sqldelight.md)
+* [Kotlin/Native Concurrency Overview](kmm-concurrency-overview.md)
 * [Organize a process around Kotlin Multiplatform](organize-process-around-kmm.md)
 
 ### What’s new

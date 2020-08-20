@@ -13,4 +13,4 @@ which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [mo
 
 More information:
 * [Kotlin Multiplatform overview](https://kotlinlang.org/docs/reference/multiplatform.html)
-* [Supported targets for multiplatform programming](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#supported-platforms)
+* [Supported platforms for multiplatform programming](https://kotlinlang.org/docs/reference/mpp-supported-platforms.html)
