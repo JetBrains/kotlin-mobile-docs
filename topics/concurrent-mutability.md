@@ -154,7 +154,7 @@ mutable.
 Conceptually it looks like the following. One thread pushes some frozen state into the state worker, which stores it in 
 the mutable state container. Another thread later schedules work that gets that state out.
 
-![Thread-isolated state](isolated-state-diagram.gif)
+![Thread-isolated state](isolated-state.png){animated="true"}
 
 Implementing thread-isolated state is somewhat complex, but there are libraries that provide this functionality.
 
