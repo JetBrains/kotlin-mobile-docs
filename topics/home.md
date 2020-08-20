@@ -7,11 +7,11 @@
 * New to Kotlin? [Language reference](https://kotlinlang.org/docs/reference/) or [Kotlin Playground](https://play.kotlinlang.org/koans/overview) are good places to learn about its basic concepts!
 
 ### Popular docs
-
+TODO: fix names and links
 * [Discover your KMM project](discover-kmm-project.md)
 * [Connect to platform-specific APIs](connect-to-platform-specific-apis.md)
-* [Networking](networking-with-ktor.md)
-* [Data storage](data-persistence-sqldelight.md)
+* [Networking With Ktor](networking-with-ktor.md)
+* [Data Persistence with SQLDelight](data-persistence-sqldelight.md)
 * [Kotlin/Native Concurrency Overview](kmm-concurrency-overview.md)
 * [Organize a process around Kotlin Multiplatform](organize-process-around-kmm.md)
 
