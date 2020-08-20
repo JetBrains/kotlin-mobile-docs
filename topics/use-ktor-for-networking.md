@@ -1,14 +1,13 @@
-[//]: # (title: Networking with Ktor)
-[//]: # (auxiliary-id: Networking_with_Ktor)
+[//]: # (title: Use Ktor for networking)
+[//]: # (auxiliary-id: Use_Ktor_for_networking)
 
 The standard approach in modern client-server architectures is to use the HTTP protocol for 
-transferring data between the server and the client. An HTTP client is a mandatory tool for mobile
-app allowing it to interact with the server. One of the options for a network client for the Kotlin
-Mobile Multiplatform (*KMM*) project is **Ktor** - a framework that allows you to create
+transferring data between the server and the client. An HTTP client is a mandatory tool for a mobile
+application allowing it to interact with the server. One of the options for a network client for the Kotlin
+Mobile Multiplatform (*KMM*) project is **Ktor** – a framework that allows you to create
 asynchronous clients and servers. As part of a multiplatform project, the Ktor Library can also be
 used as an HTTP client. One of Ktor's features is its use of **Kotlin Coroutines** and suspend
-functions in the external UI of asynchronous network operations. For more detailed information, see
-the Official [Documentation](https://ktor.io/).
+functions in the external UI of asynchronous network operations. Learn more about [Ktor](https://ktor.io/).
 
 This article discusses connection of a Ktor client to the multiplatform project, creation and
 configuring of an HTTP client, and using it to perform basic network queries.
