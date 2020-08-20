@@ -91,7 +91,7 @@ val sd = SomeData(MoreData("abc", 10.0), 0)
 sd.freeze()
 ```
 
-![Freezing state](freezing-state.gif)
+![Freezing state](freezing-state.png){animated="true"}
 
 * `freeze()` is a one-way operation. You can't _unfreeze_ something.
 * `freeze()` is not available in shared Kotlin code, but several libraries provide expect and actual declarations
