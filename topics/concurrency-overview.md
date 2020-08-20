@@ -1,5 +1,5 @@
-[//]: # (title: KMM concurrency overview)
-[//]: # (auxiliary-id: KMM_Concurrency_Overview)
+[//]: # (title: Concurrency overview)
+[//]: # (auxiliary-id: Concurrency_Overview)
 
 When you extend your development experience from Android to Kotlin Multiplatform Mobile, you will face a different state 
 and concurrency model for iOS. This is a Kotlin/Native model. [Kotlin/Native](https://kotlinlang.org/docs/reference/native-overview.html) 
@@ -23,7 +23,7 @@ Kotlin/Native introduces rules on sharing state between threads. These rules exi
 access to mutable state. If you are coming from a JVM background and write concurrent code, you may need to change the way 
 you architect your data, but you can achieve the same results without risky side effects.
 
-It is also important to point out, there are [ways to work around these rules](kotlin-native-concurrent-mutability.md). 
+It is also important to point out, there are [ways to work around these rules](concurrent-mutability.md). 
 The intent is to make working around these rules something that you rarely, if ever do.
 
 There are just two simple rules around state and concurrency.

@@ -10,7 +10,7 @@
     <toc-element id="home.md" show-structure-depth="3"/>
 
     <toc-element toc-title="Getting started with KMM">
-        <toc-element id="get-started-faq.md" show-structure-depth="3"/>
+        <toc-element id="getting-started-faq.md" show-structure-depth="3"/>
         <toc-element id="setup.md" show-structure-depth="3"/>
         <toc-element id="create-first-app.md" show-structure-depth="3"/>
         <toc-element id="discover-kmm-project.md" show-structure-depth="3"/>
@@ -21,13 +21,13 @@
     <toc-element toc-title="Development">
         <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
         <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
-        <toc-element id="data-persistence-sqldelight.md" show-structure-depth="3"/>
-        <toc-element id="networking-with-ktor.md" show-structure-depth="3"/>
+        <toc-element id="configure-sqldelight-for-data-storage.md" show-structure-depth="3"/>
+        <toc-element id="use-ktor-for-networking.md" show-structure-depth="3"/>
         <toc-element id="add-dependencies.md" show-structure-depth="3"/>
         <toc-element id="publish-kmm-apps.md" show-structure-depth="3"/>
-        <toc-element toc-title="KMM concurrency">
-            <toc-element id="kmm-concurrency-overview.md" toc-title="Concurrency overview" show-structure-depth="3"/>
-            <toc-element id="kmm-concurrent-mutability.md" toc-title="Concurrent mutability" show-structure-depth="3"/>
+        <toc-element toc-title="Work with concurrency">
+            <toc-element id="concurrency-overview.md" show-structure-depth="3"/>
+            <toc-element id="concurrent-mutability.md" show-structure-depth="3"/>
             <toc-element id="performing-background-job.md" show-structure-depth="3"/>
         </toc-element>
     </toc-element>
