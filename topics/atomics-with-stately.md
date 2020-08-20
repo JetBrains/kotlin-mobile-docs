@@ -229,7 +229,8 @@ fun manyLogs(){
 
 ### Delegate
 
-If you're using `AtomicReference` often, you may find the syntax cumbersome at times. You can make this easier to manage with Kotlin delegate properties. The following will help manage access to an `AtomicReference` instance.
+If you're using `AtomicReference` often, you may find the syntax cumbersome at times. You can make this easier to manage 
+with Kotlin delegate properties. The following will help manage access to an `AtomicReference` instance.
 
 ```kotlin
 class AtomicDelegate<T>(ival:T) {
