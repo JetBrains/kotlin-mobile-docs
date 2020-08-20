@@ -56,7 +56,7 @@ platform-specific code.
 
 ### Run tests on iOS
     
-1. Open the file `iosTest.kt` in **shared** | **src** | **iosTest** | **kotlin**.  
+1. Open the file `iosTest.kt` in `shared/src/iosTest/kotlin`.  
     Directories with **Test** in their name contain tests.  
     This file includes a sample test for iOS.  
     
@@ -75,7 +75,7 @@ Congratulations! The test has passed.
 
 For Android, follow a procedure that is very similar to the one for running tests on iOS.
 
-1. Open the file `androidTest.kt` in **shared** | **src** | **androidTest** | **kotlin**.
+1. Open the file `androidTest.kt` in `shared/src/androidTest/kotlin`.
 
 2. Click the **Run** gutter icon next to the test. 
 
