@@ -27,8 +27,11 @@ Kotlin/Native provides a set of Atomic classes which can be frozen, yet support 
 These classes implement a special-case handling of state in the Kotlin/Native runtime. This means that you can change 
 values inside frozen state.
 
-The Kotlin/Native runtime includes a few different variations of Atomics. You can also use [Stately](https://github.com/touchlab/Stately), 
-a utility library for multiplatform compatibility with Kotlin/Native-specific concurrency. 
+The Kotlin/Native runtime includes a few different variations of Atomics. You can use them directly or from a library.
+
+Kotlin provides an experimental [`kotlinx.atomicfu`](https://github.com/Kotlin/kotlinx.atomicfu) library that is currently 
+used only for internal purposes and is not supported publicly. You can use [Stately](https://github.com/touchlab/Stately), 
+a utility library for multiplatform compatibility with Kotlin/Native-specific concurrency developed by [Touchlab](https://twitter.com/touchlabhq). 
 
 ### `AtomicInt`/`AtomicLong`
 
