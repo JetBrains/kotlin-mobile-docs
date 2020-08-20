@@ -1,4 +1,4 @@
-[//]: # (title: KMM Concurrent Mutability)
+[//]: # (title: TODO: KMM Concurrent Mutability)
 [//]: # (auxiliary-id: KMM_Concurrent_Mutability)
 
 Kotlin/Native's state and concurrency model has two simple rules.
