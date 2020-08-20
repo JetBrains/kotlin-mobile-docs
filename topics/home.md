@@ -3,17 +3,17 @@
 
 ### Get started
 
-* Already familiar with Kotlin language and want to go Multiplatform? Check out our [get started FAQ](get-started-faq.md)
+* Already familiar with Kotlin language and want to go Multiplatform? Check out our [getting started FAQ](getting-started-faq.md)
 * New to Kotlin? [Language reference](https://kotlinlang.org/docs/reference/) or [Kotlin Playground](https://play.kotlinlang.org/koans/overview) are good places to learn about its basic concepts!
 
 ### Popular docs
-TODO: fix names and links
-* [Discover your KMM project](discover-kmm-project.md)
+
+* [Discover KMM project](discover-kmm-project.md)
 * [Connect to platform-specific APIs](connect-to-platform-specific-apis.md)
-* [Networking With Ktor](networking-with-ktor.md)
-* [Data Persistence with SQLDelight](data-persistence-sqldelight.md)
-* [Kotlin/Native Concurrency Overview](kmm-concurrency-overview.md)
-* [Organize a process around Kotlin Multiplatform](organize-process-around-kmm.md)
+* [Use Ktor for networking](use-ktor-for-networking.md)
+* [Configure SQLDelight for data storage](configure-sqldelight-for-data-storage.md)
+* [Concurrency overview](concurrency-overview.md)
+* [Organize a process around Kotlin Multiplatform Mobile](organize-process-around-kmm.md)
 
 ### What’s new
 
@@ -25,6 +25,7 @@ TODO: fix names and links
 * Join the [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channel in **Kotlin Slack** and discuss Multiplatform with 1.7k+ developers from around the world.
 * Subscribe to the [“kotlin-multiplatform” tag](https://stackoverflow.com/questions/tagged/kotlin-multiplatform) on **StackOverflow**, ask questions about Multiplatform or help other developers with answers
 * If you encounter a bug or if you have a feature request, please don’t hesitate to create [a new issue](https://youtrack.jetbrains.com/newIssue?project=KT) in **Kotlin YouTrack**.
+
 ### Videos
 
 * Walk through Multiplatform intro-by-example from Britt Barak
