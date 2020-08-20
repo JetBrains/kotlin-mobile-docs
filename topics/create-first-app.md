@@ -4,7 +4,7 @@
 Now that you've [set up an environment for KMM development](setup.md), it's time to create your first application.
 
 1. In Android Studio, select **File** | **New** | **New Project**.
-2. Select **Mobile Application** in the list of project templates, and click **Next**.  
+2. Select **KMM Application** in the list of project templates, and click **Next**.  
 
     ![Mobile Multiplatform project template](kmm-project-wizard-1.png)
     

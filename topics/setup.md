@@ -8,10 +8,11 @@ start by setting up an environment for Kotlin mobile multiplatform (KMM) develop
    system supported by [Android Studio](https://developer.android.com/studio).  
    If you also want to write iOS-specific code and run an iOS application on a simulator or real device, use a Mac with a 
    macOS.  
-2. Install the latest version of [Android Studio](https://developer.android.com/studio) – version 4.1 or higher.  
+2. Install [Android Studio](https://developer.android.com/studio) – version 4.1 or higher.  
     You will use Android Studio for creating your multiplatform applications and 
     running them on device simulators.
-3. If you need to write iOS-specific code and run an iOS application, install the latest version of [Xcode](https://apps.apple.com/us/app/xcode/id497799835) –  version 11.5 or higher.  
+3. If you need to write iOS-specific code and run an iOS application, install[Xcode](https://apps.apple.com/us/app/xcode/id497799835) 
+    –  version 11.3 or higher.                                                                                                                                                                                                                                                                                                                          
     Most of the time, Xcode will work in the background. You will use it to add 
     Swift or Objective-C code to your iOS application and run it on a real device.
 4. Update the Kotlin plugin to version 1.4.0 or higher.  
