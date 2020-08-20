@@ -1,5 +1,5 @@
-[//]: # (title: Adding dependencies to Kotlin Multiplatform modules)
-[//]: # (auxiliary-id: Adding_dependencies_to_Kotlin_Multiplatform_modules)
+[//]: # (title: Add dependencies to Kotlin Multiplatform modules)
+[//]: # (auxiliary-id: Add_dependencies_to_Kotlin_Multiplatform_modules)
 
 ## iOS dependencies
 

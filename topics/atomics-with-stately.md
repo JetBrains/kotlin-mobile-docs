@@ -295,6 +295,4 @@ There is another library that provides similar atomic support, directly from Jet
 
 We will be keeping an eye on the progress of Atomic-fu in the future and see if that progresses to something more geared towards public consumption.
 
----
-
 [^1]: Stately also includes an `AtomicBoolean`. Under the hood that just uses `AtomicInt`.

@@ -1,5 +1,5 @@
-[//]: # (title: Networking)
-[//]: # (auxiliary-id: Networking)
+[//]: # (title: Networking with Ktor)
+[//]: # (auxiliary-id: Networking_with_Ktor)
 
 The standard approach in modern client-server architectures is to use the HTTP protocol for 
 transferring data between the server and the client. An HTTP client is a mandatory tool for mobile

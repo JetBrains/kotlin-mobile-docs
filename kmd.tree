@@ -4,19 +4,41 @@
 
 <product-profile id="kmd"
                  name="Kotlin Mobile Docs"
-                 start-page="setup.md"
+                 start-page="home.md"
                  status="eap">
 
-    <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
-    <toc-element id="setup.md" show-structure-depth="3"/>
-    <toc-element id="create-first-app.md" show-structure-depth="3"/>
-    <toc-element id="discover-kmm-project.md" show-structure-depth="3"/>
-    <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
-    <toc-element id="kotlin-native-concurrency-overview.md" show-structure-depth="3"/>
-    <toc-element id="kotlin-native-concurrent-mutability.md" show-structure-depth="3"/>
-    <toc-element id="adding-dependencies.md" show-structure-depth="3"/>
-    <toc-element id="publish-kmm-apps.md" show-structure-depth="3"/>
-    <toc-element id="data-storage.md" show-structure-depth="3"/>
+    <toc-element id="home.md" show-structure-depth="3"/>
+
+    <toc-element toc-title="Get started with KMM">
+        <toc-element id="get-started-faq.md" show-structure-depth="3"/>
+        <toc-element id="setup.md" show-structure-depth="3"/>
+        <toc-element id="create-first-app.md" show-structure-depth="3"/>
+        <toc-element id="discover-kmm-project.md" show-structure-depth="3"/>
+        <toc-element id="integrate-in-existing-app.md" show-structure-depth="3"/>
+        <toc-element id="introduce-your-team-to-kmm.md" show-structure-depth="3"/>
+    </toc-element>
+
+    <toc-element toc-title="Development">
+        <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
+        <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
+        <toc-element id="data-persistence-sqldelight.md" show-structure-depth="3"/>
+        <toc-element id="networking-with-ktor.md" show-structure-depth="3"/>
+        <toc-element id="add-dependencies.md" show-structure-depth="3"/>
+        <toc-element id="publish-kmm-apps.md" show-structure-depth="3"/>
+        <toc-element toc-title="Concurrency">
+            <toc-element id="kmm-concurrency-overview.md" show-structure-depth="3"/>
+            <toc-element id="kmm-concurrent-mutability.md" show-structure-depth="3"/>
+            <toc-element id="performing-background-job.md" show-structure-depth="3"/>
+        </toc-element>
+    </toc-element>
+
+    <toc-element toc-title="Samples and Tutorials">
+        <toc-element id="samples.md" show-structure-depth="3"/>
+        <toc-element id="hands-on-networking-data-storage.md" show-structure-depth="3"/>
+    </toc-element>
+
     <toc-element id="supported-platforms.md" show-structure-depth="3"/>
+    <toc-element id="kmm-evolution.md" show-structure-depth="3"/>
     <toc-element id="security.md" show-structure-depth="3"/>
+
 </product-profile>
