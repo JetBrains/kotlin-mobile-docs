@@ -56,13 +56,12 @@ platform-specific code.
 
 ### Run tests on iOS
     
-1. Open the file `iosTest.kt` in `shared/src/iosTest/kotlin`.  
+1. Open the file `iosTest.kt` in `shared/src/iosTest/kotlin/com.example.shared`.  
     Directories with **Test** in their name contain tests.  
     This file includes a sample test for iOS.  
     
     ![iOS test Kotlin file](ios-test-kt.png)
    
- 
 2. Click the **Run** icon in the gutter next to the test.  
 
     ![Run iOS test](run-ios-test.png)
@@ -90,10 +89,6 @@ For Android, follow a procedure that is very similar to the one for running test
 2. Update the shared code – use the Kotlin standard library function that works on all platforms and reverts text: `reversed()`.
 
     ```kotlin
-    expect class Platform() {
-        val platform: String
-    }
-    
     class Greeting {
         fun greeting(): String {
             return "Guess what it is! > ${Platform().platform.reversed()}!"
