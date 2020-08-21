@@ -37,7 +37,7 @@ You can run your multiplatform application on Android and iOS.
     
     ![First mobile multiplatform app on Android](first-kmm-on-android-1.png){width=300}
 
-#### Run your application on a different Android simulator
+#### Run on a different Android simulator
 
 * In the list of Android simulators, select a simulator you want to use, and click **Run**.
 
@@ -51,7 +51,7 @@ You can run your multiplatform application on Android and iOS.
     
     ![First mobile multiplatform app on Android](first-kmm-on-ios-1.png){width=300}
 
-#### Run your application on a different iOS simulator
+#### Run on a different iOS simulator
 
 By default, your iOS application runs in an iPhone 11 simulator. If you want to run it on a different simulator, you can add a 
 new run configuraion.
@@ -72,7 +72,7 @@ new run configuraion.
     
 6. Click **Run** to run your application on the new simulator.
     
-#### Run your application on a real device
+#### Run on a real device
 
 If you want to run your iOS application on a real iPhone, [connect it to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device) 
 and [create a run configuration](#run-your-application-on-a-different-ios-simulator) for it.
