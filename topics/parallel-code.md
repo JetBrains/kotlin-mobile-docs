@@ -1,5 +1,5 @@
-[//]: # "title: Parallel code"
-[//]: # "auxiliary-id: Parallel_code"
+[//]: # (title: Parallel code)
+[//]: # (auxiliary-id: Parallel_code)
 
 When working with mobile platforms, you may need to write multithreaded code that runs in parallel. For this purpose, 
 you can use the `kotlinx.coroutines` library ([standard](#coroutines) or [multithreaded version](#multithreaded-coroutines)) 
@@ -32,9 +32,11 @@ Get acquainted with the main concepts for using coroutines:
 
 ### Asynchronous vs. parallel processing
 
-Let's make a distinction between asynchronous and parallel processing. Within a coroutine, the sequence of processing 
-may be suspended and resumed later. This allows for asynchronous, non-blocking code, without using callbacks or promises. 
-That is asynchronous, but everything related to that coroutine may happen in a single thread. 
+Asynchronous and parallel processing are different terms. 
+
+Within a coroutine, the sequence of processing may be suspended and resumed later. This allows for asynchronous, 
+non-blocking code, without using callbacks or promises. That is asynchronous processing, but everything related to that 
+coroutine can happen in a single thread. 
 
 The following code makes a network call using [Ktor](https://ktor.io/). In the main thread, the call is initiated 
 and suspended, while another underlying process performs actual networking. When completed, the code resumes 
@@ -47,7 +49,7 @@ client.get<String>("https://example.com/some/rest/call")
 //The get call will suspend and let other work happen in the main thread, and resume when the get call completes
 ```
 
-That is distinct from parallel code that needs to be run in another thread. Depending on your purpose 
+That is different from parallel code that needs to be run in another thread. Depending on your purpose 
 and used libraries, you may never need to use multiple threads.
 
 ### Dispatcher for changing threads
