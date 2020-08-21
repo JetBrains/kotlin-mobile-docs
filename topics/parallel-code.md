@@ -169,6 +169,7 @@ If you see `InvalidMutabilityException` related to a coroutine operation, it's v
 
 > Using multithreaded coroutines may result in _memory leaks_. It may be a problem for complex coroutine scenarios under load.
 > We are working on a solution for this.
+>
 {type="note"}
 
 See a [complete example of using multithreaded coroutines in the KMM application](https://github.com/touchlab/KaMPKit).
