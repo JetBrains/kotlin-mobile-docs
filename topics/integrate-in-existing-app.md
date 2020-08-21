@@ -201,11 +201,9 @@ If there is some Android specific code in there, it needs to go to the android s
 
 You should now be able to compile an Android AAR, import it into your android specific project, and use it in your application.
 
-#### Step 4: Implement actual declarations for each platforms
+#### Step 4: Implement actual declarations for iOS platform
 
-Even though this multiplatform library is meant to be run on Android & iOS, we recommend that you configure it to also target regular JVM, which will make it a lot easier to test directly on developer computers. All it takes is to maintain a JVM actual declaration for each expect in the common code.
-
-Therefore, add the JVM & iOS platforms to your multiplatform project and implement each needed actual declaration.
+Add the iOS platform to your multiplatform project and implement each needed actual declaration. See the example of the basic project configuration on the [discover kmm project](discover-kmm-project.md) page.
 
 #### Step 5: Test it!
 
