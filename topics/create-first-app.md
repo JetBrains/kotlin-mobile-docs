@@ -81,7 +81,7 @@ For Android, follow a procedure that is very similar to the one for running test
 
 ## Update your application
 
-1. Open the file `common.kt` in **shared** | **src** | **commonMain** | **kotlin**.  
+1. Open the file `common.kt` in `shared/src/commonMain/kotlin`.  
     This file stores the shared code for both platforms – Android and iOS. If you make changes to the shared code, you will see
     changes in both applications.
 
