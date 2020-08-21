@@ -232,4 +232,4 @@ commonMain {
 }
 ```
 
-
+_We'd like to thank the [Touchlab team](https://twitter.com/touchlabhq) for helping us write this article._
