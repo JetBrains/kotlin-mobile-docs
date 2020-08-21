@@ -43,11 +43,31 @@ You can run your multiplatform application on Android and iOS.
     
     ![Run multiplatform app on iOS](run-ios.png){width=450}
     
-    > Due to technical limitations, iOS device names are shown in the first list. The second list is disabled for **iosApp**.
-    >
-    {type="note"}   
-    
     ![First mobile multiplatform app on Android](first-kmm-on-ios-1.png){width=300}
+
+#### Run your application on a different iOS simulator
+
+By default, your iOS application runs in an iPhone 11 simulator. If you want to run it on a different simulator, you can add a 
+new run configuraion.
+
+1. Open the list of configurations, and then click **Edit Configurations**.
+
+    ![Edit run configurations](ios-edit-configurations.png){width=450}
+
+2. Click the **+** button above the list of configurations and select **iOS Application**.
+
+    ![New run configuration for iOS application](ios-new-configuration.png)
+
+4. Name your configuration.
+
+5. Select the simulator in the list, and then click **OK**.
+
+    ![New run configuration with iOS simulator](ios-new-simulator.png)
+    
+#### Run your application on a real device
+
+If you want to run your iOS application on a real iPhone, [connect it to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device) 
+and  [create a run configuration](#run-your-application-on-a-different-ios-simulator) for it.
 
 ## Run tests
 
@@ -57,16 +77,14 @@ platform-specific code.
 ### Run tests on iOS
     
 1. Open the file `iosTest.kt` in `shared/src/iosTest/kotlin/com.example.shared`.  
-    Directories with **Test** in their name contain tests.  
+    Directories with `Test` in their name contain tests.  
     This file includes a sample test for iOS.  
     
     ![iOS test Kotlin file](ios-test-kt.png)
    
 2. Click the **Run** icon in the gutter next to the test.  
 
-    ![Run iOS test](run-ios-test.png)
-
-Congratulations! The test has passed.
+Congratulations! The test has passed. Note that you will see test results in the console – not in the simulator.
 
 ![iOS test result](ios-test-result.png){width=300}
 
@@ -74,14 +92,14 @@ Congratulations! The test has passed.
 
 For Android, follow a procedure that is very similar to the one for running tests on iOS.
 
-1. Open the file `androidTest.kt` in `shared/src/androidTest/kotlin`.
+1. Open the file `androidTest.kt` in `shared/src/androidTest/kotlin/com.example.shared`.
 
 2. Click the **Run** gutter icon next to the test. 
 
 ## Update your application
 
-1. Open the file `common.kt` in `shared/src/commonMain/kotlin`.  
-    This file stores the shared code for both platforms – Android and iOS. If you make changes to the shared code, you will see
+1. Open the file `Greeting.kt` in `shared/src/commonMain/kotlin/com.example.shared`.  
+    This directory stores the shared code for both platforms – Android and iOS. If you make changes to the shared code, you will see
     changes in both applications.
 
     ![Common Kotlin file](common-kotlin-file.png)
