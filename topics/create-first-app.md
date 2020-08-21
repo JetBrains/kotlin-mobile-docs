@@ -96,7 +96,7 @@ platform-specific code.
    
 2. Click the **Run** icon in the gutter next to the test.  
 
-Congratulations! The test has passed. Note that you will see test results in the console – not in the simulator.
+Tests run on a simulator without UI. Congratulations! The test has passed – see test results in the console.
 
 ![iOS test result](ios-test-result.png){width=300}
 
@@ -137,4 +137,4 @@ For Android, follow a procedure that is very similar to the one for running test
 5. Run tests on Android and iOS.  
     As you see, the tests fail. Update the tests to pass. You know how to do this, right? ;)
     
-    ![iOS test failed](ios-test-failed.png){width=300}
+    ![iOS test failed](ios-test-failed.png)
