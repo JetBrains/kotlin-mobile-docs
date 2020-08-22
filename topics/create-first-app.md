@@ -36,6 +36,12 @@ You can run your multiplatform application on Android and iOS.
     ![Run multiplatform app on Android](run-android.png){width=400}
     
     ![First mobile multiplatform app on Android](first-kmm-on-android-1.png){width=300}
+
+#### Run on a different Android simulator
+
+* In the list of Android simulators, select a simulator you want to use, and click **Run**.
+
+    ![Run Android application on a different simulator](android-new-simulator.png){width=350}
     
 ### Run your application on iOS
 
@@ -43,11 +49,37 @@ You can run your multiplatform application on Android and iOS.
     
     ![Run multiplatform app on iOS](run-ios.png){width=450}
     
-    > Due to technical limitations, iOS device names are shown in the first list. The second list is disabled for **iosApp**.
-    >
-    {type="note"}   
-    
     ![First mobile multiplatform app on Android](first-kmm-on-ios-1.png){width=300}
+
+#### Run on a different iOS simulator
+
+By default, your iOS application runs in an iPhone 11 simulator. If you want to run it on a different simulator, you can add a 
+new run configuraion.
+
+1. In the list of run configurations, click **Edit Configurations**.
+
+    ![Edit run configurations](ios-edit-configurations.png){width=450}
+
+2. Click the **+** button above the list of configurations and select **iOS Application**.
+
+    ![New run configuration for iOS application](ios-new-configuration.png)
+
+4. Name your configuration.
+
+5. Select the simulator in the list, and then click **OK**.
+
+    ![New run configuration with iOS simulator](ios-new-simulator.png)
+    
+6. Click **Run** to run your application on the new simulator.
+    
+#### Run on a real device
+
+If you want to run your iOS application on a real iPhone, [connect it to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device), 
+ [create a run configuration](#run-your-application-on-a-different-ios-simulator) for it, and run your application.
+
+> If your build fails, follow a workaround in [this issue](https://youtrack.jetbrains.com/issue/KT-40907).
+>
+{type="note"}
 
 ## Run tests
 
@@ -56,18 +88,15 @@ platform-specific code.
 
 ### Run tests on iOS
     
-1. Open the file `iosTest.kt` in `shared/src/iosTest/kotlin`.  
-    Directories with **Test** in their name contain tests.  
+1. Open the file `iosTest.kt` in `shared/src/iosTest/kotlin/com.example.shared`.  
+    Directories with `Test` in their name contain tests.  
     This file includes a sample test for iOS.  
     
     ![iOS test Kotlin file](ios-test-kt.png)
    
- 
 2. Click the **Run** icon in the gutter next to the test.  
 
-    ![Run iOS test](run-ios-test.png)
-
-Congratulations! The test has passed.
+Tests run on a simulator without UI. Congratulations! The test has passed – see test results in the console.
 
 ![iOS test result](ios-test-result.png){width=300}
 
@@ -75,14 +104,14 @@ Congratulations! The test has passed.
 
 For Android, follow a procedure that is very similar to the one for running tests on iOS.
 
-1. Open the file `androidTest.kt` in `shared/src/androidTest/kotlin`.
+1. Open the file `androidTest.kt` in `shared/src/androidTest/kotlin/com.example.shared`.
 
 2. Click the **Run** gutter icon next to the test. 
 
 ## Update your application
 
-1. Open the file `common.kt` in **shared** | **src** | **commonMain** | **kotlin**.  
-    This file stores the shared code for both platforms – Android and iOS. If you make changes to the shared code, you will see
+1. Open the file `Greeting.kt` in `shared/src/commonMain/kotlin/com.example.shared`.  
+    This directory stores the shared code for both platforms – Android and iOS. If you make changes to the shared code, you will see
     changes in both applications.
 
     ![Common Kotlin file](common-kotlin-file.png)
@@ -90,10 +119,6 @@ For Android, follow a procedure that is very similar to the one for running test
 2. Update the shared code – use the Kotlin standard library function that works on all platforms and reverts text: `reversed()`.
 
     ```kotlin
-    expect class Platform() {
-        val platform: String
-    }
-    
     class Greeting {
         fun greeting(): String {
             return "Guess what it is! > ${Platform().platform.reversed()}!"
@@ -112,4 +137,4 @@ For Android, follow a procedure that is very similar to the one for running test
 5. Run tests on Android and iOS.  
     As you see, the tests fail. Update the tests to pass. You know how to do this, right? ;)
     
-    ![iOS test failed](ios-test-failed.png){width=300}
+    ![iOS test failed](ios-test-failed.png)
