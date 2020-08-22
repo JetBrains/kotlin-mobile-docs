@@ -486,3 +486,5 @@ To install the plugin in Android Studio, open **Preferences | Plugins | Marketpl
 search bar.
 
 For more information about the plugin, see the [SQLDelight documentation](https://cashapp.github.io/sqldelight/multiplatform_sqlite/intellij_plugin/).
+
+_We'd like to thank the [IceRock team](http://icerockdev.com/) for helping us write this article._
