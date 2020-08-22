@@ -5,7 +5,7 @@
 
 This guide will walk us through the steps that we need to take to empower our KMM experience in a mobile project. It will expose what we should abstract in a multiplatform library and how to abstract it, as well as how to deal with existing code and what are the best practices to embrace KMM.
 
-Note that we assume that you already know [how to create and configure a KMM project](create_first_app.md)
+Note that we assume that you already know [how to create and configure a KMM project](create-first-app.md)
 
 ## Deciding on what to abstract in a multiplatform library
 
@@ -197,7 +197,7 @@ You can now create a multiplatform library project with only one target : Androi
 
 Port one of your business logic modules into it. The code should go into the “common” sourceset.
 
-If there is some Android specific code in there, it needs to go to the android specific sourceset and be abstracted in common with the [expect / actual](connect_to_platform_specific_apis) mechanism.
+If there is some Android specific code in there, it needs to go to the android specific sourceset and be abstracted in common with the [expect / actual](connect_to_platform_specific_apis.md) mechanism.
 
 You should now be able to compile an Android AAR, import it into your android specific project, and use it in your application.
 
