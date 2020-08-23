@@ -32,7 +32,7 @@ commonMain {
 ```Kotlin
 val commonMain by getting {
     dependencies {
-        implementation("io.ktor:ktor-client-core:$ktorVersion")
+        implementation("io.ktor:ktor-client-core:$ktor_version")
     }
 }
 ```
@@ -59,7 +59,7 @@ androidMain {
 ```Kotlin
 val androidMain by getting {
     dependencies {
-        implementation("io.ktor:ktor-client-android:$ktorVersion")
+        implementation("io.ktor:ktor-client-android:$ktor_version")
     }
 }
 ```
@@ -86,7 +86,7 @@ iosMain {
 ```Kotlin
 val iosMain by getting {
     dependencies {
-        implementation("io.ktor:ktor-client-ios:$ktorVersion")
+        implementation("io.ktor:ktor-client-ios:$ktor_version")
     }
 }
 ```

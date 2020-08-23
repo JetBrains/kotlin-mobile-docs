@@ -99,7 +99,7 @@ commonMain {
 ```Kotlin
 val commonMain by getting {
     dependencies {
-        implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
+        implementation("com.squareup.sqldelight:runtime:$sql_delight_version")
     }
 }
 ```
@@ -128,7 +128,7 @@ androidMain {
 ```Kotlin
 val androidMain by getting {
     dependencies {
-        implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
+        implementation("com.squareup.sqldelight:android-driver:$sql_delight_version")
     }
 }
 ```
@@ -157,7 +157,7 @@ iosMain {
 ```Kotlin
 val iosMain by getting {
     dependencies {
-        implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
+        implementation("com.squareup.sqldelight:native-driver:$sql_delight_version")
     }
 }
 ```
