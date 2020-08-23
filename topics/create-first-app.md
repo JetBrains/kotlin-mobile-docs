@@ -75,7 +75,7 @@ new run configuraion.
 #### Run on a real device
 
 If you want to run your iOS application on a real iPhone, [connect it to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device), 
- [create a run configuration](#run-your-application-on-a-different-ios-simulator) for it, and run your application.
+ [create a run configuration](#run-on-a-different-ios-simulator) for it, and run your application.
 
 > If your build fails, follow a workaround in [this issue](https://youtrack.jetbrains.com/issue/KT-40907).
 >
