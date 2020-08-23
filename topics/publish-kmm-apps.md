@@ -21,17 +21,16 @@ The iOS app from a KMM project is built from a typical Xcode project, so the mai
 the same as described in the [iOS developer documentation](https://developer.apple.com/ios/submit/).
 
 What is specific to KMM projects is compiling the shared Kotlin module into a framework and linking it to the Xcode project.
-Generally, all integration between the shared module and the Xcode project is done automatically by the Kotlin Multiplatform
-Mobile plugin for Android Studio (TODO: add a link to the plugin). However, if you don’t use the plugin, bear in mind
-the following when building and bundling the iOS project in Xcode:
+Generally, all integration between the shared module and the Xcode project is done automatically by the [Kotlin Multiplatform Mobile plugin for Android Studio](https://plugins.jetbrains.com/plugin/13881-mobile-multiplatform) . However, if you don’t use the plugin, bear in mind the following when building and bundling the iOS project in Xcode:
 
 * The shared Kotlin library compiles down to the native framework.
 * You need to connect the framework compiled for the specific platform to the iOS app project.
 * In the Xcode project settings, specify the path to the framework to search for the build system.
 * After building the project, you should launch and test the app to make sure that there are no issues when working with the framework in runtime.
 
-For instructions on connecting the shared Kotlin module to the iOS project in Xcode,
-see [this tutorial](https://kotlinlang.org/docs/tutorials/native/apple-framework.html#xcode-for-ios-targets).
+There are two ways you can connect the shared Kotlin module to the iOS project:
+* Use the [Kotlin/Native Cocoapods plugin](https://kotlinlang.org/docs/reference/native/cocoapods.html#cocoapods-integration), which allows you to use a multiplatform project with native targets as a CocoaPods dependency in your iOS project.
+* Manually configure your Multiplatform project to create an iOS framework and the XCode project to obtain its latest version. KMM Android Studio Plugin usually does this configuration. [Discover typical KMM project](discover-kmm-project.md#ios-application) to implement it yourself.
 
 ### Symbolicating crash reports
 
