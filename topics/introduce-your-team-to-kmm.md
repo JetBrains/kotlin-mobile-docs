@@ -1,4 +1,4 @@
-[//]: # (title: How to Introduce your team to Kotlin Multiplatform Mobile)
+[//]: # (title: How to introduce your team to Kotlin Multiplatform Mobile)
 [//]: # (auxiliary-id: Introduce_your_team_to_Kotlin_Multiplatform_Mobile)
 
 ## Start with empathy
