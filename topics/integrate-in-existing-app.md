@@ -197,7 +197,7 @@ You can now create a multiplatform library project with only one target : Androi
 
 Port one of your business logic modules into it. The code should go into the “common” sourceset.
 
-If there is some Android specific code in there, it needs to go to the android specific sourceset and be abstracted in common with the [expect / actual](connect_to_platform_specific_apis.md) mechanism.
+If there is some Android specific code in there, it needs to go to the android specific sourceset and be abstracted in common with the [expect / actual](connect-to-platform-specific-apis.md) mechanism.
 
 You should now be able to compile an Android AAR, import it into your android specific project, and use it in your application.
 
