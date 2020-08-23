@@ -66,7 +66,7 @@ new run configuraion.
 
 4. Name your configuration.
 
-5. Select the simulator in the list, and then click **OK**.
+5. Select the simulator in the **Execution target** list, and then click **OK**.
 
     ![New run configuration with iOS simulator](ios-new-simulator.png)
     
