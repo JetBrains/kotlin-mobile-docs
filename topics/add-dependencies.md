@@ -11,17 +11,48 @@ Integration with the CocoaPods dependency manager is also supported with the sam
 
 ### With CocoaPods
 
-TODO: fix current draft and add after 1.4 release
+1. Perform [initial CocoaPods integration setup](https://kotlinlang.org/docs/reference/native/cocoapods.html#install-the-cocoapods-dependency-manager-and-plugin)
+
+2. Add dependency on a Pod library that you want to use from the CocoaPods repository with `pod()` to build script of your project.
+
+    <tabs>
+    <tab title="Groovy">
+    
+    ```Groovy
+    kotlin {
+       cocoapods {
+           //..
+           pod("AFNetworking", "~> 4.0.0")
+       }
+    }
+
+    ```
+    </tab>
+    <tab title="Kotlin">
+    
+    ```Kotlin
+    kotlin {
+       cocoapods {
+           //..
+           pod("AFNetworking", "~> 4.0.0")
+       }
+    }
+
+    ```
+         
+    </tab>
+    </tabs>
+
+3. Re-import the project.
+
+To use the dependency in Kotlin code, import the package `cocoapods.<library-name>`. In the example above, that would be:
+```kotlin
+import cocoapods.AFNetworking.*
+```
+
+[More information about CocoaPods integration](https://kotlinlang.org/docs/reference/native/cocoapods.html).
 
 ### Without CocoaPods
-
-TODO: Check that interop can be configured for ios preset after 1.4 and use it instead of iosX6
-> In Kotlin %kotlinVersion% configuring cinterop dependency for common ios() preset is not yet supported. 
-> You should configure cinterops per platform source sets: iOSX64 or iOS
-> 
->
-{type=”note”}
-
 
 If you don’t want to use CocoaPods, you can use the cinterop tool to create Kotlin bindings for Objective-C or Swift declarations. With such declarations, you will be able to call them from Kotlin code. You’ll need to:
 * Download your dependency.
@@ -29,217 +60,189 @@ If you don’t want to use CocoaPods, you can use the cinterop tool to create Ko
 * Create a special `.def` file that describes this dependency to cinterop.
 * And adjust your build script to generate bindings during the build.
 
-The sets of steps differ a bit for libraries and frameworks, but the main idea remains the same.
+> In Kotlin %kotlinVersion% configuring cinterop dependencies for [intermediate common source sets](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms), such as `iosMain`, is not yet supported. 
+> You will need to configure such dependencies for both platform source sets: `iosArm64Main` and `iosX64Main`.
+>
+>{type=”note”}
 
-<procedure title="To add a library without CocoaPods:">
+The sets of steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [frameworks](#add-a-framework-without-cocoapods), but the main idea remains the same.
 
-<step>
-Download the library source code and place it somewhere where you can reference it from your project. 
-</step>
+#### Add a library without CocoaPods:
 
-<step>
-Build a library (library authors usually provide a guide on how to do this) and get a path to the binaries.
-</step>
+1. Download the library source code and place it somewhere where you can reference it from your project. 
 
-<step>
-In your project, create a `.def` file, for example `DateTools.def`.
-</step>
+2. Build a library (library authors usually provide a guide on how to do this) and get a path to the binaries.
 
-<step>
-Add a first string to this file: `language = Objective-C`. If you want to use a pure C dependency, omit the language property.
-</step>
+3. In your project, create a `.def` file, for example `DateTools.def`.
 
-<step>
-Provide values for two mandatory fields:
-* `headers` – describes which headers will be processed by cinterop.
-* `package` – sets the name of the package these declarations should be put into.
-Example:
-```
-headers = DateTools.h
-package = DateTools
-```    
-</step>
+4. Add a first string to this file: `language = Objective-C`. If you want to use a pure C dependency, omit the language property.
 
-<step>
-Add information about interoperability with this library to the build script:
-* Pass the path to the `.def` file. This path can be omitted if your `.def` file has the same name as cinterop and it is placed in the folder `src/nativeInterop/cinterop/`.
-* Tell cinterop where to look for header files using the `includeDirs` option.
-* Configure linking against library binaries.
-<tabs>
-<tab title="Groovy">
+5. Provide values for two mandatory fields:
+    * `headers` – describes which headers will be processed by cinterop.
+    * `package` – sets the name of the package these declarations should be put into.
+
+    Example:
+    ```properties
+    headers = DateTools.h
+    package = DateTools
+    ```    
+
+6. Add information about interoperability with this library to the build script:
+    * Pass the path to the `.def` file. This path can be omitted if your `.def` file has the same name as cinterop and it is placed in the folder `src/nativeInterop/cinterop/`.
+    * Tell cinterop where to look for header files using the `includeDirs` option.
+    * Configure linking against library binaries.
+
+    <tabs>
+    <tab title="Groovy">
     
-```Groovy
-kotlin {
-   iosX64 {
-       compilations.main {
-           cinterops {
-               DateTools {
+    ```Groovy
+    kotlin {
+       iosX64 {
+           compilations.main {
+               cinterops {
+                   DateTools {
+                       // Path to .def file
+                       defFile("src/nativeInterop/cinterop/DateTools.def")
+                  
+                       // Directories for header search (an analogue of the -I<path> compiler option)
+                       includeDirs("include/this/directory", "path/to/another/directory")
+                   }
+                   anotherInterop { /* ... */ }
+               }
+           }
+
+           binaries.all {
+               // Linker options required to link against the library.
+               linkerOpts "-L/path/to/library/binaries", "-lbinaryname"
+           }
+       }
+    }
+    
+    ```
+    </tab>
+    <tab title="Kotlin">
+    
+    ```Kotlin
+    kotlin {
+       iosX64() {
+           compilations.getByName("main") {
+               val DateTools by cinterops.creating {
                    // Path to .def file
                    defFile("src/nativeInterop/cinterop/DateTools.def")
-                  
+     
                    // Directories for header search (an analogue of the -I<path> compiler option)
                    includeDirs("include/this/directory", "path/to/another/directory")
                }
-
-               anotherInterop { /* ... */ }
+               val anotherInterop by cinterops.creating { /* ... */ }
            }
-       }
-
-       binaries.all {
-           // Linker options required to link against the library.
-           linkerOpts "-L/path/to/library/binaries", "-lbinaryname"
-       }
-   }
-}
-
-```
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-kotlin {
-   iosX64() {
-       compilations.getByName("main") {
-           val DateTools by cinterops.creating {
-               // Path to .def file
-               defFile("src/nativeInterop/cinterop/DateTools.def")
-
-     
-               // Directories for header search (an analogue of the -I<path> compiler option)
-               includeDirs("include/this/directory", "path/to/another/directory")
-           }
-
-           val anotherInterop by cinterops.creating { /* ... */ }
-       }
       
-       binaries.all {
-           // Linker options required to link against the library.
-           linkerOpts("-L/path/to/library/binaries", "-lbinaryname")
+           binaries.all {
+               // Linker options required to link against the library.
+               linkerOpts("-L/path/to/library/binaries", "-lbinaryname")
+           }
        }
-   }
-}
+    }
 
-```
+    ```
          
-</tab>
-</tabs>
-</step>
+    </tab>
+    </tabs>
 
-<step>Build the project.</step>
+7. Build the project.
 
-<p>
 Now you can use this dependency from Kotlin code. To do that, import the package you’ve set up in the `package` property in the `.def` file. For the example above, that would be:
-```
+```kotlin
 import DateTools.*
 ```
-</p>
-</procedure>
 
-<procedure title="To add a framework without CocoaPods:">
+#### Add a framework without CocoaPods:
 
-<step>
-Download the framework source code and place it somewhere where you can reference it from your project.
-</step>
+1. Download the framework source code and place it somewhere where you can reference it from your project.
 
-<step>
-Build the framework (framework authors usually provide a guide on how to do it), and get a path to the binaries.
-</step>
+2. Build the framework (framework authors usually provide a guide on how to do it), and get a path to the binaries.
 
-<step>
-In your project, create a `.def` file, for example `MyFramework.def`.
-</step>
+3. In your project, create a `.def` file, for example `MyFramework.def`.
 
-<step>
-Add a first string to this file: `language = Objective-C`. If you want to use a pure C dependency, omit language property.
-</step>
+4. Add a first string to this file: `language = Objective-C`. If you want to use a pure C dependency, omit language property.
 
-<step>
-Provide values for two mandatory fields:
-* `modules` – the name of the framework that should be processed by the cinterop.
-* `package` – the name of the package these declarations should be put into.
-Example:
-```
-modules = MyFramework
-package = MyFramework
-```
-</step>
+5. Provide values for two mandatory fields:
+    * `modules` – the name of the framework that should be processed by the cinterop.
+    * `package` – the name of the package these declarations should be put into.
+    Example:
+    ```properties
+    modules = MyFramework
+    package = MyFramework
+    ```
 
-<step>
-Add information about interoperability with the framework to the build script:
-* Pass the path to the .def file. This path can be omitted if your `.def` file has the same name as cinterop and it is placed in the folder `src/nativeInterop/cinterop/`.
-* Pass the framework name to the compiler and linker using the `-framework` option.
-Pass the path to the framework sources and binaries to the compiler and linker using the `-F` option.
+6. Add information about interoperability with the framework to the build script:
+    * Pass the path to the .def file. This path can be omitted if your `.def` file has the same name as cinterop and it is placed in the folder `src/nativeInterop/cinterop/`.
+    * Pass the framework name to the compiler and linker using the `-framework` option.
+    Pass the path to the framework sources and binaries to the compiler and linker using the `-F` option.
 
-<tabs>
-<tab title="Groovy">
+    <tabs>
+    <tab title="Groovy">
     
-```Groovy
-kotlin {
-   iosX64 {
-       compilations.main {
-           cinterops {
-               DateTools {
-                   // Path to .def file
-                   defFile("src/nativeInterop/cinterop/MyFramework.def")
+    ```Groovy
+    kotlin {
+       iosX64 {
+           compilations.main {
+               cinterops {
+                   DateTools {
+                       // Path to .def file
+                       defFile("src/nativeInterop/cinterop/MyFramework.def")
                   
-                   compilerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+                       compilerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+                   }
+                   anotherInterop { /* ... */ }
                }
-
-               anotherInterop { /* ... */ }
+           }
+      
+           binaries.all {
+               // Tell the linker where the framework is located.
+               linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
            }
        }
-      
-       binaries.all {
-           // Tell the linker where the framework is located.
-           linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
-       }
-   }
-}
+    }
 
-```
-</tab>
-<tab title="Kotlin">
+    ```
+    </tab>
+    <tab title="Kotlin">
     
-```Kotlin
-kotlin {
-   iosX64() {
-       compilations.getByName("main") {
-           val DateTools by cinterops.creating {
-               // Path to .def file
-               defFile("src/nativeInterop/cinterop/DateTools.def")
+    ```Kotlin
+    kotlin {
+       iosX64() {
+           compilations.getByName("main") {
+               val DateTools by cinterops.creating {
+                   // Path to .def file
+                   defFile("src/nativeInterop/cinterop/DateTools.def")
 
-               compilerOpts("-framework", "MyFramework", "-F/path/to/framework/"
+                   compilerOpts("-framework", "MyFramework", "-F/path/to/framework/"
+               }
+               val anotherInterop by cinterops.creating { /* ... */ }
            }
-
-           val anotherInterop by cinterops.creating { /* ... */ }
-       }
       
-       binaries.all {
-           // Tell the linker where the framework is located.
-           linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+           binaries.all {
+               // Tell the linker where the framework is located.
+               linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+           }
        }
-   }
-}
+    }
 
-```
+    ```
          
-</tab>
-</tabs>
-</step>
+    </tab>
+    </tabs>
 
-<step>Build the project.</step>
+7. Build the project.
 
-<p>
 Now you can use this dependency from Kotlin code. To do that, import the package you’ve set up in the package property in the `.def` file. For the example above, that would be:
-```
+```kotlin
 import MyFramework.*
 ```
-</p>
-</procedure>
 
-[More information about cinterop](https://kotlinlang.org/docs/reference/native/c_interop.html)
+[More information about Objective-C and Swift interop](https://kotlinlang.org/docs/reference/native/objc_interop.html)
 
-[More information about configuring cinterop from Gradle](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#building-final-native-binaries)
+[More information about configuring cinterop from Gradle](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#native-targets)
 
 
 ## Android dependencies
@@ -311,11 +314,9 @@ Putting dependencies into standalone dependencies block at the end of the script
 
 ## Multiplatform libraries
 
-TODO: Check after 1.4. Stdlib by default might not be implemented it time, need to re-check coroutines added to common source set only, take a close look at SQLDelight migration, update versions, move to ios preset
+In addition to dependencies specific to iOS and Android ecosystems, some libraries have also adopted the Kotlin Multiplatform technology. Such dependencies can be used from different targets and often even from common code. Examples of multiplatform libraries are [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) or [SQLDelight](https://github.com/cashapp/sqldelight). Library authors usually provide guides for adding their dependency to the project. On this page we will cover some basic cases you are likely to run into while working on multiplatform projects.
 
-In addition to dependencies specific to iOS and Android ecosystems, some libraries have also adopted the Kotlin Multiplatform technology. Such dependencies can be used from different targets and often even from common code. Examples of multiplatform libraries are [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) or[SQLDelight](https://github.com/cashapp/sqldelight). Library authors usually provide guides for adding their dependency to the project. On this page we will cover some basic cases you are likely to run into while working on multiplatform projects.
-
-* Kotlin standard library is added by default to all multiplatform projects, you don’t have to do anything manually.
+* Kotlin standard library is added automatically to all multiplatform projects, you don’t have to do anything manually.
 
 * If you want to use a library from all source sets you can add it only to the common source set. Multiplatform plugin will add corresponding parts to any other source sets automatically.
 
@@ -327,7 +328,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
+                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
             }
         }
         androidMain {
@@ -345,7 +346,7 @@ kotlin {
 ```Kotlin
 kotlin {
     sourceSets["commonMain"].dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
     }
     sourceSets["androidMain"].dependencies {
         //dependency to platform part of kotlinx.coroutines will be added automatically
@@ -355,7 +356,7 @@ kotlin {
 </tab>
 </tabs>
 
-* If you want to use multiplatform library only for specific source sets, you can add it to those only. Library declarations will be available only in those source sets. Please note that you might need to use some platform-specific artefact in such cases (like SQLDelight `native-driver`in the example below). Exact name of the artefact you’ll need should be provided in library documentation.
+* If you want to use multiplatform library only for specific source sets, you can add it to those only. Library declarations will be available only in those source sets. Please note that you might need to use some platform-specific artefact in such cases (like SQLDelight `native-driver` in the example below). Exact name of the artefact you’ll need should be provided in library documentation.
 
 <tabs>
 <tab title="Groovy">
@@ -366,16 +367,16 @@ kotlin {
         commonMain {
             dependencies { 
             // kotlinx.coroutines will be available in all source sets
-            implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
+            implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
             }
         }
         androidMain {
             dependencies { }
         }
-        iosX64Main {
+        iosMain {
             dependencies {
             // SQLDelight will be available only in iOS source set, but not in android or common
-            implementation 'com.squareup.sqldelight:native-driver:1.3.0'
+            implementation 'com.squareup.sqldelight:native-driver:%sqlDelightVersion%'
             }
         }
     }
@@ -389,13 +390,13 @@ kotlin {
 kotlin {
     sourceSets["commonMain"].dependencies {
         //kotlinx.coroutines will be available in all source sets
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
     }
     sourceSets["androidMain"].dependencies {
     }
     sourceSets["iosX64Main"].dependencies {
         //SQLDelight will be available only in iOS source set, but not in android or common
-        implementation("com.squareup.sqldelight:native-driver:1.3.0)
+        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%)
     }
 }
 ```
@@ -440,8 +441,6 @@ kotlin {
 </tab>
 </tabs>
 
-// TODO: add link to DSL reference
-[More information about configuring dependencies in gradle build script]
+[More information about Multiplatform Gradle DSL for configuring dependencies](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#dependencies)
 
-// TODO: add link to page with libraries
-[Kotlin Multiplatform libraries list]
+[Community-driven list of Kotlin Multiplatform libraries](https://libs.kmp.icerock.dev/)
