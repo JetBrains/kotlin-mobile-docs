@@ -37,11 +37,11 @@ You can run your multiplatform application on [Android](#run-your-application-on
     
     ![First mobile multiplatform app on Android](first-kmm-on-android-1.png){width=300}
 
-#### Run on a different simulated device
+#### Run on a different Android simulated device
 
 Learn how to [configure the Android Emulator and run your application on a different simulated device](https://developer.android.com/studio/run/emulator#runningapp).
     
-#### Run on a hardware device
+#### Run on a hardware Android device
 
 Learn how to [configure and connect a hardware device, and run your application on it](https://developer.android.com/studio/run/device).
 
@@ -53,7 +53,7 @@ Learn how to [configure and connect a hardware device, and run your application 
     
     ![First mobile multiplatform app on Android](first-kmm-on-ios-1.png){width=300}
 
-#### Run on a different simulated device
+#### Run on a different iPhone simulated device
 
 If you want to run your application on another simulated device, you can add a new run configuraion.
 
@@ -73,10 +73,10 @@ If you want to run your application on another simulated device, you can add a n
     
 6. Click **Run** to run your application on the new simulated device.
     
-#### Run on a hardware device
+#### Run on a real iPhone device
 
 1. [Connect a real iPhone device to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device).
-2. [Create a run configuration](#run-on-a-different-ios-simulator) by selecting iPhone in the **Execution target** list.
+2. [Create a run configuration](#run-on-a-different-iphone-simulated-device) by selecting iPhone in the **Execution target** list.
 3. Click **Run** to run your application on the iPhone device.
 
 > If your build fails, follow a workaround in [this issue](https://youtrack.jetbrains.com/issue/KT-40907).
