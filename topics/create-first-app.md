@@ -27,7 +27,7 @@ You can [discover what your project includes](discover-kmm-project.md) and how y
     
 ## Run your application 
 
-You can run your multiplatform application on Android and iOS.
+You can run your multiplatform application on [Android](#run-your-application-on-android) and [iOS](#run-your-application-on-ios).
 
 ### Run your application on Android
 
