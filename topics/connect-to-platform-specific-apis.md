@@ -24,52 +24,18 @@ declarations marked with the `actual` keyword in all platform modules. The IDE p
 For simplicity, the following examples use the intuitive target names iOS and Android. However, in your Gradle build files, 
 you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#supported-platforms).
 
-* [Get the current time in milliseconds](#example-get-the-current-time-in-milliseconds)
 * [Generate a UUID](#example-generate-a-uuid)
 * [Send and receive messages from a WebSocket](#example-send-and-receive-messages-from-a-websocket)
 
-### Example: Get the current time in milliseconds
-
-Let’s assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to get the current time in milliseconds.
-
-![Expect/actual declarations for getting the timestamp](expect-actual-example.png){width=700}
-
-For this purpose, declare the expected function `getTimestamp()` with the `expect` keyword in the common module. 
-Don’t include any implementation code.
-
-```Kotlin
-expect fun getTimestamp(): Long
-```
-
-In each platform-specific module (iOS and Android), provide actual implementation for the  `getTimestamp()` function 
-expected in the common module. Use the `actual` keyword to mark the actual implementation.
-
-The following examples show the implementation of this for Android and iOS. 
-Platform-specific code uses the actual keyword and the expected name for the function.
-
-<tabs>
-<tab title="Android">
-    
-```Kotlin
-actual fun getTimestamp(): Long = System.currentTimeMillis()
-```
-        
-</tab>
-<tab title="iOS">
-    
-```Kotlin
-import kotlin.system.getTimeMillis
-
-actual fun getTimestamp(): Long = getTimeMillis()
- ```
-         
-</tab>
-</tabs>
-
 ### Example: Generate a UUID
 
-Now assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to 
+Let's assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to 
 generate a universally unique identifier (UUID).
+
+
+[//]: # "TODO: Update picture"
+
+![Expect/actual declarations for getting the UUID](expect-actual-example.png){width=700}
 
 For this purpose, declare the expected function `randomUUID()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
@@ -80,7 +46,9 @@ expect fun randomUUID(): String
 
 In each platform-specific module (iOS and Android), provide the actual implementation for the function `randomUUID()` 
 expected in the common module. Use the `actual` keyword to mark the actual implementation. 
-The following examples show the implementation of this for Android and iOS.
+
+The following examples show the implementation of this for Android and iOS. 
+Platform-specific code uses the actual keyword and the expected name for the function.
 
 <tabs>
 <tab title="Android">
