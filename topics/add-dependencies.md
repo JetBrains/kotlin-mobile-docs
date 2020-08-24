@@ -16,6 +16,12 @@ TODO: fix current draft and add after 1.4 release
 ### Without CocoaPods
 
 TODO: Check that interop can be configured for ios preset after 1.4 and use it instead of iosX6
+> In Kotlin %kotlinVersion% configuring cinterop dependency for common ios() preset is not yet supported. 
+> You should configure cinterops per platform source sets: iOSX64 or iOS
+> 
+>
+{type=”note”}
+
 
 If you don’t want to use CocoaPods, you can use the cinterop tool to create Kotlin bindings for Objective-C or Swift declarations. With such declarations, you will be able to call them from Kotlin code. You’ll need to:
 * Download your dependency.
