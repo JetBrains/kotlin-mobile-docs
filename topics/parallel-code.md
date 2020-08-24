@@ -15,10 +15,11 @@ Coroutines are light-weight threads that allow you to write asynchronous non-blo
 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines) library with a number of high-level coroutine-enabled primitives.
 
 The current version of `kotlinx.coroutines`, which can be used for iOS, supports usage only in a single thread. 
-You cannot send work to other threads by changing a [dispatcher](#dispatcher-for-changing-threads). For Kotlin %kotlinVersion%, the 
-official version is `%coroutinesVersion%`.
+You cannot send work to other threads by changing a [dispatcher](#dispatcher-for-changing-threads).
 
-You can suspend execution and do work on other threads while using a different mechanism for scheduling  
+For Kotlin %kotlinVersion%, the official version is `%coroutinesVersion%`.
+
+You can suspend execution and do work on other threads while using a different mechanism for scheduling 
 and managing that work. However, this version of `kotlinx.coroutines` cannot change threads on its own.
 
 There is also [another version of `kotlinx.coroutines`](#multithreaded-coroutines) that provides support for multiple threads.
@@ -67,7 +68,7 @@ suspend fun differentThread() = withContext(Dispatchers.Default){
 the dispatcher. Learn more about [coroutine context and dispatchers](https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html).
 
 To perform work on a different thread, specify a different dispatcher and a code block to execute. In general, 
-switching dispatchers and threads works similar to JVM, but there are differences related to freezing
+switching dispatchers and threads works similar to JVM, but there are differences related to frozen
 captured and returned data.
 
 ### Frozen captured data
@@ -141,6 +142,7 @@ A [special branch](https://github.com/Kotlin/kotlinx.coroutines/tree/native-mt) 
 provides support for using multiple threads. It is a separate branch for the reasons listed in the [future concurrency model blog post](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/). 
 
 However, you can still use the multithreaded version of `kotlinx.coroutines` in production taking into account its specifics. 
+
 The current version for Kotlin %kotlinVersion% is `%coroutinesVersion%-native-mt`. 
 
 To use the multithreaded version, add a dependency for the `commonMain` source set in `build.gradle.kts`:
@@ -187,7 +189,12 @@ See [this example](https://github.com/touchlab/KaMPKit/blob/master/shared/src/io
 
 ## Alternatives to `kotlinx-coroutines`
 
-There are a few alternatives ways to run parallel code.
+There are a few alternatives ways to run parallel code:
+
+* [CoroutineWorker](#coroutineworker)
+* [Reaktive](#reaktive)
+* [Custom processor](#custom-processor)
+* [Platform concurrency](#platform-concurrency)
 
 ### CoroutineWorker
 
