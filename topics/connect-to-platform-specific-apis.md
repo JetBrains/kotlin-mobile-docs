@@ -82,18 +82,18 @@ In the common module, declare the expected class `PlatformSocket()` with the `ex
 ```kotlin
 //Common
 internal expect class PlatformSocket(
-   url: String
+        url: String
 ) {
-   fun openSocket(listener: PlatformSocketListener)
-   fun closeSocket(code: Int, reason: String)
-   fun sendMessage(msg: String)
+    fun openSocket(listener: PlatformSocketListener)
+    fun closeSocket(code: Int, reason: String)
+    fun sendMessage(msg: String)
 }
 interface PlatformSocketListener {
-   fun onOpen()
-   fun onFailure(t: Throwable)
-   fun onMessage(msg: String)
-   fun onClosing(code: Int, reason: String)
-   fun onClosed(code: Int, reason: String)
+    fun onOpen()
+    fun onFailure(t: Throwable)
+    fun onMessage(msg: String)
+    fun onClosing(code: Int, reason: String)
+    fun onClosed(code: Int, reason: String)
 }
 ```
 
@@ -110,29 +110,29 @@ import okhttp3.Response
 import okhttp3.WebSocket
 
 internal actual class PlatformSocket actual constructor(url: String) {
-   private val socketEndpoint = url
-   private var webSocket: WebSocket? = null
-   actual fun openSocket(listener: PlatformSocketListener) {
-       val socketRequest = Request.Builder().url(socketEndpoint).build()
-       val webClient = OkHttpClient().newBuilder().build()
-       webSocket = webClient.newWebSocket(
-           socketRequest,
-           object : okhttp3.WebSocketListener() {
-               override fun onOpen(webSocket: WebSocket, response: Response) = listener.onOpen()
-               override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) = listener.onFailure(t)
-               override fun onMessage(webSocket: WebSocket, text: String) = listener.onMessage(text)
-               override fun onClosing(webSocket: WebSocket, code: Int, reason: String) = listener.onClosing(code, reason)
-               override fun onClosed(webSocket: WebSocket, code: Int, reason: String) = listener.onClosed(code, reason)
-           }
-       )
-   }
-   actual fun closeSocket(code: Int, reason: String) {
-       webSocket?.close(code, reason)
-       webSocket = null
-   }
-   actual fun sendMessage(msg: String) {
-       webSocket?.send(msg)
-   }
+    private val socketEndpoint = url
+    private var webSocket: WebSocket? = null
+    actual fun openSocket(listener: PlatformSocketListener) {
+        val socketRequest = Request.Builder().url(socketEndpoint).build()
+        val webClient = OkHttpClient().newBuilder().build()
+        webSocket = webClient.newWebSocket(
+                socketRequest,
+                object : okhttp3.WebSocketListener() {
+                    override fun onOpen(webSocket: WebSocket, response: Response) = listener.onOpen()
+                    override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) = listener.onFailure(t)
+                    override fun onMessage(webSocket: WebSocket, text: String) = listener.onMessage(text)
+                    override fun onClosing(webSocket: WebSocket, code: Int, reason: String) = listener.onClosing(code, reason)
+                    override fun onClosed(webSocket: WebSocket, code: Int, reason: String) = listener.onClosed(code, reason)
+                }
+        )
+    }
+    actual fun closeSocket(code: Int, reason: String) {
+        webSocket?.close(code, reason)
+        webSocket = null
+    }
+    actual fun sendMessage(msg: String) {
+        webSocket?.send(msg)
+    }
 }
 ```
 
@@ -142,57 +142,57 @@ import platform.Foundation.*
 import platform.darwin.NSObject
 
 internal actual class PlatformSocket actual constructor(url: String) {
-   private val socketEndpoint = NSURL.URLWithString(url)!!
-   private var webSocket: NSURLSessionWebSocketTask? = null
-   actual fun openSocket(listener: PlatformSocketListener) {
-       val urlSession = NSURLSession.sessionWithConfiguration(
-           configuration = NSURLSessionConfiguration.defaultSessionConfiguration(),
-           delegate = object : NSObject(), NSURLSessionWebSocketDelegateProtocol {
-               override fun URLSession(
-                   session: NSURLSession,
-                   webSocketTask: NSURLSessionWebSocketTask,
-                   didOpenWithProtocol: String?
-               ) {
-                   listener.onOpen()
-               }
-               override fun URLSession(
-                   session: NSURLSession,
-                   webSocketTask: NSURLSessionWebSocketTask,
-                   didCloseWithCode: NSURLSessionWebSocketCloseCode,
-                   reason: NSData?
-               ) {
-                   listener.onClosed(didCloseWithCode.toInt(), reason.toString())
-               }
-           },
-           delegateQueue = NSOperationQueue.currentQueue()
-       )
-       webSocket = urlSession.webSocketTaskWithURL(socketEndpoint)
-       listenMessages(listener)
-       webSocket?.resume()
-   }
-   private fun listenMessages(listener: PlatformSocketListener) {
-       webSocket?.receiveMessageWithCompletionHandler { message, nsError ->
-           when {
-               nsError != null -> {
-                   listener.onFailure(Throwable(nsError.description))
-               }
-               message != null -> {
-                   message.string?.let { listener.onMessage(it) }
-               }
-           }
-           listenMessages(listener)
-       }
-   }
-   actual fun closeSocket(code: Int, reason: String) {
-       webSocket?.cancelWithCloseCode(code.toLong(), null)
-       webSocket = null
-   }
-   actual fun sendMessage(msg: String) {
-       val message = NSURLSessionWebSocketMessage(msg)
-       webSocket?.sendMessage(message) { err ->
-           err?.let { println("send $msg error: $it") }
-       }
-   }
+    private val socketEndpoint = NSURL.URLWithString(url)!!
+    private var webSocket: NSURLSessionWebSocketTask? = null
+    actual fun openSocket(listener: PlatformSocketListener) {
+        val urlSession = NSURLSession.sessionWithConfiguration(
+                configuration = NSURLSessionConfiguration.defaultSessionConfiguration(),
+                delegate = object : NSObject(), NSURLSessionWebSocketDelegateProtocol {
+                    override fun URLSession(
+                            session: NSURLSession,
+                            webSocketTask: NSURLSessionWebSocketTask,
+                            didOpenWithProtocol: String?
+                    ) {
+                        listener.onOpen()
+                    }
+                    override fun URLSession(
+                            session: NSURLSession,
+                            webSocketTask: NSURLSessionWebSocketTask,
+                            didCloseWithCode: NSURLSessionWebSocketCloseCode,
+                            reason: NSData?
+                    ) {
+                        listener.onClosed(didCloseWithCode.toInt(), reason.toString())
+                    }
+                },
+                delegateQueue = NSOperationQueue.currentQueue()
+        )
+        webSocket = urlSession.webSocketTaskWithURL(socketEndpoint)
+        listenMessages(listener)
+        webSocket?.resume()
+    }
+    private fun listenMessages(listener: PlatformSocketListener) {
+        webSocket?.receiveMessageWithCompletionHandler { message, nsError ->
+            when {
+                nsError != null -> {
+                    listener.onFailure(Throwable(nsError.description))
+                }
+                message != null -> {
+                    message.string?.let { listener.onMessage(it) }
+                }
+            }
+            listenMessages(listener)
+        }
+    }
+    actual fun closeSocket(code: Int, reason: String) {
+        webSocket?.cancelWithCloseCode(code.toLong(), null)
+        webSocket = null
+    }
+    actual fun sendMessage(msg: String) {
+        val message = NSURLSessionWebSocketMessage(msg)
+        webSocket?.sendMessage(message) { err ->
+            err?.let { println("send $msg error: $it") }
+        }
+    }
 }
  ```
 
@@ -201,61 +201,61 @@ And here is the common logic in the common module that uses the platform-specifi
 ```kotlin
 //Common
 class AppSocket(url: String) {
-   private val ws = PlatformSocket(url)
-   var socketError: Throwable? = null
-       private set
-   var currentState: State = State.CLOSED
-       private set(value) {
-           field = value
-           stateListener?.invoke(value)
-       }
-   var stateListener: ((State) -> Unit)? = null
-       set(value) {
-           field = value
-           value?.invoke(currentState)
-       }
-   var messageListener: ((msg: String) -> Unit)? = null
-   fun connect() {
-       if (currentState != State.CLOSED) {
-           throw IllegalStateException("The socket is available.")
-       }
-       socketError = null
-       currentState = State.CONNECTING
-       ws.openSocket(socketListener)
-   }
-   fun disconnect() {
-       if (currentState != State.CLOSED) {
-           currentState = State.CLOSING
-           ws.closeSocket(1000, "The user has closed the connection.")
-       }
-   }
-   fun send(msg: String) {
-       if (currentState != State.CONNECTED) throw IllegalStateException("The connection is lost.")
-       ws.sendMessage(msg)
-   }
-   private val socketListener = object : PlatformSocketListener {
-       override fun onOpen() {
-           currentState = State.CONNECTED
-       }
-       override fun onFailure(t: Throwable) {
-           socketError = t
-           currentState = State.CLOSED
-       }
-       override fun onMessage(msg: String) {
-           messageListener?.invoke(msg)
-       }
-       override fun onClosing(code: Int, reason: String) {
-           currentState = State.CLOSING
-       }
-       override fun onClosed(code: Int, reason: String) {
-           currentState = State.CLOSED
-       }
-   }
-   enum class State {
-       CONNECTING,
-       CONNECTED,
-       CLOSING,
-       CLOSED
-   }
+    private val ws = PlatformSocket(url)
+    var socketError: Throwable? = null
+        private set
+    var currentState: State = State.CLOSED
+        private set(value) {
+            field = value
+            stateListener?.invoke(value)
+        }
+    var stateListener: ((State) -> Unit)? = null
+        set(value) {
+            field = value
+            value?.invoke(currentState)
+        }
+    var messageListener: ((msg: String) -> Unit)? = null
+    fun connect() {
+        if (currentState != State.CLOSED) {
+            throw IllegalStateException("The socket is available.")
+        }
+        socketError = null
+        currentState = State.CONNECTING
+        ws.openSocket(socketListener)
+    }
+    fun disconnect() {
+        if (currentState != State.CLOSED) {
+            currentState = State.CLOSING
+            ws.closeSocket(1000, "The user has closed the connection.")
+        }
+    }
+    fun send(msg: String) {
+        if (currentState != State.CONNECTED) throw IllegalStateException("The connection is lost.")
+        ws.sendMessage(msg)
+    }
+    private val socketListener = object : PlatformSocketListener {
+        override fun onOpen() {
+            currentState = State.CONNECTED
+        }
+        override fun onFailure(t: Throwable) {
+            socketError = t
+            currentState = State.CLOSED
+        }
+        override fun onMessage(msg: String) {
+            messageListener?.invoke(msg)
+        }
+        override fun onClosing(code: Int, reason: String) {
+            currentState = State.CLOSING
+        }
+        override fun onClosed(code: Int, reason: String) {
+            currentState = State.CLOSED
+        }
+    }
+    enum class State {
+        CONNECTING,
+        CONNECTED,
+        CLOSING,
+        CLOSED
+    }
 }
 ```
