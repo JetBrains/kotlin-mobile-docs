@@ -3,7 +3,7 @@
         SYSTEM "http://helpserver.labs.intellij.net/help/product-profile.dtd">
 
 <product-profile id="kmd"
-                 name="Kotlin Mobile Docs"
+                 name="Kotlin Multiplatform Mobile Docs"
                  start-page="home.md"
                  status="eap">
 
