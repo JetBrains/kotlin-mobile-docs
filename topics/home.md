@@ -8,7 +8,7 @@
 
 ### Popular docs
 
-* [Discover KMM project](discover-kmm-project.md)
+* [Discover your KMM project](discover-kmm-project.md)
 * [Connect to platform-specific APIs](connect-to-platform-specific-apis.md)
 * [Use Ktor for networking](use-ktor-for-networking.md)
 * [Configure SQLDelight for data storage](configure-sqldelight-for-data-storage.md)
