@@ -1,7 +1,7 @@
 [//]: # (title: Create your first multiplatform application)
 [//]: # (auxiliary-id: Create_your_first_multiplatform_application)
 
-Now that you've [set up an environment for KMM development](setup.md), it's time to create your first application.
+Now that you've [set up an environment for KMM development](setup.md), it's time to create your first KMM application.
 
 1. In Android Studio, select **File** | **New** | **New Project**.
 2. Select **KMM Application** in the list of project templates, and click **Next**.  
@@ -37,12 +37,14 @@ You can run your multiplatform application on Android and iOS.
     
     ![First mobile multiplatform app on Android](first-kmm-on-android-1.png){width=300}
 
-#### Run on a different Android simulator
+#### Run on a different simulated device
 
-* In the list of Android simulators, select a simulator you want to use, and click **Run**.
-
-    ![Run Android application on a different simulator](android-new-simulator.png){width=350}
+Learn how to [configure the Android Emulator and run your application on a different simulated device](https://developer.android.com/studio/run/emulator#runningapp).
     
+#### Run on a hardware device
+
+Learn how to [configure and connect a hardware device, and run your application on it](https://developer.android.com/studio/run/device).
+
 ### Run your application on iOS
 
 * In the list of run configurations, select **iosApp**, and click **Run**.  
@@ -51,10 +53,9 @@ You can run your multiplatform application on Android and iOS.
     
     ![First mobile multiplatform app on Android](first-kmm-on-ios-1.png){width=300}
 
-#### Run on a different iOS simulator
+#### Run on a different simulated device
 
-By default, your iOS application runs in an iPhone 11 simulator. If you want to run it on a different simulator, you can add a 
-new run configuraion.
+If you want to run your application on another simulated device, you can add a new run configuraion.
 
 1. In the list of run configurations, click **Edit Configurations**.
 
@@ -66,16 +67,17 @@ new run configuraion.
 
 4. Name your configuration.
 
-5. Select the simulator in the **Execution target** list, and then click **OK**.
+5. Select a simulated device in the **Execution target** list, and then click **OK**.
 
     ![New run configuration with iOS simulator](ios-new-simulator.png)
     
-6. Click **Run** to run your application on the new simulator.
+6. Click **Run** to run your application on the new simulated device.
     
-#### Run on a real device
+#### Run on a hardware device
 
-If you want to run your iOS application on a real iPhone, [connect it to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device), 
- [create a run configuration](#run-on-a-different-ios-simulator) for it, and run your application.
+1. [Connect a real iPhone device to Xcode](https://developer.apple.com/documentation/xcode/running_your_app_in_the_simulator_or_on_a_device).
+2. [Create a run configuration](#run-on-a-different-ios-simulator) by selecting iPhone in the **Execution target** list.
+3. Click **Run** to run your application on the iPhone device.
 
 > If your build fails, follow a workaround in [this issue](https://youtrack.jetbrains.com/issue/KT-40907).
 >
@@ -138,3 +140,10 @@ For Android, follow a procedure that is very similar to the one for running test
     As you see, the tests fail. Update the tests to pass. You know how to do this, right? ;)
     
     ![iOS test failed](ios-test-failed.png)
+    
+## Next steps
+
+Once you've played with your first KMM application, you can:
+
+* [Integrate KMM into an existing app](integrate-in-existing-app.md)
+* [Complete a hands-on tutorial on networking and data storage](hands-on-networking-data-storage.md)
