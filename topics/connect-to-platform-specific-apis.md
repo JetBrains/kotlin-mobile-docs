@@ -2,27 +2,30 @@
 [//]: # (auxiliary-id: Connect_to_Platform-Specific_APIs)
 
 If you’re developing mobile applications for different platforms with Kotlin Multiplatform Mobile and need to access 
-platform-specific APIs that implement required functionality (for example, getting the current timestamp), 
-you can use the Kotlin mechanism of [expected and actual declarations](https://kotlinlang.org/docs/reference/platform-specific-declarations.html).
+platform-specific APIs that implement required functionality (for example, generating a UUID), 
+you can use the Kotlin mechanism of [expected and actual declarations](https://kotlinlang.org/docs/reference/mpp-connect-to-apis.html).
 
 With this mechanism, a common module defines an _expected declaration_, and platform modules must provide _actual declarations_ 
-that correspond to the expected one. This works for most Kotlin declarations, such as functions, classes, interfaces, enums, properties, and annotations.
+that correspond to the expected one. This works for most Kotlin declarations, such as functions, classes, interfaces, enums, 
+properties, and annotations.
 
 ![Expect/actual declarations in common and platform-specific modules](expect-actual-general.png){width=700}
 
 The compiler ensures that every declaration marked with the `expect` keyword in the common module has the corresponding 
 declarations marked with the `actual` keyword in all platform modules. The IDE provides tools that help you create the missing actual declarations.
 
->We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific dependencies. It is better to implement all possible functionality in the common module even if doing so takes more time.
+>We recommend that you use expected and actual declarations only for Kotlin declarations that have platform-specific 
+> dependencies. It is better to implement all possible functionality in the common module even if doing so takes more time.
 >    
->Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more flexible and easier to test.
+>Don’t overuse expected and actual declarations – in some cases, an interface may be a better choice because it is more 
+>flexible and easier to test.
 >
 {type="note"}
 
 ## Examples
 
 For simplicity, the following examples use the intuitive target names iOS and Android. However, in your Gradle build files, 
-you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#supported-platforms).
+you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/reference/mpp-supported-platforms.html).
 
 * [Generate a UUID](#example-generate-a-uuid)
 * [Send and receive messages from a WebSocket](#example-send-and-receive-messages-from-a-websocket)
@@ -40,7 +43,8 @@ generate a universally unique identifier (UUID).
 For this purpose, declare the expected function `randomUUID()` with the `expect` keyword in the common module. 
 Don’t include any implementation code.
 
-```Kotlin
+```kotlin
+//Common
 expect fun randomUUID(): String
 ```
 
@@ -50,26 +54,19 @@ expected in the common module. Use the `actual` keyword to mark the actual imple
 The following examples show the implementation of this for Android and iOS. 
 Platform-specific code uses the actual keyword and the expected name for the function.
 
-<tabs>
-<tab title="Android">
-
-```Kotlin
+```kotlin
+//Android
 import java.util.*
 
 actual fun randomUUID() = UUID.randomUUID().toString()
 ```
 
-</tab>
-<tab title="iOS">
-
-```Kotlin
+```kotlin
+//iOS
 import platform.Foundation.NSUUID
         
 actual fun randomUUID(): String = NSUUID().UUIDString()
 ```
-
-</tab>
-</tabs>
 
 ### Example: Send and receive messages from a WebSocket
 
@@ -82,7 +79,8 @@ just add it once to the common module. However, the actual implementation of the
 
 In the common module, declare the expected class `PlatformSocket()` with the `expect` keyword. Don’t include any implementation code.
 
-```Kotlin
+```kotlin
+//Common
 internal expect class PlatformSocket(
    url: String
 ) {
@@ -104,10 +102,8 @@ expected in the common module. Use the `actual` keyword to mark the actual imple
 
 The following examples show the implementation of this for Android and iOS.
 
-<tabs>
-<tab title="Android">
-
-```Kotlin
+```kotlin
+//Android
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -140,10 +136,8 @@ internal actual class PlatformSocket actual constructor(url: String) {
 }
 ```
 
-</tab>
-<tab title="iOS">
-
-```Kotlin
+```kotlin
+//iOS
 import platform.Foundation.*
 import platform.darwin.NSObject
 
@@ -202,12 +196,10 @@ internal actual class PlatformSocket actual constructor(url: String) {
 }
  ```
 
-</tab>
-</tabs>
-
 And here is the common logic in the common module that uses the platform-specific class `PlatformSocket().`
 
-```Kotlin
+```kotlin
+//Common
 class AppSocket(url: String) {
    private val ws = PlatformSocket(url)
    var socketError: Throwable? = null
