@@ -5,7 +5,7 @@
 <product-profile id="kmd"
                  name="Kotlin Multiplatform Mobile Docs"
                  start-page="home.md"
-                 status="eap">
+                 status="stable">
 
     <toc-element id="home.md"/>
 

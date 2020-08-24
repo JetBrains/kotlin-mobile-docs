@@ -114,7 +114,7 @@ The shared module contains the code that is common for Android and iOS applicati
 * `androidMain` stores Android-specific parts, including `actual` implementations
 * `iosMain` stores iOS-specific parts, including `actual` implementations
 
-Each source set has its own dependencies. Kotlin standard library is added by default to all source sets, you don’t need to declare it in the build script.
+Each source set has its own dependencies. Kotlin standard library is added automatically to all source sets, you don’t need to declare it in the build script.
 
 <tabs>
 <tab title="Groovy">
@@ -471,7 +471,7 @@ dependencies {
 </tab>
 </tabs>
 
-Except this dependency, the Android application uses the Kotlin standard library (which is added by default) and some common Android dependencies:
+Except this dependency, the Android application uses the Kotlin standard library (which is added automatically) and some common Android dependencies:
 
 <tabs>
 <tab title="Groovy">
