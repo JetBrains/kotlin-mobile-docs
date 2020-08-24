@@ -1,9 +1,9 @@
-[//]: # (title: Discover KMM project)
-[//]: # (auxiliary-id: Discover_KMM_project)
+[//]: # (title: Discover your KMM project)
+[//]: # (auxiliary-id: Discover_your_KMM_project)
 
 The purpose of the Kotlin Multiplatform Mobile (_KMM_) technology is unifying the development of applications with common 
 logic for Android and iOS platforms. To make this possible, KMM uses a mobile-specific structure of
-[Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) projects.
+[Kotlin Multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) projects.
 On this page, we’ll describe the structure of a basic KMM project. Note that this structure isn’t the only
 possible way to organize a KMM project; however, we recommend it as a starting point.
 
@@ -31,7 +31,7 @@ They are linked together via the [Gradle multi-project mechanism](https://docs.g
 <tab title="Groovy">
     
 ```Groovy
-// gradle.settings
+// settings.gradle
 include ':shared'
 include ':androidApp'
 ```
@@ -40,7 +40,7 @@ include ':androidApp'
 <tab title="Kotlin">
     
 ```Kotlin
-// gradle.settings.kts
+// settings.gradle.kts
 include(":shared")
 include(":androidApp")
  ```
@@ -66,8 +66,8 @@ For more complex projects, you can add more modules into the root project by cre
 ## Shared module
 
 Shared module contains the core application logic used in both target platforms: classes, functions, and so on.
-This is a [Kotlin multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) module that that compiles
-into an Android library and an iOS framework. It uses Gradle with the Kotlin multiplatform plugin applied and 
+This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/mpp-intro.html) module that that compiles
+into an Android library and an iOS framework. It uses Gradle with the Kotlin Multiplatform plugin applied and 
 has targets for Android and iOS.
 
 <tabs>
@@ -75,13 +75,13 @@ has targets for Android and iOS.
     
 ```Groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '<version-placeholder>'
+    id 'org.jetbrains.kotlin.multiplatform' version '%kotlinVersion%'
     //..
 }
 
 kotlin {
     android()
-    iosX64()
+    ios()
 }
 ```
         
@@ -90,13 +90,13 @@ kotlin {
     
 ```Kotlin
 plugins {
-    kotlin("multiplatform") version "<version-placeholder>"
+    kotlin("multiplatform") version "%kotlinVersion%"
     // ..
 }
 
 kotlin {
     android()
-    iosX64()
+    ios()
 }
  ```
          
@@ -114,9 +114,7 @@ The shared module contains the code that is common for Android and iOS applicati
 * `androidMain` stores Android-specific parts, including `actual` implementations
 * `iosMain` stores iOS-specific parts, including `actual` implementations
 
-Each source set has its own dependencies. By default, these are dependencies to the Kotlin standard library and
-platform core libraries. Note that the iOS source set has an implicit dependency on the standard library:
-you don’t need to declare it in the build script.
+Each source set has its own dependencies. Kotlin standard library is added by default to all source sets, you don’t need to declare it in the build script.
 
 <tabs>
 <tab title="Groovy">
@@ -125,18 +123,13 @@ you don’t need to declare it in the build script.
 kotlin {
     sourceSets {
         commonMain {
-            dependencies {
-                implementation kotlin('stdlib-common')
-            }
         }
         androidMain {
             dependencies {
-                implementation kotlin('stdlib-jdk7')
                 implementation 'androidx.core:core-ktx:1.2.0'
             }
         }
         iosMain {
-             //stdlib is added by default for native platforms
         }
 
         // ...
@@ -150,20 +143,13 @@ kotlin {
 ```Kotlin
 kotlin {
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(kotlin("stdlib-common"))
-            }
-        }
+        val commonMain by getting
         val androidMain by getting {
             dependencies {
-                implementation(kotlin("stdlib-jdk7"))
                 implementation("androidx.core:core-ktx:1.2.0")
             }
         }
-        val iosMain by getting
-        //stdlib is added by default for native platforms
- 
+        val iosMain by getting 
         // ...
     }
 }
@@ -173,7 +159,7 @@ kotlin {
 </tabs>
 
 When you write your code, add the dependencies you need to the corresponding source sets.
-Read [Building Multiplatform Projects wih Gradle](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#adding-dependencies) for more information.
+Read [Multiplatform documentation on adding dependencies](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html) for more information.
 
 Along with `*Main` source sets, there are three matching test source sets:
 
@@ -232,9 +218,9 @@ kotlin {
 </tab>
 </tabs>
 
-The main and test source sets described above are default. The Kotlin multiplatform plugin generates them
+The main and test source sets described above are default. The Kotlin Multiplatform plugin generates them
 automatically upon target creation. In your project, you can add more source sets for specific purposes.
-For more information, see [Building Multiplatform Projects wih Gradle](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#configuring-source-sets).
+For more information, see [Multiplatform DSL reference](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#custom-source-sets).
 
 ### Android library
 
@@ -242,7 +228,7 @@ The configuration of the Android library produces from the shared module is typi
 To learn about Android libraries creation, see [Create an Android library](https://developer.android.com/studio/projects/android-library)
 in the Android developer documentation.
 
-To produce the Android library, two more Gradle plugins are used in addition to Kotlin multiplatform:
+To produce the Android library, two more Gradle plugins are used in addition to Kotlin Multiplatform:
 
 * Android library
 * Kotlin Android extensions
@@ -331,7 +317,7 @@ The framework configuration is stored in the `ios {}` block of the build script 
 It defines the output type `framework` and the string identifier `baseName` that is used to form the name
 of the output artifact. Its default value matches the Gradle module name. 
 For a real project, it’s likely that you’ll need a more complex configuration of the framework production.
-For details, see [Building Multiplatform Projects wih Gradle](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#building-final-native-binaries).
+For details, see [Multiplatform documentation](https://kotlinlang.org/docs/reference/mpp-build-native-binaries.html).
 
 <tabs>
 <tab title="Groovy">
@@ -339,7 +325,7 @@ For details, see [Building Multiplatform Projects wih Gradle](https://kotlinlang
 ```Groovy
 kotlin {
     // ...
-    iosX64() {
+    ios {
         binaries {
             framework {
                 baseName = 'shared'
@@ -355,7 +341,7 @@ kotlin {
 ```Kotlin
 kotlin {
     // ...
-    iosX64() {
+    ios {
         binaries {
             framework {
                 baseName = "shared"
@@ -441,7 +427,7 @@ The Android application part of a KMM project is a typical Android application w
 ```Groovy
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android' version '<version_placeholder>'
+    id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
 }
 ```
@@ -452,7 +438,7 @@ plugins {
 ```Kotlin
 plugins {
     id("com.android.application")
-    kotlin("android") version "<version_placeholder>"
+    kotlin("android")
     id("kotlin-android-extensions")
 } 
 ```
@@ -485,7 +471,7 @@ dependencies {
 </tab>
 </tabs>
 
-Except this dependency, the Android application uses the Kotlin standard library and some common Android dependencies:
+Except this dependency, the Android application uses the Kotlin standard library (which is added by default) and some common Android dependencies:
 
 <tabs>
 <tab title="Groovy">
@@ -496,7 +482,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7'
 }
 ```
         
@@ -509,7 +494,6 @@ dependencies {
     implementation("androidx.core:core-ktx:1.2.0")
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation(kotlin("stdlib-jdk7"))
 } 
 ```
          
@@ -569,7 +553,7 @@ To learn more, see the [Android developer documentation](https://developer.andro
 
 ## iOS application
 
-The iOS application is produced from an Xcode project generated automatically by the Project Wizard in the IntelliJ IDEA.
+The iOS application is produced from an Xcode project generated automatically by the Project Wizard.
 It resides in a separate directory within the root KMM project. This is a basic Xcode project configured to use the
 framework produced from the shared module.
 

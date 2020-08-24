@@ -13,5 +13,5 @@ We also recommend reading more about [Kotlin/Native concurrency main concepts](c
 ### Q: I already have a mobile app, and I’d like to make it Multiplatform! How do I do it?
 **A:** Our [guide](integrate-in-existing-app.md) on integrating KMM in existing projects would be a good place to start. It contains step-by-step migration guide along with answers to some common questions, such as “which part of my app should be shared between platforms and which part should remain native”.
 
-### Q: I don’t like to read documentation, I prefer digging through code. Do you have samples?*
+### Q: I don’t like to read documentation, I prefer digging through code. Do you have samples?
 **A:** Yes, [we do](samples.md). 
