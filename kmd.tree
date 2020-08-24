@@ -7,38 +7,38 @@
                  start-page="home.md"
                  status="eap">
 
-    <toc-element id="home.md" show-structure-depth="3"/>
+    <toc-element id="home.md"/>
 
     <toc-element toc-title="Getting started with KMM">
-        <toc-element id="getting-started-faq.md" show-structure-depth="3"/>
-        <toc-element id="setup.md" show-structure-depth="3"/>
-        <toc-element id="create-first-app.md" show-structure-depth="3"/>
-        <toc-element id="discover-kmm-project.md" show-structure-depth="3"/>
-        <toc-element id="integrate-in-existing-app.md" show-structure-depth="3"/>
-        <toc-element id="introduce-your-team-to-kmm.md" show-structure-depth="3"/>
+        <toc-element id="getting-started-faq.md"/>
+        <toc-element id="setup.md"/>
+        <toc-element id="create-first-app.md"/>
+        <toc-element id="discover-kmm-project.md"/>
+        <toc-element id="integrate-in-existing-app.md"/>
+        <toc-element id="introduce-your-team-to-kmm.md"/>
     </toc-element>
 
     <toc-element toc-title="Development">
-        <toc-element id="organize-process-around-kmm.md" show-structure-depth="3"/>
-        <toc-element id="connect-to-platform-specific-apis.md" show-structure-depth="3"/>
-        <toc-element id="configure-sqldelight-for-data-storage.md" show-structure-depth="3"/>
-        <toc-element id="use-ktor-for-networking.md" show-structure-depth="3"/>
-        <toc-element id="add-dependencies.md" show-structure-depth="3"/>
-        <toc-element id="publish-kmm-apps.md" show-structure-depth="3"/>
+        <toc-element id="organize-process-around-kmm.md"/>
+        <toc-element id="connect-to-platform-specific-apis.md"/>
+        <toc-element id="configure-sqldelight-for-data-storage.md"/>
+        <toc-element id="use-ktor-for-networking.md"/>
+        <toc-element id="add-dependencies.md"/>
+        <toc-element id="publish-kmm-apps.md"/>
         <toc-element toc-title="Work with concurrency">
-            <toc-element id="concurrency-overview.md" show-structure-depth="3"/>
-            <toc-element id="concurrent-mutability.md" show-structure-depth="3"/>
+            <toc-element id="concurrency-overview.md"/>
+            <toc-element id="concurrent-mutability.md"/>
             <toc-element id="concurrency-and-coroutines.md"/>
         </toc-element>
     </toc-element>
 
     <toc-element toc-title="Samples and tutorials">
-        <toc-element id="samples.md" show-structure-depth="3"/>
-        <toc-element id="hands-on-networking-data-storage.md" show-structure-depth="3"/>
+        <toc-element id="samples.md"/>
+        <toc-element id="hands-on-networking-data-storage.md"/>
     </toc-element>
 
-    <toc-element id="supported-platforms.md" show-structure-depth="3"/>
-    <toc-element id="kmm-evolution.md" show-structure-depth="3"/>
-    <toc-element id="security.md" show-structure-depth="3"/>
+    <toc-element id="supported-platforms.md"/>
+    <toc-element id="kmm-evolution.md"/>
+    <toc-element id="security.md"/>
 
 </product-profile>
