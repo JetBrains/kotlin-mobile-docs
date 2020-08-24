@@ -28,7 +28,7 @@
         <toc-element toc-title="Work with concurrency">
             <toc-element id="concurrency-overview.md" show-structure-depth="3"/>
             <toc-element id="concurrent-mutability.md" show-structure-depth="3"/>
-            <toc-element id="parallel-code.md"/>
+            <toc-element id="concurrency-and-coroutines.md"/>
         </toc-element>
     </toc-element>
 
