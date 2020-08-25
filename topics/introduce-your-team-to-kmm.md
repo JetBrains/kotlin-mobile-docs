@@ -39,7 +39,7 @@ The theory is good, but putting it into practice is ultimately most important. A
 
 The more relevant examples could be produced by experimenting with your current project. You could take one existing feature implemented in Koltin and make it cross-platform, or you could even create a new Multiplatform Module in your existing project, take one non-priority feature from the bottom of the backlog, and implement it in the shared module. The ["Integrate with existing app" tutorial](integrate-in-existing-app.md) explains what would be a good fit for a multiplatform abstraction and how to do it in detail.
 
-The new [Kotlin Multiplatform Mobile plugin for Android Studio](https://plugins.jetbrains.com/plugin/13881-mobile-multiplatform) will allow you to accomplish either of these tasks in the shortest amount of time by using the _New KMM Application_ or _New KMM Module_ wizards.
+The new [Kotlin Multiplatform Mobile plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) will allow you to accomplish either of these tasks in the shortest amount of time by using the _New KMM Application_ or _New KMM Module_ wizards.
 
 ## Prepare for questions
 
