@@ -35,9 +35,6 @@ you need to use a specific target name from [the list of supported targets](http
 Let's assume that you are developing iOS and Android applications using Kotlin Multiplatform Mobile and you want to 
 generate a universally unique identifier (UUID).
 
-
-[//]: # "TODO: Update picture"
-
 ![Expect/actual declarations for getting the UUID](expect-actual-example.png){width=700}
 
 For this purpose, declare the expected function `randomUUID()` with the `expect` keyword in the common module. 

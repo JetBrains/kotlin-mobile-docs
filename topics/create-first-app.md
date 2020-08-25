@@ -41,7 +41,7 @@ You can run your multiplatform application on [Android](#run-your-application-on
 
 Learn how to [configure the Android Emulator and run your application on a different simulated device](https://developer.android.com/studio/run/emulator#runningapp).
     
-#### Run on a hardware Android device
+#### Run on a real Android device
 
 Learn how to [configure and connect a hardware device, and run your application on it](https://developer.android.com/studio/run/device).
 
