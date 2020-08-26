@@ -35,17 +35,17 @@ To summarize what we recommend that you share in your application:
 
 ## Integrate KMM into an existing application
 
-1. Modularize your existing Android application.
+1. [Modularize your existing Android application](#modularize-your-current-application).
 
-2. Identify modules to share.
+2. [Identify modules to share](#identify-modules-to-share).
 
-3. Create a KMM shared module.
+3. [Create a KMM shared module](#create-a-kmm-shared-module).
 
-4. Extract modules to the KMM shared module.
+4. [Extract modules to the KMM shared module](#extract-modules).
 
-5. Implement `actual` declarations for iOS.
+5. [Implement `actual` declarations for iOS](#implement-actual-declarations-for-ios).
 
-6. Test your KMM shared module.
+6. [Test your KMM shared module](#test-your-shared-module).
 
 ### Modularize your current application
 
@@ -98,7 +98,7 @@ class LoginPresenter {
 
     private var view: View? = null
     private var lastCommand: View.() -> Unit =
-        { displayLoading(false) }
+            { displayLoading(false) }
     private fun commandView(command: View.() -> Unit) {
         lastCommand = command
         view?.command()
@@ -124,7 +124,7 @@ class LoginPresenter {
 }
 ```
 
-Pay attention to the `commandView` and `lastCommand` mechanism that allow a view to detach and re-attach for things such as configuration changes on Android.
+Pay attention to the `commandView` and `lastCommand` mechanism that allows a view to detach and re-attach, for example for configuration changes on Android.
 
 #### MVI for declarative UI frameworks {initial-collapse-state="collapsed"}
 
@@ -133,7 +133,7 @@ It is therefore recommended with Swift UI or Jetpack Compose.
 
 In MVI, the entire UI structure is described in one tree structure. Here is an example of a simple MVI presenter:
 
-```Kotlin
+```kotlin
 class LoginPresenter {
     sealed class Model {
         object Form : Model()
@@ -169,7 +169,7 @@ class LoginPresenter {
                     try {
                         displayModel(Model.Loading)
                         getNetwork().login(
-                            intent.username, intent.password) // suspending
+                                intent.username, intent.password) // suspending
                         displayModel(Model.GoToNextScreen)
                     } catch (ex: LoginException) {
                         displayModel(Model.Error(ex.code))
@@ -181,13 +181,22 @@ class LoginPresenter {
 }
 ```
 
-Pay attention to the `displayModel` and `lastModel` mechanism that allow a view to detach and re-attach for things such 
-as configuration changes on Android.
+Pay attention to the `displayModel` and `lastModel` mechanism that allows a view to detach and re-attach, for example for configuration changes on Android.
 
 ### Create a KMM shared module
 
-TODO with screenshots
+In your Android project, create a KMM shared module for your shared code.
 
+1. In Android Studio, click **New** | **New Module**. 
+
+2. In the list of module types, select **KMM Shared Module** and click **Next**.
+
+    ![KMM shared module](kmm-module-wizard-1.png) 
+
+3. Select a checkbox to add sample tests and click **Finish**.
+
+    ![KMM shared module configuration](kmm-module-wizard-2.png) 
+    
 ### Extract modules
 
 You can now extract modules to a KMM shared module starting from the backend of your application and working the way up.
@@ -204,11 +213,10 @@ For `expect` declarations in the shared code, add required `actual` implementati
 
 ### Test your shared module
 
-Kotlin provides a [multiplatform testing library](https://kotlinlang.org/api/latest/kotlin.test/). Write unit tests to 
-prove your code works as intended. Launch your tests on each platform to ensure that your actual declarations work the same way on Android and iOS.
+Kotlin provides a [multiplatform testing library](https://kotlinlang.org/api/latest/kotlin.test/) that you can use for writing unit tests. 
+Launch your tests on each platform to ensure that your actual declarations work the same way on Android and iOS.
 
-As an example, you can use sample tests added to the `commonTest`, `androidTest`, and `iosTest` source sets. Learn more about [running 
-sample tests](create-first-app.md#run-tests).
+As an example, you can use sample tests that are added to the `commonTest`, `androidTest`, and `iosTest` source sets. Learn more about [running sample tests](create-first-app.md#run-tests).
 
 ## Next steps
 
