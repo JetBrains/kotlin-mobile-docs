@@ -1,5 +1,5 @@
-[//]: # (title: Getting started FAQ)
-[//]: # (auxiliary-id: Getting_started_FAQ)
+[//]: # (title: Getting started)
+[//]: # (auxiliary-id: Getting_started)
 
 There are many ways to start with Kotlin Multiplatform Mobile. You can follow our step-by-step guides, browse samples or start using it in already existing projects. This page will help you to choose the right option.
 

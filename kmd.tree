@@ -10,7 +10,7 @@
     <toc-element id="home.md"/>
 
     <toc-element toc-title="Getting started with KMM">
-        <toc-element id="getting-started-faq.md"/>
+        <toc-element id="getting-started.md"/>
         <toc-element id="setup.md"/>
         <toc-element id="create-first-app.md"/>
         <toc-element id="discover-kmm-project.md"/>
