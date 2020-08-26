@@ -1,5 +1,14 @@
-[//]: # (title: How to introduce your team to Kotlin Multiplatform Mobile)
-[//]: # (auxiliary-id: Introduce_your_team_to_Kotlin_Multiplatform_Mobile)
+[//]: # (title: Introduce your team to KMM)
+[//]: # (auxiliary-id: Introduce_your_team_to_KMM)
+
+These recommendations will help you introduce your team to KMM:
+
+* [Start with empathy](#start-with-empathy)
+* [Explain how KMM works](#explain-how-it-works)
+* [Show the value of KMM using case studies](#show-the-value)
+* [Offer a proof by creating a KMM project yourself](#offer-proof)
+* [Prepare for questions from your team](#prepare-for-questions)
+* [Support your team during KMM adaptation](#be-supportive)
 
 ## Start with empathy
 
