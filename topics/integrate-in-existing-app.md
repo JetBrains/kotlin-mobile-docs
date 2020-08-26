@@ -1,69 +1,94 @@
-[//]: # (title: Integrate in existing app)
-[//]: # (auxiliary-id: How_to_integrate_KMM_in_your_existing_application)
+[//]: # (title: Integrate KMM in an existing application)
+[//]: # (auxiliary-id: Integrate_KMM_in_an_existing_application)
 
-## How to integrate Kotlin Multiplatform Mobile in your existing application
+Here you can learn how you can integrate KMM in an existing Android application and make it multiplatform so that it works on both Android and iOS. 
+You will understand what code is good to share and how to use shared code in your existing application.
 
-This guide will walk us through the steps that we need to take to empower our KMM experience in a mobile project. It will expose what we should abstract in a multiplatform library and how to abstract it, as well as how to deal with existing code and what are the best practices to embrace KMM.
+Sharing code saves your time and effort on writing code and testing it for Android and iOS – you do this once in one place.
 
-Note that we assume that you already know [how to create and configure a KMM project](create-first-app.md)
+Before you begin, learn how to [create and configure a KMM application](create-first-app.md)
 
-## Deciding on what to abstract in a multiplatform library
+## Decide what to share
 
-### What should and should not be abstracted
+An application includes two layers:
 
-You can divide an application architecture into two groups: the frontend and the backend.
+* The **frontend** that defines the user interface and its behavior, including animations & transitions.
+* The **backend** that defines the business logic, data management, network stack, and other components that support frontend.
 
-The frontend contains the user interface and its behaviour, animations & transitions, etc.
+KMM assumes that the best user experience is heavily dependent on the platform itself, and therefore should not be shared. 
+However, you can share code for the UI behavior that defines what happens on any user interaction and how the frontend communicates 
+with the backend with the help of compatible architectural patterns.
 
-The backend contains the business logic, persistence management, network stack, etc.
+On the backend, the logic itself includes many platform-specific features such as network requests, local database access, 
+hardware manipulation, and cryptographic storage. KMM provides a way to [connect to platform-specific APIs](connect-to-platform-specific-apis.md) 
+with the `expect` declaration by providing the  `actual` implementation for each platform (or using a multiplatform library that does this 
+for you).
 
-Let’s talk frontend. KMM assumes that the best user experience an app can deliver is heavily dependent on the platform itself, and therefore cannot be abstracted away.
+To summarize what we recommend that you share in your application:
 
-However, that does not mean that the entire frontend cannot be abstracted. The UI behaviour (meaning what happens on any use interaction as well as how the communication with the backend is handled) can in fact be abstracted by using some compatible architectural pattern.
+| Layer | Recommendation |
+| ----- | -------------- |
+| User Interface (including animations & transitions) | **No**, needs to be platform specific|
+| Frontend behavior (reaction to inputs & communication with the backend) | **Yes**, with [architectural patterns](#mvp-for-lecacy-ui-frameworks) |
+| Business logic | **Yes** |
+| Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md) but you can share the behavior.|
 
-On the backend side, it’s easy to think that everything can be abstracted, since it’s only logic.
+## Integrate KMM into an existing application
 
-Well, it’s not. The logic itself uses a lot of platform features that are different from platforms to platforms, things like network requests, local database access, hardware manipulation, cryptographic storage, etc. KMM provides a way to abstract platform access with **expect**, but you still need to write each platform's **actual** **implementation (or use a multiplatform library that does it for you).
+1. Modularize your existing Android application.
 
-So, back to our question : what should or should not be abstracted?
+2. Identify modules to share.
 
-If you see you’re application as a layered architecture, ranging from UI at the top and platform access at the bottom, then the answer is _anything in between_:
+3. Create a KMM shared module.
 
-*   User Interface (including animations & transitions): **no**, needs to be platform specific.
-*   Frontend behaviour (reaction to inputs & communication with backend): **yes**, with architectural patterns.
-*   Business logic: **yes**, it’s only code !
-*   Platform access: **yes and no**, you’ll still need to use platform specific APIs but you can abstract the behaviour.  
+4. Extract modules to the KMM shared module.
 
-### How does my library can integrate with my existing code?
+5. Implement `actual` declarations for iOS.
 
-KMM compiles natively to each platform’s native format. This means that your library will be compiled to a **jar** or an **aar** archive for Android (dependent on the project configuration) and a **framework** directory for iOS, so it’s very easy to add them to your Android or iOS application project.
+6. Test your KMM shared module.
 
-We recommend that you start from the backend of your application and work your way up.
+### Modularize your current application
 
-Start with a pure logic module that requires as little as platform access as possible (for example, input validation, or data transformation). This lets you create a multiplatform project, its build (don’t forget to test!) and integration to application projects, which is enough work to not add platform specific features and tests!
+Refactor your application into independent modules that can work on their own. The [Dependency Injection design pattern](https://developer.android.com/training/dependency-injection) 
+is very useful to create such architecture. 
 
-Once you have a library that compiles and integrates, as well as a simple module that works, you can start working on modules that require platform access such as data persistence or network request.
+A module should:
+*   Be a simple interface describing its inputs and outputs.
+*   Be in charge of a simple describable responsibility, such as database access, file management, network API or 
+credentials management.
 
-A module API that is designed for multiplatform should represent a business unit by itself and easily represented by an interface. In essence, it should fulfill the same requirements as a module in dependency injection.
+A good way to check if a module is ready for sharing is to answer two questions:
+*   Can it be tested with mock dependencies?
+*   Can it be mocked?
 
-### Using trendy patterns to push the limits of a multiplatform library
+If both answers are _yes_, then you can share the module!
 
-Once you have abstracted your business code, you can also abstract your UI behaviour. Doing so ensures that most of your application (including its behaviour) is written and tested once. It also leaves to the platform the only thing that is truly specific to it: it’s UI.
+### Identify modules to share
 
-For example, you may use either the MVP or its evolution the MVI pattern. Such patterns are adapted to multiplatform because they :
+You can share business modules that have some platform-specific code. However, don't share a module that 
+mainly contains platform-specific code – it is easier to maintain specific versions of the module for Android and iOS.
 
-*   make a clear distinction between the UI layer and the presentation layer
-*   are completely decoupled from the UI platform
-*   are easily testable without a UI environment
+For example, a module that reads or writes from the device storage contains much platform code like APIs to access files. 
+So it's easier if each platform project maintains its own version of the module by implementing the same interface.
 
-#### Model View Presenter for “legacy” UI frameworks
+On the other hand, a module that manages credentials may contain some platform-specific code (for example, for encryption) 
+but it mostly provides the logic that is common for both platforms. That's why it's a perfect candidate for sharing.
 
-MVP forces you to create an API for both the Presenter (that receives inputs) and the view (that displays outputs), allowing you to test each independently.
+You can also choose to share the UI behavior using the [Model View Presenter (_MVP_)](#mvp-for-legacy-ui-frameworks) 
+or its evolution [Model View Intent (_MVI_)](#mvi-for-declarative-ui-frameworks) pattern. These patterns:
+
+*   Make a clear distinction between the UI and presentation layers.
+*   Are completely decoupled from the UI platform.
+*   Are easily testable without an UI environment.
+
+#### MVP for legacy UI frameworks {initial-collapse-state="collapsed"}
+
+_Model View Presenter_ (_MVP_) forces you to create an API for both the Presenter that receives inputs and the View that displays outputs, allowing 
+you to test each independently.
 
 Here is an example of a simple MVP presenter:
 
-
-```Kotlin
+```kotlin
 class LoginPresenter {
     interface View {
         fun displayError(code: Int)
@@ -99,14 +124,14 @@ class LoginPresenter {
 }
 ```
 
+Pay attention to the `commandView` and `lastCommand` mechanism that allow a view to detach and re-attach for things such as configuration changes on Android.
 
-Note the commandView and lastCommand mechanism that allow a view to detach and re-attach for things such as configuration changes on Android.
+#### MVI for declarative UI frameworks {initial-collapse-state="collapsed"}
 
-#### Model View Intent for declarative UI frameworks
+_Model View Intent_ (_MVI_) is the natural evolution of MVP when working with declarative UI frameworks (although it also works with “legacy” frameworks). 
+It is therefore recommended with Swift UI or Jetpack Compose.
 
-MVI is the natural evolution of MVP when working with declarative UI frameworks (although it also works with “legacy” frameworks). It is therefore recommended with Swift UI or Jetpack Compose.
-
-In MVI, the entire UI structure must be described in one tree structure. Here is an example of a simple MVI presenter:
+In MVI, the entire UI structure is described in one tree structure. Here is an example of a simple MVI presenter:
 
 ```Kotlin
 class LoginPresenter {
@@ -156,81 +181,46 @@ class LoginPresenter {
 }
 ```
 
+Pay attention to the `displayModel` and `lastModel` mechanism that allow a view to detach and re-attach for things such 
+as configuration changes on Android.
 
-Note the displayModel and lastModel mechanism that allow a view to detach and re-attach for things such as configuration changes on Android.
+### Create a KMM shared module
 
-## Moving code from a platform project into a multiplatform library
+TODO with screenshots
 
-### Abstracting business code
+### Extract modules
 
-As we saw earlier, business logic is the easiest thing to port to KMM.
+You can now extract modules to a KMM shared module starting from the backend of your application and working the way up.
+Start with a pure logic module that requires as little as platform access as possible and continue working with modules 
+that require platform access such as data storage and network request. 
+ 
+For each business logic module:
+* Add the shared code to the `commonMain` source set.
+* Add Android-specific code to an Android-specific source set and share it in `commonMain` with [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
 
-There is, however, a paradigm shift that takes a bit of time, for an Android developer, to integrate. You need to go from “It needs to work on Android” to “it needs to work”. To that end, we cannot emphasize enough how much testing is important !
+### Implement `actual` declarations for iOS
 
-#### Step 1: Modularize your current application
+For `expect` declarations in the shared code, add required `actual` implementations for iOS. 
 
-Before even creating a multiplatform project, you need to be able to extract part of your Android application. To that end, you first need to refactor your application into independent modules that can work on their own. The Dependency Injection design pattern is very useful to create such architecture.
+### Test your shared module
 
-A module should :
-*   Be reduced to a simple interface describing its inputs and outputs.
-*   Be in charge of a simple describable responsibility, such as “database access”, “file management”, “network API” or “credentials management”.
+Kotlin provides a [multiplatform testing library](https://kotlinlang.org/api/latest/kotlin.test/). Write unit tests to 
+prove your code works as intended. Launch your tests on each platform to ensure that your actual declarations work the same way on Android and iOS.
 
-A good way to know if a module is ready to be abstracted is to answer two questions:
-*   Can it be tested with mock dependencies?
-*   Can it be mocked?
+As an example, you can use sample tests added to the `commonTest`, `androidTest`, and `iosTest` source sets. Learn more about [running 
+sample tests](create-first-app.md#run-tests).
 
-If both answers are yes, then you got yourself a module ready to be abstracted!
+## Next steps
 
-#### Step 2: Identify business and platform modules
+Using a shared module as part of your KMM application project is good for beginning and getting experience with KMM. 
+However, when you continue working with the shared module with your team and decide to use it in other projects, you can move it to a separate
+project as a multiplatform library, publish it, and use in your projects as a dependency.
 
-Business module may have platform specific code, and that’s OK! They can be abstracted with little effort.
+Learn more about [publishing a library for Android](https://kotlinlang.org/docs/reference/mpp-publish-lib.html) and [using your library as a dependency](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html).
 
-However, a module that mainly contains platform code should not be abstracted. It will probably be a lot easier to simply maintain a specific version of the module for each targeted platform.
-
-For example, a module to read or write from the device storage will probably contain a lot of platform code (such as APIs to access files), and will be a lot easier to maintain if each platform project maintains its own version of the module by implementing the same interface.
-
-On the other hand, a “Credentials management” module may contain some platform access (for example, for encryption) but will mainly contain business “universal” logic, which makes it perfect for extraction.
-
-#### Step 3: Extract
-
-You can now create a multiplatform library project with only one target : Android.
-
-Port one of your business logic modules into it. The code should go into the “common” sourceset.
-
-If there is some Android specific code in there, it needs to go to the android specific sourceset and be abstracted in common with the [expect / actual](connect-to-platform-specific-apis.md) mechanism.
-
-You should now be able to compile an Android AAR, import it into your android specific project, and use it in your application.
-
-#### Step 4: Implement actual declarations for iOS platform
-
-Add the iOS platform to your multiplatform project and implement each needed actual declaration. See the example of the basic project configuration on the [discover kmm project](discover-kmm-project.md) page.
-
-#### Step 5: Test it!
-
-Test matters. Kotlin provides a [multiplatform testing library](https://kotlinlang.org/api/latest/kotlin.test/). You should write unit tests to prove your code works as intended!
-
-You must launch your tests on each platforms, which ensures that each of your actual declarations work the same way on each platform.
-
-### Deploying to mobile projects
-
-#### Android
-
-Deploying to Android is very straightforward : you simply need to add the `maven-publish` Gradle plugin, and deploy to a maven repository.
-
-You don’t even need an external maven repository. You can run `./gradlew publishToMavenLocal` to put the library in your local repository (a directory on your computer).
-
-Once into the repository, you can have your application project depend on the library with a simple dependency in the `build.gradle.kts`:
-
-```Kotlin
-implementation("com.mycompany.mylib:business-lib:1.0.0")
-```
-
-#### iOS
-
-There are two ways you can deploy your library to an iOS application:
-
-*   Use the [Kotlin/Native cocoapods plugin](https://kotlinlang.org/docs/reference/native/cocoapods.html), which allows you to use a Kotlin Multiplatform project with native targets as a CocoaPods dependency (Kotlin Pod)
-*   [Configure your project to create an iOS framework](https://kotlinlang.org/docs/tutorials/native/apple-framework.html) and manually copy it into the iOS application project.
+For iOS, you can:
+* [Build your library as an iOS framework](https://kotlinlang.org/docs/reference/mpp-build-native-binaries.html) and use it in other projects.
+* [Publish a library with the iOS target and use it as a CocoaPods dependency](https://kotlinlang.org/docs/reference/native/cocoapods.html) (known as a Kotlin Pod).
 
 
 _We'd like to thank the [Kodein Koders team](https://twitter.com/kodeinkoders) for helping us write this article._
