@@ -29,7 +29,7 @@ To summarize what we recommend that you share in your application:
 | Layer | Recommendation |
 | ----- | -------------- |
 | User Interface (including animations & transitions) | **No**, needs to be platform specific|
-| Frontend behavior (reaction to inputs & communication with the backend) | **Yes**, with [architectural patterns](#mvp-for-lecacy-ui-frameworks) |
+| Frontend behavior (reaction to inputs & communication with the backend) | **Yes**, with [architectural patterns](#mvp-for-legacy-ui-frameworks) |
 | Business logic | **Yes** |
 | Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md) but you can share the behavior.|
 
