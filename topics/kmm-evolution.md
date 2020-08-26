@@ -9,7 +9,7 @@ We're eager to listen to your feedback and provide fixes and improvements as soo
 
 KMM stability level is mostly defined by stability level of its core subcomponents: the least stable one defines the stability of the whole SDK. 
 
-|**Component**|**Stability level**|
+|{width="30%"}**Component**|**Stability level**|
 | ---- | --- |
 |Kotlin/JVM|Stable|
 |Kotlin/Native Runtime|Beta|
