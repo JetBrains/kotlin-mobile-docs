@@ -3,7 +3,7 @@
 
 ### Get started
 
-* Already familiar with Kotlin language and want to go Multiplatform? Check out our [getting started FAQ](getting-started-faq.md)
+* Already familiar with Kotlin language and want to go Multiplatform? Check out our [getting started page](getting-started.md)
 * New to Kotlin? [Language reference](https://kotlinlang.org/docs/reference/) or [Kotlin Playground](https://play.kotlinlang.org/koans/overview) are good places to learn about its basic concepts!
 
 ### Popular docs
