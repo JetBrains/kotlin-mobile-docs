@@ -1,4 +1,4 @@
-[//]: # (title: Kotlin Multiplatform Mobile documentation)
+[//]: # (title: KMM documentation)
 [//]: # (auxiliary-id: Home)
 
 ### Get started
