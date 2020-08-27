@@ -9,8 +9,8 @@ start by setting up an environment for Kotlin mobile multiplatform (KMM) develop
    If you also want to write iOS-specific code and run an iOS application on a simulated or real device, use a Mac with a 
    macOS.  
 2. Install [Android Studio](https://developer.android.com/studio) – version 4.1 (RC 1 or higher). 
-    You can also use version 4.0 but the KMM plugin for this version has some limitations such as limited configuration options 
-    in the [KMM Application Wizard](create-first-app.md) and lack of the KMM Shared Module Wizard that is helpful for [integrating KMM in an existing application](integrate-in-existing-app.md).  
+    You can also use version 4.0, but the KMM plugin for this version has some limitations. For example, it has fewer configuration options 
+    in the [KMM Application Wizard](create-first-app.md) and is missing the KMM Shared Module Wizard, which is helpful for [integrating KMM in an existing application](integrate-in-existing-app.md).  
     You will use Android Studio for creating your multiplatform applications and running them on simulated or hardware devices.
 3. If you need to write iOS-specific code and run an iOS application, install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) 
     –  version 11.3 or higher.                                                                                                                                                                                                                                                                                                                          
