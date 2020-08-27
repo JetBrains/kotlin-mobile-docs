@@ -20,4 +20,6 @@
         <xsl>topic.web.new.xsl</xsl>
     </layout>
     <build-profile product="kmd"/>
+    <enable-browser-edits>true</enable-browser-edits>
+    <browser-edits-url>https://github.com/JetBrains/kotlin-mobile-docs/edit/master/topics/</browser-edits-url>
 </buildprofiles>
