@@ -27,11 +27,11 @@ You can [discover what your project includes](discover-kmm-project.md) and how y
     
 ## Run your application 
 
-You can run your multiplatform application on [Android](#run-your-application-on-android) and [iOS](#run-your-application-on-ios).
+You can run your multiplatform application on [Android](#run-your-application-on-android) or [iOS](#run-your-application-on-ios).
 
 ### Run your application on Android
 
-* In the list of run configurations, select **androidApp**, and click **Run**.  
+* In the list of run configurations, select **androidApp** and then click **Run**.  
     
     ![Run multiplatform app on Android](run-android.png){width=400}
     
@@ -43,11 +43,11 @@ Learn how to [configure the Android Emulator and run your application on a diffe
     
 #### Run on a real Android device
 
-Learn how to [configure and connect a hardware device, and run your application on it](https://developer.android.com/studio/run/device).
+Learn how to [configure and connect a hardware device and run your application on it](https://developer.android.com/studio/run/device).
 
 ### Run your application on iOS
 
-* In the list of run configurations, select **iosApp**, and click **Run**.  
+* In the list of run configurations, select **iosApp** and then click **Run**.  
     
     ![Run multiplatform app on iOS](run-ios.png){width=450}
     
@@ -55,7 +55,7 @@ Learn how to [configure and connect a hardware device, and run your application 
 
 #### Run on a different iPhone simulated device
 
-If you want to run your application on another simulated device, you can add a new run configuraion.
+If you want to run your application on another simulated device, you can add a new run configuration.
 
 1. In the list of run configurations, click **Edit Configurations**.
 
@@ -79,7 +79,7 @@ If you want to run your application on another simulated device, you can add a n
 2. [Create a run configuration](#run-on-a-different-iphone-simulated-device) by selecting iPhone in the **Execution target** list.
 3. Click **Run** to run your application on the iPhone device.
 
-> If your build fails, follow a workaround in [this issue](https://youtrack.jetbrains.com/issue/KT-40907).
+> If your build fails, follow the workaround described in [this issue](https://youtrack.jetbrains.com/issue/KT-40907).
 >
 {type="note"}
 
