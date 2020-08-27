@@ -6,7 +6,7 @@ You will understand what code is good to share and how to use shared code in you
 
 Sharing code saves your time and effort on writing code and testing it for Android and iOS – you do this once in one place.
 
-Before you begin, learn how to [create and configure a KMM application](create-first-app.md)
+Before you begin, learn how to [create and configure a KMM application](create-first-app.md).
 
 ## Decide what to share
 
@@ -26,12 +26,12 @@ for you).
 
 To summarize what we recommend that you share in your application:
 
-| Layer | Recommendation |
+| Layer | Recommendation on sharing|
 | ----- | -------------- |
-| User Interface (including animations & transitions) | **No**, needs to be platform specific|
-| Frontend behavior (reaction to inputs & communication with the backend) | **Yes**, with [architectural patterns](#mvp-for-legacy-ui-frameworks) |
 | Business logic | **Yes** |
 | Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md) but you can share the behavior.|
+| Frontend behavior (reaction to inputs & communication with the backend) | **Yes/no**. Consider these [architectural patterns](#mvp-for-legacy-ui-frameworks).|
+| User Interface (including animations & transitions) | **No**. It needs to be platform specific.|
 
 ## Integrate KMM into an existing application
 
@@ -41,9 +41,9 @@ To summarize what we recommend that you share in your application:
 
 3. [Create a KMM shared module](#create-a-kmm-shared-module).
 
-4. [Extract modules to the KMM shared module](#extract-modules).
+4. [Extract code to the KMM shared module](#extract-code).
 
-5. [Implement `actual` declarations for iOS](#implement-actual-declarations-for-ios).
+5. [Make your application work on iOS](#make-your-application-work-on-ios).
 
 6. [Test your KMM shared module](#test-your-shared-module).
 
@@ -187,6 +187,10 @@ Pay attention to the `displayModel` and `lastModel` mechanism that allows a view
 
 In your Android project, create a KMM shared module for your shared code.
 
+> KMM Shared Module Wizard is available in Android Studio version 4.1 or higher.
+>
+{type="note"}
+
 1. In Android Studio, click **New** | **New Module**. 
 
 2. In the list of module types, select **KMM Shared Module** and click **Next**.
@@ -197,38 +201,43 @@ In your Android project, create a KMM shared module for your shared code.
 
     ![KMM shared module configuration](kmm-module-wizard-2.png) 
     
-### Extract modules
+### Extract code
 
-You can now extract modules to a KMM shared module starting from the backend of your application and working the way up.
+You can now extract code to a KMM shared module starting from the backend of your application and working the way up.
 Start with a pure logic module that requires as little as platform access as possible and continue working with modules 
 that require platform access such as data storage and network request. 
  
-For each business logic module:
-* Add the shared code to the `commonMain` source set.
-* Add Android-specific code to an Android-specific source set and share it in `commonMain` with [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
+For each module:
+1. Add the shared code to the `commonMain` source set.
+2. Add Android-specific code to an Android-specific source set and share it in `commonMain` with [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
+3. Run the application on Android to ensure that everything works correctly.
 
-### Implement `actual` declarations for iOS
+### Make your application work on iOS
 
-For `expect` declarations in the shared code, add required `actual` implementations for iOS. 
+For `expect` declarations in the shared code, add required [`actual` implementations for iOS](connect-to-platform-specific-apis.md).
+
+If you don't have an iOS application, create an Xcode project and specify the path to it in `gradle.properties`. 
+If you already have an Xcode project, just specify a relative or absolute path to the project.
+
+```kotlin
+xcodeproj=./iosApp
+```
+
+Once you're done, run your application on iOS to ensure that it works correctly.  
 
 ### Test your shared module
 
 Kotlin provides a [multiplatform testing library](https://kotlinlang.org/api/latest/kotlin.test/) that you can use for writing unit tests. 
 Launch your tests on each platform to ensure that your actual declarations work the same way on Android and iOS.
 
-As an example, you can use sample tests that are added to the `commonTest`, `androidTest`, and `iosTest` source sets. Learn more about [running sample tests](create-first-app.md#run-tests).
+As an example, you can use sample tests that are added to the `commonTest`, `androidTest`, and `iosTest` source sets. 
+Learn more about [running sample tests](create-first-app.md#run-tests).
 
 ## Next steps
 
 Using a shared module as part of your KMM application project is good for beginning and getting experience with KMM. 
 However, when you continue working with the shared module with your team and decide to use it in other projects, you can move it to a separate
-project as a multiplatform library, publish it, and use in your projects as a dependency.
-
-Learn more about [publishing a library for Android](https://kotlinlang.org/docs/reference/mpp-publish-lib.html) and [using your library as a dependency](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html).
-
-For iOS, you can:
-* [Build your library as an iOS framework](https://kotlinlang.org/docs/reference/mpp-build-native-binaries.html) and use it in other projects.
-* [Publish a library with the iOS target and use it as a CocoaPods dependency](https://kotlinlang.org/docs/reference/native/cocoapods.html) (known as a Kotlin Pod).
+project as a multiplatform library, [publish your library](https://kotlinlang.org/docs/reference/mpp-publish-lib.html), and [use it in your projects as a dependency](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html).
 
 
 _We'd like to thank the [Kodein Koders team](https://twitter.com/kodeinkoders) for helping us write this article._
