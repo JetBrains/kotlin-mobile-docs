@@ -145,5 +145,5 @@ For Android, follow a procedure that is very similar to the one for running test
 
 Once you've played with your first KMM application, you can:
 
-* [Integrate KMM into an existing app](integrate-in-existing-app.md)
+* [Integrate KMM in an existing application](integrate-in-existing-app.md)
 * [Complete a hands-on tutorial on networking and data storage](hands-on-networking-data-storage.md)
