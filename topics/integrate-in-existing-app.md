@@ -1,10 +1,10 @@
-[//]: # (title: Integrate KMM in an existing application)
-[//]: # (auxiliary-id: Integrate_KMM_in_an_existing_application)
+[//]: # (title: Integrate KMM into an existing application)
+[//]: # (auxiliary-id: Integrate_KMM_into_an_existing_application)
 
-Here you can learn how you can integrate KMM in an existing Android application and make it multiplatform so that it works on both Android and iOS. 
-You will understand what code is good to share and how to use shared code in your existing application.
+Here you can learn how to integrate Kotlin Multiplatform Mobile (KMM) into an existing Android application and make it multiplatform so that it works on both Android and iOS. 
+You will understand what kind of code is good to share and how to use shared code in your existing application.
 
-Sharing code saves your time and effort on writing code and testing it for Android and iOS – you do this once in one place.
+Sharing code saves you time and effort on writing code and testing it for Android and iOS as you only need to do it once, in the one place.
 
 Before you begin, learn how to [create and configure a KMM application](create-first-app.md).
 
@@ -12,26 +12,25 @@ Before you begin, learn how to [create and configure a KMM application](create-f
 
 An application includes two layers:
 
-* The **frontend** that defines the user interface and its behavior, including animations & transitions.
-* The **backend** that defines the business logic, data management, network stack, and other components that support frontend.
+* The **frontend** that defines the user interface and its behavior, including animations and transitions.
+* The **backend** that defines the business logic, data management, network stack, and other components that support the frontend.
 
-KMM assumes that the best user experience is heavily dependent on the platform itself, and therefore should not be shared. 
-However, you can share code for the UI behavior that defines what happens on any user interaction and how the frontend communicates 
+KMM presumes that the best user experience is when it is native to theheavily dependent on the platform itself, and therefore we don’t recommend sharing it in KMMshould not be shared. 
+However, you can share the code for the UI behavior that defines what happens with any user interaction and how the frontend communicates 
 with the backend with the help of compatible architectural patterns.
 
-On the backend, the logic itself includes many platform-specific features such as network requests, local database access, 
+On the backend, the logic includes many platform-specific features such as network requests, local database access, 
 hardware manipulation, and cryptographic storage. KMM provides a way to [connect to platform-specific APIs](connect-to-platform-specific-apis.md) 
-with the `expect` declaration by providing the  `actual` implementation for each platform (or using a multiplatform library that does this 
-for you).
+with the `expect` declaration, by providing the `actual` implementation for each platform (or using a multiplatform library that does this for you).
 
-To summarize what we recommend that you share in your application:
+To summarize, we recommend sharing the following in your application:
 
 | Layer | Recommendation on sharing|
 | ----- | -------------- |
 | Business logic | **Yes** |
-| Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md) but you can share the behavior.|
+| Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md), but you can share the behavior.|
 | Frontend behavior (reaction to inputs & communication with the backend) | **Yes/no**. Consider these [architectural patterns](#mvp-for-legacy-ui-frameworks).|
-| User Interface (including animations & transitions) | **No**. It needs to be platform specific.|
+| User interface (including animations & transitions) | **No**. It needs to be platform-specific.|
 
 ## Integrate KMM into an existing application
 
@@ -50,40 +49,40 @@ To summarize what we recommend that you share in your application:
 ### Modularize your current application
 
 Refactor your application into independent modules that can work on their own. The [Dependency Injection design pattern](https://developer.android.com/training/dependency-injection) 
-is very useful to create such architecture. 
+is very useful to create such an architecture. 
 
 A module should:
 *   Be a simple interface describing its inputs and outputs.
-*   Be in charge of a simple describable responsibility, such as database access, file management, network API or 
+*   Be in charge of a simple describable responsibility, such as database access, file management, a network API, or 
 credentials management.
 
-A good way to check if a module is ready for sharing is to answer two questions:
+To check if a module is ready for sharing, answer these two questions:
 *   Can it be tested with mock dependencies?
 *   Can it be mocked?
 
-If both answers are _yes_, then you can share the module!
+If you can answer _yes_ to both, then you can share the module.
 
 ### Identify modules to share
 
 You can share business modules that have some platform-specific code. However, don't share a module that 
-mainly contains platform-specific code – it is easier to maintain specific versions of the module for Android and iOS.
+mainly contains platform-specific code, because it would be easier to maintain two specific versions of the module, one for Android and one for iOS.
 
-For example, a module that reads or writes from the device storage contains much platform code like APIs to access files. 
-So it's easier if each platform project maintains its own version of the module by implementing the same interface.
+For example, a module that reads or writes from the device storage contains a lot of platform code like APIs to access files. 
+So it is better if each platform project maintains its own version of the module by implementing the same interface.
 
-On the other hand, a module that manages credentials may contain some platform-specific code (for example, for encryption) 
+On the other hand, a module that manages credentials may contain some platform-specific code (such as for encryption), 
 but it mostly provides the logic that is common for both platforms. That's why it's a perfect candidate for sharing.
 
-You can also choose to share the UI behavior using the [Model View Presenter (_MVP_)](#mvp-for-legacy-ui-frameworks) 
-or its evolution [Model View Intent (_MVI_)](#mvi-for-declarative-ui-frameworks) pattern. These patterns:
+You can also choose to share the UI behavior using the [Model-View-Presenter (_MVP_)](#mvp-for-legacy-ui-frameworks) 
+or the [Model-View-Intent (_MVI_)](#mvi-for-declarative-ui-frameworks) pattern. These patterns:
 
 *   Make a clear distinction between the UI and presentation layers.
 *   Are completely decoupled from the UI platform.
-*   Are easily testable without an UI environment.
+*   Are easily testable without a UI environment.
 
 #### MVP for legacy UI frameworks {initial-collapse-state="collapsed"}
 
-_Model View Presenter_ (_MVP_) forces you to create an API for both the Presenter that receives inputs and the View that displays outputs, allowing 
+_Model-View-Presenter_ (_MVP_) forces you to create an API for both the Presenter that receives inputs and the View that displays outputs, allowing 
 you to test each independently.
 
 Here is an example of a simple MVP presenter:
@@ -124,14 +123,14 @@ class LoginPresenter {
 }
 ```
 
-Pay attention to the `commandView` and `lastCommand` mechanism that allows a view to detach and re-attach, for example for configuration changes on Android.
+Note the `commandView` and `lastCommand` mechanism, which allows a view to detach and re-attach, for example for configuration changes on Android.
 
 #### MVI for declarative UI frameworks {initial-collapse-state="collapsed"}
 
-_Model View Intent_ (_MVI_) is the natural evolution of MVP when working with declarative UI frameworks (although it also works with “legacy” frameworks). 
-It is therefore recommended with Swift UI or Jetpack Compose.
+_Model-View-Intent_ (_MVI_) is the natural evolution of MVP when working with declarative UI frameworks (although it also works with legacy UI frameworks). 
+It is therefore recommended to be used with Swift UI or Jetpack Compose.
 
-In MVI, the entire UI structure is described in one tree structure. Here is an example of a simple MVI presenter:
+In MVI, the entire UI structure is described in one tree. Here is an example of a simple MVI presenter:
 
 ```kotlin
 class LoginPresenter {
@@ -181,31 +180,32 @@ class LoginPresenter {
 }
 ```
 
-Pay attention to the `displayModel` and `lastModel` mechanism that allows a view to detach and re-attach, for example for configuration changes on Android.
+Note the `displayModel` and `lastModel` mechanism, which allows a view to detach and re-attach, for example for configuration changes on Android.
 
 ### Create a KMM shared module
 
 In your Android project, create a KMM shared module for your shared code.
 
-> KMM Shared Module Wizard is available in Android Studio version 4.1 or higher.
+> The KMM Shared Module Wizard is available in Android Studio version 4.1 or higher.
 >
 {type="note"}
 
 1. In Android Studio, click **New** | **New Module**. 
 
-2. In the list of module types, select **KMM Shared Module** and click **Next**.
+2. In the list of module types, select **KMM Shared Module** and then click **Next**.
 
     ![KMM shared module](kmm-module-wizard-1.png) 
 
-3. Select a checkbox to add sample tests and click **Finish**.
+3. Select the **Add sample tests** checkbox.
 
     ![KMM shared module configuration](kmm-module-wizard-2.png) 
+4. Click **Finish**.
     
 ### Extract code
 
-You can now extract code to a KMM shared module starting from the backend of your application and working the way up.
-Start with a pure logic module that requires as little as platform access as possible and continue working with modules 
-that require platform access such as data storage and network request. 
+You can now extract code to a KMM shared module starting from the backend of your application and working your way up.
+Start with a pure logic module that requires as little platform access as possible, and then continue working with modules 
+that require platform access such as data storage and network requests. 
  
 For each module:
 1. Add the shared code to the `commonMain` source set.
@@ -214,10 +214,10 @@ For each module:
 
 ### Make your application work on iOS
 
-For `expect` declarations in the shared code, add required [`actual` implementations for iOS](connect-to-platform-specific-apis.md).
+For `expect` declarations in the shared code, add the required [`actual` implementations for iOS](connect-to-platform-specific-apis.md).
 
 If you don't have an iOS application, create an Xcode project and specify the path to it in `gradle.properties`. 
-If you already have an Xcode project, just specify a relative or absolute path to the project.
+If you already have an Xcode project, simply specify a relative or absolute path to the project.
 
 ```kotlin
 xcodeproj=./iosApp
@@ -235,9 +235,8 @@ Learn more about [running sample tests](create-first-app.md#run-tests).
 
 ## Next steps
 
-Using a shared module as part of your KMM application project is good for beginning and getting experience with KMM. 
-However, when you continue working with the shared module with your team and decide to use it in other projects, you can move it to a separate
+Using a shared module as part of your KMM application project is good for getting started with KMM and finding your way around. 
+Later, when you’ve worked with the shared module with your team and you decide to use it in other projects, you can move it to a separate
 project as a multiplatform library, [publish your library](https://kotlinlang.org/docs/reference/mpp-publish-lib.html), and [use it in your projects as a dependency](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html).
-
 
 _We'd like to thank the [Kodein Koders team](https://twitter.com/kodeinkoders) for helping us write this article._
