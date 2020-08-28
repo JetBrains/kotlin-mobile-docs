@@ -8,7 +8,7 @@
         <config-disqus-show>true</config-disqus-show>
         <config-feedback-enabled>true</config-feedback-enabled>
         <config-feedback-widget>true</config-feedback-widget>
-        <config-feedback-support>null</config-feedback-support>
+        <config-feedback-support>http://kotl.in/issue</config-feedback-support>
         <config-feedback-url>https://data-srv.staging.w3jbcom.aws.intellij.net/feedback</config-feedback-url>
         <config-webmaster>kmm.feedback@kotlinlang.org</config-webmaster>
         <config-sideblocks>true</config-sideblocks>
