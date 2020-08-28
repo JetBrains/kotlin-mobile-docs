@@ -10,7 +10,7 @@
         <config-feedback-widget>true</config-feedback-widget>
         <config-feedback-support>null</config-feedback-support>
         <config-feedback-url>https://data-srv.staging.w3jbcom.aws.intellij.net/feedback</config-feedback-url>
-        <config-webmaster>webmaster@jetbrains.com</config-webmaster>
+        <config-webmaster>kmm.feedback@kotlinlang.org</config-webmaster>
         <config-sideblocks>true</config-sideblocks>
         <config-search-scopes-provider>https://www.jetbrains.com/search/json/</config-search-scopes-provider>
     </variables>
