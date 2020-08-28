@@ -15,7 +15,7 @@ Builds into an Android library and an iOS framework. Uses Gradle as a build syst
 Uses Gradle as a build system.
 * _iOS application_ - an Xcode project that builds into the iOS application.
 
-<img src="basic-project-structure.png" alt="Basic KMM project structure" width="700"/>
+![Basic KMM project structure](basic-project-structure.png){width=700}
 
 This is the structure of a KMM project that you create with a Project Wizard in IntelliJ IDEA or Android Studio.
 Real-life projects can have more complex structure; we consider these three components essential for a KMM project.
@@ -55,7 +55,7 @@ the shared module and the iOS application, see [iOS application](#ios-applicatio
 
 This is a basic structure of a KMM project:
 
-<img src="basic-project-dirs.png" alt="Basic KMM project directories" width="500"/>
+![Basic KMM project directories](basic-project-dirs.png){width=400}
 
 The root project doesn’t hold source code. You can use it to store global configuration in its `build.gradle(.kts)` or 
 `gradle.properties`, for example, add repositories or define global configuration variables.
@@ -557,23 +557,23 @@ The iOS application is produced from an Xcode project generated automatically by
 It resides in a separate directory within the root KMM project. This is a basic Xcode project configured to use the
 framework produced from the shared module.
 
-<img src="basic-xcode-project.png" alt="Basic KMM Xcode project" width="400"/>
+![Basic KMM Xcode project](basic-xcode-project.png){width=300}
 
 To make the declarations from the shared module available in the source code of the iOS application,
 the framework is added to the project on the **General** tab of the project settings.
 
-<img src="framework-in-project-settings.png" alt="Framework in the Xcode project settings" width="800"/>
+![Framework in the Xcode project settings](framework-in-project-settings.png){width=700}
 
 For each build of the iOS application, the project obtains the latest version of the framework.
 To do this, it uses a **Run Script** build phase that executes the [packForXcode](#ios-framework)
 Gradle task from the shared module.
 
-<img src="packforxcode-in-project-settings.png" alt="Execution of packForXcode in the Xcode project settings" width="800"/>
+![Execution of packForXcode in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 
 Finally, another build phase **Embed Framework** takes the framework from the specified location and
 embeds it into the application build. This makes the shared code available in the iOS application.
 
-<img src="embed-framework-in-xcode-project-settings.png" alt="Embedding the framework in the Xcode project settings" width="800"/>
+![Embedding the framework in the Xcode project settings](embed-framework-in-xcode-project-settings.png){width=700}
 
 In other aspects, the Xcode part of a KMM project is a typical iOS application project.
 To learn more about creating iOS application, see the [Xcode documentation](https://developer.apple.com/documentation/xcode#topics).
