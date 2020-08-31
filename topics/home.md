@@ -17,8 +17,8 @@
 
 ## What’s new
 
-* The Kotlin Multiplatform Mobile goes Alpha.
-* The KMM plugin for Android Studio is out.
+* [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/).
+* [The KMM plugin for Android Studio is out](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile).
 * [Kotlin 1.4.0 has been released](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
 
 ## Community
