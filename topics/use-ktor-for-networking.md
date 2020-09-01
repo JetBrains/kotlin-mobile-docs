@@ -75,7 +75,7 @@ For iOS, add the `ktor-client-ios` dependency to the corresponding source set:
 ```Groovy
 iosMain {
     dependencies {
-        implementation "io.ktor:ktor-client-android:$ktor_version"
+        implementation "io.ktor:ktor-client-ios:$ktor_version"
     }
 }
 ```
