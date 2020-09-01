@@ -235,4 +235,4 @@ commonMain {
 }
 ```
 
-_Authored by the [Touchlab team](http://touchlab.co/)_
+_Authored by the [Touchlab team](https://touchlab.co/)_
