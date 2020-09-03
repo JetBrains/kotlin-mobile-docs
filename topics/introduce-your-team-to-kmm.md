@@ -92,4 +92,4 @@ The reality is that you probably will not change people's hearts and minds in a 
 
 The Kotlin Multiplatform Mobile team looks forward to hearing [your story of using KMM](mailto:kmm.feedback@kotlinlang.org).
 
-_We'd like to thank the [Touchlab team](https://twitter.com/touchlabhq) for helping us write this article._
+_We'd like to thank the [Touchlab team](https://touchlab.co) for helping us write this article._

@@ -31,7 +31,7 @@ The Kotlin/Native runtime includes a few different variations of Atomics. You ca
 
 Kotlin provides an experimental low-level [`kotlinx.atomicfu`](https://github.com/Kotlin/kotlinx.atomicfu) library that is currently 
 used only for internal purposes and is not supported for general usage. You can also use [Stately](https://github.com/touchlab/Stately), 
-a utility library for multiplatform compatibility with Kotlin/Native-specific concurrency, developed by [Touchlab](https://twitter.com/touchlabhq). 
+a utility library for multiplatform compatibility with Kotlin/Native-specific concurrency, developed by [Touchlab](https://touchlab.co). 
 
 ### `AtomicInt`/`AtomicLong`
 
@@ -202,4 +202,5 @@ memory leaks.
 Since in the KMM application you are also targeting the JVM, you'll need alternate ways to implement anything you use 
 platform native code for. This will obviously take more work and may lead to platform inconsistencies.
 
-_We'd like to thank the [Touchlab team](https://twitter.com/touchlabhq) for helping us write this article._
+_This material was prepared by [Touchlab](https://touchlab.co/) for publication by JetBrains._
+

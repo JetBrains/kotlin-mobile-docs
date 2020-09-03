@@ -190,4 +190,4 @@ Kotlin/Native, but the ability to do so comes with a steep learning curve.
 That's why we are working on creating a new memory manager and concurrency model for Kotlin/Native that will help us remove these 
 drawbacks. Learn more about [where we are going with this](https://blog.jetbrains.com/kotlin/2020/07/kotlin-native-memory-management-roadmap/).
 
-_We'd like to thank the [Touchlab team](https://twitter.com/touchlabhq) for helping us write this article._
+_This material was prepared by [Touchlab](https://touchlab.co/) for publication by JetBrains._
