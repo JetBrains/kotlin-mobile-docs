@@ -235,4 +235,5 @@ commonMain {
 }
 ```
 
-_Authored by the [Touchlab team](https://touchlab.co/)_
+_This material was prepared by [Touchlab](https://touchlab.co/) for publication by JetBrains._
+

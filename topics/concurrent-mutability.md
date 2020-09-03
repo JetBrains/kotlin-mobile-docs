@@ -202,4 +202,5 @@ memory leaks.
 Since in the KMM application you are also targeting the JVM, you'll need alternate ways to implement anything you use 
 platform native code for. This will obviously take more work and may lead to platform inconsistencies.
 
-_Authored by the [Touchlab team](https://touchlab.co/)_
+_This material was prepared by [Touchlab](https://touchlab.co/) for publication by JetBrains._
+
