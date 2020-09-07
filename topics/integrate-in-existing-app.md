@@ -15,7 +15,7 @@ An application includes two layers:
 * The **frontend** that defines the user interface and its behavior, including animations and transitions.
 * The **backend** that defines the business logic, data management, network stack, and other components that support the frontend.
 
-KMM presumes that the best user experience is when it is native to theheavily dependent on the platform itself, and therefore we don’t recommend sharing it in KMMshould not be shared. 
+KMM presumes that the best user experience is when it is native to the platform itself, and therefore we don’t recommend sharing it in KMM. 
 However, you can share the code for the UI behavior that defines what happens with any user interaction and how the frontend communicates 
 with the backend with the help of compatible architectural patterns.
 
