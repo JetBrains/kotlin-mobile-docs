@@ -55,7 +55,7 @@ buildscript {
 
 Instead of `$sql_delight_version`, use the version you need for your project.
 
-Then apply the SQLDelight Gradle plugin by adding this line at the beginning of the build srcipt (`build.gradle` or `build.gradle.kts`) in your shared multiplatform module:
+Then apply the SQLDelight Gradle plugin by adding this line at the beginning of the build script (`build.gradle` or `build.gradle.kts`) in your shared multiplatform module:
 
 <tabs>
 <tab title="Groovy">
