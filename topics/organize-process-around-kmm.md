@@ -47,7 +47,7 @@ public API will be used for the shared code.
 
 There are three distinct approaches to organizing the way teams work on an Multiplatform library:
 
-1. [The Android team implements the Android application and the Multoplatform module, which iOS developers use as a black box](#only-android-developers-work-on-the-multiplatform-module).
+1. [The Android team implements the Android application and the Multiplatform module, which iOS developers use as a black box](#only-android-developers-work-on-the-multiplatform-module).
 2. [Android and iOS developers work on the Multiplatform library simultaneously](#android-and-ios-developers-work-on-the-multiplatform-module).
 3. [A dedicated team is allocated to work on the Multiplatform library, and both Android and iOS developers use it as a black box](#the-multiplatform-module-is-developed-by-a-dedicated-team).
 
