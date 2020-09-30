@@ -2,7 +2,7 @@
 [//]: # (auxiliary-id: Set_up_an_environment_for_KMM_development)
 
 Before you begin [creating your first application](create-first-app.md) to work on both iOS and Android, you will need to 
-start by setting up an environment for Kotlin mobile multiplatform (KMM) development:
+start by setting up an environment for Kotlin Multiplatform Mobile (KMM) development:
 
 1. If you are going to work with shared code or Android-specific code, you can work on any computer with an operating 
    system supported by [Android Studio](https://developer.android.com/studio).  
