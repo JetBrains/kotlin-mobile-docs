@@ -177,17 +177,6 @@ If you see `InvalidMutabilityException` related to a coroutine operation, it's v
 
 See a [complete example of using multithreaded coroutines in a KMM application](https://github.com/touchlab/KaMPKit).
 
-### Ktor and coroutines
-
-Follow these guidelines when integrating Ktor into your project:
-
-* Make sure that you use the single-threaded version of `kotlinx.coroutines` as a dependency for Ktor. Ktor 
-for macOS and iOS requires this version.
-* Make calls to Ktor from the main thread. 
-* If you're going to use Ktor and coroutines that cross threads, keep a separate `CoroutineScope` for Ktor. As a more complex 
-alternative, you can create a child `CoroutineScope` with an isolated `Job`. If `Job` gets frozen, Ktor will stop working. 
-See [this example](https://github.com/touchlab/KaMPKit/blob/master/shared/src/iosMain/kotlin/co/touchlab/kampkit/ktor/Platform.kt#L13) for details.
-
 ## Alternatives to `kotlinx-coroutines`
 
 There are a few alternative ways to run parallel code.
