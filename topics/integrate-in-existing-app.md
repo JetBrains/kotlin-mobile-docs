@@ -213,12 +213,11 @@ For each module:
 2. Add Android-specific code to an Android-specific source set and share it in `commonMain` with [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
 3. Run the application on Android to ensure that everything works correctly.
 
-### Declare dependency on shared module in Gradle file for Android app
-Ensure that your minSdkVersion is the same in your Android module as the shared module.
-
+### Declare dependency on shared module in build.gradle for Android app
 ```kotlin
 implementation(project(":shared"))
 ```
+While you are there, ensure that your minSdkVersion is the same in your Android module as the shared module.
 
 ### Use shared code in Android
 
