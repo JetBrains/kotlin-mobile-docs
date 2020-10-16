@@ -147,7 +147,7 @@ class LoginPresenter {
     private var view: View? = null
     private var lastModel: Model = Model.Form
     private fun displayModel(model: Model) {
-        lastModel = model
+        lastModel = model 
         view?.displayModel(model)
     }
 
@@ -196,10 +196,11 @@ In your Android project, create a KMM shared module for your shared code.
 
     ![KMM shared module](kmm-module-wizard-1.png) 
 
-3. Select the **Add sample tests** checkbox.
+3. Select the **Add sample tests** checkbox. 
+4. Select the **Generate packForXcode Gradle task** if you intend to deploy to iOS.
 
     ![KMM shared module configuration](kmm-module-wizard-2.png) 
-4. Click **Finish**.
+5. Click **Finish**.
     
 ### Extract code
 
@@ -212,6 +213,21 @@ For each module:
 2. Add Android-specific code to an Android-specific source set and share it in `commonMain` with [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
 3. Run the application on Android to ensure that everything works correctly.
 
+### Declare dependency on shared module in Gradle file for Android app
+Ensure that your minSdkVersion is the same in your Android module as the shared module.
+
+```kotlin
+implementation(project(":shared"))
+```
+
+### Use shared code in Android
+
+````kotlin
+import com.example.shared.Greeting
+
+textView.text = Greeting().greeting()
+````
+
 ### Make your application work on iOS
 
 For `expect` declarations in the shared code, add the required [`actual` implementations for iOS](connect-to-platform-specific-apis.md).
@@ -222,6 +238,31 @@ If you already have an Xcode project, simply specify a relative or absolute path
 ```kotlin
 xcodeproj=./iosApp
 ```
+
+### Add Run Script to Build Phase
+Open your iosApp folder in XCode.
+Select your target, Build Phases -> Select the +, add the following Run Script to run our packForXCode command.
+````
+cd "$SRCROOT/.."
+./gradlew :shared:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}
+````
+
+### Link shared framework to XCode Project
+Select Project in XCode -> General tab -> Frameworks, Libraries, and Embedded Content section, select +.
+Add Other -> Add Files
+Navigate to the shared folder and add shared framework(/shared/build/xcode-frameworks/shared.framework)
+
+### Update Framework search path in XCode
+Select Project in XCode -> Build Settings tab -> Search Paths section -> Add path to framework
+````
+$(SRCROOT)/../shared/build/xcode-frameworks
+````
+
+### Use shared module in swift code
+````swift
+import shared
+Greeting().greeting()
+````
 
 Once you're done, run your application on iOS to ensure that it works correctly.  
 
