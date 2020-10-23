@@ -45,7 +45,7 @@ and suspended, while another underlying process performs the actual networking. 
 in the main thread.
 
 ```kotlin
-val client = HttpClient
+val client = HttpClient()
 //Running in the main thread, start a `get` call
 client.get<String>("https://example.com/some/rest/call")
 //The get call will suspend and let other work happen in the main thread, and resume when the get call completes
