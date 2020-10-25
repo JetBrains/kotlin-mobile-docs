@@ -239,7 +239,7 @@ actual class DatabaseDriverFactory {
 }
 ```
 
-Now you can create the `DatabaseDriverFactory` instance in your applications' code and pass it to the common module. Then create an `AppDatabse` instance to perform database opetations:
+Now you can create the `DatabaseDriverFactory` instance in your applications' code and pass it to the common module. Then create an `AppDatabase` instance to perform database opetations:
 
 ```Kotlin
 val database = AppDatabase(databaseDriverFactory.createDriver())
@@ -271,7 +271,7 @@ CREATE TABLE Language (
 );
 ```
 
-For this query, SQLDelight generates the ‘Language’ Kotlin interface with the specified fields. It will be used in
+For this query, SQLDelight generates the `Language` Kotlin interface with the specified fields. It will be used in
 functions that implement operations with the `Language` table.
 
 ### Delete
@@ -290,7 +290,7 @@ The label `deleteAllLanguages:` in the first line declares the name for the Kotl
 fun deleteAllLanguages()
 ```
 
-To execute the `deleteAllLanguages` query in from your code, write the following:
+To execute the `deleteAllLanguages` query from your code, write the following:
 
 ```kotlin
 val database = AppDatabase(sqlDriver)
@@ -326,7 +326,7 @@ fun deleteLanguageById(id: Long) {
 
 ### Insert
 
-To add a data record into a table, use the SQL command `INSERT`. A query for inserting entries into the `Language` may
+To add a data record into a table, use the SQL command `INSERT`. A query for inserting entries into the `Language` table may
 look like this:
 
 ```sql
