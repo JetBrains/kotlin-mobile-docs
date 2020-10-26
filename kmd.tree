@@ -19,7 +19,7 @@
     </toc-element>
 
     <toc-element toc-title="What's new in KMM">
-        <toc-element id="whats-new-in-kmm-plugin.md"/>
+        <toc-element id="kmm-releases.md"/>
     </toc-element>
 
     <toc-element toc-title="Development">
