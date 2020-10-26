@@ -115,8 +115,9 @@ Released: August 31, 2020
 </td>
 <td>
 
+* Kotlin 1.4.0
 * [Kotlin 1.4.10](https://kotlinlang.org/releases.html#release-details)
-* Kotlin 1.4.20
+
 
 </td>
 </tr>
