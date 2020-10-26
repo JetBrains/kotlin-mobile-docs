@@ -40,7 +40,7 @@ val commonMain by getting {
 </tab>
 </tabs>
 
-Then connect the platform engines by adding the dependencies on them. For the Android, add the `ktor-client-android` dependency to the corresponding source set:
+Then connect the platform engines by adding the dependencies on them. For Android, add the `ktor-client-android` dependency to the corresponding source set:
 
 <tabs>
 <tab title="Groovy">
@@ -110,7 +110,7 @@ val httpClient: HttpClient = HttpClient(CIO)
 
 ### Select an engine
 
-Ktor offers you multiple HTTP engines to use in your project: Apache, CIO, Android, iOS, and others. Engines differ by sets of supporters features or platforms they work on. For the full list of supported HTTP engines, refer to the [Ktor documentation](https://ktor.io/clients/http-client/engines.html).
+Ktor offers you multiple HTTP engines to use in your project: Apache, CIO, Android, iOS, and others. Engines differ by sets of supported features or platforms they work on. For the full list of supported HTTP engines, refer to the [Ktor documentation](https://ktor.io/clients/http-client/engines.html).
 
 To use a specific HTTP engine, connect the corresponding Ktor artifact as a dependency, for example:
 
@@ -140,7 +140,7 @@ Now you can create an HTTP client with this engine: just pass the engine class a
 ```kotlin
 val client = HttpClient(CIO)
 ```
-If you call the `HttpClient()` constructor without an argument, then one of the engines available to Ktor will be automatically selected at the compile time.
+If you call the `HttpClient()` constructor without an argument, then one of the engines available to Ktor will be automatically selected at compile time.
 
 ```kotlin
 val httpClient: HttpClient = HttpClient()
@@ -220,7 +220,7 @@ For more information on engines configuration, see the [Ktor documentation](http
 
 #### Features
 
-Ktor lets you use additional HTTP client functionality (_features_) that is not available by default, for example, logging, authorization, or serialization. Most of them are distributed in separate artifacts. To use them, you should connect them as dependencies to the common source st. For example:
+Ktor lets you use additional HTTP client functionality (_features_) that is not available by default, for example, logging, authorization, or serialization. Most of them are distributed in separate artifacts. To use them, you should connect them as dependencies to the common source set. For example:
 
 <tabs>
 <tab title="Groovy">
