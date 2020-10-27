@@ -1,29 +1,29 @@
 [//]: # (title: KMM plugin releases)
 [//]: # (auxiliary-id: KMM_plugin_releases)
 
-Since KMM is now in [Alpha](kmm-evolution.md), we are continuously working on stabilizing the [KMM plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) 
-and regularly release new versions that include new features, improvements, and bug fixes. 
+Since KMM is now in [Alpha](kmm-evolution.md), we are working on stabilizing the [KMM plugin for Android Studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) 
+and will be regularly releasing new versions that include new features, improvements, and bug fixes. 
 
 Ensure that you have the latest version of the KMM plugin!
 
-## Update to a new release
+## Update to the new release
 
-Android Studio suggests updating to a new KMM plugin release once it is out. When you accept the suggestion, it automatically updates the KMM plugin to the new version. 
-You need to restart Android Studio to complete plugin installation.
+Android Studio will suggest updating to a new KMM plugin release as soon as it is available. If you accept the suggestion, it will automatically update the KMM plugin to the latest version. 
+You’ll need to restart Android Studio to complete the plugin installation.
 
 You can check the KMM plugin version and update the plugin manually in **Preferences** | **Plugins**.
 
-You need to have compatible Kotlin version for the KMM plugin to work correctly. You can find compatible versions in the [release details](#release-details).
-You can check the Kotlin version and update it in **Preferences** | **Plugins** or in **Tools** | **Kotlin** | **Configure Plugin Updates**.
+You need a compatible version of Kotlin for the KMM plugin to work correctly. You can find compatible versions in the [release details](#release-details).
+You can check your Kotlin version and update it in **Preferences** | **Plugins** or in **Tools** | **Kotlin** | **Configure Plugin Updates**.
 
->If you do not have compatible Kotlin version installed, the KMM plugin will be disabled. You will need to update your Kotlin 
+>If you do not have a compatible version of Kotlin installed, the KMM plugin will be disabled. You will need to update your Kotlin 
 >version, and then enable the KMM plugin in **Preferences** | **Plugins**.
 >
 {type="note"}
 
 ## Release details
 
-The following table lists details of latest KMM plugin releases. 
+The following table lists the details of the latest KMM plugin releases: 
 
 <table> 
 <tr>
@@ -117,7 +117,6 @@ Released: August 31, 2020
 
 * [Kotlin 1.4.0](https://kotlinlang.org/releases.html#release-details)
 * [Kotlin 1.4.10](https://kotlinlang.org/releases.html#release-details)
-
 
 </td>
 </tr>
