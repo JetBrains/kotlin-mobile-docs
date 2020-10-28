@@ -40,6 +40,32 @@ Compatible Kotlin version
 <tr>
 <td>
 
+**0.1.4**
+
+Released: November 2, 2020
+
+</td>
+<td>
+
+* Supported iPad devices
+* Supported custom names in iOS application
+* Supported adding users build steps to ios run configuration
+* Supported selecting custom path to kotlin native binary for debug
+* Fixed saving selected physical device after disconnect from host
+* Fixed adding default ios run configuration if it exists
+* Other fixes and improvements
+
+</td>
+<td>
+
+* [Kotlin 1.4.10](https://kotlinlang.org/releases.html#release-details)
+* Kotlin 1.4.20
+
+</td>
+</tr>
+<tr>
+<td>
+
 **0.1.3**
 
 Released: October 2, 2020
