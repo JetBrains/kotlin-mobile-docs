@@ -40,9 +40,9 @@ Compatible Kotlin version
 <tr>
 <td>
 
-**0.1.4**
+**0.2.0**
 
-Released: November 2, 2020
+Released: November 11, 2020
 
 </td>
 <td>
@@ -51,6 +51,7 @@ Released: November 2, 2020
 * Supported custom names in iOS application
 * Supported adding users build steps to ios run configuration
 * Supported selecting custom path to kotlin native binary for debug
+* Updated new KMM project wizard
 * Fixed saving selected physical device after disconnect from host
 * Fixed adding default ios run configuration if it exists
 * Other fixes and improvements
@@ -58,8 +59,8 @@ Released: November 2, 2020
 </td>
 <td>
 
-* [Kotlin 1.4.10](https://kotlinlang.org/releases.html#release-details)
 * Kotlin 1.4.20
+* Kotlin 1.4.30
 
 </td>
 </tr>
