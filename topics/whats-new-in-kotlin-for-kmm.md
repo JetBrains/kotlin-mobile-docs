@@ -26,7 +26,9 @@ and is automatically resolved to the appropriate platform-specific artifacts whe
 now includes metadata artifacts, which were published separately in earlier Kotlin versions.  
 For compatibility, both multiplatform library authors and users must update to Kotlin 1.4.20.
 
-* Performance improvements and bug fixes in various components, including the ones added in Kotlin 1.4.0.
+* **Performance improvements and bug fixes** in various components, including the ones added in Kotlin 1.4.0.
+
+* **Deprecation of the Kotlin Android Extensions plugin**. The `Pacrelable` implementation generator moves to a separate `kotlin-parcelize` plugin.
 
 Android Studio will suggest you to update to Kotlin 1.4.20 automatically. You can also [update manually](https://kotlinlang.org/releases.html#updating-to-a-new-release).
 
