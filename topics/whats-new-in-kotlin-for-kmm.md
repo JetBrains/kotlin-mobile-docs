@@ -1,8 +1,8 @@
 [//]: # (title: What's new in Kotlin for KMM)
 [//]: # (auxiliary-id: Whats_new_in_Kotlin_for_KMM)
 
-KMM is part of the large Kotlin ecosystem and leverages Kotlin features and improvements for better developer experience. 
-Every Kotlin release brings features, improvements, and bug fixes that are important for you, mobile developers. 
+KMM is part of the large Kotlin ecosystem and leverages Kotlin features and improvements for better mobile developer experience. 
+[Every Kotlin release](https://kotlinlang.org/releases.html#release-details) brings features and improvements that are helpful for you, mobile developers. 
 
 Here you can find a short summary of Kotlin features that you can use when developing multiplatform mobile applications.
 
@@ -18,7 +18,7 @@ Here you can find a short summary of Kotlin features that you can use when devel
         * A library from an archive (also available by arbitrary HTTP address).
         * A static library.
         * A library with custom cinterop options.
-    * Integration with Xcode requires updating the Podfile when adding dependencies on libraries.
+    * Integration with Xcode that requires updating the Podfile when adding dependencies on libraries.
      
 * Support for **libraries delivered in Xcode 12**.
 
@@ -26,8 +26,7 @@ Here you can find a short summary of Kotlin features that you can use when devel
 
 * **Opt-in wrapping of Objective-C exceptions** in runtime to avoid crashes.
 
-* **Updated structure of mutliplatform library publications**. The library _root_ publication, which stands for the whole library 
-and is automatically resolved to the appropriate platform-specific artifacts when added as a dependency to the common source set, 
+* **Updated structure of mutliplatform library publications**. The library _root_ publication, which stands for the whole library, 
 now includes metadata artifacts, which were published separately in earlier Kotlin versions.  
 For compatibility, both multiplatform library authors and users must update to Kotlin 1.4.20.
 
