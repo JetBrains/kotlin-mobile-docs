@@ -12,12 +12,7 @@ Here you can find a short summary of Kotlin features that you can use when devel
 
 * **CocoaPods plugin improvements**:
     * Rebuilding dependencies only when it's necessary.
-    * Extended DSL that supports adding dependencies on: 
-        * A library from a custom spec repository.
-        * A remote library from a Git repository.
-        * A library from an archive (also available by arbitrary HTTP address).
-        * A static library.
-        * A library with custom cinterop options.
+    * Ability to add dependencies on a library from a custom spec repository, Git repository, or archive as well as a library with custom cinterop options.
     * Integration with Xcode that requires updating the Podfile when adding dependencies on libraries.
      
 * Support for **libraries delivered in Xcode 12**.
