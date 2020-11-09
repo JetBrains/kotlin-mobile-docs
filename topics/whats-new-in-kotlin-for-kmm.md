@@ -10,10 +10,10 @@ Here you can find a short summary of Kotlin features that you can use when devel
 
 [Kotlin 1.4.20](https://kotlinlang.org/docs/reference/whatsnew1420.html) brings a number of features, improvements, and bug fixes that are helpful for KMM:
 
-* **CocoaPods plugin improvements**:
+* **CocoaPods plugin improvements and changes**:
     * Rebuilding dependencies only when it's necessary.
-    * Ability to add dependencies on a library from a custom spec repository, Git repository, or archive as well as a library with custom cinterop options.
-    * Integration with Xcode that requires updating the Podfile when adding dependencies on libraries.
+    * Ability to add dependencies on a library from a custom spec repository, Git repository, or archive as well as on a library with custom cinterop options.
+    * Adding dependencies on libraries requires updating the Podfile for correct integration with Xcode.
      
 * Support for **libraries delivered in Xcode 12**.
 
