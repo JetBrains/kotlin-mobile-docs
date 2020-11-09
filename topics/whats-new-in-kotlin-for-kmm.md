@@ -1,6 +1,11 @@
 [//]: # (title: What's new in Kotlin for KMM)
 [//]: # (auxiliary-id: Whats_new_in_Kotlin_for_KMM)
 
+KMM is part of the large Kotlin ecosystem and leverages Kotlin features and improvements for better developer experience. 
+Every Kotlin release brings features, improvements, and bug fixes that are important for you, mobile developers. 
+
+Here you can find a short summary of Kotlin features that you can use when developing multiplatform mobile applications.
+
 ## Kotlin 1.4.20 for KMM
 
 [Kotlin 1.4.20](https://kotlinlang.org/docs/reference/whatsnew1420.html) brings a number of features, improvements, and bug fixes that are helpful for KMM:
