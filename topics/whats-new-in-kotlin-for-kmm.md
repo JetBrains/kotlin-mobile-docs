@@ -13,21 +13,19 @@ Here you can find a short summary of Kotlin features that you can use when devel
 * **CocoaPods plugin improvements**:
     * Rebuilding dependencies only when it's necessary.
     * Ability to add dependencies on libraries from a custom spec repository, Git repository, or archive as well as on libraries with custom cinterop options.  
-      Learn more about [adding dependencies](add-dependencies.md#with-cocoapods).
+      Learn more about [adding dependencies](add-dependencies.md#with-cocoapods) and [these improvements](https://kotlinlang.org/docs/reference/whatsnew1420.html#cocoapods-plugin-improvements).
      
 * Support for **libraries delivered in Xcode 12**.
 
-* **Escape analysis**. A prototype of the new mechanism that improves the runtime performance by 10% via allocating certain objects on the stack instead of the heap. 
+* **Escape analysis for Kotlin/Native**. A prototype of the new mechanism that improves the iOS runtime performance by 10% via allocating certain objects on the stack instead of the heap. 
 
-* **Opt-in wrapping of Objective-C exceptions** in runtime to avoid crashes.
+* **Opt-in wrapping of Objective-C exceptions** in runtime to avoid crashes. Learn [how to opt in](https://kotlinlang.org/docs/reference/whatsnew1420.html#opt-in-wrapping-of-objective-c-exceptions).
 
 * **Updated structure of mutliplatform library publications**. The library _root_ publication, which stands for the whole library, 
 now includes metadata artifacts, which were published separately in earlier Kotlin versions.  
-For compatibility, both multiplatform library authors and users must update to Kotlin 1.4.20.
+For compatibility, both multiplatform library authors and users must update to Kotlin 1.4.20. Learn more about [publishing a multiplatform library](https://kotlinlang.org/docs/reference/mpp-publish-lib.html).
 
-* **Performance improvements and bug fixes** in various components, including the ones added in Kotlin 1.4.0.
-
-* **Deprecation of the Kotlin Android Extensions plugin**. The `Pacrelable` implementation generator moves to a separate `kotlin-parcelize` plugin.
+* **Deprecation of the Kotlin Android Extensions plugin**. The [`Pacrelable` implementation generator](https://kotlinlang.org/docs/reference/compiler-plugins.html#parcelable-implementations-generator) moves to a separate `kotlin-parcelize` plugin.
 
 Android Studio will suggest you to update to Kotlin 1.4.20 automatically. You can also [update manually](https://kotlinlang.org/releases.html#updating-to-a-new-release).
 
