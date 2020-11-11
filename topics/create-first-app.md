@@ -3,6 +3,8 @@
 
 Now that you've [set up an environment for KMM development](setup.md), it's time to create your first KMM application.
 
+0. Make sure that you have correctly [set up an environment for KMM development](setup.md) by choosing the operating system based 
+on your needs and installing appropriate tools.
 1. In Android Studio, select **File** | **New** | **New Project**.
 2. Select **KMM Application** in the list of project templates, and click **Next**.  
 
