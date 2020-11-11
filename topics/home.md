@@ -18,8 +18,8 @@
 ## What’s new
 
 * [New KMM plugin releases](kmm-plugin-releases.md)
+* [What's new in Kotlin for KMM](whats-new-in-kotlin-for-kmm.md)
 * [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/).
-* [Kotlin 1.4.0 has been released](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
 
 ## Community
 
