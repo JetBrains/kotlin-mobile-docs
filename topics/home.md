@@ -10,7 +10,7 @@
 
 * [New KMM plugin releases](kmm-plugin-releases.md)
 * [What's new in Kotlin for KMM](whats-new-in-kotlin-for-kmm.md)
-* [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/).
+* [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/)
 
 ## Popular docs
 
