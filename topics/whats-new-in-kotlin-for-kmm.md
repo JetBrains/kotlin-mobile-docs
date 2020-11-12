@@ -13,7 +13,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 * **CocoaPods plugin improvements**:
     * Rebuilding dependencies only when necessary.
     * Ability to add dependencies on libraries from a custom spec repository, Git repository, or archive, as well as on libraries with custom cinterop options.  
-      Learn more about [adding dependencies](add-dependencies.md#with-cocoapods) and [these improvements](https://kotlinlang.org/docs/reference/whatsnew1420.html#cocoapods-plugin-improvements).
+      Learn more about [adding CocoaPods dependencies](add-dependencies.md#with-cocoapods) and [these improvements](https://kotlinlang.org/docs/reference/whatsnew1420.html#cocoapods-plugin-improvements).
      
 * Support for **libraries delivered in Xcode 12**.
 
