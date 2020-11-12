@@ -1,8 +1,15 @@
 [//]: # (title: Create your first multiplatform application)
 [//]: # (auxiliary-id: Create_your_first_multiplatform_application)
 
-Now that you've [set up an environment for KMM development](setup.md), it's time to create your first KMM application.
+Here you will learn how to create and run your first KMM application.
 
+0. [Set up your environment for KMM development](setup.md) by installing the necessary tools on a suitable operating system.  
+    
+    > To work with shared code or Android-specific code, use any computer with an operating system supported by [Android Studio](https://developer.android.com/studio).  
+    > To write iOS-specific code and run an iOS application on a simulated or real device, use a Mac with a macOS.
+    >
+    {type="note"}
+    
 1. In Android Studio, select **File** | **New** | **New Project**.
 2. Select **KMM Application** in the list of project templates, and click **Next**.  
 
