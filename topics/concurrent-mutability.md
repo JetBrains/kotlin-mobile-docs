@@ -77,7 +77,7 @@ data class SomeData(val i: Int)
 object GlobalData {
     val sd = AtomicReference(SomeData(0).freeze())
 
-    fun storeNewValue(i: Int) {5
+    fun storeNewValue(i: Int) {
         sd.value = SomeData(i).freeze()
     }
 }
