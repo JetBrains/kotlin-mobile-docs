@@ -41,12 +41,22 @@ buildscript {
 ```Kotlin
 buildscript {
     repositories {
+        gradlePluginPortal()
+        jcenter()
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.squareup.sqldelight:gradle-plugin:$sql_delight_version")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
+        classpath("com.android.tools.build:gradle:4.1.0")
+        classpath ("com.squareup.sqldelight:gradle-plugin:$sql_delight_version")
     }
+}
+group = "com.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
 }
 ```
 
@@ -167,7 +177,7 @@ val iosMain by getting {
 
 ### Configuration
 
-To configure the SQLDelight API generator, use the `sqldelight` top-level block of the build script.
+To configure the SQLDelight API generator, use the `sqldelight` top-level block of the shared module build script.
 For example, to create a database named `AppDatabase` and specify the package name `com.example.db` for the generated
 Kotlin classes, use this configuration block:
 
@@ -220,6 +230,13 @@ Then provide actual implementations for this expected class:
 On Android, the SQLite driver is implemented by the `AndroidSqliteDriver` class. When you create its instance, pass the database information and the link to context to the constructor. For example, this code creates an SQLite driver for a database named `AppDatabase`:
 
 ```Kotlin
+package com.your.package.name
+
+import android.content.Context
+import com.example.db.AppDatabase
+import com.squareup.sqldelight.android.AndroidSqliteDriver
+import com.squareup.sqldelight.db.SqlDriver
+
 actual class DatabaseDriverFactory(private val context: Context) {
     actual fun createDriver(): SqlDriver {
         return AndroidSqliteDriver(AppDatabase.Schema, context, "test.db")
@@ -232,6 +249,11 @@ actual class DatabaseDriverFactory(private val context: Context) {
 On iOS, the SQLite driver implementation is the `NativeSqliteDriver` class:
 
 ```Kotlin
+package com.your.package.name
+
+import com.example.db.AppDatabase
+import com.squareup.sqldelight.db.SqlDriver
+
 actual class DatabaseDriverFactory {
     actual fun createDriver(): SqlDriver {
         return NativeSqliteDriver(AppDatabase.Schema, "test.db")
@@ -239,7 +261,15 @@ actual class DatabaseDriverFactory {
 }
 ```
 
-Now you can create the `DatabaseDriverFactory` instance in your applications' code and pass it to the common module. Then create an `AppDatabse` instance to perform database opetations:
+### How it works
+The SQLDelight generator works as follows: you create a file with the `.sq ` extension in which you provide all the required
+SQL queries to the database. Note, that as discussed [here](https://cashapp.github.io/sqldelight/multiplatform_sqlite/gradle/) the default location is ```src/main/sqldelight``` for these files. The SQLDelight plugin generates the Kotlin code for execution of these queries.
+This way, SQLDelight automatically implements the interaction of your app with the database. This eliminates the need
+for manual implementation of entity classes and code that maps Kotlin classes onto a relational database model.
+
+## Using the database
+
+Now you can create the `DatabaseDriverFactory` instance in your applications' code and pass it to the common module. Then create an `AppDatabase` instance to perform database operations:
 
 ```Kotlin
 val database = AppDatabase(databaseDriverFactory.createDriver())
@@ -248,11 +278,6 @@ val database = AppDatabase(databaseDriverFactory.createDriver())
 See the official official [Networking & Data Storage Hands-on](https://play.kotlinlang.org/hands-on/Networking%20and%20data%20storage%20with%20Kotlin%20Multiplatform%20Mobile/01_Introduction) for the full example.
 
 ## Table operations
-
-The SQLDelight generator works as follows: you create a file with the `.sq ` extension in which you provide all the required
-SQL queries to the database. The SQLDelight plugin generates the Kotlin code for execution of these queries.
-This way, SQLDelight automatically implements the interaction of your app with the database. This eliminates the need
-for manual implementation of entity classes and code that maps Kotlin classes onto a relational database model.
 
 The syntax of the SQLDelight generator lets you implement all the basic SQLite commands, including cascading, indexes,
 triggers, and others.
