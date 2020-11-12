@@ -6,6 +6,12 @@
 * If you're already familiar with the Kotlin language and want to try out Kotlin Multiplatform Mobile, check out our [getting started page](getting-started.md).
 * If you're new to Kotlin, read our [language documentation](https://kotlinlang.org/docs/reference/) or play with Kotlin on the [Playground](https://play.kotlinlang.org/koans/overview). Both of these are good places to learn about the basic language concepts.
 
+## What’s new
+
+* [New KMM plugin releases](kmm-plugin-releases.md)
+* [What's new in Kotlin for KMM](whats-new-in-kotlin-for-kmm.md)
+* [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/)
+
 ## Popular docs
 
 * [Discover your KMM project](discover-kmm-project.md)
@@ -14,12 +20,6 @@
 * [Configure SQLDelight for data storage](configure-sqldelight-for-data-storage.md)
 * [Concurrency overview](concurrency-overview.md)
 * [Organize a process around KMM](organize-process-around-kmm.md)
-
-## What’s new
-
-* [New KMM plugin releases](kmm-plugin-releases.md)
-* [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/).
-* [Kotlin 1.4.0 has been released](https://blog.jetbrains.com/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
 
 ## Community
 
