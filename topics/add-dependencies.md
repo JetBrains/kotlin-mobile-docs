@@ -24,29 +24,32 @@ Integration with the CocoaPods dependency manager is also supported with the sam
 
     <tabs>
     <tab title="Groovy">
-    
+
     ```Groovy
     kotlin {
-       cocoapods {
-           //..
-           pod("AFNetworking", "~> 4.0.0")
-       }
+        cocoapods {
+            //..
+            pod('AFNetworking') {
+                version = '~> 4.0.1'
+            }
+        }
     }
-
     ```
+
     </tab>
     <tab title="Kotlin">
-    
+
     ```Kotlin
     kotlin {
-       cocoapods {
-           //..
-           pod("AFNetworking", "~> 4.0.0")
-       }
+        cocoapods {
+            //..
+            pod("AFNetworking") {
+                version = "~> 4.0.1"
+            }
+        }
     }
-
     ```
-         
+
     </tab>
     </tabs>
 
@@ -92,7 +95,7 @@ The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [fr
     ```properties
     headers = DateTools.h
     package = DateTools
-    ```    
+    ```
 
 6. Add information about interoperability with this library to the build script:
     * Pass the path to the `.def` file. This path can be omitted if your `.def` file has the same name as cinterop and is placed in the `src/nativeInterop/cinterop/` directory.
@@ -101,57 +104,56 @@ The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [fr
 
     <tabs>
     <tab title="Groovy">
-    
+
     ```Groovy
     kotlin {
-       iosX64 {
-           compilations.main {
-               cinterops {
-                   DateTools {
-                       // Path to .def file
-                       defFile("src/nativeInterop/cinterop/DateTools.def")
-                  
-                       // Directories for header search (an analogue of the -I<path> compiler option)
-                       includeDirs("include/this/directory", "path/to/another/directory")
-                   }
-                   anotherInterop { /* ... */ }
-               }
-           }
+        iosX64 {
+            compilations.main {
+                cinterops {
+                    DateTools {
+                        // Path to .def file
+                        defFile("src/nativeInterop/cinterop/DateTools.def")
+                   
+                        // Directories for header search (an analogue of the -I<path> compiler option)
+                        includeDirs("include/this/directory", "path/to/another/directory")
+                    }
+                    anotherInterop { /* ... */ }
+                }
+            }
 
-           binaries.all {
-               // Linker options required to link to the library.
-               linkerOpts "-L/path/to/library/binaries", "-lbinaryname"
-           }
-       }
+            binaries.all {
+                // Linker options required to link to the library.
+                linkerOpts "-L/path/to/library/binaries", "-lbinaryname"
+            }
+        }
     }
-    
     ```
+
     </tab>
     <tab title="Kotlin">
-    
+
     ```Kotlin
     kotlin {
-       iosX64() {
-           compilations.getByName("main") {
-               val DateTools by cinterops.creating {
-                   // Path to .def file
-                   defFile("src/nativeInterop/cinterop/DateTools.def")
-     
-                   // Directories for header search (an analogue of the -I<path> compiler option)
-                   includeDirs("include/this/directory", "path/to/another/directory")
-               }
-               val anotherInterop by cinterops.creating { /* ... */ }
-           }
-      
-           binaries.all {
-               // Linker options required to link to the library.
-               linkerOpts("-L/path/to/library/binaries", "-lbinaryname")
-           }
-       }
-    }
+        iosX64() {
+            compilations.getByName("main") {
+                val DateTools by cinterops.creating {
+                    // Path to .def file
+                    defFile("src/nativeInterop/cinterop/DateTools.def")
 
+                    // Directories for header search (an analogue of the -I<path> compiler option)
+                    includeDirs("include/this/directory", "path/to/another/directory")
+                }
+                val anotherInterop by cinterops.creating { /* ... */ }
+            }
+
+            binaries.all {
+                // Linker options required to link to the library.
+                linkerOpts("-L/path/to/library/binaries", "-lbinaryname")
+            }
+        }
+    }
     ```
-         
+
     </tab>
     </tabs>
 
@@ -191,24 +193,24 @@ import DateTools.*
     
     ```Groovy
     kotlin {
-       iosX64 {
-           compilations.main {
-               cinterops {
-                   DateTools {
-                       // Path to .def file
-                       defFile("src/nativeInterop/cinterop/MyFramework.def")
-                  
-                       compilerOpts("-framework", "MyFramework", "-F/path/to/framework/")
-                   }
-                   anotherInterop { /* ... */ }
-               }
-           }
-      
-           binaries.all {
-               // Tell the linker where the framework is located.
-               linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
-           }
-       }
+        iosX64 {
+            compilations.main {
+                cinterops {
+                    DateTools {
+                        // Path to .def file
+                        defFile("src/nativeInterop/cinterop/MyFramework.def")
+                   
+                        compilerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+                    }
+                    anotherInterop { /* ... */ }
+                }
+            }
+
+            binaries.all {
+                // Tell the linker where the framework is located.
+                linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+            }
+        }
     }
 
     ```
@@ -217,32 +219,32 @@ import DateTools.*
     
     ```Kotlin
     kotlin {
-       iosX64() {
-           compilations.getByName("main") {
-               val DateTools by cinterops.creating {
-                   // Path to .def file
-                   defFile("src/nativeInterop/cinterop/DateTools.def")
+        iosX64() {
+            compilations.getByName("main") {
+                val DateTools by cinterops.creating {
+                    // Path to .def file
+                    defFile("src/nativeInterop/cinterop/DateTools.def")
 
                    compilerOpts("-framework", "MyFramework", "-F/path/to/framework/"
                }
                val anotherInterop by cinterops.creating { /* ... */ }
-           }
-      
-           binaries.all {
-               // Tell the linker where the framework is located.
-               linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
-           }
+            }
+
+            binaries.all {
+                // Tell the linker where the framework is located.
+                linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
+            }
        }
     }
-
     ```
-         
+
     </tab>
     </tabs>
 
 7. Build the project.
 
 Now you can use this dependency in your Kotlin code. To do this, import the package you’ve set up in the package property in the `.def` file. For the example above, this will be:
+
 ```kotlin
 import MyFramework.*
 ```
@@ -266,18 +268,19 @@ sourceSets {
         dependencies {
             implementation 'com.example.android:app-magic:12.3'
         }
+    }
 }
-
 ```
+
 </tab>
 <tab title="Kotlin">
-    
+
 ```Kotlin
 sourceSets["androidMain"].dependencies {
         implementation("com.example.android:app-magic:12.3")
 }
 ```
-         
+
 </tab>
 </tabs>
 
@@ -286,14 +289,14 @@ To minimize the effort you have to put in to deal with migration problems like t
 
 <tabs>
 <tab title="Groovy">
-    
+
 ```Groovy
 android {
-   ...
-  
-   dependencies {
-       implementation 'com.example.android:app-magic:12.3'
-   }
+    ...
+
+    dependencies {
+        implementation 'com.example.android:app-magic:12.3'
+    }
 }
 ```
         
@@ -302,11 +305,11 @@ android {
     
 ```Kotlin
 android {
-   ...
-  
-   dependencies {   
-       implementation("com.example.android:app-magic:12.3")
-   }
+    ...
+
+    dependencies {   
+        implementation("com.example.android:app-magic:12.3")
+    }
 }
 ```
 </tab>
