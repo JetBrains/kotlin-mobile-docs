@@ -29,8 +29,8 @@ Integration with the CocoaPods dependency manager is also supported with the sam
     kotlin {
         cocoapods {
             //..
-            pod("AFNetworking") {
-                version = "~> 4.0.1"
+            pod('AFNetworking') {
+                version = '~> 4.0.1'
             }
         }
     }
