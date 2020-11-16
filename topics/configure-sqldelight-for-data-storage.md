@@ -239,7 +239,7 @@ actual class DatabaseDriverFactory {
 }
 ```
 
-Now you can create the `DatabaseDriverFactory` instance in your applications' code and pass it to the common module. Then create an `AppDatabase` instance to perform database opetations:
+Now you can create the `DatabaseDriverFactory` instance in your applications' code and pass it to the common module. Then create an `AppDatabase` instance to perform database operations:
 
 ```Kotlin
 val database = AppDatabase(databaseDriverFactory.createDriver())
