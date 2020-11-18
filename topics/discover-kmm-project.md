@@ -66,7 +66,7 @@ For more complex projects, you can add more modules into the root project by cre
 ## Shared module
 
 Shared module contains the core application logic used in both target platforms: classes, functions, and so on.
-This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/mpp-intro.html) module that that compiles
+This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/mpp-intro.html) module that compiles
 into an Android library and an iOS framework. It uses Gradle with the Kotlin Multiplatform plugin applied and 
 has targets for Android and iOS.
 
@@ -224,7 +224,7 @@ For more information, see [Multiplatform DSL reference](https://kotlinlang.org/d
 
 ### Android library
 
-The configuration of the Android library produces from the shared module is typical for Android projects.
+The configuration of the Android library produced from the shared module is typical for Android projects.
 To learn about Android libraries creation, see [Create an Android library](https://developer.android.com/studio/projects/android-library)
 in the Android developer documentation.
 
@@ -471,7 +471,7 @@ dependencies {
 </tab>
 </tabs>
 
-Except this dependency, the Android application uses the Kotlin standard library (which is added automatically) and some common Android dependencies:
+Besides this dependency, the Android application uses the Kotlin standard library (which is added automatically) and some common Android dependencies:
 
 <tabs>
 <tab title="Groovy">

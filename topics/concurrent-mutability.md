@@ -77,7 +77,7 @@ data class SomeData(val i: Int)
 object GlobalData {
     val sd = AtomicReference(SomeData(0).freeze())
 
-    fun storeNewValue(i: Int) {5
+    fun storeNewValue(i: Int) {
         sd.value = SomeData(i).freeze()
     }
 }
@@ -91,7 +91,7 @@ will be frozen automatically. If you use the Kotlin/Native runtime's `AtomicRefe
 `AtomicReference` can be very useful when you need to share a state. There are some drawbacks to consider, however.
 
 Accessing and changing values in an `AtomicReference` is very costly performance-wise *relative to* a standard mutable state. 
-If performance is a concern, you may want to consider using another approach involving a[thread-isolated state](#thread-isolated-state).
+If performance is a concern, you may want to consider using another approach involving a [thread-isolated state](#thread-isolated-state).
 
 There is also a potential issue with memory leaks, which will be resolved in the future. In situations where the object 
 kept in the `AtomicReference` has cyclical references, it may leak memory if you don't explicitly clear it out:
