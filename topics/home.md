@@ -4,7 +4,7 @@
 ## Get started
 
 * If you're already familiar with the Kotlin language and want to try out KMM, [get started with KMM](getting-started.md).
-* If you're new to Kotlin, [get started with Kotlin](https://kotlinlang.org/docs/tutorials/getting-started.html) or [play with Kotlin online](https://play.kotlinlang.org/koans/overview). 
+* If you're new to Kotlin, [get started with Kotlin in an IDE](https://kotlinlang.org/docs/tutorials/getting-started.html) or [play with Kotlin online](https://play.kotlinlang.org/koans/overview). 
 
 ## What’s new
 
