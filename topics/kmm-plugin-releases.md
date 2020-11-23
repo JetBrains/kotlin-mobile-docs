@@ -42,7 +42,7 @@ Compatible Kotlin plugin version
 
 **0.2.0**
 
-Released: November 16, 2020
+Released: November 23, 2020
 
 </td>
 <td>
