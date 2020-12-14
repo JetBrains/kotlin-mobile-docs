@@ -28,7 +28,7 @@ Now wait while your project is set up. It may take some time to download and set
 do this for the first time.
     
 To view the complete structure of your mobile multiplatform project, switch the view from **Android** to **Project**. 
-You can [discover what your project includes](discover-kmm-project.md) and how you can use this. 
+You can [understand the KMM project structure](discover-kmm-project.md) and how you can use this. 
     
 ![Select the Project view](select-project-view.png){width=200}  
     
