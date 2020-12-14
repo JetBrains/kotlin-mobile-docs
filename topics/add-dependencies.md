@@ -3,18 +3,214 @@
 
 Every application requires a set of libraries in order to operate successfully. 
 A KMM application can depend on multiplatform libraries that work on both iOS and Android, and it can depend on platform-specific iOS and Android libraries. 
+
 Here you can learn how to add:
+* [Multiplatform dependencies](#multiplatform-libraries)
 * [iOS dependencies](#ios-dependencies)
 * [Android dependencies](#android-dependencies)
-* [Multiplatform dependencies](#multiplatform-libraries)
+
+## Multiplatform libraries
+
+You can depend on libraries that have adopted the Kotlin Multiplatform technology. 
+Examples of multiplatform libraries are [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) or [SQLDelight](https://github.com/cashapp/sqldelight). 
+The authors of the libraries usually provide guides for adding their dependencies to your project.
+
+> When using a multiplatform library with [hierarchical project structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms) in a multiplatform project without such support, 
+> you won't have IDE support, such as code completion and code highlighting, for the shared source set `iosMain`. 
+> 
+> This is a known issue, and we are working on resolving it. Until it's resolved, you can use a workaround. 
+>
+{type="note"}
+
+This page covers basic cases of dependencies:
+
+* [On the Kotlin standard library](#dependency-on-the-kotlin-standard-library)
+* [On a library shared for all source sets](#dependency-on-a-library-shared-for-all-source-sets)
+* [On a library used in specific source sets](#dependency-on-a-library-used-in-specific-source-sets)
+* [On another multiplatform project](#dependency-on-another-multiplatform-project)
+
+Learn more about [configuring dependencies](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies).
+
+Check a [community-driven list of Kotlin Multiplatform libraries](https://libs.kmp.icerock.dev/).
+
+### Dependency on the Kotlin standard library
+
+The Kotlin standard library is added automatically to all multiplatform projects, you don’t have to do anything manually.
+
+### Dependency on a library shared for all source sets
+
+If you want to use a library from all source sets, you can add it only to the common source set. 
+The Kotlin Multiplatform Mobile plugin will add the corresponding parts to any other source sets automatically.
+
+<tabs>
+<tab title="Groovy">
+    
+```Groovy
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
+            }
+        }
+        androidMain {
+            dependencies {
+                //dependency to platform part of kotlinx.coroutines will be added automatically
+            }
+        }
+    }
+}
+```
+        
+</tab>
+<tab title="Kotlin">
+    
+```Kotlin
+kotlin {
+    sourceSets["commonMain"].dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
+    }
+    sourceSets["androidMain"].dependencies {
+        //dependency to platform part of kotlinx.coroutines will be added automatically
+    }
+}
+```
+</tab>
+</tabs>
+
+### Dependency on a library used in specific source sets
+
+If you want to use a multiplatform library just for specific source sets, you can add it exclusively to them. 
+The specified library declarations will then be available only in those source sets.  
+   
+> Don't use a platform-specific name in such cases, like SQLDelight `native-driver` in the example below. Find the exact name in the library’s documentation.
+> 
+{type="note"}   
+
+<tabs>
+<tab title="Groovy">
+    
+```Groovy
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies { 
+            // kotlinx.coroutines will be available in all source sets
+            implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
+            }
+        }
+        androidMain {
+            dependencies { }
+        }
+        iosMain {
+            dependencies {
+            // SQLDelight will be available only in the iOS source set, but not in Android or common
+            implementation 'com.squareup.sqldelight:native-driver:%sqlDelightVersion%'
+            }
+        }
+    }
+}
+```
+        
+</tab>
+<tab title="Kotlin">
+    
+```Kotlin
+kotlin {
+    sourceSets["commonMain"].dependencies {
+        //kotlinx.coroutines will be available in all source sets
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
+    }
+    sourceSets["androidMain"].dependencies {
+    }
+    sourceSets["iosX64Main"].dependencies {
+        //SQLDelight will be available only in the iOS source set, but not in Android or common
+        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%)
+    }
+}
+```
+</tab>
+</tabs>
+
+### Dependency on another multiplatform project
+
+You can connect one multiplatform project to another as a dependency. To do this, simply add a project dependency to the source set that needs it. 
+If you want to use a dependency in all source sets, add it to the common one. In this case, other source sets will get their versions automatically.
+
+<tabs>
+<tab title="Groovy">
+    
+```Groovy
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation project(':some-other-multiplatform-module')
+            }
+        }
+        androidMain {
+            dependencies {
+                //platform part of :some-other-multiplatform-module will be added automatically
+            }
+        }
+    }
+}
+```
+        
+</tab>
+<tab title="Kotlin">
+    
+```Kotlin
+kotlin {
+    sourceSets["commonMain"].dependencies {
+        implementation(project(":some-other-multiplatform-module"))
+    }
+    sourceSets["androidMain"].dependencies {
+        //platform part of :some-other-multiplatform-module will be added automatically
+    }
+}
+```
+</tab>
+</tabs>
 
 ## iOS dependencies
 
-Apple SDK dependencies (such as Foundation or Core Bluetooth) are available as a set of prebuilt libraries in a Kotlin Multiplatform Mobile project. They do not require any additional configuration.
+Apple SDK dependencies (such as Foundation or Core Bluetooth) are available as a set of prebuilt libraries in a Kotlin Multiplatform Mobile project. 
+They do not require any additional configuration.
 
-You can also reuse other libraries and frameworks from the iOS ecosystem in your iOS source sets. Kotlin supports interoperability with Objective-C dependencies and Swift dependencies if their API is exported to Objective-C with the `@objc` attribute. Pure Swift dependencies are not yet supported.
+You can also reuse other libraries and frameworks from the iOS ecosystem in your iOS source sets. 
+Kotlin supports interoperability with Objective-C dependencies and Swift dependencies if their API is exported to Objective-C with the `@objc` attribute. 
+Pure Swift dependencies are not yet supported.
 
-Integration with the CocoaPods dependency manager is also supported with the same limitation – you cannot use pure Swift pods. We recommend using CocoaPods to handle iOS dependencies in Kotlin Multiplatform Mobile (KMM) projects. We only suggest managing dependencies manually if you want to tune the interop process specifically or if you have some other strong reason to do so.
+Integration with the CocoaPods dependency manager is also supported with the same limitation – you cannot use pure Swift pods. 
+
+We recommend:
+* [Using CocoaPods](#with-cocoapods) to handle iOS dependencies in Kotlin Multiplatform Mobile (KMM) projects. 
+* [Managing dependencies manually](#without-cocoapods) only if you want to tune the interop process specifically or if you have some other strong reason to do so.
+
+> When using third-party iOS libraries in multiplatform projects with [hierarchical project structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms), for example with the `ios()` [target shortcut](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts), 
+> you won't have IDE support, such as code completion and highlighting, for the shared `ios` source set. 
+> 
+> This is a known issue, and we are working on resolving it. Until it's resolved, you can use a workaround. 
+>
+{type="note"}
+
+### Workaround to enable IDE support for the shared ios source set
+
+Use this workaround to enable IDE support, such as code completion and  highlighting, for the shared `ios` source set in multiplatform projects with [hierarchical project structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms),
+for example with the `ios()` [target shortcut](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts).
+
+Add the following code to the shared `ios` source set, for example to `iosMain` if you used the target shortcut `ios()` for creating a hierarchy of the `iosArm64` and `iosX64` source sets.
+
+```Kotlin
+val iOSTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
+    if (System.getenv("SDK_NAME")?.startsWith("iphoneos") == true)
+        ::iosArm64
+    else
+        ::iosX64
+
+iOSTarget("ios")
+```
 
 ### With CocoaPods
 
@@ -321,135 +517,3 @@ Putting dependencies into a standalone `dependencies` block at the end of the sc
 
 Learn more about [adding dependencies in Android documentation](https://developer.android.com/studio/build/dependencies).
 
-## Multiplatform libraries
-
-In addition to dependencies specific to the iOS and Android ecosystems, some libraries have also adopted Kotlin Multiplatform technology. Dependencies on these libraries can be used from different targets and often even from common code. Examples of multiplatform libraries are [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) or [SQLDelight](https://github.com/cashapp/sqldelight). The authors of the libraries usually provide guides for adding their dependencies to your project. This page covers basic cases that will be helpful when working on multiplatform projects.
-
-* The Kotlin standard library is added automatically to all multiplatform projects, you don’t have to do anything manually.
-
-* If you want to use a library from all source sets, you can add it only to the common source set. The Kotlin Multiplatform Mobile plugin will add the corresponding parts to any other source sets automatically.
-
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-kotlin {
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
-            }
-        }
-        androidMain {
-            dependencies {
-                //dependency to platform part of kotlinx.coroutines will be added automatically
-            }
-        }
-    }
-}
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-kotlin {
-    sourceSets["commonMain"].dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
-    }
-    sourceSets["androidMain"].dependencies {
-        //dependency to platform part of kotlinx.coroutines will be added automatically
-    }
-}
-```
-</tab>
-</tabs>
-
-* If you want to use a multiplatform library just for specific source sets, you can add it exclusively to them. The specified library declarations will then be available only in those source sets. Please note that you might need to use a platform-specific name in such cases, like SQLDelight `native-driver` in the example below. You should be able to find the exact name in the library’s documentation.
-
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-kotlin {
-    sourceSets {
-        commonMain {
-            dependencies { 
-            // kotlinx.coroutines will be available in all source sets
-            implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
-            }
-        }
-        androidMain {
-            dependencies { }
-        }
-        iosMain {
-            dependencies {
-            // SQLDelight will be available only in the iOS source set, but not in Android or common
-            implementation 'com.squareup.sqldelight:native-driver:%sqlDelightVersion%'
-            }
-        }
-    }
-}
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-kotlin {
-    sourceSets["commonMain"].dependencies {
-        //kotlinx.coroutines will be available in all source sets
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
-    }
-    sourceSets["androidMain"].dependencies {
-    }
-    sourceSets["iosX64Main"].dependencies {
-        //SQLDelight will be available only in the iOS source set, but not in Android or common
-        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%)
-    }
-}
-```
-</tab>
-</tabs>
-
-* You can connect one multiplatform project to another as a dependency. To do this, simply add a project dependency to the source set that needs it. If you want to use a dependency in all source sets, add it to the common one. In this case, other source sets will get their versions automatically.
-
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-kotlin {
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation project(':some-other-multiplatform-module')
-            }
-        }
-        androidMain {
-            dependencies {
-                //platform part of :some-other-multiplatform-module will be added automatically
-            }
-        }
-    }
-}
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-kotlin {
-    sourceSets["commonMain"].dependencies {
-        implementation(project(":some-other-multiplatform-module"))
-    }
-    sourceSets["androidMain"].dependencies {
-        //platform part of :some-other-multiplatform-module will be added automatically
-    }
-}
-```
-</tab>
-</tabs>
-
-Learn more about [configuring dependencies](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies).
-
-Check a [community-driven list of Kotlin Multiplatform libraries](https://libs.kmp.icerock.dev/).
