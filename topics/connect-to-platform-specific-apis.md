@@ -22,6 +22,8 @@ declarations marked with the `actual` keyword in all platform modules. The IDE p
 >
 {type="note"}
 
+Learn how to [add dependencies on platform-specific libraries](add-dependencies.md).
+
 ## Examples
 
 For simplicity, the following examples use the intuitive target names iOS and Android. However, in your Gradle build files, 

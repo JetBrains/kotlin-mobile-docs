@@ -28,7 +28,7 @@ Now wait while your project is set up. It may take some time to download and set
 do this for the first time.
     
 To view the complete structure of your mobile multiplatform project, switch the view from **Android** to **Project**. 
-You can [discover what your project includes](discover-kmm-project.md) and how you can use this. 
+You can [understand the KMM project structure](discover-kmm-project.md) and how you can use this. 
     
 ![Select the Project view](select-project-view.png){width=200}  
     
@@ -152,5 +152,6 @@ For Android, follow a procedure that is very similar to the one for running test
 
 Once you've played with your first KMM application, you can:
 
-* [Integrate KMM in an existing application](integrate-in-existing-app.md)
+* [Understand the KMM project structure](discover-kmm-project.md)
 * [Complete a hands-on tutorial on networking and data storage](hands-on-networking-data-storage.md)
+* [Integrate KMM in an existing application](integrate-in-existing-app.md)
