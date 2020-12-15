@@ -1,7 +1,7 @@
 [//]: # (title: Getting started)
 [//]: # (auxiliary-id: Getting_started)
 
-There are different ways to get started with Kotlin Multiplatform Mobile (KMM) depending on whether you want to start from scratch or an existing Android application.
+There are different ways to get started with Kotlin Multiplatform Mobile (KMM) depending on whether you want to start from scratch or in an existing Android application.
 
 ## Start with KMM from scratch
 
