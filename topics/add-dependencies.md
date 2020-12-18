@@ -11,18 +11,18 @@ Here you can learn how to add:
 
 ## Multiplatform libraries
 
-You can depend on libraries that have adopted the Kotlin Multiplatform technology. 
-Examples of multiplatform libraries are [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) or [SQLDelight](https://github.com/cashapp/sqldelight). 
-The authors of the libraries usually provide guides for adding their dependencies to your project.
+You can add dependencies on libraries that have adopted Kotlin Multiplatform technology, such as 
+[kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) and [SQLDelight](https://github.com/cashapp/sqldelight). 
+The authors of these libraries usually provide guides for adding their dependencies to your project.
 
-> When using a multiplatform library without [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms) in a multiplatform project with such support, 
+> When using a multiplatform library that does not have [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms) in a multiplatform project that does, 
 > you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set. 
 > 
-> This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. Until it's resolved, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set). 
+> This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. In the meantime, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set). 
 >
 {type="note"}
 
-This page covers basic cases of dependencies:
+This page covers basic dependency use cases:
 
 * [On the Kotlin standard library](#dependency-on-the-kotlin-standard-library)
 * [On a library shared for all source sets](#dependency-on-a-library-shared-for-all-source-sets)
@@ -31,7 +31,7 @@ This page covers basic cases of dependencies:
 
 Learn more about [configuring dependencies](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies).
 
-Check a [community-driven list of Kotlin Multiplatform libraries](https://libs.kmp.icerock.dev/).
+Check out this [community-maintained list of Kotlin Multiplatform libraries](https://libs.kmp.icerock.dev/).
 
 ### Dependency on the Kotlin standard library
 
@@ -175,28 +175,26 @@ kotlin {
 
 ## iOS dependencies
 
-Apple SDK dependencies (such as Foundation or Core Bluetooth) are available as a set of prebuilt libraries in a Kotlin Multiplatform Mobile project. 
+Apple SDK dependencies (such as Foundation or Core Bluetooth) are available as a set of prebuilt libraries in Kotlin Multiplatform Mobile projects. 
 They do not require any additional configuration.
 
 You can also reuse other libraries and frameworks from the iOS ecosystem in your iOS source sets. 
-Kotlin supports interoperability with Objective-C dependencies and Swift dependencies if their API is exported to Objective-C with the `@objc` attribute. 
+Kotlin supports interoperability with Objective-C dependencies and Swift dependencies if their APIs are exported to Objective-C with the `@objc` attribute. 
 Pure Swift dependencies are not yet supported.
 
 Integration with the CocoaPods dependency manager is also supported with the same limitation – you cannot use pure Swift pods. 
 
-We recommend:
-* [Using CocoaPods](#with-cocoapods) to handle iOS dependencies in Kotlin Multiplatform Mobile (KMM) projects. 
-* [Managing dependencies manually](#without-cocoapods) only if you want to tune the interop process specifically or if you have some other strong reason to do so.
+We recommend [using CocoaPods](#with-cocoapods) to handle iOS dependencies in Kotlin Multiplatform Mobile (KMM) projects. 
+[Manage dependencies manually](#without-cocoapods) only if you want to tune the interop process specifically or if you have some other strong reason to do so.
 
 > When using third-party iOS libraries in multiplatform projects with [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms), for example with the `ios()` [target shortcut](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts), 
 > you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set. 
 > 
-> This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. Until it's resolved, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set). 
+> This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. In the meantime, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set). 
 >
 > This issue doesn't apply to [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 >
 {type="note"}
-
 
 ### With CocoaPods
 
@@ -431,15 +429,15 @@ Learn more about [Objective-C and Swift interop](https://kotlinlang.org/docs/ref
 
 ### Workaround to enable IDE support for the shared iOS source set {initial-collapse-state="collapsed"}
 
-Due to the [known issue](https://youtrack.jetbrains.com/issue/KT-40975), you won't be able to use IDE features, such as code completion and  highlighting, for the shared iOS source set 
-in a multiplatform project with [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms), if your project depends on:
+Due to a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set 
+in a multiplatform project with [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms) if your project depends on:
 
 * Multiplatform libraries that don't support the hierarchical structure.
-* Third-party iOS libraries, except for [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
+* Third-party iOS libraries, with the exception of [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 
-This issue applies only to the shared iOS source set. The IDE will correctly support all the other code.
+This issue applies only to the shared iOS source set. The IDE will correctly support the rest of the code.
 
-> All projects created with the KMM Project Wizard support the hierarchical structure and can also have this issue.
+> All projects created with the KMM Project Wizard support the hierarchical structure, which means this issue affects them.
 >
 {type="note"}
 
@@ -468,14 +466,14 @@ iosTarget("ios")
 
 </tabs>
 
-In this code sample, configuration of iOS targets depends on the environment variable `SDK_NAME`, which is managed by Xcode. 
-For each build, you'll have only one iOS target named `ios` that uses the `iosMain` source set. 
+In this code sample, the configuration of iOS targets depends on the environment variable `SDK_NAME`, which is managed by Xcode. 
+For each build, you'll have only one iOS target, named `ios`, that uses the `iosMain` source set. 
 There will be no hierarchy of the `iosMain`, `iosArm64`, and `iosX64` source sets.
 
-> This is a temporary workaround. If you are a library author, we recommend that you [migrate to the hierarchical structure](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure) the sooner the better. 
+> This is a temporary workaround. If you are a library author, we recommend that you [migrate to the hierarchical structure](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure) as soon as possible. 
 >
-> With this workaround, Kotlin Multiplatform tooling analyzes your code only against one native target that is active during the current build. 
-> This might lead to various errors during the complete build with all targets. Errors are more likely if your project contains other native targets in addition to iOS ones.
+> With this workaround, Kotlin Multiplatform tooling analyzes your code against only the one native target that is active during the current build. 
+> This might lead to various errors during the complete build with all targets, and errors are more likely if your project contains other native targets in addition to the iOS ones.
 >
 {type="note"}
 
