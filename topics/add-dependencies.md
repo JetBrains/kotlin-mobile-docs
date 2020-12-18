@@ -439,7 +439,7 @@ in a multiplatform project with [hierarchical structure support](https://kotlinl
 
 This issue applies only to the shared iOS source set. The IDE will correctly support all the other code.
 
-> All KMM projects created with the KMM Project Wizard support the hierarchical structure and can also have this issue.
+> All projects created with the KMM Project Wizard support the hierarchical structure and can also have this issue.
 >
 {type="note"}
 
