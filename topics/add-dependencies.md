@@ -443,7 +443,7 @@ This issue applies only to the shared iOS source set. The IDE will correctly sup
 >
 {type="note"}
 
-To enable IDE support in these cases, you can work around the issue and add the following code to `build.gradle.(kts)` in the `shared` directory of your project:
+To enable IDE support in these cases, you can work around the issue by adding the following code to `build.gradle.(kts)` in the `shared` directory of your project:
 
 <tabs>
 
@@ -546,4 +546,3 @@ Dependencies declared here will be treated exactly the same as dependencies from
 Putting dependencies into a standalone `dependencies` block at the end of the script, in a way that is idiomatic to Android projects, is also supported. However, we strongly recommend **against** doing this because configuring a build script with Android dependencies in the top-level block and other target dependencies in each source set is likely to cause confusion.
 
 Learn more about [adding dependencies in Android documentation](https://developer.android.com/studio/build/dependencies).
-
