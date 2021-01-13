@@ -3,7 +3,7 @@
 <buildprofiles>
     <variables>
         <enable-browser-edits>true</enable-browser-edits>
-        <browser-edits-url>https://github.com/JetBrains/kotlin-mobile-docs/edit/master/topics/</browser-edits-url>
+        <browser-edits-url>https://github.com/JetBrains/kotlin-mobile-docs/edit/master/</browser-edits-url>
         <download-page/>
         <help-app-version>3</help-app-version>
         <config-disqus-id>jetbrains</config-disqus-id>
