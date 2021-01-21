@@ -135,6 +135,37 @@ internal actual class PlatformSocket actual constructor(url: String) {
 }
 ```
 
+Android implementation uses the third-party library [OkHttp](https://square.github.io/okhttp/). Add the corresponding dependency to `build.gradle(.kts)` in the shared module:
+
+<tabs>
+<tab title="Groovy">
+
+```Groovy
+commonMain {
+    dependencies {
+        implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    }
+}
+```
+
+</tab>
+<tab title="Kotlin">
+
+```Kotlin
+sourceSets {
+    val androidMain by getting {
+        dependencies {
+            implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
+        }
+    }
+}
+```
+
+</tab>
+</tabs>
+
+iOS implementation uses `NSURLSession` from the standard Apple SDK and doesn't require additional dependencies. 
+
 ```kotlin
 //iOS
 import platform.Foundation.*
