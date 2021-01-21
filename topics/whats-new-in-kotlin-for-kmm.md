@@ -6,6 +6,24 @@ KMM is part of the larger Kotlin ecosystem and leverages Kotlin features and imp
 
 Here you can find a short summary of the features Kotlin provides for developing multiplatform mobile applications.
 
+## Kotlin 1.4.30 for KMM
+
+[Kotlin 1.4.30](https://kotlinlang.org/docs/reference/whatsnew1430.html) introduces a number of improvements that are helpful for KMM:
+
+* **Improved compilation time for iOS Simulator**. Recompiling binaries targeting iOS Simulator after making changes in the code requires much less time. 
+  You can see the most significant improvements when re-running unit tests or applications on iOS Simulator. 
+  For example, the time required to rebuild the framework in the [KMM Networking and data storage sample](https://github.com/kotlin-hands-on/kmm-networking-and-data-storage/tree/final) has decreased from 9.5 seconds (in 1.4.10) to 4.5 seconds (in 1.4.30).  
+  These optimizations affect other scenarios as well.
+
+* Support for **libraries delivered in Xcode 12.2**.
+
+* Support for the new **watchosX64** target in Kotlin/Native. This target allows running the simulator on the 64-bit architecture.
+
+Android Studio will recommend an automatic update to Kotlin 1.4.30. You can also [update manually](https://kotlinlang.org/releases.html#updating-to-a-new-release).
+
+Learn more about [what's new in Kotlin 1.4.30](https://kotlinlang.org/docs/reference/whatsnew1430.html).
+
+
 ## Kotlin 1.4.20 for KMM
 
 [Kotlin 1.4.20](https://kotlinlang.org/docs/reference/whatsnew1420.html) introduces a number of features, improvements, and bug fixes that are helpful for KMM:
