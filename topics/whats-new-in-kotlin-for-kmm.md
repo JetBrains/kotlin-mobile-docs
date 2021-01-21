@@ -23,7 +23,6 @@ Android Studio will recommend an automatic update to Kotlin 1.4.30. You can also
 
 Learn more about [what's new in Kotlin 1.4.30](https://kotlinlang.org/docs/reference/whatsnew1430.html).
 
-
 ## Kotlin 1.4.20 for KMM
 
 [Kotlin 1.4.20](https://kotlinlang.org/docs/reference/whatsnew1420.html) introduces a number of features, improvements, and bug fixes that are helpful for KMM:
