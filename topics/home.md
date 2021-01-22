@@ -8,7 +8,7 @@
 
 ## Samples
 
-* Check our [list of KMM sample projects](samples.md) for inspiration.
+* [Check our list of KMM sample projects](samples.md) for inspiration.
 
 ## What’s new in KMM
 
