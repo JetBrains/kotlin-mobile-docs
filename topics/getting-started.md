@@ -5,9 +5,9 @@ There are different ways to get started with Kotlin Multiplatform Mobile (KMM) d
 
 ## Start with KMM from scratch
 
-* [Check the KMM sample projects](samples.md) for inspiration.
 * [Set up your environment for KMM development](setup.md).
 * [Create your first KMM application](create-first-app.md) using the IDE wizard.
+* [Check the KMM sample projects](samples.md) for inspiration.
 
 ## Integrate KMM into an Android application
 
