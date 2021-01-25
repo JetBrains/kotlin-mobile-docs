@@ -12,8 +12,8 @@ Here you can find a short summary of the features Kotlin provides for developing
 
 [Kotlin 1.4.30](https://kotlinlang.org/docs/reference/whatsnew1430.html) introduces a number of improvements that are helpful for KMM:
 
-* **Improved compilation time for an iOS simulator**. Recompiling binaries for an iOS simulator after making changes in the code now requires much less time.
-  You can see the most significant improvements when re-running unit tests or applications on an iOS simulator.
+* **Improved compilation time for an iOS simulator**. Recompiling binaries for the iOS simulator after making changes in the code now requires much less time.
+  You can see the most significant improvements when re-running unit tests or applications on the iOS simulator.
   For example, the time required to rebuild the framework in the [KMM Networking and data storage sample](https://github.com/kotlin-hands-on/kmm-networking-and-data-storage/tree/final) has decreased from 9.5 seconds (in 1.4.10) to 4.5 seconds (in 1.4.30).  
   These optimizations affect other scenarios as well.
 
