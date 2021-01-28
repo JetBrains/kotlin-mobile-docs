@@ -20,6 +20,7 @@
 
     <toc-element toc-title="Development">
         <toc-element id="organize-process-around-kmm.md"/>
+        <toc-element id="architect-kmm-app.md"/>
         <toc-element id="connect-to-platform-specific-apis.md"/>
         <toc-element id="configure-sqldelight-for-data-storage.md"/>
         <toc-element id="use-ktor-for-networking.md"/>
