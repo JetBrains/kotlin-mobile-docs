@@ -138,21 +138,6 @@ To summarize, we recommend sharing the following in your application:
 | Frontend behavior (reaction to inputs & communication with the backend) | **Yes/no**. Consider these [architectural patterns](#architectural-patterns-for-sharing-ui-behavior).|
 | User interface (including animations & transitions) | **No**. It needs to be platform-specific.|
 
-## Modularize your current application
-
-Refactor your application into independent modules that can work on their own. The [Dependency Injection design pattern](https://developer.android.com/training/dependency-injection)
-is very useful to create such an architecture.
-
-A module should:
-*   Be a simple interface describing its inputs and outputs.
-*   Be in charge of a simple describable responsibility, such as database access, file management, a network API, or
-    credentials management.
-
-To check if a module is ready for sharing, answer these two questions:
-*   Can it be tested with mock dependencies?
-*   Can it be mocked?
-
-If you can answer _yes_ to both, then you can share the module.
-
+_We'd like to thank the [Kodein Koders team](https://twitter.com/kodeinkoders) for helping us write this article._
 
 

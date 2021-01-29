@@ -185,4 +185,4 @@ Using a shared module as part of your KMM application project is good for gettin
 Later, when you’ve worked with the shared module with your team and you decide to use it in other projects, you can move it to a separate
 project as a multiplatform library, [publish your library](https://kotlinlang.org/docs/reference/mpp-publish-lib.html), and [use it in your projects as a dependency](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html).
 
-_We'd like to thank the [Kodein Koders team](https://twitter.com/kodeinkoders) for helping us write this article._
+
