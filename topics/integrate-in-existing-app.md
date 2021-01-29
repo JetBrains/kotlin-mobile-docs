@@ -157,7 +157,6 @@ companion object {
 
 
 
-------------
 
 ### Make your application work on iOS
 
