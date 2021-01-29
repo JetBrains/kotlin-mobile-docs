@@ -110,7 +110,7 @@ You can now extract the business logic code to the KMM shared module and make it
 
 4. Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
 
-### Replace Android-specific code with cross-platform code  {initial-collapse-state="collapsed"}
+### Replace Android-specific code with cross-platform code {initial-collapse-state="collapsed"}
 
 To make your code work well on both Android and iOS, replace all JVM dependencies with Kotlin dependencies wherever possible.
 
@@ -127,6 +127,37 @@ return Result.Error(RuntimeException("Error logging in", e))
 ```
 
 </compare>
+
+2. For email validation replace the package `android.utils` with a Kotlin regular expression matching the pattern:
+
+<compare> 
+
+```kotlin
+private fun isEmailValid(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+```
+
+```kotlin
+private fun isEmailValid(email: String) = emailRegex.matches(email)
+
+companion object {
+   private val emailRegex =
+           ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                   "\\@" +
+                   "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                   "(" +
+                   "\\." +
+                   "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                   ")+").toRegex()
+}
+```
+
+</compare>
+
+### Connect to platform-specific APIs from the cross-platform code {initial-collapse-state="collapsed"}
+
+
+
+------------
 
 ### Make your application work on iOS
 
