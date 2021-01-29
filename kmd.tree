@@ -13,8 +13,8 @@
         <toc-element id="getting-started.md"/>
         <toc-element id="setup.md"/>
         <toc-element id="create-first-app.md"/>
-        <toc-element id="discover-kmm-project.md"/>
         <toc-element id="integrate-in-existing-app.md"/>
+        <toc-element id="discover-kmm-project.md"/>
         <toc-element id="introduce-your-team-to-kmm.md"/>
     </toc-element>
 
