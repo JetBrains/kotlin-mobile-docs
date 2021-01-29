@@ -27,7 +27,7 @@ If you aren't familiar with KMM, learn how to [create and configure KMM applicat
 
 3. Switch to the **Project** view.
 
-    ![Project view](project-view-for-integrate.png){width=250}
+    ![Project view](project-view-for-integrate.png){width=200}
 
 ## Decide what code to make cross platform
 
@@ -93,17 +93,40 @@ To use cross-platform code in your Android application, connect the shared modul
 
 ## Make the business logic cross platform
 
-
-
-
-You can now extract code to a KMM shared module starting from the backend of your application and working your way up.
-Start with a pure logic module that requires as little platform access as possible, and then continue working with modules 
-that require platform access such as data storage and network requests. 
+You can now extract the business logic code to the KMM shared module and make it platform independent. This is necessary for reusing it for both Android and iOS.
  
-For each module:
-1. Add the shared code to the `commonMain` source set.
-2. Add Android-specific code to an Android-specific source set and share it in `commonMain` with [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
-3. Run the application on Android to ensure that everything works correctly.
+1. Move the business logic code `com.jetbrains.simplelogin.androidapp.data` from the `app` directory to the `com.jetbrains.simplelogin.shared` package in the `shared/commonMain` directory.
+   You can drag and drop the package or refactor it by moving from one directory to another.
+   
+    ![Drag and drop the package with the business logic code](moving-business-logic.png){width=350}
+
+2. When Android Studio asks what you'd like to do, select to move the package, and then approve refactoring.
+
+    ![Refactor the buiness logic package](refactor-business-logic-package.png){width=500}
+
+3. Ignore all warnings about platform-dependent code, and click **Continue**.
+
+    ![Warnings about platform-dependent code](warnings-android-specific-code.png){width=450}
+
+4. Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
+
+### Replace Android-specific code with cross-platform code  {initial-collapse-state="collapsed"}
+
+To make your code work well on both Android and iOS, replace all JVM dependencies with Kotlin dependencies wherever possible.
+
+1. Replace `IOException` that is not available in Kotlin with `RuntimeException` in the `login()` function of the `LoginDataSource` class.
+
+<compare> 
+
+```kotlin
+return Result.Error(IOException("Error logging in", e))
+```
+
+```kotlin
+return Result.Error(RuntimeException("Error logging in", e))
+```
+
+</compare>
 
 ### Make your application work on iOS
 
