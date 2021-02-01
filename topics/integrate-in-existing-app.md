@@ -161,7 +161,7 @@ Since the Kotlin standard library doesn't provide functionality for generating U
 Provide the `expect` declaration for the `randomUUID()` function in the shared code and its `actual` implementations for each platform – Android and iOS – in the corresponding source sets. 
 You can learn more about [connecting to platform-specific APIs](connect-to-platform-specific-apis.md).
 
-1. Create the `Utils.kt` file in the `shared/src/commonMain` with the `expect` declaration:
+1. Create the `Utils.kt` file in the `shared/src/commonMain` and provide the `expect` declaration:
 
     ```kotlin
     package com.jetbrains.simplelogin.shared
@@ -169,7 +169,7 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
     expect fun randomUUID(): String
     ```
 
-2. Create the` Utils.kt` file in `shared/src/androidMain` with the actual implementation for `randomUUID()` for Android:
+2. Create the` Utils.kt` file in `shared/src/androidMain` and provide the `actual` implementation for `randomUUID()` in Android:
 
     ```kotlin
     package com.jetbrains.simplelogin.shared
@@ -178,7 +178,7 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
     actual fun randomUUID() = UUID.randomUUID().toString()
     ```
 
-3. Create the `Utils.kt` file in `shared/src/iosMain` with the actual implementation for `randomUUID()` for iOS:
+3. Create the `Utils.kt` file in `shared/src/iosMain` and provide the `actual` implementation for `randomUUID()` in iOS:
 
     ```kotlin
     package com.jetbrains.simplelogin.shared
@@ -189,4 +189,43 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
 
 For Android and iOS, Kotlin will use different platform-specific implementations.
 
+## Create an iOS project to make your app work on iOS
 
+1. In Xcode, click **New** | **Project**.
+
+2. Select a template for an iOS app and click **Next**.
+
+    ![iOS project template](ios-project-wizard-1.png)
+
+3. As the product name, specify **simpleLoginIOS** and click **Next**.
+
+   ![iOS project settings](ios-project-wizard-2.png)
+
+4. As the location for your project, select the directory storing your cross-platform application, for example, `kmm-integrate-into-existing-app`.
+
+In Android Studio, you'll get the following structure:
+
+![iOS project in Android Studio](ios-project-in-as.png){width=194}
+
+You can rename the `simpleLoginIOS` directory to the `iosApp` directory for consistency with other top-level directories of your cross-platform project.
+
+![Renamed iOS project directory in Android Studio](ios-directory-renamed-in-as.png){width=194}
+
+
+## Connect the shared module to your iOS project
+
+To use Kotlin code compiled into a `.framework` for your iOS project, connect this framework to the project.
+There are different ways on how to do this.
+
+This tutorial assumes that you store code for Android and iOS applications in a single repository (monorepo). 
+In this case, you can either:
+
+* Connect the framework manually. The KMM Application Wizard and this tutorial use this approach. 
+* [Configure integration via Cocoapods](https://kotlinlang.org/docs/reference/native/cocoapods.html). 
+
+> If you want to store source code of applications in different repositories:
+> * Before working on the iOS project, take the KMM module source and use any approach as for a monorepo.
+> * Configure CI to automatically compile and publish a `.framework` after any change in the KMM module and use any approach as for a monorepo.
+>
+
+## Automate iOS project updates
