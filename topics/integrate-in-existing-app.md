@@ -116,54 +116,50 @@ To make your code work well on both Android and iOS, replace all JVM dependencie
 
 1. Replace `IOException` that is not available in Kotlin with `RuntimeException` in the `login()` function of the `LoginDataSource` class.
 
-<compare> 
+    ```kotlin
+    // Before
+    return Result.Error(IOException("Error logging in", e))
+    ```
 
-```kotlin
-return Result.Error(IOException("Error logging in", e))
-```
-
-```kotlin
-return Result.Error(RuntimeException("Error logging in", e))
-```
-
-</compare>
+    ```kotlin
+    //After
+    return Result.Error(RuntimeException("Error logging in", e))
+    ```
 
 2. For email validation replace the package `android.utils` with a Kotlin regular expression matching the pattern:
 
-<compare> 
+    ```kotlin
+    // Before
+    private fun isEmailValid(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    ```
 
-```kotlin
-private fun isEmailValid(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-```
-
-```kotlin
-private fun isEmailValid(email: String) = emailRegex.matches(email)
-
-companion object {
-   private val emailRegex =
-           ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                   "\\@" +
-                   "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                   "(" +
-                   "\\." +
-                   "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                   ")+").toRegex()
-}
-```
-
-</compare>
+    ```kotlin
+    // After
+    private fun isEmailValid(email: String) = emailRegex.matches(email)
+    
+    companion object {
+       private val emailRegex =
+               ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                       "\\@" +
+                       "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                       "(" +
+                       "\\." +
+                       "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                       ")+").toRegex()
+    }
+    ```
 
 ### Connect to platform-specific APIs from the cross-platform code {initial-collapse-state="collapsed"}
 
-A UUID for `fakeUser` in `LoginDataSource` is generated using `java.util.UUID` that is available only for JVM. 
+A universally unique identifier (UUID) for `fakeUser` in `LoginDataSource` is generated using the `java.util.UUID` class, which is not available for iOS. 
 
 ```kotlin
 val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
 ```
 
-Since the Kotlin standard library doesn't provide such functionality, you still need to use platform-specific functionality for this case. 
+Since the Kotlin standard library doesn't provide functionality for generating UUID, you still need to use platform-specific functionality for this case. 
 Provide the `expect` declaration for the `randomUUID()` function in the shared code and its `actual` implementations for each platform – Android and iOS – in the corresponding source sets. 
-You can learn more about [this mechanism](connect-to-platform-specific-apis.md).
+You can learn more about [connecting to platform-specific APIs](connect-to-platform-specific-apis.md).
 
 1. Create the `Utils.kt` file in the `shared/src/commonMain` with the `expect` declaration:
 
@@ -191,7 +187,6 @@ You can learn more about [this mechanism](connect-to-platform-specific-apis.md).
     actual fun randomUUID(): String = NSUUID().UUIDString()
     ```     
 
-For Android and iOS, Kotlin will use different implementations.
+For Android and iOS, Kotlin will use different platform-specific implementations.
 
-## Make your application work on iOS
 
