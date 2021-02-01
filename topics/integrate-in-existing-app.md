@@ -5,9 +5,9 @@ Here you can learn how to make your existing Android application cross platform 
 You'll be able to write code and test it for Android and iOS only once, in one place.
 
 This tutorial uses a [sample Android application](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app) with a single screen for entering a username and password. 
-The credentials are validated and saved in an in-memory database.
+The credentials are validated and saved to an in-memory database.
 
-If you aren't familiar with KMM, learn how to [create and configure KMM application from scratch](create-first-app.md).
+If you aren't familiar with KMM, learn how to [create and configure a KMM application from scratch](create-first-app.md).
 
 ## Prepare an environment for development
 
@@ -75,7 +75,7 @@ To use cross-platform code in your Android application, connect the shared modul
     }
     ```
 
-3. Check that the shared module is successfully connected to your application and greets you. Dump the `greeting()` function result to the log 
+3. To check that the shared module is successfully connected to your application, dump the `greeting()` function result to the log 
    by updating the method `onCreate()` of the class `LoginActivity`.
 
     ```kotlin
@@ -87,7 +87,7 @@ To use cross-platform code in your Android application, connect the shared modul
     }
     ```
    
-    Search for `Hello` in the log, and you'll find a greeting from the shared module.
+5. Search for `Hello` in the log, and you'll find a greeting from the shared module.
 
     ![Greeting from the shared module](shared-module-greeting.png)
 
@@ -95,8 +95,8 @@ To use cross-platform code in your Android application, connect the shared modul
 
 You can now extract the business logic code to the KMM shared module and make it platform independent. This is necessary for reusing it for both Android and iOS.
  
-1. Move the business logic code `com.jetbrains.simplelogin.androidapp.data` from the `app` directory to the `com.jetbrains.simplelogin.shared` package in the `shared/commonMain` directory.
-   You can drag and drop the package or refactor it by moving from one directory to another.
+1. Move the business logic code `com.jetbrains.simplelogin.androidapp.data` from the `app` directory to the `com.jetbrains.simplelogin.shared` package in the `shared/src/commonMain` directory.
+   You can drag and drop the package or refactor it by moving everything from one directory to another.
    
     ![Drag and drop the package with the business logic code](moving-business-logic.png){width=350}
 
@@ -104,7 +104,7 @@ You can now extract the business logic code to the KMM shared module and make it
 
     ![Refactor the buiness logic package](refactor-business-logic-package.png){width=500}
 
-3. Ignore all warnings about platform-dependent code, and click **Continue**.
+3. Ignore all warnings about platform-dependent code and click **Continue**.
 
     ![Warnings about platform-dependent code](warnings-android-specific-code.png){width=450}
 
@@ -155,34 +155,43 @@ companion object {
 
 ### Connect to platform-specific APIs from the cross-platform code {initial-collapse-state="collapsed"}
 
-
-
-
-### Make your application work on iOS
-
-For `expect` declarations in the shared code, add the required [`actual` implementations for iOS](connect-to-platform-specific-apis.md).
-
-If you don't have an iOS application, create an Xcode project and specify the path to it in `gradle.properties`. 
-If you already have an Xcode project, simply specify a relative or absolute path to the project.
+A UUID for `fakeUser` in `LoginDataSource` is generated using `java.util.UUID` that is available only for JVM. 
 
 ```kotlin
-xcodeproj=./iosApp
+val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
 ```
 
-Once you're done, run your application on iOS to ensure that it works correctly.  
+Since the Kotlin standard library doesn't provide such functionality, you still need to use platform-specific functionality for this case. 
+Provide the `expect` declaration for the `randomUUID()` function in the shared code and its `actual` implementations for each platform – Android and iOS – in the corresponding source sets. 
+You can learn more about [this mechanism](connect-to-platform-specific-apis.md).
 
-### Test your shared module
+1. Create the `Utils.kt` file in the `shared/src/commonMain` with the `expect` declaration:
 
-Kotlin provides a [multiplatform testing library](https://kotlinlang.org/api/latest/kotlin.test/) that you can use for writing unit tests. 
-Launch your tests on each platform to ensure that your actual declarations work the same way on Android and iOS.
+    ```kotlin
+    package com.jetbrains.simplelogin.shared
+    
+    expect fun randomUUID(): String
+    ```
 
-As an example, you can use sample tests that are added to the `commonTest`, `androidTest`, and `iosTest` source sets. 
-Learn more about [running sample tests](create-first-app.md#run-tests).
+2. Create the` Utils.kt` file in `shared/src/androidMain` with the actual implementation for `randomUUID()` for Android:
 
-## Next steps
+    ```kotlin
+    package com.jetbrains.simplelogin.shared
+    
+    import java.util.*
+    actual fun randomUUID() = UUID.randomUUID().toString()
+    ```
 
-Using a shared module as part of your KMM application project is good for getting started with KMM and finding your way around. 
-Later, when you’ve worked with the shared module with your team and you decide to use it in other projects, you can move it to a separate
-project as a multiplatform library, [publish your library](https://kotlinlang.org/docs/reference/mpp-publish-lib.html), and [use it in your projects as a dependency](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html).
+3. Create the `Utils.kt` file in `shared/src/iosMain` with the actual implementation for `randomUUID()` for iOS:
 
+    ```kotlin
+    package com.jetbrains.simplelogin.shared
+    
+    import platform.Foundation.NSUUID
+    actual fun randomUUID(): String = NSUUID().UUIDString()
+    ```     
+
+For Android and iOS, Kotlin will use different implementations.
+
+## Make your application work on iOS
 
