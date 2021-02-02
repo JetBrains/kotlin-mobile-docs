@@ -1,22 +1,29 @@
 [//]: # (title: Architect your KMM application)
 [//]: # (auxiliary-id: Architect_your_KMM_application)
 
-This document provides architecture guidelines on how to decide which layers of your application make multiplatform that work both on iOS and Android and which keep native.
+This document provides architecture guidelines on how to decide which layers of your application make cross platform that work both on iOS and Android and which keep native.
 
-A KMM application includes two layers:
-
-* The **frontend** that defines the user interface and its behavior, including animations and transitions.
-* The **backend** that defines the business logic, data management, network stack, and other components that support the frontend.
+On the backend, the business logic is similar for both Android and iOS, so it's a great candidate for making it cross platform.
+For platform-specific features such as network requests, local database access, hardware manipulation, and cryptographic storage,
+use a multiplatform library that does this for you or [connect to platform-specific APIs](connect-to-platform-specific-apis.md)
+with the `expect` declaration, by providing the `actual` implementation for each platform.
 
 KMM presumes that the best user experience is when it is native to the platform itself, and therefore we don’t recommend sharing it in KMM.
 However, you can share the code for the UI behavior that defines what happens with any user interaction and how the frontend communicates
 with the backend with the help of [compatible architectural patterns](#architectural-patterns-for-sharing-ui-behavior).
 
-On the backend, the logic includes many platform-specific features such as network requests, local database access,
-hardware manipulation, and cryptographic storage. You can use a multiplatform library that does this for you or [connect to platform-specific APIs](connect-to-platform-specific-apis.md)
-with the `expect` declaration, by providing the `actual` implementation for each platform.
+## Best practices for the KMM app architecture
 
-## Architectural patterns for sharing UI behavior {initial-collapse-state="collapsed"}
+To summarize, we recommend making cross platform the following layers in your application:
+
+| Layer | Recommendation on sharing|
+| ----- | -------------- |
+| Business logic | **Yes** |
+| Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md), but you can share the behavior.|
+| Frontend behavior (reaction to inputs & communication with the backend) | **Yes/no**. Consider these [architectural patterns](#architectural-patterns-for-sharing-ui-behavior).|
+| User interface (including animations & transitions) | **No**. It needs to be platform-specific.|
+
+### Architectural patterns for sharing UI behavior {initial-collapse-state="collapsed"}
 
 You can choose to share the UI behavior using the [Model-View-Presenter (_MVP_)](#mvp-for-legacy-ui-frameworks)
 or the [Model-View-Intent (_MVI_)](#mvi-for-declarative-ui-frameworks) pattern. These patterns:
@@ -25,7 +32,7 @@ or the [Model-View-Intent (_MVI_)](#mvi-for-declarative-ui-frameworks) pattern. 
 *   Are completely decoupled from the UI platform.
 *   Are easily testable without a UI environment.
 
-### MVP for legacy UI frameworks 
+#### MVP for legacy UI frameworks 
 
 _Model-View-Presenter_ (_MVP_) forces you to create an API for both the Presenter that receives inputs and the View that displays outputs, allowing
 you to test each independently.
@@ -70,7 +77,7 @@ class LoginPresenter {
 
 Note the `commandView` and `lastCommand` mechanism, which allows a view to detach and re-attach, for example for configuration changes on Android.
 
-### MVI for declarative UI frameworks 
+#### MVI for declarative UI frameworks 
 
 _Model-View-Intent_ (_MVI_) is the natural evolution of MVP when working with declarative UI frameworks (although it also works with legacy UI frameworks).
 It is therefore recommended to be used with Swift UI or Jetpack Compose.
@@ -127,16 +134,7 @@ class LoginPresenter {
 
 Note the `displayModel` and `lastModel` mechanism, which allows a view to detach and re-attach, for example for configuration changes on Android.
 
-## Best practices for the KMM app architecture
-
-To summarize, we recommend sharing the following in your application:
-
-| Layer | Recommendation on sharing|
-| ----- | -------------- |
-| Business logic | **Yes** |
-| Platform access | **Yes/no**. You’ll still need to [use platform-specific APIs](connect-to-platform-specific-apis.md), but you can share the behavior.|
-| Frontend behavior (reaction to inputs & communication with the backend) | **Yes/no**. Consider these [architectural patterns](#architectural-patterns-for-sharing-ui-behavior).|
-| User interface (including animations & transitions) | **No**. It needs to be platform-specific.|
+### Thanks to contributors
 
 _We'd like to thank the [Kodein Koders team](https://twitter.com/kodeinkoders) for helping us write this article._
 
