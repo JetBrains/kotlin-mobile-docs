@@ -4,14 +4,10 @@
 
 <vars>
 
-    <var name="kotlinVersion" value="1.4.20" type="string"/>
+    <var name="kotlinVersion" value="1.4.30" type="string"/>
 
-    <var name="coroutinesVersion" value="1.4.1" type="string"/>
+    <var name="coroutinesVersion" value="1.4.2" type="string"/>
 
     <var name="sqlDelightVersion" value="1.4.1" type="string"/>
-
-    <var name="gradleVersion" value="6.0" type="string"/>
-
-    <var name="branch" value="touchlab" type="string"/>
 
 </vars>
