@@ -75,7 +75,11 @@ To use cross-platform code in your Android application, connect the shared modul
     }
     ```
 
-3. To check that the shared module is successfully connected to your application, dump the `greeting()` function result to the log 
+3. Apply the changes by synchronizing the project. 
+
+    ![Synchronize the Gradle files](gradle-sync.png)
+
+4. To check that the shared module is successfully connected to your application, dump the `greeting()` function result to the log 
    by updating the method `onCreate()` of the class `LoginActivity`.
 
     ```kotlin
@@ -126,7 +130,7 @@ To make your code work well on both Android and iOS, replace all JVM dependencie
     return Result.Error(RuntimeException("Error logging in", e))
     ```
 
-2. For email validation replace the package `android.utils` with a Kotlin regular expression matching the pattern:
+2. For email validation replace the package `android.utils` with a Kotlin regular expression matching the pattern in the `LoginDataValidator` class:
 
     ```kotlin
     // Before
@@ -160,6 +164,12 @@ val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
 Since the Kotlin standard library doesn't provide functionality for generating UUID, you still need to use platform-specific functionality for this case. 
 Provide the `expect` declaration for the `randomUUID()` function in the shared code and its `actual` implementations for each platform – Android and iOS – in the corresponding source sets. 
 You can learn more about [connecting to platform-specific APIs](connect-to-platform-specific-apis.md).
+
+1. Remove the `java.util.UUID` from the common code:
+
+    ```kotlin
+   val fakeUser = LoggedInUser(randomUUID(), "Jane Doe") 
+   ```
 
 1. Create the `Utils.kt` file in the `shared/src/commonMain` and provide the `expect` declaration:
 
@@ -227,5 +237,15 @@ In this case, you can either:
 > * Before working on the iOS project, take the KMM module source and use any approach as for a monorepo.
 > * Configure CI to automatically compile and publish a `.framework` after any change in the KMM module and use any approach as for a monorepo.
 >
+
+1. Compile your module into a `.framework` by running the `packForXcode` Gradle task in Android Studio in one of the following ways:
+
+    * Run the following command in the Terminal:
+        
+        ```text
+         ./gradlew packForXcode
+        ```
+
+    * Double-click the `packForXcode` task in the list of Gradle tasks.
 
 ## Automate iOS project updates
