@@ -235,7 +235,7 @@ To use Kotlin code in your iOS project, compile shared code into a `.framework`.
 
    * Double-click the `packForXcode` task in the list of Gradle tasks.
    
-The generated framework is located in `shared/build/xcode-frameworks/`.
+The generated framework is stored in `shared/build/xcode-frameworks/`.
 
 ## Connect the framework to your iOS project
 
@@ -329,4 +329,6 @@ To avoid recompiling your framework after every change in the KMM module, config
             }
         }
     }
-   ```
+   ```  
+   
+   ![Simple login application](xcode-iphone-login.png){width=300}
