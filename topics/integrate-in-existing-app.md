@@ -48,7 +48,7 @@ KMM provides a special wizard for creating such modules.
 
 In your Android project, create a KMM shared module for your cross-platform code. Later you'll connect it to your existing Android and future iOS applications.
 
-1. In Android Studio, click **New** | **New Module**.
+1. In Android Studio, click **File** | **New** | **New Module**.
 
 2. In the list of templates, select **KMM Shared Module**, enter the module name `shared` and select the **Generate packForXcode Gradle task** checkbox.  
     This task is required for connecting the shared module to the iOS application.
@@ -201,7 +201,7 @@ For Android and iOS, Kotlin will use different platform-specific implementations
 
 ## Create an iOS project to make your app work on iOS
 
-1. In Xcode, click **New** | **Project**.
+1. In Xcode, click **File** | **New** | **Project**.
 
 2. Select a template for an iOS app and click **Next**.
 
@@ -221,11 +221,25 @@ You can rename the `simpleLoginIOS` directory to the `iosApp` directory for cons
 
 ![Renamed iOS project directory in Android Studio](ios-directory-renamed-in-as.png){width=194}
 
+## Compile the shared module into a framework for the iOS project
 
-## Connect the shared module to your iOS project
+To use Kotlin code in your iOS project, compile shared code into a `.framework`.
 
-To use Kotlin code compiled into a `.framework` for your iOS project, connect this framework to the project.
-There are different ways on how to do this.
+* In Android Studio, run the `packForXcode` Gradle task in one of the following ways:
+
+   * Run the following command in the Terminal:
+
+       ```text
+        ./gradlew packForXcode
+       ```
+
+   * Double-click the `packForXcode` task in the list of Gradle tasks.
+   
+The generated framework is located in `shared/build/xcode-frameworks/`.
+
+## Connect the framework to your iOS project
+
+Once you have the framework, it's time to connect it to your iOS project. There are different ways on how to do this.
 
 This tutorial assumes that you store code for Android and iOS applications in a single repository (monorepo). 
 In this case, you can either:
@@ -238,14 +252,81 @@ In this case, you can either:
 > * Configure CI to automatically compile and publish a `.framework` after any change in the KMM module and use any approach as for a monorepo.
 >
 
-1. Compile your module into a `.framework` by running the `packForXcode` Gradle task in Android Studio in one of the following ways:
+Connect your framework to the iOS project manually.
+    
+1. In Xcode, open the iOS project settings by double-clicking the project name.
+   
+2. Click the **+** sign under **Frameworks, Libraries, and Embedded Content**.
 
-    * Run the following command in the Terminal:
-        
-        ```text
-         ./gradlew packForXcode
-        ```
+    ![Add the generated framework](xcode-add-framework-1.png)
 
-    * Double-click the `packForXcode` task in the list of Gradle tasks.
+3. Click **Add Other**, click **Add Files**, and select the generated framework in `shared/build/xcode-frameworks/shared.framework`.
+
+    ![Framework is added](xcode-add-framework-2.png)
+   
+4. Specify the **Framework Search Path** under **Search Paths** on the **Build Settings** tab – `$(SRCROOT)/../shared/build/xcode-frameworks`.
+
+    ![Framework search path](xcode-framework-search-path.png)
 
 ## Automate iOS project updates
+
+To avoid recompiling your framework after every change in the KMM module, configure automatic updates of the iOS project.
+
+1. On the **Build Phases** tab, click the **+** sign and add **New Run Script Phase**.
+
+   ![Add run script phase](xcode-run-script-phase-1.png)
+
+2. Add the following script: 
+
+    ```text
+    cd "$SRCROOT/.."
+    ./gradlew :shared:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}
+    ```
+    
+    ![Add the script](xcode-run-script-phase-2.png)
+   
+3. Move the **Run Script** phase before the **Compile Sources** phase.
+
+   ![Move the Run Script phase](xcode-run-script-phase-3.png)
+
+## Connect the shared module to the iOS project
+
+1. In Xcode, open the `ContentView.swift` file and import the `shared` module.
+
+    ```Swift
+   import shared
+   ```
+   
+2. To check that it properly connected, use the `greeting()` function from the KMM module:
+
+    ```Swift
+    import SwiftUI
+    import shared
+    
+    struct ContentView: View {
+        var body: some View {
+            Text(Greeting().greeting())
+            .padding()
+        }   
+    }
+   ```
+   
+    ![Greeting from the KMM module](xcode-iphone-hello.png){width=300}
+
+3. In `ContentView.swift`, write [code for using data from the KMM module and rendering application UI](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app/blob/master/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift).
+
+4. In `simpleLoginIOSApp.swift`, import the `shared` module and specify arguments for the `ContentView()` function:
+
+    ```Swift
+    import SwiftUI
+    import shared
+    
+    @main
+    struct SimpleLoginIOSApp: App {
+        var body: some Scene {
+            WindowGroup {
+                ContentView(viewModel: .init(loginRepository: LoginRepository(dataSource: LoginDataSource()), loginValidator: LoginDataValidator()))
+            }
+        }
+    }
+   ```
