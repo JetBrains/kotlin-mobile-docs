@@ -332,3 +332,43 @@ To avoid recompiling your framework after every change in the KMM module, config
    ```  
    
    ![Simple login application](xcode-iphone-login.png){width=300}
+            
+## Enjoy the results – update the logic only once
+
+Now your application is cross platform and you can update the business logic in one place and see results on both Android and iOS.
+
+1. In Android Studio, change the validation logic for a user's password in the `checkPassword()` function of the `LoginDataValidator` class:
+  
+    ```kotlin 
+    package com.jetbrains.simplelogin.shared.data
+
+    class LoginDataValidator {
+    //... 
+        fun checkPassword(password: String): Result {
+            return when  {
+                password.length < 5 -> Result.Error("Password must be >5 characters")
+                password.toLowerCase() == "password" -> Result.Error("Password shouldn't be \"password\"")
+                else -> Result.Success
+            }
+    }
+    //...
+    }
+    ``` 
+   
+2. Update `gradle.properties` to connect your iOS application to Android Studio for running it on a simulated or real device without switching to Xcode:
+
+    ```text
+    xcodeproj=iosApp/SimpleLoginIOS.xcodeproj
+    ```
+
+3. Apply the changes by synchronizing the project.
+
+   ![Synchronize the Gradle files](gradle-sync.png)
+
+You will see the new run configuration **simpleLoginIOS** for running your iOS application right from Android Studio.
+
+![iOS run configuration](ios-run-configuration-simplelogin.png){width=200}
+
+![iOS application password error](iphone-password-error.png){width=300}
+
+![Android application password error](android-password-error.png){width=300}
