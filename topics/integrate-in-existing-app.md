@@ -29,7 +29,21 @@ If you aren't familiar with KMM, learn how to [create and configure a KMM applic
 
     ![Project view](project-view-for-integrate.png){width=200}
 
-## Decide what code to make cross platform
+## Make your code cross platform
+
+To make your application work on iOS, you'll first make your code cross platform, and then reuse your cross-platform code in a new iOS application.
+
+To make your code cross platform:
+
+1. [Decide what code to make cross platform](#decide-what-code-to-make-cross-platform).
+
+2. [Create a shared module for cross-platform code](#create-a-shared-module-for-cross-platform-code).
+
+3. [Depend on the shared module in your Android application](#depend-on-the-shared-module-in-your-android-application).
+
+4. [Make the business logic cross platform](#make-the-business-logic-cross-platform).
+
+### Decide what code to make cross platform
 
 Decide which code of your Android application is better to share for iOS and which keep native. 
 A simple rule is share what you want to reuse as much as possible. 
@@ -41,7 +55,7 @@ Your future iOS application will use the same logic, so make it cross platform.
 
 ![Business logic to share](business-logic-to-share.png){width=350}
 
-## Create a shared module for cross-platform code
+### Create a shared module for cross-platform code
 
 The cross-platform code that is used for both iOS and Android _lives_ in the shared module.
 KMM provides a special wizard for creating such modules.
@@ -60,7 +74,7 @@ In your Android project, create a KMM shared module for your cross-platform code
 The wizard creates the KMM shared module, updates configuration files, and creates files with classes that demonstrate multiplatform benefits.
 You can learn more about the [KMM project structure](discover-kmm-project.md).
     
-## Depend on the shared module in your Android application
+### Depend on the shared module in your Android application
 
 To use cross-platform code in your Android application, connect the shared module to it, move the business logic code there, and make this code cross platform.
 
@@ -95,7 +109,7 @@ To use cross-platform code in your Android application, connect the shared modul
 
     ![Greeting from the shared module](shared-module-greeting.png)
 
-## Make the business logic cross platform
+### Make the business logic cross platform
 
 You can now extract the business logic code to the KMM shared module and make it platform independent. This is necessary for reusing it for both Android and iOS.
  
@@ -114,7 +128,7 @@ You can now extract the business logic code to the KMM shared module and make it
 
 4. Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
 
-### Replace Android-specific code with cross-platform code {initial-collapse-state="collapsed"}
+#### Replace Android-specific code with cross-platform code {initial-collapse-state="collapsed"}
 
 To make your code work well on both Android and iOS, replace all JVM dependencies with Kotlin dependencies wherever possible.
 
@@ -153,7 +167,7 @@ To make your code work well on both Android and iOS, replace all JVM dependencie
     }
     ```
 
-### Connect to platform-specific APIs from the cross-platform code {initial-collapse-state="collapsed"}
+#### Connect to platform-specific APIs from the cross-platform code {initial-collapse-state="collapsed"}
 
 A universally unique identifier (UUID) for `fakeUser` in `LoginDataSource` is generated using the `java.util.UUID` class, which is not available for iOS. 
 
@@ -199,9 +213,28 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
 
 For Android and iOS, Kotlin will use different platform-specific implementations.
 
+#### Run your cross-platform application
+
+Run your cross-platform application for Android to make sure that it works.
+
 ![Android login application](android-login.png){width=300}
 
-## Create an iOS project to make your app work on iOS
+## Make your cross-platform application work on iOS
+
+Once you've made your Android application cross platform, you can create an iOS application and reuse the shared business logic in it.
+
+1. [Create an iOS project in Xcode](#create-an-ios-project-in-xcode).
+
+2. [Compile the shared module into a framework for the iOS project](#compile-the-shared-module-into-a-framework-for-the-ios-project).
+
+3. [Connect the framework to your iOS project](#connect-the-framework-to-your-ios-project).
+
+4. [Automate iOS project updates](#automate-ios-project-updates).
+
+5. [Connect the shared module to the iOS project](#connect-the-shared-module-to-the-ios-project).
+
+
+### Create an iOS project in Xcode
 
 1. In Xcode, click **File** | **New** | **Project**.
 
@@ -223,7 +256,7 @@ You can rename the `simpleLoginIOS` directory to the `iosApp` directory for cons
 
 ![Renamed iOS project directory in Android Studio](ios-directory-renamed-in-as.png){width=194}
 
-## Compile the shared module into a framework for the iOS project
+### Compile the shared module into a framework for the iOS project
 
 To use Kotlin code in your iOS project, compile shared code into a `.framework`.
 
@@ -239,7 +272,7 @@ To use Kotlin code in your iOS project, compile shared code into a `.framework`.
    
 The generated framework is stored in `shared/build/xcode-frameworks/`.
 
-## Connect the framework to your iOS project
+### Connect the framework to your iOS project
 
 Once you have the framework, you can connect it to your iOS project in different ways.
 
@@ -270,7 +303,7 @@ Connect your framework to the iOS project manually.
 
     ![Framework search path](xcode-framework-search-path.png)
 
-## Automate iOS project updates
+### Automate iOS project updates
 
 To avoid recompiling your framework after every change in the KMM module, configure automatic updates of the iOS project.
 
@@ -291,7 +324,7 @@ To avoid recompiling your framework after every change in the KMM module, config
 
    ![Move the Run Script phase](xcode-run-script-phase-3.png)
 
-## Connect the shared module to the iOS project
+### Connect the shared module to the iOS project
 
 1. In Xcode, open the `ContentView.swift` file and import the `shared` module.
 
