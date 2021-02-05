@@ -199,6 +199,8 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
 
 For Android and iOS, Kotlin will use different platform-specific implementations.
 
+![Android login application](android-login.png){width=300}
+
 ## Create an iOS project to make your app work on iOS
 
 1. In Xcode, click **File** | **New** | **Project**.
@@ -239,7 +241,7 @@ The generated framework is stored in `shared/build/xcode-frameworks/`.
 
 ## Connect the framework to your iOS project
 
-Once you have the framework, it's time to connect it to your iOS project. There are different ways on how to do this.
+Once you have the framework, you can connect it to your iOS project in different ways.
 
 This tutorial assumes that you store code for Android and iOS applications in a single repository (monorepo). 
 In this case, you can either:
@@ -272,7 +274,7 @@ Connect your framework to the iOS project manually.
 
 To avoid recompiling your framework after every change in the KMM module, configure automatic updates of the iOS project.
 
-1. On the **Build Phases** tab, click the **+** sign and add **New Run Script Phase**.
+1. On the **Build Phases** tab of the project settings, click the **+** sign and add **New Run Script Phase**.
 
    ![Add run script phase](xcode-run-script-phase-1.png)
 
@@ -297,7 +299,7 @@ To avoid recompiling your framework after every change in the KMM module, config
    import shared
    ```
    
-2. To check that it properly connected, use the `greeting()` function from the KMM module:
+2. To check that it is properly connected, use the `greeting()` function from the KMM module:
 
     ```Swift
     import SwiftUI
@@ -355,7 +357,7 @@ Now your application is cross platform and you can update the business logic in 
     }
     ``` 
    
-2. Update `gradle.properties` to connect your iOS application to Android Studio for running it on a simulated or real device without switching to Xcode:
+2. Update `gradle.properties` to connect your iOS application to Android Studio for running it on a simulated or real device right there:
 
     ```text
     xcodeproj=iosApp/SimpleLoginIOS.xcodeproj
