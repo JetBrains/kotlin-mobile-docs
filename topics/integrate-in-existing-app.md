@@ -415,3 +415,9 @@ You can review the [final code for this tutorial](https://github.com/KaterinaPet
 You've shared the business logic of your application, but you can also decide to share other layers of your application.
 For example, the `ViewModel` class code is almost the same for [Android](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app/blob/master/app/src/main/java/com/jetbrains/simplelogin/androidapp/ui/login/LoginViewModel.kt) (TODO LINK) and [iOS applications](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app/blob/master/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift) (TODO LINK) and you can share it if your mobile applications
 should have the same presentation layer. Get familiar with [architecture guidelines for a KMM application](architect-kmm-app.md). 
+
+## What's next?
+
+* [Use Ktor for networking](use-ktor-for-networking.md)
+* [Add dependencies on libraries](add-dependencies.md)
+* [Learn about concurrency](concurrency-overview.md)
