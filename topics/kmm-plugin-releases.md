@@ -40,6 +40,33 @@ Compatible Kotlin plugin version
 <tr>
 <td>
 
+**0.2.1**
+
+Released: February 15, 2021
+
+</td>
+<td>
+
+* [Support for new Kotlin plugin 1.4.30-M1](https://youtrack.jetbrains.com/issue/KT-44038).
+* [New compatibility policy – for each major version of Kotlin there will be new version of the KMM plugin](https://youtrack.jetbrains.com/issue/KT-43211).
+* [Ability to launch common tests for Android on local JVM via run gutter](https://youtrack.jetbrains.com/issue/KT-42463).
+* [Added class names for variables in variable view in Kotlin/Native debugger](https://youtrack.jetbrains.com/issue/KT-34630).
+* [Added test status in gutter icon for multiplatform projects](https://youtrack.jetbrains.com/issue/KT-34504).
+* [Added the message that KMM plugin works only on macOS](https://youtrack.jetbrains.com/issue/KT-43442).
+* [Added the error for absent configurations for iOS devices](https://youtrack.jetbrains.com/issue/KT-43792).
+* [Added the warning about using the older Xcode version](https://youtrack.jetbrains.com/issue/KT-42557).
+* [Fixed the exception in Kotlin/Native debugger](https://youtrack.jetbrains.com/issue/KT-43654).
+
+</td>
+<td>
+
+* [Kotlin 1.4.30](https://kotlinlang.org/releases.html#release-details)
+
+</td>
+</tr>
+<tr>
+<td>
+
 **0.2.0**
 
 Released: November 23, 2020
