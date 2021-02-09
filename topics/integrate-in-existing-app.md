@@ -4,7 +4,7 @@
 Here you can learn how to make your existing Android application cross platform so that it works both on Android and iOS. 
 You'll be able to write code and test it for Android and iOS only once, in one place.
 
-This tutorial uses a [sample Android application](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app) (TODO LINK) with a single screen for entering a username and password. 
+This tutorial uses a [sample Android application](https://github.com/Kotlin/kmm-integration-sample) with a single screen for entering a username and password. 
 The credentials are validated and saved to an in-memory database.
 
 If you aren't familiar with KMM, learn how to [create and configure a KMM application from scratch](create-first-app.md).
@@ -19,7 +19,7 @@ If you aren't familiar with KMM, learn how to [create and configure a KMM applic
    >
    {type="note"}
 
-2. In Android Studio, create a new project from the version control: `https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app` (TODO LINK).
+2. In Android Studio, create a new project from the version control: `https://github.com/Kotlin/kmm-integration-sample`
     
     > You can create a similar application yourself using the **Login Activity** template for a new project with some modifications (TODO LINK).
     >
@@ -348,7 +348,7 @@ To avoid recompiling your framework after every change in the KMM module, config
    
     ![Greeting from the KMM module](xcode-iphone-hello.png){width=300}
 
-3. In `ContentView.swift`, write [code for using data from the KMM module and rendering application UI](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app/blob/master/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift). (TODO LINK)
+3. In `ContentView.swift`, write [code for using data from the KMM module and rendering application UI](https://github.com/Kotlin/kmm-integration-sample/blob/final/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift).
 
 4. In `simpleLoginIOSApp.swift`, import the `shared` module and specify arguments for the `ContentView()` function:
 
@@ -408,12 +408,12 @@ You will see the new run configuration **simpleLoginIOS** for running your iOS a
 
 ![Android application password error](android-password-error.png){width=300}
 
-You can review the [final code for this tutorial](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app). (TODO LINK)
+You can review the [final code for this tutorial](https://github.com/Kotlin/kmm-integration-sample/tree/final). 
 
 ## What else to share?
 
 You've shared the business logic of your application, but you can also decide to share other layers of your application.
-For example, the `ViewModel` class code is almost the same for [Android](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app/blob/master/app/src/main/java/com/jetbrains/simplelogin/androidapp/ui/login/LoginViewModel.kt) (TODO LINK) and [iOS applications](https://github.com/KaterinaPetrova/kmm-integrate-into-existing-app/blob/master/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift) (TODO LINK) and you can share it if your mobile applications
+For example, the `ViewModel` class code is almost the same for [Android](https://github.com/Kotlin/kmm-integration-sample/blob/final/app/src/main/java/com/jetbrains/simplelogin/androidapp/ui/login/LoginViewModel.kt) and [iOS applications](https://github.com/Kotlin/kmm-integration-sample/blob/final/SimpleLoginIOS/SimpleLoginIOS/ContentView.swift#L91) and you can share it if your mobile applications
 should have the same presentation layer. Get familiar with [architecture guidelines for a KMM application](architect-kmm-app.md). 
 
 ## What's next?
