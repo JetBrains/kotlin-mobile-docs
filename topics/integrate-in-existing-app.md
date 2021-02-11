@@ -5,7 +5,7 @@ Here you can learn how to make your existing Android application cross platform 
 You'll be able to write code and test it for Android and iOS only once, in one place.
 
 This tutorial uses a [sample Android application](https://github.com/Kotlin/kmm-integration-sample) with a single screen for entering a username and password. 
-The credentials are validated and saved to an in-memory database.
+The credentials are validated and saved to an in-memory database. The tutorial assumes that you store code for Android and iOS applications in a single repository (monorepo).
 
 If you aren't familiar with KMM, learn how to [create and configure a KMM application from scratch](create-first-app.md).
 
@@ -38,8 +38,11 @@ To make your code cross platform:
 
 2. [Create a shared module for cross-platform code](#create-a-shared-module-for-cross-platform-code).
 
-3. [Add a dependency on the shared module in your Android application](#add-a-dependency-on-the-shared-module-in-your-android-application)
+3. [Add a dependency on the shared module in your Android application](#add-a-dependency-on-the-shared-module-in-your-android-application).
+   
 4. [Make the business logic cross platform](#make-the-business-logic-cross-platform).
+   
+5. [Run your cross-platform application on Android](#run-your-cross-platform-application-on-android).
 
 ### Decide what code to make cross platform
 
@@ -124,7 +127,7 @@ You can now extract the business logic code to the KMM shared module and make it
 
     ![Warnings about platform-dependent code](warnings-android-specific-code.png){width=450}
 
-4. Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using [`expect` and `actual` declarations](connect-to-platform-specific-apis.md).
+4. Remove Android-specific code by replacing it with cross-platform Kotlin code or connecting to Android-specific APIs using [`expect` and `actual` declarations](connect-to-platform-specific-apis.md) by completing the following steps.
 
 #### Replace Android-specific code with cross-platform code {initial-collapse-state="collapsed"}
 
@@ -142,7 +145,7 @@ To make your code work well on both Android and iOS, replace all JVM dependencie
     return Result.Error(RuntimeException("Error logging in", e))
     ```
 
-2. For email validation replace the package `android.utils` with a Kotlin regular expression matching the pattern in the `LoginDataValidator` class:
+2. For email validation, replace the `Patterns` class from the `android.utils` package with a Kotlin regular expression matching the pattern in the `LoginDataValidator` class:
 
     ```kotlin
     // Before
@@ -211,7 +214,7 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
 
 For Android and iOS, Kotlin will use different platform-specific implementations.
 
-#### Run your cross-platform application
+### Run your cross-platform application on Android
 
 Run your cross-platform application for Android to make sure that it works.
 
@@ -258,32 +261,25 @@ You can rename the `simpleLoginIOS` directory to the `iosApp` directory for cons
 
 To use Kotlin code in your iOS project, compile shared code into a `.framework`.
 
-* In Android Studio, run the `packForXcode` Gradle task in one of the following ways:
+* In Android Studio, run the `packForXcode` Gradle task in the Terminal: 
 
-   * Run the following command in the Terminal:
-
-       ```text
-        ./gradlew packForXcode
-       ```
-
-   * Double-click the `packForXcode` task in the list of Gradle tasks.
+    ```text
+     ./gradlew packForXcode
+    ```
+  
+> You can also run the `packForXcode` Gradle task by double-clicking it in the list of Gradle tasks.
+> 
+{type="note"}
    
 The generated framework is stored in `shared/build/xcode-frameworks/`.
 
 ### Connect the framework to your iOS project
 
-Once you have the framework, you can connect it to your iOS project in different ways.
+Once you have the framework, you can connect it to your iOS project manually.
 
-This tutorial assumes that you store code for Android and iOS applications in a single repository (monorepo). 
-In this case, you can either:
-
-* Connect the framework manually. The KMM Application Wizard and this tutorial use this approach. 
-* [Configure integration via Cocoapods](https://kotlinlang.org/docs/reference/native/cocoapods.html). 
-
-> If you want to store source code of applications in different repositories:
-> * Before working on the iOS project, take the KMM module source and use any approach as for a monorepo.
-> * Configure CI to automatically compile and publish a `.framework` after any change in the KMM module and use any approach as for a monorepo.
+> An alternative is to [configure integration via Cocoapods](https://kotlinlang.org/docs/reference/native/cocoapods.html), but this integration is out of the scope of this tutorial.
 >
+{type="note"}
 
 Connect your framework to the iOS project manually.
     
