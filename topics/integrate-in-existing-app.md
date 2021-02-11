@@ -11,11 +11,10 @@ If you aren't familiar with KMM, learn how to [create and configure a KMM applic
 
 ## Prepare an environment for development
 
-1. [Set up your environment for KMM development](setup.md) by installing the necessary tools on a macOS.
+1. Install Android Studio 4.2 or higher and [other tools for KMM development](setup.md) on a macOS.
 
-   >* For completing specific steps in this tutorial you need a Mac with macOS. These steps include writing iOS-specific code and running an iOS application.  
+   >For completing specific steps in this tutorial you need a Mac with macOS. These steps include writing iOS-specific code and running an iOS application.  
    >You won't be able to do this on other operating systems, such as Microsoft Windows – it's an Apple requirement.
-   >* For this tutorial, use Android Studio 4.2 or higher.
    >
    {type="note"}
 
@@ -39,8 +38,7 @@ To make your code cross platform:
 
 2. [Create a shared module for cross-platform code](#create-a-shared-module-for-cross-platform-code).
 
-3. [Depend on the shared module in your Android application](#depend-on-the-shared-module-in-your-android-application).
-
+3. [Add a dependency on the shared module in your Android application](#add-a-dependency-on-the-shared-module-in-your-android-application)
 4. [Make the business logic cross platform](#make-the-business-logic-cross-platform).
 
 ### Decide what code to make cross platform
@@ -74,7 +72,7 @@ In your Android project, create a KMM shared module for your cross-platform code
 The wizard creates the KMM shared module, updates configuration files, and creates files with classes that demonstrate multiplatform benefits.
 You can learn more about the [KMM project structure](discover-kmm-project.md).
     
-### Depend on the shared module in your Android application
+### Add a dependency on the shared module in your Android application
 
 To use cross-platform code in your Android application, connect the shared module to it, move the business logic code there, and make this code cross platform.
 
