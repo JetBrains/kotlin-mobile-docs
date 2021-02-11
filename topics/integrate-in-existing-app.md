@@ -299,7 +299,7 @@ Connect your framework to the iOS project manually.
 
 ### Automate iOS project updates
 
-To avoid recompiling your framework after every change in the KMM module, configure automatic updates of the iOS project.
+To avoid recompiling your framework manually after every change in the KMM module, configure automatic updates of the iOS project.
 
 1. On the **Build Phases** tab of the project settings, click the **+** sign and add **New Run Script Phase**.
 
