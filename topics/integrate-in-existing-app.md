@@ -45,7 +45,7 @@ To make your code cross platform:
 Decide which code of your Android application is better to share for iOS and which keep native. 
 A simple rule is share what you want to reuse as much as possible. 
 The business logic is often the same for both Android and iOS, so it's a great candidate for reusing. 
-You can get [more recommendations on cross-platform code](architect-kmm-app.md).
+You can get [more recommendations on making code cross platform](architect-kmm-app.md).
 
 In your sample Android application, the business logic is stored in the package `com.jetbrains.simplelogin.androidapp.data`.
 Your future iOS application will use the same logic, so make it cross platform.
