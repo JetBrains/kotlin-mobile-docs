@@ -48,12 +48,12 @@ Released: February 15, 2021
 <td>
 
 * [Support for Kotlin 1.4.30](https://youtrack.jetbrains.com/issue/KT-44038).
-* [New compatibility policy: for each feature release of Kotlin there will be a new release of KMM plugin](https://youtrack.jetbrains.com/issue/KT-43211). (TODO TBD remove this item?)
+* [New compatibility policy: for each feature release of Kotlin there will be a new release of KMM plugin](https://youtrack.jetbrains.com/issue/KT-43211).
 * [Launch common tests for Android on a local JVM via the run gutter](https://youtrack.jetbrains.com/issue/KT-42463).
-* [View class names for variables in the Kotlin/Native debugger](https://youtrack.jetbrains.com/issue/KT-34630).
-* [See the test status in the gutter icon for multiplatform projects](https://youtrack.jetbrains.com/issue/KT-34504).
-* [Notifying users that they can launch iOS applications only on macOS](https://youtrack.jetbrains.com/issue/KT-43442). (TODO TBD remove this item?)
-* [Fixed the exception in the Kotlin/Native debugger when trying to enter a watch expression](https://youtrack.jetbrains.com/issue/KT-43654).
+* [View class names for variables in the Kotlin/Native debugger](https://youtrack.jetbrains.com/issue/KT-34630). (TODO TBD to remove? https://youtrack.jetbrains.com/issue/KT-34630#focus=Comments-27-4688943.0-0 )
+* [See the test status in the gutter icon for multiplatform projects](https://youtrack.jetbrains.com/issue/KT-34504). (TODO Lilya suggests removing this because it was FAR TIME AGO)
+* [Notifying users that they can launch iOS applications only on macOS](https://youtrack.jetbrains.com/issue/KT-43442). (TODO TBD remove this item? Katya, Lilya and Ilya +1)
+* [Fixed the exception in the Kotlin/Native debugger when trying to enter a watch expression](https://youtrack.jetbrains.com/issue/KT-43654). (TODO TBD to remove?)
 
 </td>
 <td>
