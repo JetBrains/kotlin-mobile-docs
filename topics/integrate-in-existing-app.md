@@ -5,7 +5,7 @@ Here you can learn how to make your existing Android application cross platform 
 You'll be able to write code and test it for Android and iOS only once, in one place.
 
 This tutorial uses a [sample Android application](https://github.com/Kotlin/kmm-integration-sample) with a single screen for entering a username and password. 
-The credentials are validated and saved to an in-memory database. The tutorial assumes that you store code for Android and iOS applications in a single repository (monorepo).
+The credentials are validated and saved to an in-memory database.
 
 If you aren't familiar with KMM, learn how to [create and configure a KMM application from scratch](create-first-app.md).
 
@@ -18,11 +18,7 @@ If you aren't familiar with KMM, learn how to [create and configure a KMM applic
    >
    {type="note"}
 
-2. In Android Studio, create a new project from the version control: `https://github.com/Kotlin/kmm-integration-sample`
-    
-    > You can create a similar application yourself using the **Login Activity** template for a new project with some modifications (TODO LINK).
-    >
-    {type="note"}
+2. In Android Studio, create a new project from the version control: `https://github.com/Kotlin/kmm-integration-sample`.
 
 3. Switch to the **Project** view.
 
@@ -38,7 +34,7 @@ To make your code cross platform:
 
 2. [Create a shared module for cross-platform code](#create-a-shared-module-for-cross-platform-code).
 
-3. [Add a dependency on the shared module in your Android application](#add-a-dependency-on-the-shared-module-in-your-android-application).
+3. [Add a dependency on the shared module to your Android application](#add-a-dependency-on-the-shared-module-to-your-android-application).
    
 4. [Make the business logic cross platform](#make-the-business-logic-cross-platform).
    
@@ -75,7 +71,7 @@ In your Android project, create a KMM shared module for your cross-platform code
 The wizard creates the KMM shared module, updates configuration files, and creates files with classes that demonstrate multiplatform benefits.
 You can learn more about the [KMM project structure](discover-kmm-project.md).
     
-### Add a dependency on the shared module in your Android application
+### Add a dependency on the shared module to your Android application
 
 To use cross-platform code in your Android application, connect the shared module to it, move the business logic code there, and make this code cross platform.
 
@@ -112,7 +108,7 @@ To use cross-platform code in your Android application, connect the shared modul
 
 ### Make the business logic cross platform
 
-You can now extract the business logic code to the KMM shared module and make it platform independent. This is necessary for reusing it for both Android and iOS.
+You can now extract the business logic code to the KMM shared module and make it platform independent. This is necessary for reusing the code for both Android and iOS.
  
 1. Move the business logic code `com.jetbrains.simplelogin.androidapp.data` from the `app` directory to the `com.jetbrains.simplelogin.shared` package in the `shared/src/commonMain` directory.
    You can drag and drop the package or refactor it by moving everything from one directory to another.
@@ -398,7 +394,7 @@ You will see the new run configuration **simpleLoginIOS** for running your iOS a
 
 ![iOS run configuration](ios-run-configuration-simplelogin.png){width=200}
 
-![iOS application password error](iphone-password-error.png){width=300} (TODO SCREENSHOT)
+![iOS application password error](iphone-password-error.png){width=300}
 
 ![Android application password error](android-password-error.png){width=300}
 
