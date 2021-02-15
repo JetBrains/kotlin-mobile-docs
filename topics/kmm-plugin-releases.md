@@ -50,7 +50,7 @@ Released: February 15, 2021
 To use this version of the plugin use [Android Studio 4.2 Beta](https://developer.android.com/studio/preview).
 * Compatibility and infrastructure improvements.
 * Bugfixing.
-* [YouTrack issues list](https://youtrack.jetbrains.com/issues?q=tag:%20KMM-0.2.1%20).
+* Other [fixes and improvements](https://youtrack.jetbrains.com/issues?q=tag:%20KMM-0.2.1%20).
 
 </td>
 <td>
