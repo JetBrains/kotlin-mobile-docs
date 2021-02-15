@@ -47,7 +47,7 @@ Released: February 15, 2021
 </td>
 <td>
 
-To use this version of the plugin use [Android Studio 4.2 Beta](https://developer.android.com/studio/preview).
+To use this version of the plugin, use [Android Studio 4.2 Beta](https://developer.android.com/studio/preview).
 * Compatibility and infrastructure improvements.
 * Bugfixing.
 * Other [fixes and improvements](https://youtrack.jetbrains.com/issues?q=tag:%20KMM-0.2.1%20).
