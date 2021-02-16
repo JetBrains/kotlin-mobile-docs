@@ -8,6 +8,6 @@
     <vars src="v.list"/>
     <product src="kmd.tree" web-path="/docs/mobile/" id="docs/mobile"/>
     <settings>
-        <default-property element-name="toc-element" property-name="show-structure-depth" value="3"/>
+        <default-property element-name="toc-element" property-name="show-structure-depth" value="2"/>
     </settings>
 </ihp>

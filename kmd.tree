@@ -13,13 +13,14 @@
         <toc-element id="getting-started.md"/>
         <toc-element id="setup.md"/>
         <toc-element id="create-first-app.md"/>
-        <toc-element id="discover-kmm-project.md"/>
         <toc-element id="integrate-in-existing-app.md"/>
+        <toc-element id="discover-kmm-project.md"/>
         <toc-element id="introduce-your-team-to-kmm.md"/>
     </toc-element>
 
     <toc-element toc-title="Development">
         <toc-element id="organize-process-around-kmm.md"/>
+        <toc-element id="architect-kmm-app.md"/>
         <toc-element id="connect-to-platform-specific-apis.md"/>
         <toc-element id="configure-sqldelight-for-data-storage.md"/>
         <toc-element id="use-ktor-for-networking.md"/>
