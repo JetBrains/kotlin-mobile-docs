@@ -23,7 +23,7 @@ Before you begin [creating your first application](create-first-app.md) to work 
     
     Check out [KMM plugin release notes](kmm-plugin-releases.md).
     
-6. Install the [JDK](https://www.oracle.com/ru/java/technologies/javase-downloads.html) if you haven't already done so.  
+6. Install the [JDK](https://www.oracle.com/java/technologies/javase-downloads.html) if you haven't already done so.  
     To check if it's installed, run the command `java -version` in the Terminal.       
      
 Now it's time to [create your first KMM application](create-first-app.md).
