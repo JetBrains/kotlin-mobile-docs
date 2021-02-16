@@ -26,7 +26,7 @@ If you aren't familiar with KMM, you can learn how to [create and configure a KM
 
 ## Make your code cross-platform
 
-To make your application work on iOS, you'll first make your code cross-platform, and then you’ll reuse your cross-platform code in a new iOS application.
+To have a KMM application that works on iOS, you'll first make your code cross-platform, and then you’ll reuse your cross-platform code in a new iOS application.
 
 To make your code cross-platform:
 
@@ -86,7 +86,7 @@ To use cross-platform code in your Android application, connect the shared modul
     }
     ```
 
-3. Synchronize the project to apply the changes.
+3. Synchronize the Gradle files by clicking **Sync Now** in the warning.
 
    ![Synchronize the Gradle files](gradle-sync.png)
 
@@ -177,13 +177,13 @@ Since the Kotlin standard library doesn't provide functionality for generating U
 Provide the `expect` declaration for the `randomUUID()` function in the shared code and its `actual` implementations for each platform – Android and iOS – in the corresponding source sets.
 You can learn more about [connecting to platform-specific APIs](connect-to-platform-specific-apis.md).
 
-1. Remove the `java.util.UUID` from the common code:
+1. Remove the `java.util.UUID` class from the common code:
 
     ```kotlin
    val fakeUser = LoggedInUser(randomUUID(), "Jane Doe") 
    ```
 
-1. Create a `Utils.kt` file in the `shared/src/commonMain` and provide the `expect` declaration:
+1. Create a `Utils.kt` file in the `shared/src/commonMain` directory and provide the `expect` declaration:
 
     ```kotlin
     package com.jetbrains.simplelogin.shared
@@ -191,7 +191,7 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
     expect fun randomUUID(): String
     ```
 
-2. Create a `Utils.kt` file in `shared/src/androidMain` and provide the `actual` implementation for `randomUUID()` in Android:
+2. Create a `Utils.kt` file in the `shared/src/androidMain` directory and provide the `actual` implementation for `randomUUID()` in Android:
 
     ```kotlin
     package com.jetbrains.simplelogin.shared
@@ -200,7 +200,7 @@ You can learn more about [connecting to platform-specific APIs](connect-to-platf
     actual fun randomUUID() = UUID.randomUUID().toString()
     ```
 
-3. Create a `Utils.kt` file in `shared/src/iosMain` and provide the `actual` implementation for `randomUUID()` in iOS:
+3. Create a `Utils.kt` file in the `shared/src/iosMain` directory and provide the `actual` implementation for `randomUUID()` in iOS:
 
     ```kotlin
     package com.jetbrains.simplelogin.shared
@@ -264,11 +264,11 @@ To use Kotlin code in your iOS project, compile shared code into a `.framework`.
      ./gradlew packForXcode
     ```
 
-> You can also run the `packForXcode` Gradle task by double-clicking it in the list of Gradle tasks.
->
-{type="note"}
+    > You can also run the `packForXcode` Gradle task by double-clicking it in the list of Gradle tasks.
+    >
+    {type="note"}
 
-The generated framework is stored in `shared/build/xcode-frameworks/`.
+The generated framework is stored in the `shared/build/xcode-frameworks/` directory.
 
 ### Connect the framework to your iOS project
 
@@ -387,7 +387,7 @@ Now your application is cross-platform. You can update the business logic in one
     xcodeproj=iosApp/SimpleLoginIOS.xcodeproj
     ```
 
-3. Apply the changes by synchronizing the project.
+3. Synchronize the Gradle files by clicking **Sync Now** in the warning.
 
    ![Synchronize the Gradle files](gradle-sync.png)
 
