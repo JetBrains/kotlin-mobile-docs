@@ -154,4 +154,4 @@ Once you've played with your first KMM application, you can:
 
 * [Understand the KMM project structure](discover-kmm-project.md)
 * [Complete a hands-on tutorial on networking and data storage](hands-on-networking-data-storage.md)
-* [Integrate KMM in an existing application](integrate-in-existing-app.md)
+* [Make your Android application work on iOS – tutorial](integrate-in-existing-app.md)
