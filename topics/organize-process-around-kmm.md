@@ -77,7 +77,7 @@ Model, which [differs significantly](concurrency-overview.md) from the Java Memo
 * Android developers may not be able to independently write all the expect/actual code in the shared module as they
 could lack iOS development experience. That's why you may need to involve iOS developers, at least as advisors, or use
 abstract interfaces in the module leaving the implementation to library users.
-* To compile the Multiplatform library for iOS, you need to have a macOS. The lack of direct access can be overcome by using a
+* To compile the Multiplatform library for iOS, you need to have macOS. The lack of direct access can be overcome by using a
 build automation system that supports continuous integration.
 
 ### Android and iOS developers work on the Multiplatform module
