@@ -4,9 +4,9 @@
 Here you will learn how to create and run your first KMM application.
 
 1. [Set up your environment for KMM development](setup.md) by installing the necessary tools on a suitable operating system.  
-    
-    > You will need a Mac with macOS to complete certain steps in this tutorial, which include writing iOS-specific code and running an iOS application.
-    > These steps cannot be performed on other operating systems, such as Microsoft Windows. This is due to an Apple requirement.
+
+   > You will need a Mac with macOS to complete certain steps in this tutorial, which include writing iOS-specific code and running an iOS application.  
+   > These steps cannot be performed on other operating systems, such as Microsoft Windows. This is due to an Apple requirement.
     >
     {type="note"}
     
