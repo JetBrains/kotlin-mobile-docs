@@ -5,8 +5,8 @@ Here you will learn how to create and run your first KMM application.
 
 1. [Set up your environment for KMM development](setup.md) by installing the necessary tools on a suitable operating system.  
     
-    > To work with shared code or Android-specific code, use any computer with an operating system supported by [Android Studio](https://developer.android.com/studio).  
-    > To write iOS-specific code and run an iOS application on a simulated or real device, use a Mac with a macOS. These steps cannot be performed on other operating systems, such as Microsoft Windows. This is due to an Apple requirement.
+    > You will need a Mac with macOS to complete certain steps in this tutorial, which include writing iOS-specific code and running an iOS application.
+    > These steps cannot be performed on other operating systems, such as Microsoft Windows. This is due to an Apple requirement.
     >
     {type="note"}
     
@@ -154,4 +154,4 @@ Once you've played with your first KMM application, you can:
 
 * [Understand the KMM project structure](discover-kmm-project.md)
 * [Complete a hands-on tutorial on networking and data storage](hands-on-networking-data-storage.md)
-* [Make your Android application work on iOS – tutorial](integrate-in-existing-app.md)
+* [Complete a tutorial on making your Android application work on iOS](integrate-in-existing-app.md)
