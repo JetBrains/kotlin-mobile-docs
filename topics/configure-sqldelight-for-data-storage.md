@@ -245,7 +245,7 @@ Now you can create the `DatabaseDriverFactory` instance in your applications' co
 val database = AppDatabase(databaseDriverFactory.createDriver())
 ```
 
-See the official official [Networking & Data Storage Hands-on](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction) for the full example.
+See the official [Networking & Data Storage Hands-on](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction) for the full example.
 
 ## Table operations
 
