@@ -3,6 +3,11 @@
 
 ## Get started
 
+In [this video](https://www.youtube.com/watch?v=mdN6P6RI__k), Kotlin Developer Advocate Ekaterina Petrova will explain 
+what Kotlin Multiplatform Mobile is and how you can use it in your project. Together we'll set up an environment and prepare you for creating your first cross-platform mobile application with KMM!
+
+<video width="560" height="315" href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
+
 * [Get started with KMM](getting-started.md) if you're already familiar with the Kotlin language and want to try out Kotlin Multiplatform Mobile (KMM).
 * [Get started with Kotlin](https://kotlinlang.org/docs/tutorials/getting-started.html) if you're new to Kotlin. 
 
