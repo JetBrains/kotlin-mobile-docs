@@ -22,9 +22,12 @@
         <toc-element id="organize-process-around-kmm.md"/>
         <toc-element id="architect-kmm-app.md"/>
         <toc-element id="connect-to-platform-specific-apis.md"/>
-        <toc-element id="configure-sqldelight-for-data-storage.md"/>
-        <toc-element id="use-ktor-for-networking.md"/>
         <toc-element id="add-dependencies.md"/>
+        <toc-element toc-title="Networking and data storage">
+            <toc-element id="configure-sqldelight-for-data-storage.md"/>
+            <toc-element id="use-ktor-for-networking.md"/>
+            <toc-element id="hands-on-networking-data-storage.md"/>
+        </toc-element>
         <toc-element id="publish-kmm-apps.md"/>
         <toc-element toc-title="Work with concurrency">
             <toc-element id="concurrency-overview.md"/>
@@ -33,11 +36,7 @@
         </toc-element>
     </toc-element>
 
-    <toc-element toc-title="Samples and tutorials">
-        <toc-element id="samples.md"/>
-        <toc-element id="hands-on-networking-data-storage.md"/>
-    </toc-element>
-
+    <toc-element id="samples.md"/>
     <toc-element id="supported-platforms.md"/>
     <toc-element id="kmm-evolution.md"/>
     <toc-element id="kmm-plugin-releases.md"/>
