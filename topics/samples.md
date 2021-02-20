@@ -12,6 +12,12 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
 This official sample from the Kotlin team demonstrates the Kotlin Multiplatform Mobile (KMM) basic concepts. 
 Learn how to configure Gradle to build a simple KMM project with Android and iOS targets, how to share code in a common source set, and how to use expect and actual declarations in cases where code cannot be shared: [https://github.com/Kotlin/mpp-example](https://github.com/Kotlin/mpp-example)
 
+## KMM sample for an Android application
+
+This official sample shows how to make your existing Android application work on iOS. As a basis, it uses a simple Android application with a single screen for entering a username and password.
+
+Complete [this step-by-step tutorial](integrate-in-existing-app.md) to get the final project: [https://github.com/Kotlin/kmm-integration-sample/tree/final](https://github.com/Kotlin/kmm-integration-sample/tree/final).
+
 ## CocoaPods integration samples
 
 These official samples from the Kotlin team demonstrate how to use CocoaPods in KMM projects.  
