@@ -14,9 +14,10 @@ Learn how to configure Gradle to build a simple KMM project with Android and iOS
 
 ## KMM sample for an Android application
 
+## KMM sample for an Android application
 This official sample shows how to make your existing Android application work on iOS. As a basis, it uses a simple Android application with a single screen for entering a username and password.
 
-Complete [this step-by-step tutorial](integrate-in-existing-app.md) to get the final project: [https://github.com/Kotlin/kmm-integration-sample/tree/final](https://github.com/Kotlin/kmm-integration-sample/tree/final).
+Complete [this step-by-step tutorial](integrate-in-existing-app.md) or check out the finished project on GitHub: [https://github.com/Kotlin/kmm-integration-sample/tree/final](https://github.com/Kotlin/kmm-integration-sample/tree/final).
 
 ## CocoaPods integration samples
 
