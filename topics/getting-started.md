@@ -15,4 +15,4 @@ If you already have a mobile application and want to make it cross platform:
 
 * [Set up your environment for KMM development](setup.md).
 * [Make a sample Android application work well on iOS](integrate-in-existing-app.md).
-* [Get familiar with architectural guildelines for the KMM application](architect-kmm-app.md).
+* [Get familiar with architectural guidelines for the KMM application](architect-kmm-app.md).
