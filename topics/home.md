@@ -14,7 +14,7 @@
 
 * [New KMM plugin releases](kmm-plugin-releases.md)
 * [What's new in Kotlin for KMM](whats-new-in-kotlin-for-kmm.md)
-* [The Kotlin Multiplatform Mobile goes Alpha](https://blog.jetbrains.com/kotlin/2020/08/kotlin-multiplatform-mobile-goes-alpha/)
+* [Multiplatform roadmap](https://youtrack.jetbrains.com/agiles/153-1251/current)
 
 ## Community
 
