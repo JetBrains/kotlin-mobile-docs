@@ -15,10 +15,11 @@
 * [New KMM plugin releases](kmm-plugin-releases.md)
 * [What's new in Kotlin for KMM](whats-new-in-kotlin-for-kmm.md)
 * [Multiplatform roadmap](https://youtrack.jetbrains.com/agiles/153-1251/current)
-* The video "Kotlin Multiplatform Multiverse Episode 1: Meet KMM!" is published
+* The video [Kotlin Multiplatform Multiverse Episode 1: Meet KMM!](https://www.youtube.com/watch?v=mdN6P6RI__k) is published
 
-  In [this video](https://www.youtube.com/watch?v=mdN6P6RI__k), Kotlin Developer Advocate Ekaterina Petrova will explain 
-  what Kotlin Multiplatform Mobile is and how you can use it in your project. Together we'll set up an environment and prepare you for creating your first cross-platform mobile application with KMM!
+  In this video, Kotlin Developer Advocate Ekaterina Petrova will explain what Kotlin Multiplatform Mobile is and how 
+  you can use it in your project. Together with Ekaterina you'll set up an environment and prepare for creating your 
+  first cross-platform mobile application with KMM.
 
   <video width="560" height="315" href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
