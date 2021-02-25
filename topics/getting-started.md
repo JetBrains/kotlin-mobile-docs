@@ -11,7 +11,7 @@ There are different ways to get started with Kotlin Multiplatform Mobile (KMM) d
 
 ## Make an Android application work on iOS
 
-If you already have a mobile application and want to make it cross platform:
+If you already have a mobile application and want to make it cross-platform:
 
 * [Set up your environment for KMM development](setup.md).
 * [Make a sample Android application work well on iOS](integrate-in-existing-app.md).

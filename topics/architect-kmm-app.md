@@ -1,9 +1,9 @@
 [//]: # (title: Architect your KMM application)
 [//]: # (auxiliary-id: Architect_your_KMM_application)
 
-This document provides architecture guidelines on how to decide which layers of your application make cross platform that work both on iOS and Android and which keep native.
+This document provides architecture guidelines on how to decide which layers of your application make cross-platform that work both on iOS and Android and which keep native.
 
-On the backend, the business logic is similar for both Android and iOS, so it's a great candidate for making it cross platform.
+On the backend, the business logic is similar for both Android and iOS, so it's a great candidate for making it cross-platform.
 For platform-specific features such as network requests, local database access, hardware manipulation, and cryptographic storage,
 use a multiplatform library that does this for you or [connect to platform-specific APIs](connect-to-platform-specific-apis.md)
 with the `expect` declaration, by providing the `actual` implementation for each platform.
@@ -14,7 +14,7 @@ with the backend with the help of [compatible architectural patterns](#architect
 
 ## Best practices for the KMM app architecture
 
-To summarize, we recommend making cross platform the following layers in your application:
+To summarize, we recommend making cross-platform the following layers in your application:
 
 | Layer | Recommendation on sharing|
 | ----- | -------------- |
