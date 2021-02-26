@@ -20,7 +20,7 @@
 
 * Kotlin Multiplatform Multiverse Episode 1: Meet KMM!
 
-  <video width="560" height="315" href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
+  <video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
 ## Community
 
