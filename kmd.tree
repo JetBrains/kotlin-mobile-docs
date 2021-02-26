@@ -23,11 +23,9 @@
         <toc-element id="architect-kmm-app.md"/>
         <toc-element id="connect-to-platform-specific-apis.md"/>
         <toc-element id="add-dependencies.md"/>
-        <toc-element toc-title="Connect to the internet and store data">
-            <toc-element id="complete-hands-on-networking-data-storage.md"/>
-            <toc-element id="configure-sqldelight-for-data-storage.md"/>
-            <toc-element id="use-ktor-for-networking.md"/>
-        </toc-element>
+        <toc-element id="configure-sqldelight-for-data-storage.md"/>
+        <toc-element id="use-ktor-for-networking.md"/>
+        <toc-element id="complete-networking-data-storage-hands-on.md"/>
         <toc-element id="publish-kmm-apps.md"/>
         <toc-element toc-title="Work with concurrency">
             <toc-element id="concurrency-overview.md"/>
