@@ -1,4 +1,4 @@
-[//]: # (title: Complete a hands-on tutorial on networking and data storage)
+[//]: # (title: Configure networking and data storage – hands-on tutorial)
 [//]: # (auxiliary-id: Hands-on_tutorial:_Networking_and_Data_storage)
 
 Learn how to create a mobile application for Android and iOS using Kotlin Multiplatform Mobile with Ktor and SQLDelight.
