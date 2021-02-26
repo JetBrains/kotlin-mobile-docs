@@ -21,7 +21,7 @@
   you can use it in your project. Together with Ekaterina you'll set up an environment and prepare for creating your 
   first cross-platform mobile application with KMM.
 
-  <video width="560" height="315" href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
+  <video width="560" href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
 ## Community
 
