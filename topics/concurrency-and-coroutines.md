@@ -17,8 +17,7 @@ Coroutines are light-weight threads that allow you to write asynchronous non-blo
 The current version of `kotlinx.coroutines`, which can be used for iOS, supports usage only in a single thread. 
 You cannot send work to other threads by changing a [dispatcher](#dispatcher-for-changing-threads).
 
-For Kotlin %kotlinVersion%, the 
-official version is `%coroutinesVersion%`.
+For Kotlin %kotlinVersion%, the recommended coroutines version is `%coroutinesVersion%`.
 
 You can suspend execution and do work on other threads while using a different mechanism for scheduling 
 and managing that work. However, this version of `kotlinx.coroutines` cannot change threads on its own.

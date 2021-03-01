@@ -6,25 +6,25 @@ This is a curated list of Kotlin Multiplatform Mobile (KMM) samples.
 Do you have a great idea for a sample, or one you would like to add to the list?  
 Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us about it!
 
-
 ## KMM sample
 
-This official sample from the Kotlin team demonstrates the Kotlin Multiplatform Mobile (KMM) basic concepts. 
+This sample project from the Kotlin team demonstrates the Kotlin Multiplatform Mobile (KMM) basic concepts. 
 Learn how to configure Gradle to build a simple KMM project with Android and iOS targets, how to share code in a common source set, and how to use expect and actual declarations in cases where code cannot be shared: [https://github.com/Kotlin/mpp-example](https://github.com/Kotlin/mpp-example)
 
 ## KMM sample for an Android application
 
-This official sample demonstrates how to make your existing Android application work on iOS. It builds on a simple Android application with a single screen for entering a username and password.
+This sample project from the Kotlin team demonstrates how to make your existing Android application work on iOS. It builds on a simple Android application with a single screen for entering a username and password.
 
 Complete [this step-by-step tutorial](integrate-in-existing-app.md) or check out the finished project on GitHub: [https://github.com/Kotlin/kmm-integration-sample/tree/final](https://github.com/Kotlin/kmm-integration-sample/tree/final).
 
 ## CocoaPods integration samples
 
-These official samples from the Kotlin team demonstrate how to use CocoaPods in KMM projects.  
+These samples from the Kotlin team demonstrate how to use CocoaPods in KMM projects.  
 * Learn how to add CocoaPods dependencies to a Kotlin project: [https://github.com/Kotlin/kotlin-with-cocoapods-sample](https://github.com/Kotlin/kotlin-with-cocoapods-sample)  
 * Learn how to connect a Kotlin framework to an Xcode project using CocoaPods: [https://github.com/Kotlin/multitarget-xcode-with-kotlin-cocoapods-sample](https://github.com/Kotlin/multitarget-xcode-with-kotlin-cocoapods-sample)
 
 ## KaMP Kit
+
 This application demonstrating KMM concepts uses some popular KMM libraries and has a simple set of features you can use as a reference.  
 This is  a good place to start if you’ve learned everything you can from basic KMM examples and want to dig a bit deeper: [https://github.com/touchlab/KaMPKit](https://github.com/touchlab/KaMPKit)
 
