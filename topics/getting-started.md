@@ -1,7 +1,7 @@
 [//]: # (title: Getting started)
 [//]: # (auxiliary-id: Getting_started)
 
-## Meet KMM
+## Get familiar with KMM
 
 Watch the introductory [video](https://www.youtube.com/watch?v=mdN6P6RI__k), in which Kotlin Developer Advocate Ekaterina 
 Petrova will explain what Kotlin Multiplatform Mobile is and how you can use it in your project. Together with Ekaterina 
