@@ -18,7 +18,7 @@
   
 ## Videos
 
-* Kotlin Multiplatform Multiverse Episode 1: Meet KMM!
+* "Kotlin Multiplatform Multiverse Episode 1: Meet KMM!" by Ekaterina Petrova, Kotlin Developer Advocate
 
   <video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
