@@ -15,6 +15,12 @@
 * [New KMM plugin releases](kmm-plugin-releases.md)
 * [What's new in Kotlin for KMM](whats-new-in-kotlin-for-kmm.md)
 * [Multiplatform roadmap](https://youtrack.jetbrains.com/agiles/153-1251/current)
+  
+## Videos
+
+* "Kotlin Multiplatform Multiverse Episode 1: Meet KMM!" by Ekaterina Petrova, Kotlin Developer Advocate
+
+  <video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
 ## Community
 

@@ -1,7 +1,13 @@
 [//]: # (title: Getting started)
 [//]: # (auxiliary-id: Getting_started)
 
-There are different ways to get started with Kotlin Multiplatform Mobile (KMM) depending on whether you want to start from scratch or in an existing Android application.
+## Meet KMM
+
+Watch the introductory [video](https://www.youtube.com/watch?v=mdN6P6RI__k), in which Kotlin Developer Advocate Ekaterina 
+Petrova will explain what Kotlin Multiplatform Mobile is and how you can use it in your project. Together with Ekaterina 
+you'll set up an environment and prepare for creating your first cross-platform mobile application with KMM.
+
+<video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
 ## Start with KMM from scratch
 
