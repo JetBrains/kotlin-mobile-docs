@@ -9,7 +9,7 @@ you'll set up an environment and prepare for creating your first cross-platform 
 
 <video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
-## Start with KMM from scratch
+## Start KMM from scratch
 
 * [Set up your environment for KMM development](setup.md).
 * [Create your first KMM application](create-first-app.md) using the IDE wizard.
