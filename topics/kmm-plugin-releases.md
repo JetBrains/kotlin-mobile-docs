@@ -47,9 +47,9 @@ Released: March 3, 2021
 </td>
 <td>
 
-* [Ability to open Xcode related files in Xcode.](https://youtrack.jetbrains.com/issue/KT-44970)
-* [Ability to set up Xcode project file location in the iOS run configuration.](https://youtrack.jetbrains.com/issue/KT-44968)
-* [Support for Android Studio 2020.3.1 Canary 8.](https://youtrack.jetbrains.com/issue/KT-45162)
+* [Ability to open Xcode related files in Xcode](https://youtrack.jetbrains.com/issue/KT-44970).
+* [Ability to set up Xcode project file location in the iOS run configuration](https://youtrack.jetbrains.com/issue/KT-44968).
+* [Support for Android Studio 2020.3.1 Canary 8](https://youtrack.jetbrains.com/issue/KT-45162).
 * [Fixes and other improvements](todo add the link).
 
 </td>
