@@ -47,10 +47,10 @@ Released: March 3, 2021
 </td>
 <td>
 
-* [Ability to open Xcode related files in Xcode](https://youtrack.jetbrains.com/issue/KT-44970).
+* [Ability to open Xcode-related files in Xcode](https://youtrack.jetbrains.com/issue/KT-44970).
 * [Ability to set up a location for the Xcode project file in the iOS run configuration](https://youtrack.jetbrains.com/issue/KT-44968).
 * [Support for Android Studio 2020.3.1 Canary 8](https://youtrack.jetbrains.com/issue/KT-45162).
-* [Fixes and other improvements](todo add the link).
+* [Fixes and other improvements](https://youtrack.jetbrains.com/issues?q=tag:%20KMM-0.2.2%20).
 
 </td>
 <td>
