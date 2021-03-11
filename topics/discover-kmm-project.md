@@ -365,7 +365,9 @@ the appropriate framework version to the specified location.
 task(packForXcode, type: Sync) {
     group = 'build'
     def mode = System.getenv('CONFIGURATION') ?: 'DEBUG'
-    def framework = kotlin.targets.ios.binaries.getFramework(mode)
+    def sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
+    def targetName = "ios" + ((sdkName.startsWith("iphoneos")) ? "Arm64" : "X64")
+    def framework = kotlin.targets.getByName(targetName).binaries.getFramework(mode)
     inputs.property('mode', mode)
     dependsOn(framework.linkTask)
     def targetDir = new File(buildDir, 'xcode-frameworks')
@@ -381,7 +383,9 @@ task(packForXcode, type: Sync) {
 val packForXcode by tasks.creating(Sync::class) {
     group = "build"
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>("ios").binaries.getFramework(mode)
+    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
+    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
+    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")
