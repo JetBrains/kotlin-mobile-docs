@@ -365,8 +365,8 @@ the appropriate framework version to the specified location.
 task(packForXcode, type: Sync) {
     group = 'build'
     def mode = System.getenv('CONFIGURATION') ?: 'DEBUG'
-    def sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
-    def targetName = "ios" + ((sdkName.startsWith("iphoneos")) ? "Arm64" : "X64")
+    def sdkName = System.getenv('SDK_NAME') ?: 'iphonesimulator'
+    def targetName = 'ios' + ((sdkName.startsWith('iphoneos')) ? 'Arm64' : 'X64')
     def framework = kotlin.targets.getByName(targetName).binaries.getFramework(mode)
     inputs.property('mode', mode)
     dependsOn(framework.linkTask)
