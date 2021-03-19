@@ -2,7 +2,7 @@
 
 该目录参照[英文原站](https://kotlinlang.org/docs/mobile/home.html)的顺序列出。
 
-- [KMM 文档](./topics-zh-CN/home.md)
+- [x] [KMM 文档](./topics-zh-CN/home.md)
 - 开始试用 KMM
     - [开始](./topics-zh-CN/getting-started.md)
     - [搭建 KMM 开发环境](./topics-zh-CN/setup.md)
