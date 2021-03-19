@@ -19,7 +19,7 @@
     - [发布 KMM 应用](./topics-zh-CN/publish-kmm-apps.md)
     - 处理并发
         - [并发概览](./topics-zh-CN/concurrency-overview.md)
-        - [并发中的可变性](./topics-zh-CN/concurrency-mutability.md)
+        - [并发中的可变性](./topics-zh-CN/concurrent-mutability.md)
         - [并发与协程](./topics-zh-CN/concurrency-and-coroutines.md)
 
 - [样例](./topics-zh-CN/samples.md)
