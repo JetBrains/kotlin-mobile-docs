@@ -1,5 +1,7 @@
 # Kotlin Multiplatform Mobile 中文文档
 
+该目录参照[英文原站](https://kotlinlang.org/docs/mobile/home.html)的顺序列出。
+
 - [KMM 文档](./topics-zh-CN/home.md)
 - 开始试用 KMM
     - [开始](./topics-zh-CN/getting-started.md)
