@@ -24,7 +24,7 @@
         - [并发中的可变性](./topics-zh-CN/concurrent-mutability.md)
         - [并发与协程](./topics-zh-CN/concurrency-and-coroutines.md)
 
-- [样例](./topics-zh-CN/samples.md)
+- [示例](./topics-zh-CN/samples.md)
 - [所支持的平台](./topics-zh-CN/supported-platforms.md)
 - [KMM 演进](./topics-zh-CN/kmm-evolution.md)
 - [KMM 插件发布](./topics-zh-CN/kmm-plugin-releases.md)
