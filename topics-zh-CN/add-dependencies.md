@@ -1,46 +1,46 @@
 [//]: # (title: Add dependencies to KMM modules)
 [//]: # (auxiliary-id: Add_dependencies_to_KMM_modules)
 
-Every application requires a set of libraries in order to operate successfully. 
-A KMM application can depend on multiplatform libraries that work on both iOS and Android, and it can depend on platform-specific iOS and Android libraries. 
+每个应用程序都需要一组函数库才能运行成功。
+KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多平台库，也可以依赖于 iOS 和 Android 各自平台特有的库。
 
-Here you can learn how to add:
-* [Multiplatform dependencies](#multiplatform-libraries)
-* [iOS dependencies](#ios-dependencies)
-* [Android dependencies](#android-dependencies)
+从这里学习如何添加：
+* [多平台依赖项](#多平台库)
+* [iOS 依赖项](#ios-依赖项))
+* [Android 依赖项](#android-依赖项)
 
-## Multiplatform libraries
+## 多平台库
 
-You can add dependencies on libraries that have adopted Kotlin Multiplatform technology, such as 
-[kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) and [SQLDelight](https://github.com/cashapp/sqldelight). 
-The authors of these libraries usually provide guides for adding their dependencies to your project.
+你可以添加采用了 Kotlin 多平台技术的库的依赖项，例如<!--
+--> [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) 与 [SQLDelight](https://github.com/cashapp/sqldelight) 。
+这些库的作者通常会提供将其依赖项添加到项目的指南。
 
-> When using a multiplatform library that does not have [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms) in a multiplatform project that does, 
-> you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set. 
+> 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目里使用了一个没有层次结构支持的多平台库时，
+> 你将不能在共享的 iOS 源集中使用 IDE 的特性，例如代码补全和高亮提示。
 > 
-> This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. In the meantime, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set). 
+> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。与此同时，你可以使用[这个解决方案](#为共享的-ios-源集启用-ide-支持的解决方法)。
 >
 {type="note"}
 
-This page covers basic dependency use cases:
+本页涵盖了基本的依赖项使用示例：
 
-* [On the Kotlin standard library](#dependency-on-the-kotlin-standard-library)
-* [On a library shared for all source sets](#dependency-on-a-library-shared-for-all-source-sets)
-* [On a library used in specific source sets](#dependency-on-a-library-used-in-specific-source-sets)
-* [On another multiplatform project](#dependency-on-another-multiplatform-project)
+* [对Kotlin 标准库](#对-kotlin-标准库的依赖项)
+* [对所有源集共享的库](#对所有源集共享的库的依赖项)
+* [对指定源集中使用的库](#对指定源集中使用的库的依赖项)
+* [对另一个多平台项目](#对另一个多平台项目的依赖项)
 
-Learn more about [configuring dependencies](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies).
+了解更多关于[配置依赖项](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies)的信息。
 
-Check out this [community-maintained list of Kotlin Multiplatform libraries](https://libs.kmp.icerock.dev/).
+查看[社区维护的 Kotlin 多平台库列表](https://libs.kmp.icerock.dev/)。
 
-### Dependency on the Kotlin standard library
+### 对 Kotlin 标准库的依赖项
 
-The Kotlin standard library is added automatically to all multiplatform projects, you don’t have to do anything manually.
+Kotlin标准库会自动添加到所有多平台项目中，无需手动执行任何操作。
 
-### Dependency on a library shared for all source sets
+### 对所有源集共享的库的依赖项
 
-If you want to use a library from all source sets, you can add it only to the common source set. 
-The Kotlin Multiplatform Mobile plugin will add the corresponding parts to any other source sets automatically.
+如果想从任一个源集中使用库，那么可以只将其添加到公共源集中。
+Kotlin 移动多平台插件将会自动地把相应的部分添加到任何其他源集中。
 
 <tabs>
 <tab title="Groovy">
@@ -55,7 +55,7 @@ kotlin {
         }
         androidMain {
             dependencies {
-                //dependency to platform part of kotlinx.coroutines will be added automatically
+                //kotlinx.coroutines 平台部分的依赖项将被自动添加
             }
         }
     }
@@ -71,19 +71,19 @@ kotlin {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
     }
     sourceSets["androidMain"].dependencies {
-        //dependency to platform part of kotlinx.coroutines will be added automatically
+        //kotlinx.coroutines 平台部分的依赖项将被自动添加
     }
 }
 ```
 </tab>
 </tabs>
 
-### Dependency on a library used in specific source sets
+### 对指定源集中使用的库的依赖项
 
-If you want to use a multiplatform library just for specific source sets, you can add it exclusively to them. 
-The specified library declarations will then be available only in those source sets.  
+如果想让一个多平台库仅用于某个指定的源集，那么可以将其专门添加到其中。
+之后这个指定的库将只能在那些源集中使用。
    
-> Don't use a platform-specific name in such cases, like SQLDelight `native-driver` in the example below. Find the exact name in the library’s documentation.
+> 这种情况下不要使用特定于平台的名称，如下面示例中的 SQLDelight `native-drive`。在库的文档中找到确切的名称。
 > 
 {type="note"}   
 
@@ -95,7 +95,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies { 
-            // kotlinx.coroutines will be available in all source sets
+            // kotlinx.coroutines 将在所有源集中可用
             implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
             }
         }
@@ -104,7 +104,7 @@ kotlin {
         }
         iosMain {
             dependencies {
-            // SQLDelight will be available only in the iOS source set, but not in Android or common
+            // SQLDelight 将仅在iOS源集中可用，而在Android或公共源集中不可用   
             implementation 'com.squareup.sqldelight:native-driver:%sqlDelightVersion%'
             }
         }
@@ -118,24 +118,24 @@ kotlin {
 ```Kotlin
 kotlin {
     sourceSets["commonMain"].dependencies {
-        //kotlinx.coroutines will be available in all source sets
+        //kotlinx.coroutines 将在所有源集中可用
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
     }
     sourceSets["androidMain"].dependencies {
     }
     sourceSets["iosX64Main"].dependencies {
-        //SQLDelight will be available only in the iOS source set, but not in Android or common
-        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%)
+        //SQLDelight 将仅在iOS源集中可用，而在Android或公共源集中不可用
+        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%")
     }
 }
 ```
 </tab>
 </tabs>
 
-### Dependency on another multiplatform project
+### 对另一个多平台项目的依赖项
 
-You can connect one multiplatform project to another as a dependency. To do this, simply add a project dependency to the source set that needs it. 
-If you want to use a dependency in all source sets, add it to the common one. In this case, other source sets will get their versions automatically.
+可以将一个多平台项目作为依赖项连接到另一个多平台项目。为此，只需将项目依赖项添加到需要它的源集中。
+如果想要在所有源集中使用这个依赖项，就将其添加到公共源集中。在这种情况下，其他源集将自动获得其版本。
 
 <tabs>
 <tab title="Groovy">
@@ -150,7 +150,7 @@ kotlin {
         }
         androidMain {
             dependencies {
-                //platform part of :some-other-multiplatform-module will be added automatically
+                //:some-other-multiplatform-module 的平台部分将会被自动添加
             }
         }
     }
@@ -166,41 +166,41 @@ kotlin {
         implementation(project(":some-other-multiplatform-module"))
     }
     sourceSets["androidMain"].dependencies {
-        //platform part of :some-other-multiplatform-module will be added automatically
+        //:some-other-multiplatform-module 的平台部分将会被自动添加
     }
 }
 ```
 </tab>
 </tabs>
 
-## iOS dependencies
+## iOS 依赖项
 
-Apple SDK dependencies (such as Foundation or Core Bluetooth) are available as a set of prebuilt libraries in Kotlin Multiplatform Mobile projects. 
-They do not require any additional configuration.
+Apple SDK 依赖项（例如 Foundation 或 Core Bluetooth）作为 Kotlin Multiplatform Mobile 项目中的一组预构建库提供。
+它们不需要任何额外的配置。
 
-You can also reuse other libraries and frameworks from the iOS ecosystem in your iOS source sets. 
-Kotlin supports interoperability with Objective-C dependencies and Swift dependencies if their APIs are exported to Objective-C with the `@objc` attribute. 
-Pure Swift dependencies are not yet supported.
+也可以在 iOS 源集中复用 iOS 生态系统中的其他库和框架。
+Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可以在 Kotlin 中使用如果它的 APIs 用 @objc 导出为 Objective-C。
+纯 Swift 依赖项目前还不支持。
 
-Integration with the CocoaPods dependency manager is also supported with the same limitation – you cannot use pure Swift pods. 
+与 CocoaPods 依赖项管理器的集成也受到同样的限制——不能使用纯 Swift pod。
 
-We recommend [using CocoaPods](#with-cocoapods) to handle iOS dependencies in Kotlin Multiplatform Mobile (KMM) projects. 
-[Manage dependencies manually](#without-cocoapods) only if you want to tune the interop process specifically or if you have some other strong reason to do so.
+我们推荐在 Kotlin 移动多平台（KMM）项目中[使用 CocoaPods](#使用-CocoaPods)去处理 iOS 依赖项。
+仅当您想要专门参与交互操作调优过程或有其他强有力的理由这样做时,再去[手动管理依赖关系](#不使用-CocoaPods)。
 
-> When using third-party iOS libraries in multiplatform projects with [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms), for example with the `ios()` [target shortcut](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts), 
-> you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set. 
+> 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目（例如使用了 `ios()` [目标平台快捷方式](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts)）中使用 iOS 第三方库时，
+> 将不能在共享的 iOS 源集中使用 IDE 的特性，例如代码补全和高亮提示。
 > 
-> This is a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), and we are working on resolving it. In the meantime, you can use [this workaround](#workaround-to-enable-ide-support-for-the-shared-ios-source-set). 
+> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。同时，你可以尝试[这个解决方案](#为共享的-ios-源集启用-ide-支持的解决方法)。
 >
 > This issue doesn't apply to [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 >
 {type="note"}
 
-### With CocoaPods
+### 使用 CocoaPods
 
-1. Perform [initial CocoaPods integration setup](https://kotlinlang.org/docs/reference/native/cocoapods.html#install-the-cocoapods-dependency-manager-and-plugin)
+1. 执行 [初始 CocoaPods 集成设置](https://kotlinlang.org/docs/reference/native/cocoapods.html#install-the-cocoapods-dependency-manager-and-plugin)
 
-2. Add a dependency on a Pod library from the CocoaPods repository that you want to use by including `pod()` in the build script of your project.
+2. 通过编写项目构建脚本中的 `pod()`，添加要使用的 CocoaPods 版本库中的Pod库依赖项。
 
     <tabs>
     <tab title="Groovy">
@@ -233,49 +233,49 @@ We recommend [using CocoaPods](#with-cocoapods) to handle iOS dependencies in Ko
     </tab>
     </tabs>
 
-3. Re-import the project.
+3. 重新导入项目。
 
-To use the dependency in your Kotlin code, import the package `cocoapods.<library-name>`. In the example above, that would be:
+如需在 Kotlin 代码中使用该依赖项，可导入软件包 `cocoapods.<library-name>`。在上面的示例中，那将是：
 ```kotlin
 import cocoapods.AFNetworking.*
 ```
 
-Learn more about [CocoaPods integration](https://kotlinlang.org/docs/reference/native/cocoapods.html).
+了解更多关于[CocoaPods 集成](https://kotlinlang.org/docs/reference/native/cocoapods.html)。
 
-### Without CocoaPods
+### 不使用 CocoaPods
 
-If you don’t want to use CocoaPods, you can use the cinterop tool to create Kotlin bindings for Objective-C or Swift declarations. This will allow you to call them from Kotlin code. To do this:
-1. Download your dependency.
-2. Build it to get its binaries.
-3. Create a special `.def` file that describes this dependency to cinterop.
-4. Adjust your build script to generate bindings during the build.
+如果不想使用 CocoaPods，那么可以使用 cinterop 工具为 Objective 或 Swift 声明创建 Kotlin 绑定。这样就可以通过 Kotlin 代码去调用它们。为此：
+1. 下载依赖项。
+2. 构建它并获取它的二进制文件。
+3. 创建一个具体的 `.def` 文件来描述 cinterop 的依赖项。
+4. 调整构建脚本以在构建期间生成绑定。
 
-The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [frameworks](#add-a-framework-without-cocoapods), but the idea remains the same.
+[代码库](#不使用-cocoapods-添加库)和[框架](#不使用-cocoapods-添加一个框架)的步骤有所不同，但是它们的思想是一样的。
 
-#### Add a library without CocoaPods 
+#### 不使用 CocoaPods 添加库
 
-1. Download the library source code and place it somewhere where you can reference it from your project. 
+1. 下载库源代码，并将其放在可以从项目中引用到它的地方。
 
-2. Build a library (library authors usually provide a guide on how to do this) and get a path to the binaries.
+2. 构建这个库（库作者通常会提供构建指南），并取得二进制文件的路径。
 
-3. In your project, create a `.def` file, for example `DateTools.def`.
+3. 在项目里创建一个 `.def` 文件，例如 `DateTools.def`。
 
-4. Add a first string to this file: `language = Objective-C`. If you want to use a pure C dependency, omit the language property.
+4. 在该文件的第一行添加：`language = Objective-C`。如果要使用纯 C 依赖项，就省略这个语言属性。
 
-5. Provide values for two mandatory properties:
-    * `headers` describes which headers will be processed by cinterop.
-    * `package` sets the name of the package these declarations should be put into.
+5. 为下面两个必要的属性赋值：
+    * `headers` 描述哪些头文件将被 cinterop 处理。
+    * `package` 设置这些声明应该被放入的包的名称。
 
-    For example:
+    例如:
     ```properties
     headers = DateTools.h
     package = DateTools
     ```
 
-6. Add information about interoperability with this library to the build script:
-    * Pass the path to the `.def` file. This path can be omitted if your `.def` file has the same name as cinterop and is placed in the `src/nativeInterop/cinterop/` directory.
-    * Tell cinterop where to look for header files using the `includeDirs` option.
-    * Configure linking to library binaries.
+6. 在构建脚本中添加关于这个库互操作性的信息：
+    * 添加 `.def` 文件的路径。如果 `.def` 文件与 cinterop 具有相同的名称，并且位于 `src/nativeInterop/cinterop/` 目录中，那么可以忽略此路径。
+    * 使用 `includeDirs` 选项告诉 cinterop 在哪里查找头文件。
+    * 配置库的二进制文件的链接。
 
     <tabs>
     <tab title="Groovy">
@@ -286,10 +286,10 @@ The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [fr
             compilations.main {
                 cinterops {
                     DateTools {
-                        // Path to .def file
+                        // .def 文件的路径
                         defFile("src/nativeInterop/cinterop/DateTools.def")
                    
-                        // Directories for header search (an analogue of the -I<path> compiler option)
+                        // 头文件检索的目录（类似于 -I<path> 的编译器选项）
                         includeDirs("include/this/directory", "path/to/another/directory")
                     }
                     anotherInterop { /* ... */ }
@@ -297,7 +297,7 @@ The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [fr
             }
 
             binaries.all {
-                // Linker options required to link to the library.
+                // 链接到库所需的链接器选项。
                 linkerOpts "-L/path/to/library/binaries", "-lbinaryname"
             }
         }
@@ -312,17 +312,17 @@ The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [fr
         iosX64() {
             compilations.getByName("main") {
                 val DateTools by cinterops.creating {
-                    // Path to .def file
+                    // .def 文件的路径
                     defFile("src/nativeInterop/cinterop/DateTools.def")
 
-                    // Directories for header search (an analogue of the -I<path> compiler option)
+                    // 头文件检索的目录（类似于 -I<path> 的编译器选项）
                     includeDirs("include/this/directory", "path/to/another/directory")
                 }
                 val anotherInterop by cinterops.creating { /* ... */ }
             }
 
             binaries.all {
-                // Linker options required to link to the library.
+                // 链接到库所需的链接器选项。
                 linkerOpts("-L/path/to/library/binaries", "-lbinaryname")
             }
         }
@@ -332,36 +332,36 @@ The steps differ a bit for [libraries](#add-a-library-without-cocoapods) and [fr
     </tab>
     </tabs>
 
-7. Build the project.
+7. 构建项目.
 
-Now you can use this dependency in your Kotlin code. To do that, import the package you’ve set up in the `package` property in the `.def` file. For the example above, this will be:
+现在即可以在你的 Kotlin 代码中使用这个依赖项。为此，导入之前在 `.def` 文件里设置的 `package` 属性。在上面的示例中，这将是：
 ```kotlin
 import DateTools.*
 ```
 
-#### Add a framework without CocoaPods
+#### 不使用 CocoaPods 添加一个框架
 
-1. Download the framework source code and place it somewhere that you can reference it from your project.
+1. 下载框架源代码，并将其放在可以从项目中引用到它的地方。
 
-2. Build the framework (framework authors usually provide a guide on how to do this) and get a path to the binaries.
+2. 构建这个框架（框架作者通常会提供构建指南），并取得二进制文件的路径。
 
-3. In your project, create a `.def` file, for example `MyFramework.def`.
+3. 在项目里创建一个 `.def` 文件，例如 `MyFramework.def`。
 
-4. Add the first string to this file: `language = Objective-C`. If you want to use a pure C dependency, omit the language property.
+4. 在该文件的第一行添加：`language = Objective-C`。如果要使用纯 C 依赖项，就省略这个语言属性。
 
-5. Provide values for these two mandatory properties:
-    * `modules` – the name of the framework that should be processed by the cinterop.
-    * `package` – the name of the package these declarations should be put into.
-    For example:
+5. 为下面两个必要的属性赋值：
+    * `modules` – 需要被 cinterop 处理的框架的名称.
+    * `package` – 这些声明将要被放入的包的名称.
+    示例:
     ```properties
     modules = MyFramework
     package = MyFramework
     ```
 
-6. Add information about interoperability with the framework to the build script:
-    * Pass the path to the .def file. This path can be omitted if your `.def` file has the same name as the cinterop and is placed in the `src/nativeInterop/cinterop/` directory.
-    * Pass the framework name to the compiler and linker using the `-framework` option.
-    Pass the path to the framework sources and binaries to the compiler and linker using the `-F` option.
+6.  在构建脚本中添加关于这个框架互操作性的信息:
+    * 添加 `.def` 文件的路径。如果 `.def` 文件与 cinterop 具有相同的名称，并且位于 `src/nativeInterop/cinterop/` 目录中，那么可以忽略此路径。
+    * 使用 `-framework` 选项将框架的名称传递给编译器和链接器。
+    使用 `-F` 选项将框架源和二进制文件的路径传递给编译器和链接器。
 
     <tabs>
     <tab title="Groovy">
@@ -372,7 +372,7 @@ import DateTools.*
             compilations.main {
                 cinterops {
                     DateTools {
-                        // Path to .def file
+                        // .def 文件的路径
                         defFile("src/nativeInterop/cinterop/MyFramework.def")
                    
                         compilerOpts("-framework", "MyFramework", "-F/path/to/framework/")
@@ -382,7 +382,7 @@ import DateTools.*
             }
 
             binaries.all {
-                // Tell the linker where the framework is located.
+                // 告诉链接器框架的位置。
                 linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
             }
         }
@@ -397,7 +397,7 @@ import DateTools.*
         iosX64() {
             compilations.getByName("main") {
                 val DateTools by cinterops.creating {
-                    // Path to .def file
+                    // .def 文件的路径
                     defFile("src/nativeInterop/cinterop/DateTools.def")
 
                    compilerOpts("-framework", "MyFramework", "-F/path/to/framework/"
@@ -406,7 +406,7 @@ import DateTools.*
             }
 
             binaries.all {
-                // Tell the linker where the framework is located.
+                // 告诉链接器框架的位置。
                 linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
             }
        }
@@ -416,32 +416,32 @@ import DateTools.*
     </tab>
     </tabs>
 
-7. Build the project.
+7. 构建项目。
 
-Now you can use this dependency in your Kotlin code. To do this, import the package you’ve set up in the package property in the `.def` file. For the example above, this will be:
+现在即可以在你的 Kotlin 代码中使用这个依赖项。为此，导入之前在 `.def` 文件里设置的 `package` 属性。在上面的示例中，这将是：
 
 ```kotlin
 import MyFramework.*
 ```
 
-Learn more about [Objective-C and Swift interop](https://kotlinlang.org/docs/reference/native/objc_interop.html) and 
-[configuring cinterop from Gradle](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#cinterops).
+了解更多关于[Objective-C 和 Swift 互操作性](https://kotlinlang.org/docs/reference/native/objc_interop.html)和<!--
+-->[用 Gradle 配置 cinterop](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#cinterops)的信息。
 
-### Workaround to enable IDE support for the shared iOS source set {initial-collapse-state="collapsed"}
+### 为共享的 iOS 源集启用 IDE 支持的解决方法 {initial-collapse-state="collapsed"}
 
-Due to a [known issue](https://youtrack.jetbrains.com/issue/KT-40975), you won't be able to use IDE features, such as code completion and highlighting, for the shared iOS source set 
-in a multiplatform project with [hierarchical structure support](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms) if your project depends on:
+由于一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，如果你的多平台项目<!--
+-->使用了[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)并且有如下所示的依赖项，你将无法在共享的 iOS 源集中使用 IDE 特性，例如代码补全和高亮显示：
 
-* Multiplatform libraries that don't support the hierarchical structure.
+* 不支持层次结构的多平台库
 * Third-party iOS libraries, with the exception of [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 
-This issue applies only to the shared iOS source set. The IDE will correctly support the rest of the code.
+该问题仅限于共享的 iOS 源集。IDE 将正确支持其余代码。
 
-> All projects created with the KMM Project Wizard support the hierarchical structure, which means this issue affects them.
+> 所有使用 KMM 项目向导创建的项目都支持层次结构，所以它们会受到该问题的影响。
 >
 {type="note"}
 
-To enable IDE support in these cases, you can work around the issue by adding the following code to `build.gradle.(kts)` in the `shared` directory of your project:
+如需在这些情况下开启 IDE 支持，可通过在项目的 `shared` 目录中的 `build.gradle.(kts)` 文件里添加如下代码解决该问题：
 
 <tabs>
 
@@ -466,22 +466,22 @@ iosTarget("ios")
 
 </tabs>
 
-In this code sample, the configuration of iOS targets depends on the environment variable `SDK_NAME`, which is managed by Xcode. 
-For each build, you'll have only one iOS target, named `ios`, that uses the `iosMain` source set. 
-There will be no hierarchy of the `iosMain`, `iosArm64`, and `iosX64` source sets.
+在此代码示例中，iOS 目标平台的配置取决于 `SDK_NAME` 这个环境变量，该变量由 Xcode 管理。
+在每次构建中，你将只有一个使用了 `iosMain` 源集的 iOS 目标，叫做 `ios`。
+这里将没有 `iosMain`，`iosArm64`，`iosX64` 源集的分层。
 
-> This is a temporary workaround. If you are a library author, we recommend that you [migrate to the hierarchical structure](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure) as soon as possible. 
+> 这是一个临时的解决方法。如果你是一个软件库作者，我们推荐尽快[迁移到层次结构](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure)。
 >
-> With this workaround, Kotlin Multiplatform tooling analyzes your code against only the one native target that is active during the current build. 
-> This might lead to various errors during the complete build with all targets, and errors are more likely if your project contains other native targets in addition to the iOS ones.
+> 通过这种解决方法，Kotlin 多平台工具仅针对当前构建期间处于活动状态的一个原生目标平台来分析您的代码。
+> 这可能会在所有目标平台完成构建期间导致各种错误，并且如果项目除 iOS 之外还包含其他原生目标平台，那么将更可能发生错误。
 >
 {type="note"}
 
-## Android dependencies
+## Android 依赖项
 
-The workflow for adding Android-specific dependencies to a KMM module is the same as it is for pure Android projects: add a line to your Gradle build script declaring the dependency you need and import the project. You’ll then be able to use this dependency in your Kotlin code.
+将 Android 平台上的依赖项添加到 KMM 模块的工作流程与纯 Android 项目相同：在 Gradle 构建脚本中添加一行代码来声明所需的依赖项并导入项目中。然后就可以在 Kotlin 代码中使用此依赖项。
 
-We recommend adding Android dependencies to KMM projects by adding them to a specific Android source set:
+建议通过将 Android 依赖项添加到具体的 Android 源集中来将其添加到 KMM 项目中。
 
 <tabs>
 <tab title="Groovy">
@@ -508,8 +508,8 @@ sourceSets["androidMain"].dependencies {
 </tab>
 </tabs>
 
-Moving what was a top-level dependency in an Android project to a specific source set in a KMM project might be difficult if the top-level dependency had a non-trivial configuration name. For example, to move а `debugImplementation` dependency from the top level of an Android project, you’ll need to add an implementation dependency to the source set named `androidDebug`.
-To minimize the effort you have to put in to deal with migration problems like this, you can add a `dependencies` block inside the `android` block:
+如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 KMM 项目中的指定源集里可能会很困难。例如，要在Android项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的源集添加实现依赖项。
+为了最大程度地减少处理此类迁移问题的工作量，可以在 `android` 块内添加一个  `dependencies` 块：
 
 <tabs>
 <tab title="Groovy">
@@ -539,8 +539,8 @@ android {
 </tab>
 </tabs>
 
-Dependencies declared here will be treated exactly the same as dependencies from the top-level block, but declaring them this way will also separate Android dependencies visually in your build script and make it less confusing.
+这里声明的依赖项将与顶级块中的依赖项完全相同，但是以这种方式声明可以在构建脚本中直观地分离 Android 依赖项，从而减少混乱。
 
-Putting dependencies into a standalone `dependencies` block at the end of the script, in a way that is idiomatic to Android projects, is also supported. However, we strongly recommend **against** doing this because configuring a build script with Android dependencies in the top-level block and other target dependencies in each source set is likely to cause confusion.
+还支持以 Android 项目惯用的方式，将依赖项放入脚本末尾的独立 `dependencies` 块中。但是，我们强烈**反对**这样做，因为在构建脚本的顶层代码块中配置一个 Android 依赖项而在每个源集中配置其他目标平台依赖项，将很可能会导致混乱。
 
-Learn more about [adding dependencies in Android documentation](https://developer.android.com/studio/build/dependencies).
+到 Android 官方文档了解更多关于[添加依赖项](https://developer.android.com/studio/build/dependencies)的信息。
