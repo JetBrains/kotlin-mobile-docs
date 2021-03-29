@@ -78,6 +78,10 @@ kotlin {
 </tab>
 </tabs>
 
+In the case of `kotlin-test` library, use the `kotlin-test` dependency to add dependencies for testing in the `commonTest` 
+source set, and the Gradle plugin will infer the corresponding platform dependencies for each source set. Learn more 
+about [setting dependencies on test libraries](https://kotlinlang.org/docs/mpp-add-dependencies.html#set-dependencies-on-test-libraries).
+
 ### Dependency on a library used in specific source sets
 
 If you want to use a multiplatform library just for specific source sets, you can add it exclusively to them. 
