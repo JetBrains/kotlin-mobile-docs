@@ -179,7 +179,7 @@ Kotlin/Native has some more advanced ways of sharing concurrent states. To achie
 the concurrency rules altogether. 
 
 > This is a more advanced topic. You should have a deep understanding of how concurrency in Kotlin/Native works under 
-> the hood, and you’ll need to be very careful when using this approach. Learn more about [concurrency](https://kotlinlang.org/docs/reference/native/concurrency.html).
+> the hood, and you’ll need to be very careful when using this approach. Learn more about [concurrency](https://kotlinlang.org/docs/native-concurrency.html).
 >
 {type="note"}
 
@@ -188,7 +188,7 @@ arguments into your shared code from Swift. All of this native code runs outside
 
 That means that you can implement a concurrent mutable state in a native language and have Kotlin/Native talk to it.
 
-You can use [Objective-C interop](https://kotlinlang.org/docs/reference/native/c_interop.html) to access low-level code. 
+You can use [Objective-C interop](https://kotlinlang.org/docs/native-c-interop.html) to access low-level code. 
 You can also use Swift to implement Kotlin interfaces or pass in lambdas that Kotlin code can call 
 from any thread.
 

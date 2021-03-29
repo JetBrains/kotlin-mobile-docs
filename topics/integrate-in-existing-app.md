@@ -274,7 +274,7 @@ The generated framework is stored in the `shared/build/xcode-frameworks/` direct
 
 Once you have the framework, you can connect it to your iOS project manually.
 
-> An alternative is to [configure integration via Cocoapods](https://kotlinlang.org/docs/reference/native/cocoapods.html), but that integration is beyond the scope of this tutorial.
+> An alternative is to [configure integration via Cocoapods](https://kotlinlang.org/docs/native-cocoapods.html), but that integration is beyond the scope of this tutorial.
 >
 {type="note"}
 

@@ -65,7 +65,7 @@ suspend fun differentThread() = withContext(Dispatchers.Default){
 ```
 
 `withContext` takes both a dispatcher as an argument and a code block that will be executed by the thread defined by 
-the dispatcher. Learn more about [coroutine context and dispatchers](https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html).
+the dispatcher. Learn more about [coroutine context and dispatchers](https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html).
 
 To perform work on a different thread, specify a different dispatcher and a code block to execute. In general, 
 switching dispatchers and threads works similar to the JVM, but there are differences related to freezing
