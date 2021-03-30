@@ -334,7 +334,7 @@ import cocoapods.AFNetworking.*
 
 7. 构建项目.
 
-现在即可以在你的 Kotlin 代码中使用这个依赖项。为此，导入之前在 `.def` 文件里设置的 `package` 属性。在上面的示例中，这将是：
+现在你可以在你的 Kotlin 代码中使用该依赖项，即导入那个之前在 .def 文件里的 package 配置对应的包。在上面的示例中，这将是：
 ```kotlin
 import DateTools.*
 ```
@@ -418,7 +418,7 @@ import DateTools.*
 
 7. 构建项目。
 
-现在即可以在你的 Kotlin 代码中使用这个依赖项。为此，导入之前在 `.def` 文件里设置的 `package` 属性。在上面的示例中，这将是：
+现在你可以在你的 Kotlin 代码中使用该依赖项，即导入那个之前在 .def 文件里的 package 配置对应的包。在上面的示例中，这将是：
 
 ```kotlin
 import MyFramework.*
@@ -466,7 +466,7 @@ iosTarget("ios")
 
 </tabs>
 
-在此代码示例中，iOS 目标平台的配置取决于 `SDK_NAME` 这个环境变量，该变量由 Xcode 管理。
+在此代码示例中，iOS 目标平台的配置取决于 `SDK_NAME` 环境变量，该变量由 Xcode 管理。
 在每次构建中，你将只有一个使用了 `iosMain` source set 的 iOS 目标，叫做 `ios`。
 这里将没有 `iosMain`，`iosArm64`，`iosX64` source set 的分层。
 
