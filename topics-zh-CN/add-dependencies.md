@@ -1,10 +1,10 @@
 [//]: # (title: Add dependencies to KMM modules)
 [//]: # (auxiliary-id: Add_dependencies_to_KMM_modules)
 
-每个应用程序都需要一组函数库才能运行成功。
+每个应用程序都需要一些库才能良好运转。
 KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多平台库，也可以依赖于 iOS 和 Android 各自平台特有的库。
 
-从这里学习如何添加：
+在这里你可以学到如何添加：
 * [多平台依赖项](#多平台库)
 * [iOS 依赖项](#ios-依赖项))
 * [Android 依赖项](#android-依赖项)
@@ -18,7 +18,7 @@ KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多�
 > 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目里使用了一个没有层次结构支持的多平台库时，
 > 你将不能在共享的 iOS 源集中使用 IDE 的特性，例如代码补全和高亮提示。
 > 
-> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。与此同时，你可以使用[这个解决方案](#为共享的-ios-源集启用-ide-支持的解决方法)。
+> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。与此同时，你可以使用[这个变通方案](#为共享的-ios-源集启用-ide-支持的变通方案)。
 >
 {type="note"}
 
@@ -190,7 +190,7 @@ Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可
 > 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目（例如使用了 `ios()` [目标平台快捷方式](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts)）中使用 iOS 第三方库时，
 > 将不能在共享的 iOS 源集中使用 IDE 的特性，例如代码补全和高亮提示。
 > 
-> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。同时，你可以尝试[这个解决方案](#为共享的-ios-源集启用-ide-支持的解决方法)。
+> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。同时，你可以尝试[这个变通方案](#为共享的-ios-源集启用-ide-支持的变通方案)。
 >
 > This issue doesn't apply to [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 >
@@ -427,7 +427,7 @@ import MyFramework.*
 了解更多关于[Objective-C 和 Swift 互操作性](https://kotlinlang.org/docs/reference/native/objc_interop.html)和<!--
 -->[用 Gradle 配置 cinterop](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#cinterops)的信息。
 
-### 为共享的 iOS 源集启用 IDE 支持的解决方法 {initial-collapse-state="collapsed"}
+### 为共享的 iOS 源集启用 IDE 支持的变通方案 {initial-collapse-state="collapsed"}
 
 由于一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，如果你的多平台项目<!--
 -->使用了[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)并且有如下所示的依赖项，你将无法在共享的 iOS 源集中使用 IDE 特性，例如代码补全和高亮显示：
@@ -470,9 +470,9 @@ iosTarget("ios")
 在每次构建中，你将只有一个使用了 `iosMain` 源集的 iOS 目标，叫做 `ios`。
 这里将没有 `iosMain`，`iosArm64`，`iosX64` 源集的分层。
 
-> 这是一个临时的解决方法。如果你是一个软件库作者，我们推荐尽快[迁移到层次结构](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure)。
+> 这是一个临时的变通方案。如果你是一个软件库作者，我们推荐尽快[迁移到层次结构](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure)。
 >
-> 通过这种解决方法，Kotlin 多平台工具仅针对当前构建期间处于活动状态的一个原生目标平台来分析您的代码。
+> 通过这种变通方案，Kotlin 多平台工具仅针对当前构建期间处于活动状态的一个原生目标平台来分析您的代码。
 > 这可能会在所有目标平台完成构建期间导致各种错误，并且如果项目除 iOS 之外还包含其他原生目标平台，那么将更可能发生错误。
 >
 {type="note"}
