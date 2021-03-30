@@ -16,17 +16,17 @@ KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多�
 这些库的作者通常会提供将其依赖项添加到项目的指南。
 
 > 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目里使用了一个没有层次结构支持的多平台库时，
-> 你将不能在共享的 iOS 源集中使用 IDE 的特性，例如代码补全和高亮提示。
+> 你将不能在共享的 iOS source set 中使用 IDE 的特性，例如代码补全和高亮提示。
 > 
-> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。与此同时，你可以使用[这个变通方案](#为共享的-ios-源集启用-ide-支持的变通方案)。
+> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。与此同时，你可以使用[这个变通方案](#为共享的-ios-source-set-启用-ide-支持的变通方案)。
 >
 {type="note"}
 
 本页涵盖了基本的依赖项使用示例：
 
 * [针对 Kotlin 标准库](#针对-kotlin-标准库的依赖项)
-* [针对所有源集共享的库](#针对所有源集共享的库的依赖项)
-* [针对指定源集中使用的库](#针对指定源集中使用的库的依赖项)
+* [针对所有 source set 共享的库](#针对所有-source-set-共享的库的依赖项)
+* [针对指定 source set 中使用的库](#针对指定-source-set-中使用的库的依赖项)
 * [针对另一个多平台项目](#针对另一个多平台项目的依赖项)
 
 了解更多关于[配置依赖项](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies)的信息。
@@ -37,10 +37,10 @@ KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多�
 
 Kotlin 标准库会自动添加到所有多平台项目中，无需手动执行任何操作。
 
-### 针对所有源集共享的库的依赖项
+### 针对所有 source set 共享的库的依赖项
 
-如果想从任一个源集中使用库，那么可以只将其添加到公共源集中。
-Kotlin 移动多平台插件将会自动地把相应的部分添加到任何其他源集中。
+如果想从任一个 source set 中使用库，那么可以只将其添加到公共 source set 中。
+Kotlin 移动多平台插件将会自动地把相应的部分添加到任何其他 source set 中。
 
 <tabs>
 <tab title="Groovy">
@@ -78,10 +78,10 @@ kotlin {
 </tab>
 </tabs>
 
-### 针对指定源集中使用的库的依赖项
+### 针对指定 source set 中使用的库的依赖项
 
-如果想让一个多平台库仅用于某个指定的源集，那么可以将其专门添加到其中。
-之后这个指定的库将只能在那些源集中使用。
+如果想让一个多平台库仅用于某个指定的 source set，那么可以将其专门添加到其中。
+之后这个指定的库将只能在那些 source set 中使用。
    
 > 这种情况下不要使用特定于平台的名称，如下面示例中的 SQLDelight `native-drive`。在库的文档中找到确切的名称。
 > 
@@ -95,7 +95,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies { 
-            // kotlinx.coroutines 将在所有源集中可用
+            // kotlinx.coroutines 将在所有 source set 中可用
             implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%'
             }
         }
@@ -104,7 +104,7 @@ kotlin {
         }
         iosMain {
             dependencies {
-            // SQLDelight 将仅在 iOS 源集中可用，而在 Android 或公共源集中不可用   
+            // SQLDelight 将仅在 iOS source set 中可用，而在 Android 或公共 source set 中不可用   
             implementation 'com.squareup.sqldelight:native-driver:%sqlDelightVersion%'
             }
         }
@@ -118,13 +118,13 @@ kotlin {
 ```Kotlin
 kotlin {
     sourceSets["commonMain"].dependencies {
-        //kotlinx.coroutines 将在所有源集中可用
+        //kotlinx.coroutines 将在所有 source set 中可用
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:%coroutinesVersion%")
     }
     sourceSets["androidMain"].dependencies {
     }
     sourceSets["iosX64Main"].dependencies {
-        //SQLDelight 将仅在 iOS 源集中可用，而在 Android 或公共源集中不可用
+        //SQLDelight 将仅在 iOS source set 中可用，而在 Android 或公共 source set 中不可用
         implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%")
     }
 }
@@ -134,8 +134,8 @@ kotlin {
 
 ### 针对另一个多平台项目的依赖项
 
-可以将一个多平台项目作为依赖项连接到另一个多平台项目。为此，只需将项目依赖项添加到需要它的源集中。
-如果想要在所有源集中使用这个依赖项，就将其添加到公共源集中。在这种情况下，其他源集将自动获得其版本。
+可以将一个多平台项目作为依赖项连接到另一个多平台项目。为此，只需将项目依赖项添加到需要它的 source set 中。
+如果想要在所有 source set 中使用这个依赖项，就将其添加到公共 source set 中。在这种情况下，其他 source set 将自动获得其版本。
 
 <tabs>
 <tab title="Groovy">
@@ -178,7 +178,7 @@ kotlin {
 Apple SDK 依赖项（例如 Foundation 或 Core Bluetooth）作为 Kotlin Multiplatform Mobile 项目中的一组预构建库提供。
 它们不需要任何额外的配置。
 
-也可以在 iOS 源集中复用 iOS 生态系统中的其他库和框架。
+也可以在 iOS source set 中复用 iOS 生态系统中的其他库和框架。
 Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可以在 Kotlin 中使用如果它的 APIs 用 @objc 导出为 Objective-C。
 纯 Swift 依赖项目前还不支持。
 
@@ -188,9 +188,9 @@ Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可
 仅当您想要专门参与交互操作调优过程或有其他强有力的理由这样做时,再去[手动管理依赖关系](#不使用-CocoaPods)。
 
 > 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目（例如使用了 `ios()` [目标平台快捷方式](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts)）中使用 iOS 第三方库时，
-> 将不能在共享的 iOS 源集中使用 IDE 的特性，例如代码补全和高亮提示。
+> 将不能在共享的 iOS source set 中使用 IDE 的特性，例如代码补全和高亮提示。
 > 
-> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。同时，你可以尝试[这个变通方案](#为共享的-ios-源集启用-ide-支持的变通方案)。
+> 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。同时，你可以尝试[这个变通方案](#为共享的-ios-source-set-启用-ide-支持的变通方案)。
 >
 > This issue doesn't apply to [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 >
@@ -427,15 +427,15 @@ import MyFramework.*
 了解更多关于 [Objective-C 和 Swift 互操作性](https://kotlinlang.org/docs/reference/native/objc_interop.html)和<!--
 -->[用 Gradle 配置 cinterop](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#cinterops)的信息。
 
-### 为共享的 iOS 源集启用 IDE 支持的变通方案 {initial-collapse-state="collapsed"}
+### 为共享的 iOS source set 启用 IDE 支持的变通方案 {initial-collapse-state="collapsed"}
 
 由于一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，如果你的多平台项目<!--
--->使用了[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)并且有如下所示的依赖项，你将无法在共享的 iOS 源集中使用 IDE 特性，例如代码补全和高亮显示：
+-->使用了[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)并且有如下所示的依赖项，你将无法在共享的 iOS source set 中使用 IDE 特性，例如代码补全和高亮显示：
 
 * 不支持层次结构的多平台库
 * Third-party iOS libraries, with the exception of [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
 
-该问题仅限于共享的 iOS 源集。IDE 将正确支持其余代码。
+该问题仅限于共享的 iOS source set。IDE 将正确支持其余代码。
 
 > 所有使用 KMM 项目向导创建的项目都支持层次结构，所以它们会受到该问题的影响。
 >
@@ -467,8 +467,8 @@ iosTarget("ios")
 </tabs>
 
 在此代码示例中，iOS 目标平台的配置取决于 `SDK_NAME` 这个环境变量，该变量由 Xcode 管理。
-在每次构建中，你将只有一个使用了 `iosMain` 源集的 iOS 目标，叫做 `ios`。
-这里将没有 `iosMain`，`iosArm64`，`iosX64` 源集的分层。
+在每次构建中，你将只有一个使用了 `iosMain` source set 的 iOS 目标，叫做 `ios`。
+这里将没有 `iosMain`，`iosArm64`，`iosX64` source set 的分层。
 
 > 这是一个临时的变通方案。如果你是一个软件库作者，我们推荐尽快[迁移到层次结构](https://kotlinlang.org/docs/migrating-multiplatform-project-to-14.html#migrate-to-the-hierarchical-project-structure)。
 >
@@ -481,7 +481,7 @@ iosTarget("ios")
 
 将 Android 平台上的依赖项添加到 KMM 模块的工作流程与纯 Android 项目相同：在 Gradle 构建脚本中添加一行代码来声明所需的依赖项并导入项目中。然后就可以在 Kotlin 代码中使用此依赖项。
 
-建议通过将 Android 依赖项添加到具体的 Android 源集中来将其添加到 KMM 项目中。
+建议通过将 Android 依赖项添加到具体的 Android source set 中来将其添加到 KMM 项目中。
 
 <tabs>
 <tab title="Groovy">
@@ -508,7 +508,7 @@ sourceSets["androidMain"].dependencies {
 </tab>
 </tabs>
 
-如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 KMM 项目中的指定源集里可能会很困难。例如，要在 Android 项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的源集添加实现依赖项。
+如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 KMM 项目中的指定 source set 里可能会很困难。例如，要在 Android 项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的 source set 添加实现依赖项。
 为了最大程度地减少处理此类迁移问题的工作量，可以在 `android` 块内添加一个  `dependencies` 块：
 
 <tabs>
@@ -541,6 +541,6 @@ android {
 
 这里声明的依赖项将与顶级块中的依赖项完全相同，但是以这种方式声明可以在构建脚本中直观地分离 Android 依赖项，从而减少混乱。
 
-还支持以 Android 项目惯用的方式，将依赖项放入脚本末尾的独立 `dependencies` 块中。但是，我们强烈**反对**这样做，因为在构建脚本的顶层代码块中配置一个 Android 依赖项而在每个源集中配置其他目标平台依赖项，将很可能会导致混乱。
+还支持以 Android 项目惯用的方式，将依赖项放入脚本末尾的独立 `dependencies` 块中。但是，我们强烈**反对**这样做，因为在构建脚本的顶层代码块中配置一个 Android 依赖项而在每个 source set 中配置其他目标平台依赖项，将很可能会导致混乱。
 
 到 Android 官方文档了解更多关于[添加依赖项](https://developer.android.com/studio/build/dependencies)的信息。
