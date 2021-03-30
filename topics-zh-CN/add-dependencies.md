@@ -12,7 +12,7 @@ KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多�
 ## 多平台库
 
 你可以添加采用了 Kotlin 多平台技术的库的依赖项，例如<!--
---> [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) 与 [SQLDelight](https://github.com/cashapp/sqldelight) 。
+--> [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) 与 [SQLDelight](https://github.com/cashapp/sqldelight)。
 这些库的作者通常会提供将其依赖项添加到项目的指南。
 
 > 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目里使用了一个没有层次结构支持的多平台库时，
@@ -24,20 +24,20 @@ KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多�
 
 本页涵盖了基本的依赖项使用示例：
 
-* [对Kotlin 标准库](#对-kotlin-标准库的依赖项)
-* [对所有源集共享的库](#对所有源集共享的库的依赖项)
-* [对指定源集中使用的库](#对指定源集中使用的库的依赖项)
-* [对另一个多平台项目](#对另一个多平台项目的依赖项)
+* [针对 Kotlin 标准库](#针对-kotlin-标准库的依赖项)
+* [针对所有源集共享的库](#针对所有源集共享的库的依赖项)
+* [针对指定源集中使用的库](#针对指定源集中使用的库的依赖项)
+* [针对另一个多平台项目](#针对另一个多平台项目的依赖项)
 
 了解更多关于[配置依赖项](https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies)的信息。
 
 查看[社区维护的 Kotlin 多平台库列表](https://libs.kmp.icerock.dev/)。
 
-### 对 Kotlin 标准库的依赖项
+### 针对 Kotlin 标准库的依赖项
 
-Kotlin标准库会自动添加到所有多平台项目中，无需手动执行任何操作。
+Kotlin 标准库会自动添加到所有多平台项目中，无需手动执行任何操作。
 
-### 对所有源集共享的库的依赖项
+### 针对所有源集共享的库的依赖项
 
 如果想从任一个源集中使用库，那么可以只将其添加到公共源集中。
 Kotlin 移动多平台插件将会自动地把相应的部分添加到任何其他源集中。
@@ -78,7 +78,7 @@ kotlin {
 </tab>
 </tabs>
 
-### 对指定源集中使用的库的依赖项
+### 针对指定源集中使用的库的依赖项
 
 如果想让一个多平台库仅用于某个指定的源集，那么可以将其专门添加到其中。
 之后这个指定的库将只能在那些源集中使用。
@@ -104,7 +104,7 @@ kotlin {
         }
         iosMain {
             dependencies {
-            // SQLDelight 将仅在iOS源集中可用，而在Android或公共源集中不可用   
+            // SQLDelight 将仅在 iOS 源集中可用，而在 Android 或公共源集中不可用   
             implementation 'com.squareup.sqldelight:native-driver:%sqlDelightVersion%'
             }
         }
@@ -124,7 +124,7 @@ kotlin {
     sourceSets["androidMain"].dependencies {
     }
     sourceSets["iosX64Main"].dependencies {
-        //SQLDelight 将仅在iOS源集中可用，而在Android或公共源集中不可用
+        //SQLDelight 将仅在 iOS 源集中可用，而在 Android 或公共源集中不可用
         implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%")
     }
 }
@@ -132,7 +132,7 @@ kotlin {
 </tab>
 </tabs>
 
-### 对另一个多平台项目的依赖项
+### 针对另一个多平台项目的依赖项
 
 可以将一个多平台项目作为依赖项连接到另一个多平台项目。为此，只需将项目依赖项添加到需要它的源集中。
 如果想要在所有源集中使用这个依赖项，就将其添加到公共源集中。在这种情况下，其他源集将自动获得其版本。
@@ -200,7 +200,7 @@ Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可
 
 1. 执行 [初始 CocoaPods 集成设置](https://kotlinlang.org/docs/reference/native/cocoapods.html#install-the-cocoapods-dependency-manager-and-plugin)
 
-2. 通过编写项目构建脚本中的 `pod()`，添加要使用的 CocoaPods 版本库中的Pod库依赖项。
+2. 通过编写项目构建脚本中的 `pod()`，添加要使用的 CocoaPods 版本库中的 Pod 库依赖项。
 
     <tabs>
     <tab title="Groovy">
@@ -240,7 +240,7 @@ Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可
 import cocoapods.AFNetworking.*
 ```
 
-了解更多关于[CocoaPods 集成](https://kotlinlang.org/docs/reference/native/cocoapods.html)。
+了解更多关于 [CocoaPods 集成](https://kotlinlang.org/docs/reference/native/cocoapods.html)。
 
 ### 不使用 CocoaPods
 
@@ -424,7 +424,7 @@ import DateTools.*
 import MyFramework.*
 ```
 
-了解更多关于[Objective-C 和 Swift 互操作性](https://kotlinlang.org/docs/reference/native/objc_interop.html)和<!--
+了解更多关于 [Objective-C 和 Swift 互操作性](https://kotlinlang.org/docs/reference/native/objc_interop.html)和<!--
 -->[用 Gradle 配置 cinterop](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#cinterops)的信息。
 
 ### 为共享的 iOS 源集启用 IDE 支持的变通方案 {initial-collapse-state="collapsed"}
@@ -508,7 +508,7 @@ sourceSets["androidMain"].dependencies {
 </tab>
 </tabs>
 
-如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 KMM 项目中的指定源集里可能会很困难。例如，要在Android项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的源集添加实现依赖项。
+如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 KMM 项目中的指定源集里可能会很困难。例如，要在 Android 项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的源集添加实现依赖项。
 为了最大程度地减少处理此类迁移问题的工作量，可以在 `android` 块内添加一个  `dependencies` 块：
 
 <tabs>
