@@ -481,7 +481,7 @@ iosTarget("ios")
 
 将 Android 平台上的依赖项添加到 Kotlin 移动多平台（KMM）模块的工作流程与纯 Android 项目相同：在 Gradle 构建脚本中添加一行代码来声明所需的依赖项并导入项目中。然后就可以在 Kotlin 代码中使用此依赖项。
 
-建议通过将 Android 依赖项添加到具体的 Android source set 中来将其添加到 Kotlin 移动多平台（KMM）项目中。
+我们建议通过将 Android 依赖项添加到具体的 Android source set 中来将其集成到 Kotlin 移动多平台（KMM）项目中。
 
 <tabs>
 <tab title="Groovy">
@@ -541,6 +541,6 @@ android {
 
 这里声明的依赖项将与顶级块中的依赖项完全相同，但是以这种方式声明可以在构建脚本中直观地分离 Android 依赖项，从而减少混乱。
 
-还支持以 Android 项目惯用的方式，将依赖项放入脚本末尾的独立 `dependencies` 块中。但是，我们强烈**反对**这样做，因为在构建脚本的顶层代码块中配置一个 Android 依赖项而在每个 source set 中配置其他目标平台依赖项，将很可能会导致混乱。
+还支持以 Android 项目惯用的方式，将依赖项放入脚本末尾的独立 `dependencies` 块中。但是，我们强烈**反对**这样做，因为在构建脚本的顶层代码块中配置一个 Android 依赖项而在每个 source set 中配置其他目标平台依赖项，将很可能会引发混淆。
 
-到 Android 官方文档了解更多关于[添加依赖项](https://developer.android.com/studio/build/dependencies)的信息。
+前往 Android 官方文档了解更多关于[添加依赖项](https://developer.android.com/studio/build/dependencies)的信息。
