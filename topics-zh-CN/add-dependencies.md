@@ -244,13 +244,13 @@ import cocoapods.AFNetworking.*
 
 ### 不使用 CocoaPods
 
-如果不想使用 CocoaPods，那么可以使用 cinterop 工具为 Objective 或 Swift 声明创建 Kotlin 绑定。这样就可以通过 Kotlin 代码去调用它们。为此：
+如果不想使用 CocoaPods，那么可以使用 cinterop 工具为 Objective 或 Swift 的声明创建 Kotlin 绑定。这样就可以通过 Kotlin 代码去调用它们。为此：
 1. 下载依赖项。
 2. 构建并获取它的二进制文件。
 3. 创建一个具体的 `.def` 文件来描述 cinterop 的依赖项。
 4. 调整构建脚本以在构建期间生成绑定。
 
-[代码库](#不使用-cocoapods-添加库)和[框架](#不使用-cocoapods-添加一个框架)的步骤有所不同，但是它们的思想是一样的。
+[代码库](#不使用-cocoapods-添加库)和 [frameworks](#不使用-cocoapods-添加一个-framework) 的步骤有所不同，但是它们的思想是一样的。
 
 #### 不使用 CocoaPods 添加库
 
@@ -339,18 +339,18 @@ import cocoapods.AFNetworking.*
 import DateTools.*
 ```
 
-#### 不使用 CocoaPods 添加一个框架
+#### 不使用 CocoaPods 添加一个 framework
 
-1. 下载框架源代码，并将其放在可以从项目中引用到它的地方。
+1. 下载 framework 源代码，并将其放在可以从项目中引用到它的地方。
 
-2. 构建这个框架（框架作者通常会提供构建指南），并取得二进制文件的路径。
+2. 构建这个 framework（framework 作者通常会提供构建指南），并取得二进制文件的路径。
 
 3. 在项目里创建一个 `.def` 文件，例如 `MyFramework.def`。
 
 4. 在该文件的第一行添加：`language = Objective-C`。如果要使用纯 C 依赖项，就省略这个语言属性。
 
 5. 为下面两个必要的属性赋值：
-    * `modules` – 需要被 cinterop 处理的框架的名称.
+    * `modules` – 需要被 cinterop 处理的 framework 的名称.
     * `package` – 这些声明将要被放入的包的名称.
     示例:
     ```properties
@@ -358,10 +358,10 @@ import DateTools.*
     package = MyFramework
     ```
 
-6.  在构建脚本中添加关于这个框架互操作性的信息:
+6.  在构建脚本中添加关于这个 framework 互操作性的信息:
     * 添加 `.def` 文件的路径。如果 `.def` 文件与 cinterop 具有相同的名称，并且位于 `src/nativeInterop/cinterop/` 目录中，那么可以忽略此路径。
-    * 使用 `-framework` 选项将框架的名称传递给编译器和链接器。
-    使用 `-F` 选项将框架源和二进制文件的路径传递给编译器和链接器。
+    * 使用 `-framework` 选项将 framework 的名称传递给编译器和链接器。
+    使用 `-F` 选项将 framework 源和二进制文件的路径传递给编译器和链接器。
 
     <tabs>
     <tab title="Groovy">
@@ -382,7 +382,7 @@ import DateTools.*
             }
 
             binaries.all {
-                // 告诉链接器框架的位置。
+                // 告诉链接器 framework 的位置。
                 linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
             }
         }
@@ -406,7 +406,7 @@ import DateTools.*
             }
 
             binaries.all {
-                // 告诉链接器框架的位置。
+                // 告诉链接器 framework 的位置。
                 linkerOpts("-framework", "MyFramework", "-F/path/to/framework/")
             }
        }
