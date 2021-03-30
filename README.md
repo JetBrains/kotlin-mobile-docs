@@ -14,7 +14,7 @@
     - [围绕 KMM 组织工作流](./topics-zh-CN/organize-process-around-kmm.md)
     - [KMM 应用架构](./topics-zh-CN/architect-kmm-app.md)
     - [接入平台相关 API](./topics-zh-CN/connect-to-platform-specific-apis.md)
-    - [向 KMM 模块添加依赖](./topics-zh-CN/add-dependencies.md)
+    - [x] [向 KMM 模块添加依赖](./topics-zh-CN/add-dependencies.md)
     - [数据存储：配置 SQLDelight](./topics-zh-CN/configure-sqldelight-for-data-storage.md)
     - [网络请求：使用 Ktor](./topics-zh-CN/use-ktor-for-networking.md)
     - [动手教程：配置 SQLDelight 和 Ktor](./topics-zh-CN/complete-networking-data-storage-hands-on.md)
