@@ -182,10 +182,10 @@ Apple SDK 依赖项（例如 Foundation 或 Core Bluetooth）作为 Kotlin Multi
 Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可以在 Kotlin 中使用如果它的 APIs 用 @objc 导出为 Objective-C。
 纯 Swift 依赖项目前还不支持。
 
-与 CocoaPods 依赖项管理器的集成也受到同样的限制——不能使用纯 Swift pod。
+CocoaPods 依赖项管理器的集成也受到同样的限制——不能使用纯 Swift pod。
 
 我们推荐在 Kotlin 移动多平台（KMM）项目中[使用 CocoaPods](#使用-CocoaPods)去处理 iOS 依赖项。
-仅当您想要专门参与交互操作调优过程或有其他强有力的理由这样做时,再去[手动管理依赖关系](#不使用-CocoaPods)。
+仅当你明确地想调整（两门语言）互操作的过程或有其他强有力的理由这样做时,才去[手动管理依赖关系](#不使用-CocoaPods)。
 
 > 当在一个有[层次结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)的多平台项目（例如使用了 `ios()` [目标平台快捷方式](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#use-target-shortcuts)）中使用 iOS 第三方库时，
 > 将不能在共享的 iOS source set 中使用 IDE 的特性，例如代码补全和高亮提示。
@@ -198,7 +198,7 @@ Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可
 
 ### 使用 CocoaPods
 
-1. 执行 [初始 CocoaPods 集成设置](https://kotlinlang.org/docs/reference/native/cocoapods.html#install-the-cocoapods-dependency-manager-and-plugin)
+1. 执行 [初始化 CocoaPods 集成设置](https://kotlinlang.org/docs/reference/native/cocoapods.html#install-the-cocoapods-dependency-manager-and-plugin)
 
 2. 通过编写项目构建脚本中的 `pod()`，添加要使用的 CocoaPods 版本库中的 Pod 库依赖项。
 
@@ -235,7 +235,7 @@ Kotlin 提供了与 Objective-C 依赖项的交互能力，Swift 依赖项也可
 
 3. 重新导入项目。
 
-如需在 Kotlin 代码中使用该依赖项，可导入软件包 `cocoapods.<library-name>`。在上面的示例中，那将是：
+如需在 Kotlin 代码中使用该依赖项，可导入软件包 `cocoapods.<library-name>`。在上面的示例中，即：
 ```kotlin
 import cocoapods.AFNetworking.*
 ```
@@ -246,7 +246,7 @@ import cocoapods.AFNetworking.*
 
 如果不想使用 CocoaPods，那么可以使用 cinterop 工具为 Objective 或 Swift 声明创建 Kotlin 绑定。这样就可以通过 Kotlin 代码去调用它们。为此：
 1. 下载依赖项。
-2. 构建它并获取它的二进制文件。
+2. 构建并获取它的二进制文件。
 3. 创建一个具体的 `.def` 文件来描述 cinterop 的依赖项。
 4. 调整构建脚本以在构建期间生成绑定。
 
