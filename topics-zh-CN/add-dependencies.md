@@ -2,7 +2,7 @@
 [//]: # (auxiliary-id: Add_dependencies_to_KMM_modules)
 
 每个应用程序都需要一些库才能良好运转。
-KMM 应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多平台库，也可以依赖于 iOS 和 Android 各自平台特有的库。
+Kotlin 移动多平台（KMM）应用程序既可以依赖于能同时在 iOS 和 Android 上运行的多平台库，也可以依赖于 iOS 和 Android 各自平台特有的库。
 
 在这里你可以学到如何添加：
 * [多平台依赖项](#多平台库)
@@ -437,7 +437,7 @@ import MyFramework.*
 
 该问题仅限于共享的 iOS source set。IDE 将正确支持其余代码。
 
-> 所有使用 KMM 项目向导创建的项目都支持层次结构，所以它们会受到该问题的影响。
+> 所有使用 Kotlin 移动多平台（KMM）项目向导创建的项目都支持层次结构，所以它们会受到该问题的影响。
 >
 {type="note"}
 
@@ -479,9 +479,9 @@ iosTarget("ios")
 
 ## Android 依赖项
 
-将 Android 平台上的依赖项添加到 KMM 模块的工作流程与纯 Android 项目相同：在 Gradle 构建脚本中添加一行代码来声明所需的依赖项并导入项目中。然后就可以在 Kotlin 代码中使用此依赖项。
+将 Android 平台上的依赖项添加到 Kotlin 移动多平台（KMM）模块的工作流程与纯 Android 项目相同：在 Gradle 构建脚本中添加一行代码来声明所需的依赖项并导入项目中。然后就可以在 Kotlin 代码中使用此依赖项。
 
-建议通过将 Android 依赖项添加到具体的 Android source set 中来将其添加到 KMM 项目中。
+建议通过将 Android 依赖项添加到具体的 Android source set 中来将其添加到 Kotlin 移动多平台（KMM）项目中。
 
 <tabs>
 <tab title="Groovy">
@@ -508,7 +508,7 @@ sourceSets["androidMain"].dependencies {
 </tab>
 </tabs>
 
-如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 KMM 项目中的指定 source set 里可能会很困难。例如，要在 Android 项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的 source set 添加实现依赖项。
+如果一个 Android 项目中的顶层依赖项有一个特殊的配置名称，那么将这个项目中的一个顶层依赖项移动到 Kotlin 移动多平台（KMM）项目中的指定 source set 里可能会很困难。例如，要在 Android 项目的顶层移动一个 `debugImplementation` 依赖项，需要向名为 `androidDebug` 的 source set 添加实现依赖项。
 为了最大程度地减少处理此类迁移问题的工作量，可以在 `android` 块内添加一个  `dependencies` 块：
 
 <tabs>
