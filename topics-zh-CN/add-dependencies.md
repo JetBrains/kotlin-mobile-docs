@@ -192,7 +192,7 @@ CocoaPods 依赖项管理器的集成也受到同样的限制——不能使用�
 > 
 > 这是一个[已知问题](https://youtrack.jetbrains.com/issue/KT-40975)，我们正在努力解决它。同时，你可以尝试[这个变通方案](#为共享的-ios-source-set-启用-ide-支持的变通方案)。
 >
-> This issue doesn't apply to [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
+> 这个问题并不适用于某些开箱即用的[平台库](https://kotlinlang.org/docs/native-platform-libs.html)。
 >
 {type="note"}
 
@@ -433,7 +433,7 @@ import MyFramework.*
 -->使用了[分层项目结构支持](https://kotlinlang.org/docs/reference/mpp-share-on-platforms.html#share-code-on-similar-platforms)并且有如下所示的依赖项，你将无法在共享的 iOS source set 中使用 IDE 特性，例如代码补全和高亮显示：
 
 * 不支持分层项目结构的多平台库
-* Third-party iOS libraries, with the exception of [platform libraries](https://kotlinlang.org/docs/native-platform-libs.html) supported out of the box.
+* 除了开箱即用的[平台库](https://kotlinlang.org/docs/native-platform-libs.html)之外的第三方 iOS 库。
 
 该问题仅限于共享的 iOS source set。IDE 将正确支持其余代码。
 
