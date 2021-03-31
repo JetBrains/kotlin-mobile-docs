@@ -2,7 +2,7 @@
 [//]: # (auxiliary-id: Concurrency_Overview)
 
 When you extend your development experience from Android to Kotlin Multiplatform Mobile, you will encounter a different state 
-and concurrency model for iOS. This is a Kotlin/Native model. [Kotlin/Native](https://kotlinlang.org/docs/reference/native-overview.html) 
+and concurrency model for iOS. This is a Kotlin/Native model. [Kotlin/Native](https://kotlinlang.org/docs/native-overview.html) 
 is a technology for compiling Kotlin code to native binaries that can run without a virtual machine, for example on iOS. 
 
 Having mutable memory available to multiple threads at the same time, if unrestricted, is known to be risky and prone to error. 
@@ -179,7 +179,7 @@ This will require explicit freezing of states returned from Kotlin, but otherwis
 A more extensive model, where concurrency is managed in Kotlin 
 and the host communicates on its main thread to shared code, is simpler from a state management perspective. 
 Concurrency libraries, like [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines), 
-will help automate freezing. You'll also be able to leverage the power of [coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html) 
+will help automate freezing. You'll also be able to leverage the power of [coroutines](https://kotlinlang.org/docs/coroutines-guide.html) 
 in your code and increase efficiency by sharing more code.
 
 However, the current Kotlin/Native concurrency model has a number of deficiencies. For example, mobile developers are used to freely 

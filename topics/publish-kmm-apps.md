@@ -29,7 +29,7 @@ Generally, all integration between the shared module and the Xcode project is do
 * After building the project, you should launch and test the app to make sure that there are no issues when working with the framework in runtime.
 
 There are two ways you can connect the shared Kotlin module to the iOS project:
-* Use the [Kotlin/Native Cocoapods plugin](https://kotlinlang.org/docs/reference/native/cocoapods.html#cocoapods-integration), which allows you to use a multiplatform project with native targets as a CocoaPods dependency in your iOS project.
+* Use the [Kotlin/Native Cocoapods plugin](https://kotlinlang.org/docs/native-cocoapods.html#cocoapods-integration), which allows you to use a multiplatform project with native targets as a CocoaPods dependency in your iOS project.
 * Manually configure your Multiplatform project to create an iOS framework and the XCode project to obtain its latest version. KMM Android Studio Plugin usually does this configuration. [Understand the project structure](discover-kmm-project.md#ios-application) to implement it yourself.
 
 ### Symbolicating crash reports
@@ -43,6 +43,6 @@ file. This helps you analyze crashes that happen in the shared module’s code.
 
 When an iOS app is rebuilt from bitcode, its `dSYM` file becomes invalid. For such cases, you can compile the shared module
 to a static framework that stores the debug information inside itself. For instructions on setting up crash report
-symbolication in binaries produced from Kotlin modules, see the [Kotlin/Native documentation](https://kotlinlang.org/docs/reference/native/ios_symbolication.html).
+symbolication in binaries produced from Kotlin modules, see the [Kotlin/Native documentation](https://kotlinlang.org/docs/native-ios-symbolication.html).
 
 

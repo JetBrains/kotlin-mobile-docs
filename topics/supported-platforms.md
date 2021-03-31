@@ -8,9 +8,9 @@ Kotlin Multiplatform Mobile (_KMM_) is an SDK designed to simplify creating mult
 * Apple iOS on ARM64 (iPhone 5s and newer), ARM32 (earlier models) platforms, and desktop simulators
 * Apple watchOS on ARM64 (Apple Watch Series 4 and newer), ARM32 (earlier models) platforms, and desktop simulators
 
-KMM is built on top of the [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) technology, 
-which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [more](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#targets). 
+KMM is built on top of the [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) technology, 
+which supports other platforms inlcuding JavaScript, Linux, WebAssembly, and [more](https://kotlinlang.org/docs/mpp-dsl-reference.html#targets). 
 
 More information:
-* [Kotlin Multiplatform overview](https://kotlinlang.org/docs/reference/multiplatform.html)
-* [Supported platforms for multiplatform programming](https://kotlinlang.org/docs/reference/mpp-supported-platforms.html)
+* [Kotlin Multiplatform overview](https://kotlinlang.org/docs/multiplatform.html)
+* [Supported platforms for multiplatform programming](https://kotlinlang.org/docs/mpp-supported-platforms.html)

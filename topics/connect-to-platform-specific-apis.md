@@ -3,7 +3,7 @@
 
 If you’re developing mobile applications for different platforms with Kotlin Multiplatform Mobile and need to access 
 platform-specific APIs that implement required functionality (for example, generating a UUID), 
-you can use the Kotlin mechanism of [expected and actual declarations](https://kotlinlang.org/docs/reference/mpp-connect-to-apis.html).
+you can use the Kotlin mechanism of [expected and actual declarations](https://kotlinlang.org/docs/mpp-connect-to-apis.html).
 
 With this mechanism, a common module defines an _expected declaration_, and platform modules must provide _actual declarations_ 
 that correspond to the expected one. This works for most Kotlin declarations, such as functions, classes, interfaces, enums, 
@@ -27,7 +27,7 @@ Learn how to [add dependencies on platform-specific libraries](add-dependencies.
 ## Examples
 
 For simplicity, the following examples use the intuitive target names iOS and Android. However, in your Gradle build files, 
-you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/reference/mpp-supported-platforms.html).
+you need to use a specific target name from [the list of supported targets](https://kotlinlang.org/docs/mpp-supported-platforms.html).
 
 * [Generate a UUID](#example-generate-a-uuid)
 * [Send and receive messages from a WebSocket](#example-send-and-receive-messages-from-a-websocket)

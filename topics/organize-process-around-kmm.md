@@ -72,7 +72,7 @@ should be taken into account:
 will be executed on multiple platforms and operating systems. 
 * Android developers will have to become familiar with Kotlin/Native, which is used for iOS. For example, they will need
 to know about the compatibility limitations between Kotlin and Swift/Objective-C (for more details on compatibility, see
-the [Documentation](https://kotlinlang.org/docs/reference/native/objc_interop.html)). Or if concurrency is used in the shared code, they will have to deal with the Kotlin/Native Memory
+the [Documentation](https://kotlinlang.org/docs/native-objc-interop.html)). Or if concurrency is used in the shared code, they will have to deal with the Kotlin/Native Memory
 Model, which [differs significantly](concurrency-overview.md) from the Java Memory Model.
 * Android developers may not be able to independently write all the expect/actual code in the shared module as they
 could lack iOS development experience. That's why you may need to involve iOS developers, at least as advisors, or use
@@ -101,7 +101,7 @@ following:
 
 * Longer release cycles for the shared library and the need to support multiple versions for different projects may hold up
 application development.
-* Different versions of Multiplatform libraries with different Kotlin versions will not work in the same project, since not all KMM components have reached [strict binary compatibility rules](https://kotlinlang.org/docs/reference/evolution/kotlin-evolution.html#evolving-the-binary-format)
+* Different versions of Multiplatform libraries with different Kotlin versions will not work in the same project, since not all KMM components have reached [strict binary compatibility rules](https://kotlinlang.org/docs/kotlin-evolution.html#evolving-the-binary-format)
 * As native development teams work independently, it's particularly important to create and maintain detailed
 documentation for the shared modules in order to simplify the integration of the shared code and reduce the number of
 questions frequently posed to the library authors.

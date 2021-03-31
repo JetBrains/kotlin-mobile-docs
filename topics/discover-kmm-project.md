@@ -3,7 +3,7 @@
 
 The purpose of the Kotlin Multiplatform Mobile (_KMM_) technology is unifying the development of applications with common 
 logic for Android and iOS platforms. To make this possible, KMM uses a mobile-specific structure of
-[Kotlin Multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html) projects.
+[Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
 On this page, we’ll describe the structure of a basic KMM project. Note that this structure isn’t the only
 possible way to organize a KMM project; however, we recommend it as a starting point.
 
@@ -66,7 +66,7 @@ For more complex projects, you can add more modules into the root project by cre
 ## Shared module
 
 Shared module contains the core application logic used in both target platforms: classes, functions, and so on.
-This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/mpp-intro.html) module that compiles
+This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/mpp-intro.html) module that compiles
 into an Android library and an iOS framework. It uses Gradle with the Kotlin Multiplatform plugin applied and 
 has targets for Android and iOS.
 
@@ -159,7 +159,7 @@ kotlin {
 </tabs>
 
 When you write your code, add the dependencies you need to the corresponding source sets.
-Read [Multiplatform documentation on adding dependencies](https://kotlinlang.org/docs/reference/mpp-add-dependencies.html) for more information.
+Read [Multiplatform documentation on adding dependencies](https://kotlinlang.org/docs/mpp-add-dependencies.html) for more information.
 
 Along with `*Main` source sets, there are three matching test source sets:
 
@@ -220,7 +220,7 @@ kotlin {
 
 The main and test source sets described above are default. The Kotlin Multiplatform plugin generates them
 automatically upon target creation. In your project, you can add more source sets for specific purposes.
-For more information, see [Multiplatform DSL reference](https://kotlinlang.org/docs/reference/mpp-dsl-reference.html#custom-source-sets).
+For more information, see [Multiplatform DSL reference](https://kotlinlang.org/docs/mpp-dsl-reference.html#custom-source-sets).
 
 ### Android library
 
@@ -312,12 +312,12 @@ For using in iOS applications, the shared module compiles into a framework - a k
 with shared resources used on the Apple platforms.
 This framework connects to the Xcode project that builds into an iOS application.
 
-The framework is produced via the [Kotlin/Native](https://kotlinlang.org/docs/reference/native-overview.html) compiler.
+The framework is produced via the [Kotlin/Native](https://kotlinlang.org/docs/native-overview.html) compiler.
 The framework configuration is stored in the `ios {}` block of the build script within `kotlin {}`.
 It defines the output type `framework` and the string identifier `baseName` that is used to form the name
 of the output artifact. Its default value matches the Gradle module name. 
 For a real project, it’s likely that you’ll need a more complex configuration of the framework production.
-For details, see [Multiplatform documentation](https://kotlinlang.org/docs/reference/mpp-build-native-binaries.html).
+For details, see [Multiplatform documentation](https://kotlinlang.org/docs/mpp-build-native-binaries.html).
 
 <tabs>
 <tab title="Groovy">
