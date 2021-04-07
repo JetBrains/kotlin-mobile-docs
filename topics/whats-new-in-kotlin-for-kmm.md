@@ -8,6 +8,20 @@ Android Studio will recommend an automatic update to a new Kotlin release. You c
 
 Here you can find a short summary of the features Kotlin provides for developing multiplatform mobile applications.
 
+## Kotlin 1.5 for KMM
+
+[Kotlin 1.5](https://kotlinlang.org/docs/whatsnew15.html) introduces a number of improvements that are helpful for KMM:
+
+* [Choosing a testing dependency for each platform has been simplified](https://kotlinlang.org/docs/whatsnew15.html#simplified-test-dependencies-usage-in-multiplatform-projects)
+  and it is now done automatically by the Gradle plugin.
+  
+* A new [API for getting a char category is now available in multiplatform projects](https://kotlinlang.org/docs/whatsnew15.html#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
+
+* [Kotlin/Native is now more performant and stable](https://kotlinlang.org/docs/whatsnew15.html#kotlin-native). 
+  It is receiving a set of performance improvements that speed up both compilation and execution.
+
+Learn more about [what's new in Kotlin 1.5](https://kotlinlang.org/docs/whatsnew15.html).
+
 ## Kotlin 1.4.30 for KMM
 
 [Kotlin 1.4.30](https://kotlinlang.org/docs/whatsnew1430.html) introduces a number of improvements that are helpful for KMM:
