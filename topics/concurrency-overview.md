@@ -12,7 +12,7 @@ And sometimes you can only see them in production under load.
 
 In short, just because your tests pass, you can’t necessarily be sure that your code is OK.
 
-Not all languages are designed this way. Javascript simply does not 
+Not all languages are designed this way. JavaScript simply does not 
 allow you to access the same state concurrently. At the other end of the spectrum is Rust, with its
 language-level management of concurrency and states, which makes it very popular. 
 
@@ -97,7 +97,7 @@ sd.freeze()
  for using it in shared code. However, if you're using a concurrency library, like [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines), it will 
 likely freeze data that crosses thread boundaries automatically. 
 
-`freeze` is not unique to Kotlin. You can also find it in [Ruby](https://www.honeybadger.io/blog/when-to-use-freeze-and-frozen-in-ruby/) and [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
+`freeze` is not unique to Kotlin. You can also find it in [Ruby](https://www.honeybadger.io/blog/when-to-use-freeze-and-frozen-in-ruby/) and [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
 
 ## Global state
 
