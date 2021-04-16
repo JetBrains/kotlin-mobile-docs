@@ -12,23 +12,24 @@ Here you can find a short summary of the features Kotlin provides for developing
 
 [Kotlin 1.5](https://kotlinlang.org/docs/whatsnew15.html) introduces a number of improvements and features that are helpful for KMM:
 
-* **Simplified choosing a testing dependency for each platform.**
+* **Simplified selection of a testing dependency for each platform.**
   Now you can use the `kotlin-test` dependency to add dependencies for testing in the `commonTest` source set, and the
   Gradle plugin will infer the corresponding platform dependencies for each test source set:
     * `kotlin-test-junit` for JVM source sets
     * `kotlin-test-common` and `kotlin-test-annotations-common` for common source sets
     * No extra artifact for Kotlin/Native source sets
-  You can use the `kotlin-test` dependency in any shared or platform-specific source set as well. 
-  Learn more about [setting dependencies on test libraries](https://kotlinlang.org/docs/gradle.md#set-dependencies-on-test-libraries).
+  
+   You can use the `kotlin-test` dependency in any shared or platform-specific source set as well.
+   Learn more about [setting dependencies on test libraries](https://kotlinlang.org/docs/gradle.md#set-dependencies-on-test-libraries).
   
 * **Support for API for getting a char category according to Unicode.** Several functions like `Char.isLetterOrDigit()`,
   `Char.isUpperCase()`, `Char.isISOControl()`, and more are available now as well as the property `Char.category` and 
   the enum class `CharCategory`.
-  Learn more about this [new API](https://kotlinlang.org/docs/whatsnew15.html#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
+    Learn more about this [new API](https://kotlinlang.org/docs/whatsnew15.html#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
 
 * **Better performance and stability of Kotlin/Native**. Kotlin/Native is receiving a set of performance improvements that speed up 
   both compilation and execution.
-  Learn more about [Kotlin/Native improvements](https://kotlinlang.org/docs/whatsnew15.html#kotlin-native).
+    Learn more about [Kotlin/Native improvements](https://kotlinlang.org/docs/whatsnew15.html#kotlin-native).
 
 Learn more about [what's new in Kotlin 1.5](https://kotlinlang.org/docs/whatsnew15.html).
 
