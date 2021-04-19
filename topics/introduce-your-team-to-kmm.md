@@ -45,7 +45,7 @@ Explore [the case studies page](https://kotlinlang.org/lp/mobile/case-studies) f
 ## Offer proof
 
 The theory is good, but putting it into practice is ultimately most important. As one option to make your case more convincing, you can take the risky choice of devoting some of your personal free time to creating something with KMM and then bringing in the results for your team to discuss. Your prototype could be some sort of test project, which you would write from scratch and which would demonstrate features that are needed in your application. 
-[Networking & data storage – hands-on tutorial](https://play.kotlinlang.org/hands-on/Networking%20and%20data%20storage%20with%20Kotlin%20Multiplatform%20Mobile/01_Introduction) can guide you well on this process. 
+[Networking & data storage – hands-on tutorial](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/01_Introduction) can guide you well on this process. 
 
 The more relevant examples could be produced by experimenting with your current project. You could take one existing feature implemented in Kotlin and make it cross-platform, or you could even create a new Multiplatform Module in your existing project, take one non-priority feature from the bottom of the backlog, and implement it in the shared module. 
 [Architect your KMM application](architect-kmm-app.md) explains what would be a good fit for a multiplatform abstraction and how to do it in detail. [Make your Android application work on iOS – tutorial](integrate-in-existing-app.md) provides a step-by-step guide based on a sample project.
