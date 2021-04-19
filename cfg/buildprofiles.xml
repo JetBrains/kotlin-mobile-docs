@@ -15,6 +15,9 @@
         <config-webmaster>kmm.feedback@kotlinlang.org</config-webmaster>
         <config-sideblocks>true</config-sideblocks>
         <config-search-scopes-provider>https://www.jetbrains.com/search/json/</config-search-scopes-provider>
+        <noindex-content-in-deprecated>true</noindex-content-in-deprecated>
+        <noindex-content-in-release>false</noindex-content-in-release>
+        <noindex-content-in-eap>false</noindex-content-in-eap>
     </variables>
     <layout name="New Web help" mode="web2">
         <style>s.css</style>
