@@ -8,30 +8,30 @@ Android Studio will recommend an automatic update to a new Kotlin release. You c
 
 Here you can find a short summary of the features Kotlin provides for developing multiplatform mobile applications.
 
-## Kotlin 1.5 for KMM
+## Kotlin 1.5.0 for KMM
 
-[Kotlin 1.5](https://kotlinlang.org/docs/whatsnew15.html) introduces a number of improvements and features that are helpful for KMM:
+[Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html) introduces a number of improvements and features that are helpful for KMM:
 
-* **Simplified selection of a testing dependency for each platform.**
-  Now you can use the `kotlin-test` dependency to add dependencies for testing in the `commonTest` source set, and the
+* **Simplified test dependency selection for each platform.**
+  Now you can use the `kotlin-test` dependency to add dependencies for testing in the `commonTest` source set. The
   Gradle plugin will infer the corresponding platform dependencies for each test source set:
-    * `kotlin-test-junit` for JVM source sets
-    * `kotlin-test-common` and `kotlin-test-annotations-common` for common source sets
-    * No extra artifact for Kotlin/Native source sets
-  
-   You can use the `kotlin-test` dependency in any shared or platform-specific source set as well.
-   Learn more about [setting dependencies on test libraries](https://kotlinlang.org/docs/gradle.md#set-dependencies-on-test-libraries).
-  
-* **Support for API for getting a char category according to Unicode.** Several functions like `Char.isLetterOrDigit()`,
-  `Char.isUpperCase()`, `Char.isISOControl()`, and more are available now as well as the property `Char.category` and 
-  the enum class `CharCategory`.
-    Learn more about this [new API](https://kotlinlang.org/docs/whatsnew15.html#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
+  * `kotlin-test-junit` for JVM source sets.
+  * `kotlin-test-common` and `kotlin-test-annotations-common` for common source sets.
 
-* **Better performance and stability of Kotlin/Native**. Kotlin/Native is receiving a set of performance improvements that speed up 
-  both compilation and execution.
-    Learn more about [Kotlin/Native improvements](https://kotlinlang.org/docs/whatsnew15.html#kotlin-native).
+  iOS source sets use Kotlin/Native, which has everything built in, so they do not require any additional artifacts.
 
-Learn more about [what's new in Kotlin 1.5](https://kotlinlang.org/docs/whatsnew15.html).
+  You can also use the `kotlin-test` dependency in any shared or platform-specific source set.
+  Learn more about [setting dependencies on test libraries](https://kotlinlang.org/docs/gradle.md#set-dependencies-on-test-libraries).
+
+* **New API for getting a char’s Unicode category.** A variety of new character-related functions are available on all platforms and in the common code. They include several functions for checking whether a char is a letter or a digit, like `Char.isLetterOrDigit()`, as well as
+  functions for checking the case of a char, like  `Char.isUpperCase()`. The property `Char.category` and the enum class `CharCategory` are available, as well.  
+  Learn more about this [new API](https://kotlinlang.org/docs/whatsnew15.html#new-api-for-getting-a-char-category-now-available-in-multiplatform-code).
+
+* **Improved Kotlin/Native performance and stability**. Kotlin/Native is receiving a set of performance improvements that speed up
+  both compilation and execution.  
+  Learn more about the [Kotlin/Native improvements](https://kotlinlang.org/docs/whatsnew15.html#kotlin-native).
+
+Learn more about [what's new in Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html).
 
 ## Kotlin 1.4.30 for KMM
 
