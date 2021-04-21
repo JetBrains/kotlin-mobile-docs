@@ -40,6 +40,26 @@ Compatible Kotlin version
 <tr>
 <td>
 
+**0.2.4**
+
+Released: April 26, 2021
+
+</td>
+<td>
+
+* Compatibility with [Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html).
+* [Ability to use the CocoaPods dependency manager in the New KMM Module Wizard for iOS integration](https://youtrack.jetbrains.com/issue/KT-45946).
+
+</td>
+<td>
+
+* [Kotlin 1.5.0](https://kotlinlang.org/releases.html#release-details)
+
+</td>
+</tr>
+<tr>
+<td>
+
 **0.2.3**
 
 Released: April 5, 2021
@@ -48,7 +68,7 @@ Released: April 5, 2021
 <td>
 
 * [The Project Wizard: improvements in naming modules](https://youtrack.jetbrains.com/issues?q=issue%20id:%20KT-43449,%20KT-44060,%20KT-41520,%20KT-45282).
-* [Ability to use the CocoaPods dependency manager for iOS integration in the Project Wizard](https://youtrack.jetbrains.com/issue/KT-45478).
+* [Ability to use the CocoaPods dependency manager in the Project Wizard for iOS integration](https://youtrack.jetbrains.com/issue/KT-45478).
 * [Better readability of gradle.properties in new projects](https://youtrack.jetbrains.com/issue/KT-42908).
 * [Sample tests are no longer generated if "Add sample tests for Shared Module" is unchecked](https://youtrack.jetbrains.com/issue/KT-43441).
 * [Fixes and other improvements](https://youtrack.jetbrains.com/issues?q=Subsystems:%20%7BKMM%20Plugin%7D%20Type:%20Feature,%20Bug%20State:%20-Obsolete,%20-%7BAs%20designed%7D,%20-Answered,%20-Incomplete%20resolved%20date:%202021-03-10%20..%202021-03-25).
