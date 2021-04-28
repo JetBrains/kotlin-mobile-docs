@@ -42,11 +42,12 @@ Compatible Kotlin version
 
 **0.2.4**
 
-Released: April 26, 2021
+Released: May 5, 2021
 
 </td>
 <td>
 
+Use this version of the plugin with Android Studio 4.2 or Android Studio 2020.3.1 Canary 8 or higher.
 * Compatibility with [Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html).
 * [Ability to use the CocoaPods dependency manager in the New KMM Module Wizard for iOS integration](https://youtrack.jetbrains.com/issue/KT-45946).
 
