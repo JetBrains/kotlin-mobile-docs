@@ -39,6 +39,7 @@
     <toc-element id="kmm-evolution.md"/>
     <toc-element id="kmm-plugin-releases.md"/>
     <toc-element id="whats-new-in-kotlin-for-kmm.md"/>
+    <toc-element id="faq.md"/>
     <toc-element id="security.md"/>
     <toc-element toc-title="KMM main page" href="https://kotlinlang.org/lp/mobile/"/>
 
