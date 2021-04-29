@@ -15,8 +15,8 @@ Together with Ekaterina you'll set up an environment and prepare for creating yo
 
 ### What is the KMM plugin?
 
-The _[Kotlin Multiplatform Mobile (KMM) plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)_ for 
-[Android Studio](https://developer.android.com/studio) helps you develop applications that work on both Android and iOS. 
+The _[Kotlin Multiplatform Mobile (KMM) plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)_
+for Android Studio helps you develop applications that work on both Android and iOS. 
 
 With the KMM Plugin, you can:
 * Run, test, and debug the iOS part of your application on iOS targets straight from Android Studio.
@@ -52,9 +52,9 @@ Most of the recent KMM changes affect the **Kotlin Multiplatform** and **Kotlin/
 
 ### Can I run an iOS application on Microsoft Windows or Linux?
 
-If you want to write iOS-specific code and run an iOS application on a simulated or real device, use a Mac with a macOS. 
-This is because [iOS simulators can run only on macOS](#what-is-the-kmm-plugin), per the Apple requirement, but cannot 
-run on other operating systems, such as Microsoft Windows or Linux.
+If you want to write iOS-specific code and run an iOS application on a simulated or real device, use a Mac with a macOS
+([use the KMM plugin for it](#what-is-the-kmm-plugin)). This is because iOS simulators can run only on macOS, per 
+the Apple requirement, but cannot run on other operating systems, such as Microsoft Windows or Linux.
 
 If you are going to work with shared code or Android-specific code, you can work on any operating system supported by Android Studio.
 
@@ -64,6 +64,7 @@ If you are going to work with shared code or Android-specific code, you can work
 * Several [hands-ons](https://play.kotlinlang.org/hands-on/overview)
 
 ### In which IDE should I work on my cross-platform app?
+
 You can work in [Android Studio](https://developer.android.com/studio). Android Studio allows the use of the 
 [KMM plugin](#what-is-the-kmm-plugin), which is a part of the KMM ecosystem. Enable the KMM plugin in Android Studio 
 if you want to write iOS-specific code and launch an iOS application on a simulated or real device. The KMM plugin can be used only on macOS.
