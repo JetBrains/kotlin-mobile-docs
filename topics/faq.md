@@ -61,7 +61,7 @@ If you are going to work with shared code or Android-specific code, you can work
 ### Where can I get complete examples to play with?
 
 * [Curated samples](samples.md)
-* Several [hands-ons](https://play.kotlinlang.org/hands-on/overview)
+* Several [hands-on tutorials](https://play.kotlinlang.org/hands-on/overview)
 
 ### In which IDE should I work on my cross-platform app?
 
