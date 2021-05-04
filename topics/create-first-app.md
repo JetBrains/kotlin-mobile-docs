@@ -9,7 +9,13 @@ Here you will learn how to create and run your first KMM application.
     >These steps cannot be performed on other operating systems, such as Microsoft Windows. This is due to an Apple requirement.
     >
     {type="note"}
-    
+
+Now you can either continue reading or watch the video "Kotlin Multiplatform Multiverse, Episode 2: Your First Kotlin 
+Multiplatform Mobile App Tutorial" by Ekaterina Petrova, Kotlin Developer Advocate. The video is pretty much the same 
+as the instructions below.
+
+<video href="GcqFhoUuNNI" title="Kotlin Multiplatform Multiverse, Episode 2: Your First Kotlin Multiplatform Mobile App Tutorial"/>
+
 2. In Android Studio, select **File** | **New** | **New Project**.
 3. Select **KMM Application** in the list of project templates, and click **Next**.  
 
