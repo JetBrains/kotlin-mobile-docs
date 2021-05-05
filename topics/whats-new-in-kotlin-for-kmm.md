@@ -21,7 +21,7 @@ Here you can find a short summary of the features Kotlin provides for developing
   iOS source sets use Kotlin/Native, which has everything built in, so they do not require any additional artifacts.
 
   You can also use the `kotlin-test` dependency in any shared or platform-specific source set.
-  Learn more about [setting dependencies on test libraries](https://kotlinlang.org/docs/gradle.md#set-dependencies-on-test-libraries).
+  Learn more about [setting dependencies on test libraries](https://kotlinlang.org/docs/gradle.html#set-dependencies-on-test-libraries).
 
 * **New API for getting a char’s Unicode category.** A variety of new character-related functions are available on all platforms and in the common code. They include several functions for checking whether a char is a letter or a digit, like `Char.isLetterOrDigit()`, as well as
   functions for checking the case of a char, like  `Char.isUpperCase()`. The property `Char.category` and the enum class `CharCategory` are available, as well.  
