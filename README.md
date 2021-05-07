@@ -12,7 +12,7 @@
     - [将 KMM 介绍给你的团队](./topics-zh-CN/introduce-your-team-to-kmm.md)
 - 开发
     - [围绕 KMM 组织工作流](./topics-zh-CN/organize-process-around-kmm.md)
-    - [KMM 应用架构](./topics-zh-CN/architect-kmm-app.md)
+    - [设计 KMM 应用程序](./topics-zh-CN/architect-kmm-app.md)
     - [接入平台相关 API](./topics-zh-CN/connect-to-platform-specific-apis.md)
     - [x] [向 KMM 模块添加依赖](./topics-zh-CN/add-dependencies.md)
     - [数据存储：配置 SQLDelight](./topics-zh-CN/configure-sqldelight-for-data-storage.md)
