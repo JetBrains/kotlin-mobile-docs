@@ -12,12 +12,12 @@
     - [将 KMM 介绍给你的团队](./topics-zh-CN/introduce-your-team-to-kmm.md)
 - 开发
     - [围绕 KMM 组织工作流](./topics-zh-CN/organize-process-around-kmm.md)
-    - [设计 KMM 应用程序](./topics-zh-CN/architect-kmm-app.md)
+    - [x] [设计 KMM 应用程序](./topics-zh-CN/architect-kmm-app.md)
     - [接入平台相关 API](./topics-zh-CN/connect-to-platform-specific-apis.md)
     - [x] [向 KMM 模块添加依赖](./topics-zh-CN/add-dependencies.md)
-    - [数据存储：配置 SQLDelight](./topics-zh-CN/configure-sqldelight-for-data-storage.md)
+    - [x] [数据存储：配置 SQLDelight](./topics-zh-CN/configure-sqldelight-for-data-storage.md)
     - [网络请求：使用 Ktor](./topics-zh-CN/use-ktor-for-networking.md)
-    - [动手教程：配置 SQLDelight 和 Ktor](./topics-zh-CN/complete-networking-data-storage-hands-on.md)
+    - [x] [动手教程：配置 SQLDelight 和 Ktor](./topics-zh-CN/complete-networking-data-storage-hands-on.md)
     - [发布 KMM 应用](./topics-zh-CN/publish-kmm-apps.md)
     - 处理并发
         - [并发概览](./topics-zh-CN/concurrency-overview.md)
