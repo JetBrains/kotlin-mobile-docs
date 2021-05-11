@@ -18,6 +18,16 @@
         <noindex-content-in-deprecated>true</noindex-content-in-deprecated>
         <noindex-content-in-release>false</noindex-content-in-release>
         <noindex-content-in-eap>false</noindex-content-in-eap>
+        <custom-favicons>
+            <![CDATA[
+<link rel="icon" href="https://kotlinlang.org/assets/images/favicon.svg?v2" type="image/svg+xml">
+<link rel="alternate icon" href="https://kotlinlang.org/assets/images/favicon.ico?v2" type="image/x-icon"/>
+<link rel="apple-touch-icon" sizes="57x57" href="https://kotlinlang.org/assets/images/apple-touch-icon.png?v2"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://kotlinlang.org/assets/images/apple-touch-icon-72x72.png?v2"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://kotlinlang.org/assets/images/apple-touch-icon-114x114.png?v2"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://kotlinlang.org/assets/images/apple-touch-icon-144x144.png?v2"/>
+        ]]>
+        </custom-favicons>
     </variables>
     <layout name="New Web help" mode="web2">
         <style>s.css</style>
