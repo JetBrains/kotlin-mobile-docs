@@ -10,9 +10,7 @@ Here you will learn how to create and run your first KMM application.
     >
     {type="note"}
 
-Now you can either continue reading or watch the video "Kotlin Multiplatform Multiverse, Episode 2: Your First Kotlin 
-Multiplatform Mobile App Tutorial" by Ekaterina Petrova, Kotlin Developer Advocate. The video is pretty much the same 
-as the instructions below.
+You can also watch a video of this tutorial created by Ekaterina Petrova, Kotlin Developer Advocate.
 
 <video href="GcqFhoUuNNI" title="Kotlin Multiplatform Multiverse, Episode 2: Your First Kotlin Multiplatform Mobile App Tutorial"/>
 
