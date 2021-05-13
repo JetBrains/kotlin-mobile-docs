@@ -19,8 +19,12 @@ Here you will learn how to create and run your first KMM application.
 
     ![Mobile Multiplatform project - general settings](kmm-project-wizard-2.png)
 
-5. Keep the default names for the application and shared folders. Select the checkbox to generate sample tests for your 
-   project. Select **Xcode build phases (packForXcode task)** in the list of iOS framework distribution variants, and click **Finish**.  
+5. In the window that opens, do the following:
+   * Keep the default names for the application and shared folders.
+   * Select the checkbox to generate sample tests for your project. 
+   * Select **Xcode build phases (packForXcode task)** in the list of iOS framework distribution options. 
+     
+   Click **Finish** to create a new project.
 
     ![Mobile Multiplatform project - additional settings](kmm-project-wizard-3.png)  
     
