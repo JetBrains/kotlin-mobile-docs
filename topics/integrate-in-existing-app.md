@@ -61,10 +61,11 @@ In your Android project, create a KMM shared module for your cross-platform code
 
 1. In Android Studio, click **File** | **New** | **New Module**.
 
-2. In the list of templates, select **KMM Shared Module**, enter the module name `shared`, and select the **Generate packForXcode Gradle task** checkbox.  
+2. In the list of templates, select **KMM Shared Module**, enter the module name `shared`, and select the 
+   **Xcode build phases (packForXcode task)** in the list of iOS framework distribution options.  
    This is required for connecting the shared module to the iOS application.
 
-   ![KMM shared module](kmm-module-wizard-1.png)
+   ![KMM shared module](kmm-module-wizard.png)
 
 3. Click **Finish**.
 
