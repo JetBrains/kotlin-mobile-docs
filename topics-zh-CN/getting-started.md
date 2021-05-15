@@ -3,7 +3,7 @@
 
 ## 了解 KMM
 
-观看介绍[视频](https://www.youtube.com/watch?v=mdN6P6RI__k)，Kotlin 开发布道师 Ekaterina Petrova 将会解释什么是 Kotlin Multiplatform Mobile，以及你如何把它使用到项目中。和 Ekaterina Petrova 一起搭建开发环境并准备创建你的第一个 KMM 移动跨平台应用。
+观看介绍[视频](https://www.youtube.com/watch?v=mdN6P6RI__k)，Kotlin 开发布道师 Ekaterina Petrova 将会解释什么是 Kotlin Multiplatform Mobile，以及你如何把它使用到项目中。和 Ekaterina Petrova 一起搭建开发环境并准备创建你的第一个 KMM 移动跨平台应用。
 
 <video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
