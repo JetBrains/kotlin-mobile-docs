@@ -4,8 +4,8 @@
 
 - [x] [KMM 文档](./topics-zh-CN/home.md)
 - 开始试用 KMM
-    - [开始](./topics-zh-CN/getting-started.md)
-    - [搭建 KMM 开发环境](./topics-zh-CN/setup.md)
+    - [x] [开始](./topics-zh-CN/getting-started.md)
+    - [x] [搭建 KMM 开发环境](./topics-zh-CN/setup.md)
     - [教程：创建第一个多平台应用](./topics-zh-CN/create-first-app.md)
     - [教程：让你的 Android 应用运行在 iOS 上](./topics-zh-CN/integrate-in-existing-app.md)
     - [理解 KMM 的项目结构](./topics-zh-CN/discover-kmm-project.md)
