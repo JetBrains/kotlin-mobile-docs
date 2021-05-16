@@ -7,5 +7,5 @@
 
 [开始实践教程](https://play.kotlinlang.org/hands-on/Networking%20and%20Data%20Storage%20with%20Kotlin%20Multiplatfrom%20Mobile/).
 
-![实践结果](hands-on-result.png){width=700}
+![实践成果](hands-on-result.png){width=700}
 
