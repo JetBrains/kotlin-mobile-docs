@@ -22,6 +22,11 @@
 
   <video href="mdN6P6RI__k" title="Kotlin Multiplatform Multiverse, Episode 1: Meet KMM!"/>
 
+* "Kotlin Multiplatform Multiverse, Episode 2: Your First Kotlin Multiplatform Mobile App Tutorial" by 
+  Ekaterina Petrova, Kotlin Developer Advocate
+  
+  <video href="GcqFhoUuNNI" title="Kotlin Multiplatform Multiverse, Episode 2: Your First Kotlin Multiplatform Mobile App Tutorial"/>
+
 ## Community
 
 * **Kotlin Slack**: Get an [invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and join the [#multiplatform](https://kotlinlang.slack.com/archives/C3PQML5NU) channel.
