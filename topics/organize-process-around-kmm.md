@@ -71,8 +71,7 @@ should be taken into account:
 * Kotlin Multiplatform compiles the shared code to different targets in different ways. Bear in mind that the same code
 will be executed on multiple platforms and operating systems. 
 * Android developers will have to become familiar with Kotlin/Native, which is used for iOS. For example, they will need
-to know about the compatibility limitations between Kotlin and Swift/Objective-C (for more details on compatibility, see
-the [Documentation](https://kotlinlang.org/docs/native-objc-interop.html)). Or if concurrency is used in the shared code, they will have to deal with the Kotlin/Native Memory
+to know about the compatibility limitations between Kotlin and Swift/Objective-C ([find more details on compatibility here](https://kotlinlang.org/docs/native-objc-interop.html)). Or if concurrency is used in the shared code, they will have to deal with the Kotlin/Native Memory
 Model, which [differs significantly](concurrency-overview.md) from the Java Memory Model.
 * Android developers may not be able to independently write all the expect/actual code in the shared module as they
 could lack iOS development experience. That's why you may need to involve iOS developers, at least as advisors, or use
