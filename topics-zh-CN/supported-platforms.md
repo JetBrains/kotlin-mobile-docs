@@ -12,4 +12,4 @@ Kotlin 移动多平台 (_KMM_) 是基于 [Kotlin 多平台](https://kotlinlang.o
 
 更多信息：
 * [Kotlin 多平台概述](https://kotlinlang.org/docs/reference/multiplatform.html)
-* [多平台编程支持的平台](https://kotlinlang.org/docs/reference/mpp-supported-platforms.html)
+* [支持多平台编程的平台](https://kotlinlang.org/docs/reference/mpp-supported-platforms.html)
