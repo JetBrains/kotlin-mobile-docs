@@ -30,3 +30,12 @@
 - [KMM 插件发布](./topics-zh-CN/kmm-plugin-releases.md)
 - [Koltin 中针对 KMM 的新特性](./topics-zh-CN/whats-new-in-kotlin-for-kmm.md)
 - [安全](./topics-zh-CN/security.md)
+
+
+
+感谢以下朋友的贡献（排名不分先后）：
+
+- [befovy](https://github.com/befovy)
+- [lindroid](https://github.com/linroid)
+- [messi-wpy](https://github.com/messi-wpy)
+- [tiiime](https://github.com/tiiime)
