@@ -1,7 +1,7 @@
 [//]: # (title: Set up an environment for KMM development)
 [//]: # (auxiliary-id: Set_up_an_environment_for_KMM_development)
 
-在你开始 [创建第一个在 iOS 和 Android 上均可运行的应用](create-first-app.md)前，先开始搭建 Kotlin 移动多平台（KMM）的开发环境：
+在你开始[创建第一个在 iOS 和 Android 上均可运行的应用](create-first-app.md)前，先开始搭建 Kotlin 移动多平台（KMM）的开发环境：
 
 1. 如果你打算编写共享代码或 Android 端代码，你可以在任何具有 [Android Studio](https://developer.android.com/studio) 支持的操作系统的电脑上工作。
    如果你同时还想写 iOS 端代码，并且在模拟器或者真机上运行 iOS 应用，请使用运行 macOS 的 Mac。基于苹果的要求，这些步骤（iOS）不能在其他操作系统上执行，例如微软的 Windows。
@@ -26,4 +26,4 @@
 6. 安装 [JDK](https://www.oracle.com/java/technologies/javase-downloads.html) ，如果你之前未安装。
     想检查它是否安装, 可在终端运行命令 `java -version`。
      
-现在是时候 [创建你的第一个 Kotlin 移动多平台（KMM）应用](create-first-app.md) 了。
+现在是时候[创建你的第一个 Kotlin 移动多平台（KMM）应用](create-first-app.md) 了。
