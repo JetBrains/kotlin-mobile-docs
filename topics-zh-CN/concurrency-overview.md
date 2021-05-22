@@ -144,7 +144,7 @@ Kotlin/Native 的并发规则需要对架构设计进行一些调整，但在库
 
 Kotlin 移动多平台（KMM）应用中，Android 和 iOS 遵循各自平台的状态规则。一些大型应用的开发团队，会共享特别具体的功能代码，常在宿主平台进行并发性管理。这种情况需要直接冻结 Kotlin 返回的状态，但除此之外，还是简单直接的。
 
-一个更广泛的模型，即在 Kotlin 中管理并发，宿主平台在其主线程上与共享代码进行通信，从状态管理的角度来看，这种模式更简单。使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)之类的并发库，可以帮助自动化冻。你也可以利用[协程](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)，共享更多的代码来提升效率。
+一个更广泛的模型，即在 Kotlin 中管理并发，宿主平台在其主线程上与共享代码进行通信，从状态管理的角度来看，这种模式更简单。使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)之类的并发库，可以帮助自动化冻结。你也可以利用[协程](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)，共享更多的代码来提升效率。
 
 然而，目前 Kotlin/Native 的并发模型仍有一些不足之处。例如，移动开发者已经习惯了在线程之间自由地共享状态，并开发了一系列的方法和架构模式避免数据竞争。虽然使用 Kotlin/Native 可以在不阻塞主线程的情况下编写高效应用程序，但是学习成本过高。
 
