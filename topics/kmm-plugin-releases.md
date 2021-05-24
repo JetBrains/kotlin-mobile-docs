@@ -47,7 +47,7 @@ Released: May 25, 2021
 </td>
 <td>
 
-* Fixed compatibility with Android Studio Arctic Fox 2020.3.1 Beta 1 and higher.
+* [Fixed compatibility with Android Studio Arctic Fox 2020.3.1 Beta 1 and higher](https://youtrack.jetbrains.com/issue/KT-46834).
 
 </td>
 <td>
