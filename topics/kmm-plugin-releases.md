@@ -40,6 +40,25 @@ Compatible Kotlin version
 <tr>
 <td>
 
+**0.2.5**
+
+Released: May 25, 2021
+
+</td>
+<td>
+
+* [Fixed compatibility with Android Studio Arctic Fox 2020.3.1 Beta 1 and higher](https://youtrack.jetbrains.com/issue/KT-46834).
+
+</td>
+<td>
+
+* [Kotlin 1.5.10](https://kotlinlang.org/releases.html#release-details)
+
+</td>
+</tr>
+<tr>
+<td>
+
 **0.2.4**
 
 Released: May 5, 2021
