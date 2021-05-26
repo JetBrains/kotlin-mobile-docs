@@ -16,7 +16,7 @@ Learn how to configure Gradle to build a simple KMM project with Android and iOS
 This project demonstrates how you can use KMM in real production cases. The sample contains a common Kotlin Multiplatform module, an Android project, and an iOS project.  
 The production sample has already been published – you can download it from the [App Store](https://apps.apple.com/ru/app/kmm-rss-reader/id1563922264) and [Google Play](https://play.google.com/store/apps/details?id=com.github.jetbrains.rssreader.androidApp).
 
-Look through the code to understand how to create and prepare your application for publication: [https://github.com/Kotlin/kmm-production-sample](https://github.com/Kotlin/kmm-production-sample)
+Look through the code to understand how to create and prepare your application for publication: [https://github.com/Kotlin/kmm-production-sample](https://github.com/Kotlin/kmm-production-sample).
 
 ## KMM sample for an Android application
 
