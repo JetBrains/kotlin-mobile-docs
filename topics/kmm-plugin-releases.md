@@ -40,9 +40,29 @@ Compatible Kotlin version
 <tr>
 <td>
 
-**0.2.5**
+**0.2.6**
 
-Released: May 25, 2021
+Released: June 10, 2021
+
+</td>
+<td>
+
+* Publish artefact for Android Studio Bumblebee Canary 1.
+* Prepare wizards for Kotlin 1.5.20.
+
+</td>
+<td>
+
+* [Kotlin 1.5.10](https://kotlinlang.org/releases.html#release-details)
+
+</td>
+</tr>
+<tr>
+<td>
+
+**0.2.4**
+
+Released: May 5, 2021
 
 </td>
 <td>
