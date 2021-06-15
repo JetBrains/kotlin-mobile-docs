@@ -48,7 +48,7 @@ Released: June 10, 2021
 <td>
 
 * Compatibility with Android Studio Bumblebee Canary 1.
-* Prepare wizards for Kotlin 1.5.20.
+* Prepare the Project Wizard for Kotlin 1.5.20.
 
 </td>
 <td>
