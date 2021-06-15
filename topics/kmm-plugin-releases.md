@@ -47,7 +47,7 @@ Released: June 10, 2021
 </td>
 <td>
 
-* Publish artefact for Android Studio Bumblebee Canary 1.
+* Compatibility with Android Studio Bumblebee Canary 1.
 * Prepare wizards for Kotlin 1.5.20.
 
 </td>
@@ -60,9 +60,9 @@ Released: June 10, 2021
 <tr>
 <td>
 
-**0.2.4**
+**0.2.5**
 
-Released: May 5, 2021
+Released: May 25, 2021
 
 </td>
 <td>
