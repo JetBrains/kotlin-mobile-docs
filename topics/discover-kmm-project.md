@@ -4,16 +4,16 @@
 The purpose of the Kotlin Multiplatform Mobile (_KMM_) technology is unifying the development of applications with common 
 logic for Android and iOS platforms. To make this possible, KMM uses a mobile-specific structure of
 [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
-On this page, we’ll describe the structure of a basic KMM project. Note that this structure isn’t the only
+This page describes the structure of a basic KMM project. Note that this structure isn’t the only
 possible way to organize a KMM project; however, we recommend it as a starting point.
 
 A basic Kotlin Mobile Multiplatform (KMM) project consists of three components:
 
-* _Shared module_ - a Kotlin module that contains common logic for both Android and iOS applications.
+* _Shared module_ – a Kotlin module that contains common logic for both Android and iOS applications.
 Builds into an Android library and an iOS framework. Uses Gradle as a build system.
-* _Android application_ - a Kotlin module that builds into the Android application.
+* _Android application_ – a Kotlin module that builds into the Android application.
 Uses Gradle as a build system.
-* _iOS application_ - an Xcode project that builds into the iOS application.
+* _iOS application_ – an Xcode project that builds into the iOS application.
 
 ![Basic KMM project structure](basic-project-structure.png){width=700}
 
@@ -50,14 +50,14 @@ include(":androidApp")
 
 The iOS application is produced from an Xcode project. It’s stored in a separate directory within the root project.
 Xcode uses its own build system; thus, the iOS application project isn’t connected with other parts of the KMM project
-via Gradle. Instead, it uses the shared module as an external artifact - framework. For details on integration between
+via Gradle. Instead, it uses the shared module as an external artifact – framework. For details on integration between
 the shared module and the iOS application, see [iOS application](#ios-application).
 
 This is a basic structure of a KMM project:
 
 ![Basic KMM project directories](basic-project-dirs.png){width=400}
 
-The root project doesn’t hold source code. You can use it to store global configuration in its `build.gradle(.kts)` or 
+The root project does not hold source code. You can use it to store global configuration in its `build.gradle(.kts)` or 
 `gradle.properties`, for example, add repositories or define global configuration variables.
 
 For more complex projects, you can add more modules into the root project by creating them in the IDE and linking via
@@ -258,7 +258,7 @@ plugins {
 </tab>
 </tabs>
 
-The configuration of Android library is stored in the `android {}` top-level block of the shared module’s build script.
+The configuration of Android library is stored in the `android {}` top-level block of the shared module’s build script:
 
 <tabs>
 <tab title="Groovy">
@@ -308,7 +308,7 @@ To learn more, see the [Android developer documentation](https://developer.andro
 
 ### iOS framework
 
-For using in iOS applications, the shared module compiles into a framework - a kind of hierarchical directory
+For using in iOS applications, the shared module compiles into a framework – a kind of hierarchical directory
 with shared resources used on the Apple platforms.
 This framework connects to the Xcode project that builds into an iOS application.
 
