@@ -62,7 +62,7 @@ In your Android project, create a KMM shared module for your cross-platform code
 1. In Android Studio, click **File** | **New** | **New Module**.
 
 2. In the list of templates, select **KMM Shared Module**, enter the module name `shared`, and select the 
-   **Xcode build phases (packForXcode task)** in the list of iOS framework distribution options.  
+   **Regular framework** in the list of iOS framework distribution options.  
    This is required for connecting the shared module to the iOS application.
 
    ![KMM shared module](kmm-module-wizard.png)
@@ -259,6 +259,8 @@ You can rename the `simpleLoginIOS` directory to `iosApp` for consistency with o
 
 To use Kotlin code in your iOS project, compile shared code into a `.framework`.
 
+// смысл тот же, но надо ее запустить новую таску
+
 * In Android Studio, run the `packForXcode` Gradle task in the Terminal:
 
     ```text
@@ -304,6 +306,8 @@ To avoid recompiling your framework manually after every change in the KMM modul
    ![Add run script phase](xcode-run-script-phase-1.png)
 
 2. Add the following script:
+
+// TODO новое название таски
 
     ```text
     cd "$SRCROOT/.."

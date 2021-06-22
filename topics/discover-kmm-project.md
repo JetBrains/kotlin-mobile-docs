@@ -354,68 +354,12 @@ kotlin {
 </tab>
 </tabs>
 
-Additionally, there is a Gradle task that exposes the framework to the Xcode project from which the iOS application is built.
+Additionally, there is a Gradle task `embedAndSignAppleFrameworkForXcode` that exposes the framework to the Xcode project from which the iOS application is built.
 It uses the configuration of the iOS application project to define the build mode (`debug` or `release`) and provide
 the appropriate framework version to the specified location.
 
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-task(packForXcode, type: Sync) {
-    group = 'build'
-    def mode = System.getenv('CONFIGURATION') ?: 'DEBUG'
-    def sdkName = System.getenv('SDK_NAME') ?: 'iphonesimulator'
-    def targetName = 'ios' + ((sdkName.startsWith('iphoneos')) ? 'Arm64' : 'X64')
-    def framework = kotlin.targets.getByName(targetName).binaries.getFramework(mode)
-    inputs.property('mode', mode)
-    dependsOn(framework.linkTask)
-    def targetDir = new File(buildDir, 'xcode-frameworks')
-    from({ framework.outputDirectory })
-    into(targetDir)
-}
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-val packForXcode by tasks.creating(Sync::class) {
-    group = "build"
-    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
-    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
-    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
-    inputs.property("mode", mode)
-    dependsOn(framework.linkTask)
-    val targetDir = File(buildDir, "xcode-frameworks")
-    from({ framework.outputDirectory })
-    into(targetDir)
-}
- ```
-         
-</tab>
-</tabs>
-
-The task executes upon each build of the Xcode project to provide the latest version of the framework for the iOS application.
+The task is built-in in the multiplatform plugin. It executes upon each build of the Xcode project to provide the latest version of the framework for the iOS application.
 For details, see [iOS application](#ios-application).
-
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-tasks.getByName('build').dependsOn(packForXcode)
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-tasks.getByName("build").dependsOn(packForXcode)
- ```
-         
-</tab>
-</tabs>
 
 ## Android application
 
@@ -569,10 +513,10 @@ the framework is added to the project on the **General** tab of the project sett
 ![Framework in the Xcode project settings](framework-in-project-settings.png){width=700}
 
 For each build of the iOS application, the project obtains the latest version of the framework.
-To do this, it uses a **Run Script** build phase that executes the [packForXcode](#ios-framework)
+To do this, it uses a **Run Script** build phase that executes the [`embedAndSignAppleFrameworkForXcode`](#ios-framework)
 Gradle task from the shared module.
 
-![Execution of packForXcode in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
+![Execution of `embedAndSignAppleFrameworkForXcode` in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 
 Finally, another build phase **Embed Framework** takes the framework from the specified location and
 embeds it into the application build. This makes the shared code available in the iOS application.
