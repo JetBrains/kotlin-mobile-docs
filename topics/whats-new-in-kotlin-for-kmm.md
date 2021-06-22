@@ -8,6 +8,23 @@ Android Studio will recommend an automatic update to a new Kotlin release. You c
 
 Here you can find a short summary of the features Kotlin provides for developing multiplatform mobile applications.
 
+## Kotlin 1.5.20 for KMM
+
+[Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html) introduces a number of improvements and features that are helpful for KMM:
+
+* **Opt-in export of KDoc comments to generated Objective-C headers.**
+  You can now set the Kotlin/Native compiler to export the [documentation comments (KDoc)](kotlin-doc.md) from Kotlin code
+  to the Objective-C frameworks generated from it, making them visible to the frameworks’ consumers.
+  
+  This feature is experimental. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-38600).
+
+  Learn more about [exporting of KDoc comments to generated Objective-C headers](https://kotlinlang.org/docs/whatsnew1520.html#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
+
+* **New framework packing task for Kotlin/Native**.
+  Kotlin 1.5.20 introduces the new `embedAndSignAppleFrameworkForXcode` task that substitutes the `packForXcode` task.
+
+Learn more about [what's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html).
+
 ## Kotlin 1.5.0 for KMM
 
 [Kotlin 1.5.0](https://kotlinlang.org/docs/whatsnew15.html) introduces a number of improvements and features that are helpful for KMM:
