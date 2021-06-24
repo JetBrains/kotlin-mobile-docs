@@ -226,7 +226,7 @@ Once you've made your Android application cross-platform, you can create an iOS 
 
 2. [Connect the framework to your iOS project](#connect-the-framework-to-your-ios-project).
 
-3. [Connect the shared module to the iOS project](#connect-the-shared-module-to-the-ios-project).
+3. [Use the shared module from Swift](#use-the-shared-module-from-swift).
 
 ### Create an iOS project in Xcode
 
@@ -270,7 +270,7 @@ Connect your framework to the iOS project manually:
 
     ```text
     cd "$SRCROOT/.."
-    ./gradlew :shared:embedAndSignAppleFrameworkForXcode -PXCODE_CONFIGURATION=${CONFIGURATION}
+    ./gradlew :shared:embedAndSignAppleFrameworkForXcode
     ```
 
    ![Add the script](xcode-add-run-phase-2.png)
@@ -287,7 +287,9 @@ Connect your framework to the iOS project manually:
 
    ![Linker flag](xcode-add-flag.png)
 
-### Connect the shared module to the iOS project
+6. Build the project in Xcode. If everything is set up correctly, the project will successfully build.
+
+### Use the shared module from Swift
 
 1. In Xcode, open the `ContentView.swift` file and import the `shared` module.
 
