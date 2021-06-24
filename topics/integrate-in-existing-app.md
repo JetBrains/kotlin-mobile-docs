@@ -224,7 +224,9 @@ Once you've made your Android application cross-platform, you can create an iOS 
 
 1. [Create an iOS project in Xcode](#create-an-ios-project-in-xcode).
 
-2. [Connect the shared module to the iOS project](#connect-the-shared-module-to-the-ios-project).
+2. [Connect the framework to your iOS project](#connect-the-framework-to-your-ios-project).
+
+3. [Connect the shared module to the iOS project](#connect-the-shared-module-to-the-ios-project).
 
 ### Create an iOS project in Xcode
 
