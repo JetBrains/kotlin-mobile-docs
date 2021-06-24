@@ -18,7 +18,7 @@ Here you can find a short summary of the features Kotlin provides for developing
   
   This feature is experimental. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-38600).
 
-  Learn more about [exporting of KDoc comments to generated Objective-C headers](https://kotlinlang.org/docs/whatsnew1520.html#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
+  Learn more about [exporting of KDoc comments to generated Objective-C headers and how to opt-in the feature](https://kotlinlang.org/docs/whatsnew1520.html#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
 
 * **New framework packing task for Kotlin/Native**.
   The [Kotlin Multiplatform Gradle Plugin](https://kotlinlang.org/docs/mpp-dsl-reference.html) now provides the `embedAndSignAppleFrameworkForXcode` task that can be used from Xcode to connect KMM module to the iOS part of your project.
