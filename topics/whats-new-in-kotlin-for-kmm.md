@@ -13,7 +13,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 [Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html) introduces a number of improvements and features that are helpful for KMM:
 
 * **Opt-in export of KDoc comments to generated Objective-C headers.**
-  You can now set the Kotlin/Native compiler to export the [documentation comments (KDoc)](kotlin-doc.md) from Kotlin code
+  You can now set the Kotlin/Native compiler to export the [documentation comments (KDoc)](https://kotlinlang.org/docs/kotlin-doc.html) from Kotlin code
   to the Objective-C frameworks generated from it, making them visible to the frameworks’ consumers.
   
   This feature is experimental. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-38600).
