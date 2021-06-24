@@ -21,7 +21,9 @@ Here you can find a short summary of the features Kotlin provides for developing
   Learn more about [exporting of KDoc comments to generated Objective-C headers](https://kotlinlang.org/docs/whatsnew1520.html#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
 
 * **New framework packing task for Kotlin/Native**.
-  Kotlin 1.5.20 introduces the new `embedAndSignAppleFrameworkForXcode` task that substitutes the `packForXcode` task.
+  The [Kotlin Multiplatform Gradle Plugin](https://kotlinlang.org/docs/mpp-dsl-reference.html) now provides the `embedAndSignAppleFrameworkForXcode` task that can be used from Xcode to connect KMM module to the iOS part of your project.
+  
+  Learn more [about the new packing task in YouTrack](https://youtrack.jetbrains.com/issue/KT-27240).
 
 Learn more about [what's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html).
 
