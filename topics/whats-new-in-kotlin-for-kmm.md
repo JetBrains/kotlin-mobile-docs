@@ -12,18 +12,18 @@ Here you can find a short summary of the features Kotlin provides for developing
 
 [Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html) introduces a number of improvements and features that are helpful for KMM:
 
-* **Opt-in export of KDoc comments to generated Objective-C headers.**
+* **Export of KDoc comments to generated Objective-C headers.**
   You can now set the Kotlin/Native compiler to export the [documentation comments (KDoc)](https://kotlinlang.org/docs/kotlin-doc.html) from Kotlin code
   to the Objective-C frameworks generated from it, making them visible to the frameworks’ consumers.
-  
+
   This feature is experimental. We would appreciate your feedback on it in [YouTrack](https://youtrack.jetbrains.com/issue/KT-38600).
 
-  Learn more about [exporting of KDoc comments to generated Objective-C headers and how to opt-in the feature](https://kotlinlang.org/docs/whatsnew1520.html#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
+  Learn more about [exporting KDoc comments to generated Objective-C headers and how to opt in to this feature](https://kotlinlang.org/docs/whatsnew1520.html#opt-in-export-of-kdoc-comments-to-generated-objective-c-headers).
 
-* **New framework packing task for Kotlin/Native**.
-  The [Kotlin Multiplatform Gradle Plugin](https://kotlinlang.org/docs/mpp-dsl-reference.html) now provides the `embedAndSignAppleFrameworkForXcode` task that can be used from Xcode to connect KMM module to the iOS part of your project.
-  
-  Learn more [about the new packing task in YouTrack](https://youtrack.jetbrains.com/issue/KT-27240).
+* **New framework-packing task for Kotlin/Native**.
+  The [Kotlin Multiplatform Gradle plugin](https://kotlinlang.org/docs/mpp-dsl-reference.html) now includes the `embedAndSignAppleFrameworkForXcode` task, which can be used from Xcode to connect KMM modules to the iOS part of your project.
+
+  Check out this [YouTrack issue](https://youtrack.jetbrains.com/issue/KT-27240) to learn about the new framework-packing task.
 
 Learn more about [what's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html).
 
