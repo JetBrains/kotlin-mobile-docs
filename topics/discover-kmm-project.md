@@ -502,26 +502,19 @@ To learn more, see the [Android developer documentation](https://developer.andro
 ## iOS application
 
 The iOS application is produced from an Xcode project generated automatically by the Project Wizard.
-It resides in a separate directory within the root KMM project. This is a basic Xcode project configured to use the
-framework produced from the shared module.
+It resides in a separate directory within the root KMM project. 
 
 ![Basic KMM Xcode project](basic-xcode-project.png){width=300}
 
-To make the declarations from the shared module available in the source code of the iOS application,
-the framework is added to the project on the **General** tab of the project settings.
-
-![Framework in the Xcode project settings](framework-in-project-settings.png){width=700}
-
-For each build of the iOS application, the project obtains the latest version of the framework.
-To do this, it uses a **Run Script** build phase that executes the [`embedAndSignAppleFrameworkForXcode`](#ios-framework)
-Gradle task from the shared module.
+For each build of the iOS application, the project obtains the latest version of the framework. To do this, it uses a **Run Script** build phase that executes the `embedAndSignAppleFrameworkForXcode` Gradle task from the shared module. This task generates the .framework with the needed configuration, depending on the Xcode environment settings, and puts the artifact into the **DerivedData** Xcode directory.
 
 ![Execution of `embedAndSignAppleFrameworkForXcode` in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 
-Finally, another build phase **Embed Framework** takes the framework from the specified location and
-embeds it into the application build. This makes the shared code available in the iOS application.
+To embed framework into the application and make the declarations from the shared module available in the source code of the iOS application, the **Other Linker flags** and **Framework Search Paths** build settings are properly configured:
 
-![Embedding the framework in the Xcode project settings](embed-framework-in-xcode-project-settings.png){width=700}
+![Configuring **Other linker flags** in the Xcode project settings](other-linker-flags-in-xcode-project-settings.png){width=700}
+
+![Configuring **Framework Search Paths** in the Xcode project settings](framework-search-path-in-xcode-project-settings.png){width=700}
 
 In other aspects, the Xcode part of a KMM project is a typical iOS application project.
 To learn more about creating iOS application, see the [Xcode documentation](https://developer.apple.com/documentation/xcode#topics).
