@@ -504,17 +504,21 @@ To learn more, see the [Android developer documentation](https://developer.andro
 The iOS application is produced from an Xcode project generated automatically by the Project Wizard.
 It resides in a separate directory within the root KMM project. 
 
-![Basic KMM Xcode project](basic-xcode-project.png){width=300}
+![Basic KMM Xcode project](basic-xcode-project.png){width=400}
 
-For each build of the iOS application, the project obtains the latest version of the framework. To do this, it uses a **Run Script** build phase that executes the `embedAndSignAppleFrameworkForXcode` Gradle task from the shared module. This task generates the .framework with the needed configuration, depending on the Xcode environment settings, and puts the artifact into the **DerivedData** Xcode directory.
+For each build of the iOS application, the project obtains the latest version of the framework. To do this, it uses a **Run Script** build phase that executes the `embedAndSignAppleFrameworkForXcode` Gradle task from the shared module. This task generates the `.framework` with the needed configuration, depending on the Xcode environment settings, and puts the artifact into the `DerivedData` Xcode directory.
 
 ![Execution of `embedAndSignAppleFrameworkForXcode` in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 
-To embed framework into the application and make the declarations from the shared module available in the source code of the iOS application, the **Other Linker flags** and **Framework Search Paths** build settings are properly configured:
+To embed framework into the application and make the declarations from the shared module available in the source code of the iOS application, configure the following build settings are properly:
 
-![Configuring **Other linker flags** in the Xcode project settings](other-linker-flags-in-xcode-project-settings.png){width=700}
+1. **Other Linker flags** under the **Linking** section: `$(inherited) -framework shared`
 
-![Configuring **Framework Search Paths** in the Xcode project settings](framework-search-path-in-xcode-project-settings.png){width=700}
+   ![Configuring **Other linker flags** in the Xcode project settings](other-linker-flags-in-xcode-project-settings.png){width=700}
+
+2. **Framework Search Paths** under the **Search Paths** section: `$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)`.
+
+   ![Configuring **Framework Search Paths** in the Xcode project settings](framework-search-path-in-xcode-project-settings.png){width=700}
 
 In other aspects, the Xcode part of a KMM project is a typical iOS application project.
 To learn more about creating iOS application, see the [Xcode documentation](https://developer.apple.com/documentation/xcode#topics).
