@@ -48,7 +48,7 @@ Released: June 10, 2021
 <td>
 
 * Compatibility with Android Studio Bumblebee Canary 1.
-* Support for Kotlin 1.5.20 in the Project Wizard.
+* Support for [Kotlin 1.5.20](https://kotlinlang.org/docs/mobile/whats-new-in-kotlin-for-kmm.html#kotlin-1-5-20-for-kmm): using the new framework-packing task for Kotlin/Native in the Project Wizard.
 
 </td>
 <td>
