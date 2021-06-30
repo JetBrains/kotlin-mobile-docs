@@ -4,16 +4,16 @@
 The purpose of the Kotlin Multiplatform Mobile (_KMM_) technology is unifying the development of applications with common 
 logic for Android and iOS platforms. To make this possible, KMM uses a mobile-specific structure of
 [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) projects.
-On this page, we’ll describe the structure of a basic KMM project. Note that this structure isn’t the only
+This page describes the structure of a basic KMM project. Note that this structure isn’t the only
 possible way to organize a KMM project; however, we recommend it as a starting point.
 
 A basic Kotlin Mobile Multiplatform (KMM) project consists of three components:
 
-* _Shared module_ - a Kotlin module that contains common logic for both Android and iOS applications.
+* _Shared module_ – a Kotlin module that contains common logic for both Android and iOS applications.
 Builds into an Android library and an iOS framework. Uses Gradle as a build system.
-* _Android application_ - a Kotlin module that builds into the Android application.
+* _Android application_ – a Kotlin module that builds into the Android application.
 Uses Gradle as a build system.
-* _iOS application_ - an Xcode project that builds into the iOS application.
+* _iOS application_ – an Xcode project that builds into the iOS application.
 
 ![Basic KMM project structure](basic-project-structure.png){width=700}
 
@@ -50,14 +50,14 @@ include(":androidApp")
 
 The iOS application is produced from an Xcode project. It’s stored in a separate directory within the root project.
 Xcode uses its own build system; thus, the iOS application project isn’t connected with other parts of the KMM project
-via Gradle. Instead, it uses the shared module as an external artifact - framework. For details on integration between
+via Gradle. Instead, it uses the shared module as an external artifact – framework. For details on integration between
 the shared module and the iOS application, see [iOS application](#ios-application).
 
 This is a basic structure of a KMM project:
 
 ![Basic KMM project directories](basic-project-dirs.png){width=400}
 
-The root project doesn’t hold source code. You can use it to store global configuration in its `build.gradle(.kts)` or 
+The root project does not hold source code. You can use it to store global configuration in its `build.gradle(.kts)` or 
 `gradle.properties`, for example, add repositories or define global configuration variables.
 
 For more complex projects, you can add more modules into the root project by creating them in the IDE and linking via
@@ -258,7 +258,7 @@ plugins {
 </tab>
 </tabs>
 
-The configuration of Android library is stored in the `android {}` top-level block of the shared module’s build script.
+The configuration of Android library is stored in the `android {}` top-level block of the shared module’s build script:
 
 <tabs>
 <tab title="Groovy">
@@ -308,7 +308,7 @@ To learn more, see the [Android developer documentation](https://developer.andro
 
 ### iOS framework
 
-For using in iOS applications, the shared module compiles into a framework - a kind of hierarchical directory
+For using in iOS applications, the shared module compiles into a framework – a kind of hierarchical directory
 with shared resources used on the Apple platforms.
 This framework connects to the Xcode project that builds into an iOS application.
 
@@ -354,68 +354,12 @@ kotlin {
 </tab>
 </tabs>
 
-Additionally, there is a Gradle task that exposes the framework to the Xcode project from which the iOS application is built.
+Additionally, there is a Gradle task `embedAndSignAppleFrameworkForXcode` that exposes the framework to the Xcode project from which the iOS application is built.
 It uses the configuration of the iOS application project to define the build mode (`debug` or `release`) and provide
 the appropriate framework version to the specified location.
 
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-task(packForXcode, type: Sync) {
-    group = 'build'
-    def mode = System.getenv('CONFIGURATION') ?: 'DEBUG'
-    def sdkName = System.getenv('SDK_NAME') ?: 'iphonesimulator'
-    def targetName = 'ios' + ((sdkName.startsWith('iphoneos')) ? 'Arm64' : 'X64')
-    def framework = kotlin.targets.getByName(targetName).binaries.getFramework(mode)
-    inputs.property('mode', mode)
-    dependsOn(framework.linkTask)
-    def targetDir = new File(buildDir, 'xcode-frameworks')
-    from({ framework.outputDirectory })
-    into(targetDir)
-}
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-val packForXcode by tasks.creating(Sync::class) {
-    group = "build"
-    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
-    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
-    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
-    inputs.property("mode", mode)
-    dependsOn(framework.linkTask)
-    val targetDir = File(buildDir, "xcode-frameworks")
-    from({ framework.outputDirectory })
-    into(targetDir)
-}
- ```
-         
-</tab>
-</tabs>
-
-The task executes upon each build of the Xcode project to provide the latest version of the framework for the iOS application.
+The task is built-in in the multiplatform plugin. It executes upon each build of the Xcode project to provide the latest version of the framework for the iOS application.
 For details, see [iOS application](#ios-application).
-
-<tabs>
-<tab title="Groovy">
-    
-```Groovy
-tasks.getByName('build').dependsOn(packForXcode)
-```
-        
-</tab>
-<tab title="Kotlin">
-    
-```Kotlin
-tasks.getByName("build").dependsOn(packForXcode)
- ```
-         
-</tab>
-</tabs>
 
 ## Android application
 
@@ -558,26 +502,23 @@ To learn more, see the [Android developer documentation](https://developer.andro
 ## iOS application
 
 The iOS application is produced from an Xcode project generated automatically by the Project Wizard.
-It resides in a separate directory within the root KMM project. This is a basic Xcode project configured to use the
-framework produced from the shared module.
+It resides in a separate directory within the root KMM project. 
 
-![Basic KMM Xcode project](basic-xcode-project.png){width=300}
+![Basic KMM Xcode project](basic-xcode-project.png){width=400}
 
-To make the declarations from the shared module available in the source code of the iOS application,
-the framework is added to the project on the **General** tab of the project settings.
+For each build of the iOS application, the project obtains the latest version of the framework. To do this, it uses a **Run Script** build phase that executes the `embedAndSignAppleFrameworkForXcode` Gradle task from the shared module. This task generates the `.framework` with the needed configuration, depending on the Xcode environment settings, and puts the artifact into the `DerivedData` Xcode directory.
 
-![Framework in the Xcode project settings](framework-in-project-settings.png){width=700}
+![Execution of `embedAndSignAppleFrameworkForXcode` in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 
-For each build of the iOS application, the project obtains the latest version of the framework.
-To do this, it uses a **Run Script** build phase that executes the [packForXcode](#ios-framework)
-Gradle task from the shared module.
+To embed framework into the application and make the declarations from the shared module available in the source code of the iOS application, the following build settings should be configured properly:
 
-![Execution of packForXcode in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
+1. **Other Linker flags** under the **Linking** section: `$(inherited) -framework shared`
 
-Finally, another build phase **Embed Framework** takes the framework from the specified location and
-embeds it into the application build. This makes the shared code available in the iOS application.
+   ![Configuring **Other linker flags** in the Xcode project settings](other-linker-flags-in-xcode-project-settings.png){width=700}
 
-![Embedding the framework in the Xcode project settings](embed-framework-in-xcode-project-settings.png){width=700}
+2. **Framework Search Paths** under the **Search Paths** section: `$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)`.
+
+   ![Configuring **Framework Search Paths** in the Xcode project settings](framework-search-path-in-xcode-project-settings.png){width=700}
 
 In other aspects, the Xcode part of a KMM project is a typical iOS application project.
 To learn more about creating iOS application, see the [Xcode documentation](https://developer.apple.com/documentation/xcode#topics).

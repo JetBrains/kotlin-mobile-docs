@@ -62,7 +62,7 @@ In your Android project, create a KMM shared module for your cross-platform code
 1. In Android Studio, click **File** | **New** | **New Module**.
 
 2. In the list of templates, select **KMM Shared Module**, enter the module name `shared`, and select the 
-   **Xcode build phases (packForXcode task)** in the list of iOS framework distribution options.  
+   **Regular framework** in the list of iOS framework distribution options.  
    This is required for connecting the shared module to the iOS application.
 
    ![KMM shared module](kmm-module-wizard.png)
@@ -224,14 +224,9 @@ Once you've made your Android application cross-platform, you can create an iOS 
 
 1. [Create an iOS project in Xcode](#create-an-ios-project-in-xcode).
 
-2. [Compile the shared module into a framework for the iOS project](#compile-the-shared-module-into-a-framework-for-the-ios-project).
+2. [Connect the framework to your iOS project](#connect-the-framework-to-your-ios-project).
 
-3. [Connect the framework to your iOS project](#connect-the-framework-to-your-ios-project).
-
-4. [Automate iOS project updates](#automate-ios-project-updates).
-
-5. [Connect the shared module to the iOS project](#connect-the-shared-module-to-the-ios-project).
-
+3. [Use the shared module from Swift](#use-the-shared-module-from-swift).
 
 ### Create an iOS project in Xcode
 
@@ -255,22 +250,6 @@ You can rename the `simpleLoginIOS` directory to `iosApp` for consistency with o
 
 ![Renamed iOS project directory in Android Studio](ios-directory-renamed-in-as.png){width=194}
 
-### Compile the shared module into a framework for the iOS project
-
-To use Kotlin code in your iOS project, compile shared code into a `.framework`.
-
-* In Android Studio, run the `packForXcode` Gradle task in the Terminal:
-
-    ```text
-     ./gradlew packForXcode
-    ```
-
-    > You can also run the `packForXcode` Gradle task by double-clicking it in the list of Gradle tasks.
-    >
-    {type="note"}
-
-The generated framework is stored in the `shared/build/xcode-frameworks/` directory.
-
 ### Connect the framework to your iOS project
 
 Once you have the framework, you can connect it to your iOS project manually.
@@ -279,44 +258,38 @@ Once you have the framework, you can connect it to your iOS project manually.
 >
 {type="note"}
 
-Connect your framework to the iOS project manually.
+Connect your framework to the iOS project manually:
 
 1. In Xcode, open the iOS project settings by double-clicking the project name.
 
-2. Click the **+** under **Frameworks, Libraries, and Embedded Content**.
-
-   ![Add the generated framework](xcode-add-framework-1.png)
-
-3. Click **Add Other**, then click **Add Files**, and select the generated framework in `shared/build/xcode-frameworks/shared.framework`.
-
-   ![Framework is added](xcode-add-framework-2.png)
-
-4. Specify the **Framework Search Path** under **Search Paths** on the **Build Settings** tab – `$(SRCROOT)/../shared/build/xcode-frameworks`.
-
-   ![Framework search path](xcode-framework-search-path.png)
-
-### Automate iOS project updates
-
-To avoid recompiling your framework manually after every change in the KMM module, configure automatic updates of the iOS project.
-
-1. On the **Build Phases** tab of the project settings, click the **+** and add **New Run Script Phase**.
+2. On the **Build Phases** tab of the project settings, click the **+** and add **New Run Script Phase**.
 
    ![Add run script phase](xcode-run-script-phase-1.png)
 
-2. Add the following script:
+3. Add the following script:
 
     ```text
     cd "$SRCROOT/.."
-    ./gradlew :shared:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}
+    ./gradlew :shared:embedAndSignAppleFrameworkForXcode
     ```
 
-   ![Add the script](xcode-run-script-phase-2.png)
+   ![Add the script](xcode-add-run-phase-2.png)
 
 3. Move the **Run Script** phase before the **Compile Sources** phase.
 
    ![Move the Run Script phase](xcode-run-script-phase-3.png)
 
-### Connect the shared module to the iOS project
+4. On the **Build Settings** tab, specify the **Framework Search Path** under **Search Paths** – `$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)`.
+
+   ![Framework search path](xcode-add-framework-search-path.png)
+
+5. On the **Build Settings** tab, specify the **Other Linker flags** under **Linking** – `$(inherited) -framework shared`
+
+   ![Linker flag](xcode-add-flag.png)
+
+6. Build the project in Xcode. If everything is set up correctly, the project will successfully build.
+
+### Use the shared module from Swift
 
 1. In Xcode, open the `ContentView.swift` file and import the `shared` module.
 
