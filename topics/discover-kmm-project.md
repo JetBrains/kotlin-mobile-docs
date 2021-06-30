@@ -510,7 +510,7 @@ For each build of the iOS application, the project obtains the latest version of
 
 ![Execution of `embedAndSignAppleFrameworkForXcode` in the Xcode project settings](packforxcode-in-project-settings.png){width=700}
 
-To embed framework into the application and make the declarations from the shared module available in the source code of the iOS application, configure the following build settings are properly:
+To embed framework into the application and make the declarations from the shared module available in the source code of the iOS application, the following build settings should be configured properly:
 
 1. **Other Linker flags** under the **Linking** section: `$(inherited) -framework shared`
 
