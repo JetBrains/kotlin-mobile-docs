@@ -1,42 +1,32 @@
-[//]: # (title: Concurrent mutability)
-[//]: # (auxiliary-id: Concurrent_Mutability)
+[//]: # "title: Concurrent mutability"
+[//]: # "auxiliary-id: Concurrent_Mutability"
 
 When it comes to working with iOS, [Kotlin/Native's state and concurrency model](concurrency-overview.md) has [two simple rules](concurrency-overview.md#rules-for-state-sharing).
 
-1. A mutable, non-frozen state is visible to only one thread at a time.
-2. An immutable, frozen state can be shared between threads.
+对于iOS系统而言，Kotlin/Native的[状态共享和并发模型](concurrency-overview.md)的[两个规范](concurrency-overview.md#rules-for-state-sharing)可以简单归纳为如下：
 
-The result of following these rules is that you can't change [global states](concurrency-overview.md#global-state), 
-and you can't change the same shared state from multiple threads. In many cases, simply changing your approach to
-how you design your code will work fine, and you don't need concurrent mutability. States were mutable from multiple threads in 
-JVM code, but they didn't *need* to be.
+1. 一个可变的非冻结的状态同一时刻只对一个线程可见
+2. 一个不可变得冻结的状态可以被多线程并发访问
 
-However, in many other cases, you may need arbitrary thread access to a state, or you may have _service_ objects that should be
- available to the entire application. Or maybe you simply don't want to go through the potentially costly exercise of 
-redesigning existing code. Whatever the reason, _it will not always be feasible to constrain a mutable state to a single thread_.
+基于这两个规范，开发者不要尝试修改[global state](concurrency-overview.md#global-state)，也不要尝试在多个线程中去并发修改同一共享状态。针对这些并发可变性状态的使用场景，很多时候只需要修改代码设计就可以规避。比如JVM虽然支持在多线程中并发修改可变状态，但开发者需要在使用时考虑这些用法是否必要。
 
-There are various techniques that help you work around these restrictions, each with their own pros and cons:
+当然在很多场景中，不可避免的需要实现任意线程对状态的并发访问，比如一个 _service_ 对象可能在整个应用内被其他多个模块使用，再比如通过代码设计规避并发可变性成本高昂。所以不论什么原因，现实中将可变状态限制为单线程访问是不现实的。
 
-* [Atomics](#atomics)
-* [Thread-isolated states](#thread-isolated-state)
-* [Low-level capabilities](#low-level-capabilities)
+针对这些不可避免的并发使用场景，有多种解决方案可供选择，当然开发者需要根据这些方案的优劣结合现实情况进行选择：
+
+- [Atomics](#atomics)
+- [Thread-isolated states](#thread-isolated-state)
+- [Low-level capabilities](#low-level-capabilities)
 
 ## Atomics
 
-Kotlin/Native provides a set of Atomic classes that can be frozen while still supporting changes to the value they contain. 
-These classes implement a special-case handling of states in the Kotlin/Native runtime. This means that you can change 
-values inside a frozen state.
+Kotlin/Native提供了一系列原子类，针对Kotlin/Native运行时通过内部的特殊处理，支持在其被冻结的同时可以对其内部持有的对象进行修改。Kotlin/Native运行时提供了一些Atomics的相关变体，开发者可以直接使用这些变体或者通过引入一些依赖库进行扩展。
 
-The Kotlin/Native runtime includes a few different variations of Atomics. You can use them directly or from a library.
-
-Kotlin provides an experimental low-level [`kotlinx.atomicfu`](https://github.com/Kotlin/kotlinx.atomicfu) library that is currently 
-used only for internal purposes and is not supported for general usage. You can also use [Stately](https://github.com/touchlab/Stately), 
-a utility library for multiplatform compatibility with Kotlin/Native-specific concurrency, developed by [Touchlab](https://touchlab.co). 
+比如官方提供的原子库 [`kotlinx.atomicfu`](https://github.com/Kotlin/kotlinx.atomicfu)，kotlinx.atomicfu目前还处于早期版本的实验阶段，更多在内部使用。除了这个官方库外，还可以使用[Stately](https://github.com/touchlab/Stately)，Stately是由[Touchlab](https://touchlab.co)开发的专用于Kotlin/Native并发的实用库，具有较好的跨平台兼容性。
 
 ### `AtomicInt`/`AtomicLong`
 
-The first two are simple numerics: `AtomicInt` and `AtomicLong`. They allow you to have a shared `Int` or `Long` that can be 
-read and changed from multiple threads.
+首先介绍两个基础数据类型的原子实现： `AtomicInt` 和 `AtomicLong`。开发者可以使用它们来获得可以正确进行多线程读写的 `Int` 或 `Long`。
 
 ```kotlin
 object AtomicDataCounter {
@@ -48,13 +38,11 @@ object AtomicDataCounter {
 }
 ```
 
-The example above is a global `object`, which is frozen by default in Kotlin/Native. In this case, however, you can change the value of `count`. 
-It's important to note that you can change the value of `count` _from any thread_.
+示例代码定义了一个全`glabal object` , 通常全局对象在Kotlin/Native中是冻结的，但在示例中 `count` 可以通过 `AtomicInt` 的 `increment()` 方法修改内部持有的数值，而且该操作可以在任意线程完成。
 
 ### `AtomicReference`
 
-`AtomicReference` holds an object instance, and you can change that object instance. The object you put in `AtomicReference` 
-must be frozen, but you can change the value that `AtomicReference` holds. For example, the following won't work in Kotlin/Native:
+`AtomicReference` 持有一个对象的实例，该实例本身是冻结的, 但是`AtomicReference` 可以修改具体持有哪个对象实例 。在 Kotlin/Native 直接修改全局对象并不生效，如下示例代码:
 
 ```kotlin
 data class SomeData(val i: Int)
@@ -68,8 +56,7 @@ object GlobalData {
 }
 ```
 
-According to the [rules of global state](concurrency-overview.md#global-state), global `object` values are 
-frozen in Kotlin/Native, so trying to modify `sd` will fail. You could implement it instead with `AtomicReference`:
+根据 [全局状态规范](concurrency-overview.md#global-state),  `global object` 在 Kotlin/Native中是冻结的，因此对 `sd` 的修改将会失败，此时可以借助 `AtomicReference` 达成目的:
 
 ```kotlin
 data class SomeData(val i: Int)
@@ -83,23 +70,12 @@ object GlobalData {
 }
 ```
 
-The `AtomicReference` itself is frozen, which lets it live inside something that is frozen. The data in the `AtomicReference` 
-instance is explicitly frozen in the code above. However, in the multiplatform libraries, the data 
-will be frozen automatically. If you use the Kotlin/Native runtime's `AtomicReference`, you *should* remember to call 
-`freeze()` explicitly.
+ `AtomicReference` 本身是冻结的，这让它可以进行全局定义，而上方示例代码中的 `AtomicReference` 持有的对象也要求是冻结的。在跨平台库中数据可以自动冻结，但在Kotlin/Native运行时中则需要开发者主动调用 `freeze()` 进行冻结。 
 
-`AtomicReference` can be very useful when you need to share a state. There are some drawbacks to consider, however.
+`AtomicReference` 对于多线程进行状态共享非常有用，但是开发者需要进行权衡，因为获取和修改`AtomicReference` 相对于标准实现会带来额外的性能损耗。如果开发者对性能敏感，可以考虑下一小节的 [thread-isolated state](#thread-isolated-state)。此外，开发者还需要考虑潜在的内存泄漏风险，因为通过全局的 `AtomicReference` 持有对象可能存在循环引用，而开发者不能及时清理就会带来内存泄漏问题:
 
-Accessing and changing values in an `AtomicReference` is very costly performance-wise *relative to* a standard mutable state. 
-If performance is a concern, you may want to consider using another approach involving a [thread-isolated state](#thread-isolated-state).
-
-There is also a potential issue with memory leaks, which will be resolved in the future. In situations where the object 
-kept in the `AtomicReference` has cyclical references, it may leak memory if you don't explicitly clear it out:
-
-* If you have state that may have cyclic references and needs to be reclaimed, you should use a nullable type in the 
-`AtomicReference` and set it to null explicitly when you're done with it.
-* If you're keeping `AtomicReference` in a global object that never leaves scope, this won't matter (because the memory 
-never needs to be reclaimed during the life of the process).
+* 如果 `AtomicReference` 中可能存在循环引用，开发者可以在使用完成后显式设置其值为null。
+* 当然如果开发者可以保证 `AtomicReference` 被持有和使用能贯穿整个生命周期，就无需担心内存泄漏，因为此时该全局对象生存周期本身就和进程的生命周期匹配。
 
 ```kotlin
 class Container(a:A) {
@@ -114,12 +90,9 @@ class Container(a:A) {
 }
 ```
 
-Finally, there's also a consistency concern. Setting/getting values in `AtomicReference` is itself atomic, but if your 
-logic requires a longer chain of thread exclusion, you'll need to implement that yourself. For example, if you have a 
-list of values in an `AtomicReference` and you want to scan them first before adding a new one, you'll need to have some 
-form of concurrency management that `AtomicReference` alone does not provide.
+最后，这里还有一个一致性问题需要尽心探讨。 `AtomicReference` 可以保证`get/set` 进行对象获取和写入本身是原子的，但是后续的操作逻辑就无法保证其一致性。比如通过  `AtomicReference` 持有一个 `list` 对象，开发者希望每次添加新数据时先进行查找，以此保证不会添加重复数据。而这一系列操作无法通过原子类来保证数据一致性， 因为多线程情景下，这一系列代码对应的指令可能会被多个线程交叉执行。此时就需要引入其他并发机制进行保护，比如通过某种形式的锁或者类似GPU中的栅栏逻辑。
 
-The following won't protect against duplicate values in the list if called from multiple threads:
+下方示例代码无法保证多线程场景下`list` 不存在重复数据，也即存在一致性问题:
 
 ```kotlin
 object MyListCache {
@@ -136,71 +109,41 @@ object MyListCache {
 }
 ```
 
-You will need to implement some form of locking or check-and-set logic to ensure proper concurrency.
-
 ## Thread-isolated state
 
-[Rule 1 of Kotlin/Native state](concurrency-overview.md#rule-1-mutable-state-1-thread) is that a mutable state is 
-visible to only one thread. Atomics allow mutability from any thread. 
-Isolating a mutable state to a single thread, and allowing other threads to communicate with that state, is an alternative 
-method for achieving concurrent mutability.
+正如规则一揭示的那样，Kotlin/Native要求一个可变状态只能对一个线程可见。通过Atomics支持，可变状态可以被多线程访问。另外一种解决思路是：将可变状态隔离到单个线程，其余线程通过线程间通信操作获取该状态。
 
-To do this, create a work queue that has exclusive access to a thread, and create a mutable state that 
-lives in just that thread. Other threads communicate with the mutable thread by scheduling _work_ on the work queue.
+线程隔离状态的设计通常是创建一个可供其他线程进行排他访问持有可变状态线程的工作队列，通过该工作队列调度即可完成对线程隔离可变状态的跨线程访问。当然从该工作队列写入和读取的状态副本是冻结的，而线程内的可变状态可根据情况返回其副本或者使用外部冻结状态进行更新。简单归纳：一个线程将冻结状态通过工作队列传递给目标线程，由其更新内部持有的可变状态，随后其他线程通过该工作队列获取该状态副本。
 
-Data that goes in or comes out, if any, needs to be frozen, but the mutable state hidden in the worker thread remains 
-mutable. 
+![Thread-isolated state](https://kotlinlang.org/docs/mobile/images/isolated-state.animated.gif){animated="true"}
 
-Conceptually it looks like the following: one thread pushes a frozen state into the state worker, which stores it in 
-the mutable state container. Another thread later schedules work that takes that state out.
-
-![Thread-isolated state](isolated-state.png){animated="true"}
-
-Implementing thread-isolated states is somewhat complex, but there are libraries that provide this functionality.
+实现线程隔离状态有些复杂，但有提供此功能的库。
 
 ### `AtomicReference` vs. thread-isolated state
 
-For simple values, `AtomicReference` will likely be an easier option. For cases with significant states, and potentially 
-significant state changes, using a thread-isolated state may be a better choice. The main performance penalty is actually crossing 
-over threads. But in performance tests with collections, for example, a thread-isolated state significantly outperforms a
-mutable state implemented with `AtomicReference`.
+对于简单的值， `AtomicReference` 可能是一个不错的选择；但是对于那些频繁变动的复杂的状态，使用线程隔离的状态可能是一个更好的选，虽然跨线程调用通常被认为会带来更大的性能损耗，但是大量性能测试数据表明很多情况下线程隔离状态优于 `AtomicReference` ，比如`collections` 。
 
-The thread-isolated state also avoids the consistency issues that `AtomicReference` has. Because all operations happen in the 
-state thread, and because you're scheduling work, you can perform operations with multiple steps and guarantee consistency 
-without managing thread exclusion. Thread isolation is a design feature of the Kotlin/Native state rules, and 
-isolating mutable states works with those rules.
+此外，使用线程隔离状态可以避免 `AtomicReference` 带来的一致性问题。因为所有的代码指令都是在工作线程内完成，也即所有的操作都是单线程执行的，此时不需要进行大量并发保护来保证一致性。线程隔离的状态是Kotlin/Native的一个设计特性，可以很好的满足状态共享和可变状态的规范。
 
-The thread-isolated state is also more flexible insofar as you can make mutable states concurrent. 
-You can use any type of mutable state, rather than needing to create complex concurrent implementations.
+最后，线程隔离状态也更加灵活，因为可以使可变状态并发，此时可以使用任何类型的可变状态，而无需考虑复杂的并发保护。
 
 ## Low-level capabilities
 
-Kotlin/Native has some more advanced ways of sharing concurrent states. To achieve high performance, you may need to avoid 
-the concurrency rules altogether. 
+为了更好利用系统提供的并发特性，需要往往需要借助原生系统实现，此时就会绕过Kotlin/Native提供的并发实现。
 
-> This is a more advanced topic. You should have a deep understanding of how concurrency in Kotlin/Native works under 
-> the hood, and you’ll need to be very careful when using this approach. Learn more about [concurrency](https://kotlinlang.org/docs/reference/native/concurrency.html).
+> 这是一个更深入的话题，你需要对Kotlin/Native的工作原理有深入的了解，使用时需要多加小心，更多内容可以参考[concurrency](https://kotlinlang.org/docs/reference/native/concurrency.html)。
 >
-{type="note"}
+> {type="note"}
 
-Kotlin/Native runs on top of C++ and provides interop with C and Objective-C. If you are running on iOS, you can also pass lambda 
-arguments into your shared code from Swift. All of this native code runs outside of the Kotlin/Native state restrictions. 
+Kotlin/Native运行在C++层上，支持与C和Objective-C的互操作。如果运行在 iOS操作系统上，开发者可以通过传递lambda表达式在Swift语法层面完成调用，这些系统原生语法的代码运行不受Kotlin/Native的状态规范限制。
 
-That means that you can implement a concurrent mutable state in a native language and have Kotlin/Native talk to it.
+这意味着开发者可以通过原生语法实现并发的可变状态，并通过与Kotlin/Native的交互获取或改写该状态。开发者可以通过[Objective-C interop](https://kotlinlang.org/docs/reference/native/c_interop.html) 访问底层代码，也即可以通过Swift实现Kotlin接口或者传入lambda表达式与Kotlin/Native进行交互，此时也就支持在任意线程访问可变状态。
 
-You can use [Objective-C interop](https://kotlinlang.org/docs/reference/native/c_interop.html) to access low-level code. 
-You can also use Swift to implement Kotlin interfaces or pass in lambdas that Kotlin code can call 
-from any thread.
+使用平台原生语法的好处是可以获得更好的性能，但是需要开发者自己完成并发状态的管理。Objective-C本身不会关心状态的“冻结”，但将Kotlin获取的状态存储在Objective-C中并在多线程间进行共享，此时还是要充分考虑对Kotlin/Native本身的适配。
 
-One of the benefits of a platform-native approach is performance. On the negative side, you'll need to manage concurrency on your own. 
-Objective-C does not know about `frozen`, but if you store states from Kotlin in Objective-C structures, and share them 
-between threads, the Kotlin states definitely need to be frozen. 
-Kotlin/Native's runtime will generally warn you about issues, but it's possible 
-to cause concurrency problems in native code that are very, very difficult to track down. It is also very easy to create 
-memory leaks.
+虽然Kotlin/Native运行时通常会对这种并发用法的部分异常进行告警，但是依旧可能出现极难追踪的异常，而且这种用法极易造成内存泄漏。
 
-Since in the KMM application you are also targeting the JVM, you'll need alternate ways to implement anything you use 
-platform native code for. This will obviously take more work and may lead to platform inconsistencies.
+此外KMM应用需要适配JVM，采用这种原生系统相关的并发实现往往需要多端适配，而这些额外增加的工作量也需要进行权衡，也可能导致各端实现不一致。
 
 _This material was prepared by [Touchlab](https://touchlab.co/) for publication by JetBrains._
 

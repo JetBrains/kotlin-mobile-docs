@@ -1,5 +1,5 @@
-[//]: # (title: Concurrency overview)
-[//]: # (auxiliary-id: Concurrency_Overview)
+[//]: # "title: Concurrency overview"
+[//]: # "auxiliary-id: Concurrency_Overview"
 
 当你把 Android 的开发经验套用在 Kotlin 移动多平台（KMM）时，会发现在 iOS 平台是不同的状态和并发模型。也就是 Kotlin/Native 模型。[Kotlin/Native](https://kotlinlang.org/docs/reference/native-overview.html) 是一种将 Kotlin 代码编译为原生二进制文件的技术，可以在没有虚拟机的情况下运行，例如在 iOS 上运行。
 
@@ -9,7 +9,7 @@
 
 当然，也不是所有语言都采用这样设计。Javascript 简单的禁止了并发访问同一状态。另一个极端是 Rust，它提供语言级别的并发和状态管理，这使得它非常流行。
 
-## 状态共享的规则 
+## <a name="rules-for-state-sharing"/>状态共享的规则 
 
 Kotlin/Native 为线程间共享状态引入了一些规则。希望通过这些规则，防止不安全的共享访问可变状态。如果你有 JVM 的开发背景还写过并发代码，你可能需要改变数据架构的方式，但是这可以让你在没有风险副作用的情况下，实现相同的效果。
 
@@ -75,7 +75,7 @@ sd.freeze()
 
 `freeze` 并不是 Kotlin 特有的。你可以在 [Ruby](https://www.honeybadger.io/blog/when-to-use-freeze-and-frozen-in-ruby/) 和 [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) 里找到它。
 
-## 全局状态
+## <a name="global_state"/>全局状态
 
 Kotlin 允许定义全局可用的状态。如果只是简单地保留可变性，这个全局状态就会违反 [_规则 1_](#rule-1-mutable-state-1-thread)。
 为了符合 Kotlin/Native 的状态规则，全局状态有一些特殊条件。这些条件可以冻结状态，或者使其只对单个线程可见。
