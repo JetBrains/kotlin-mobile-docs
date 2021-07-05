@@ -115,7 +115,7 @@ object MyListCache {
 
 线程隔离状态的设计通常是创建一个可供其他线程进行排他访问持有可变状态线程的工作队列，通过该工作队列调度即可完成对线程隔离可变状态的跨线程访问。当然从该工作队列写入和读取的状态副本是冻结的，而线程内的可变状态可根据情况返回其副本或者使用外部冻结状态进行更新。简单归纳：一个线程将冻结状态通过工作队列传递给目标线程，由其更新内部持有的可变状态，随后其他线程通过该工作队列获取该状态副本。
 
-![Thread-isolated state](https://kotlinlang.org/docs/mobile/images/isolated-state.animated.gif){animated="true"}
+![Thread-isolated state](isolated-state.png){animated="true"}
 
 实现线程隔离状态有些复杂，但有提供此功能的库。
 
