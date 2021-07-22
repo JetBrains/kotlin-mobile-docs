@@ -23,7 +23,7 @@ Here you can find a short summary of the features Kotlin provides for developing
 * **New framework-packing task for Kotlin/Native**.
   The [Kotlin Multiplatform Gradle plugin](https://kotlinlang.org/docs/mpp-dsl-reference.html) now includes the `embedAndSignAppleFrameworkForXcode` task, which can be used from Xcode to connect KMM modules to the iOS part of your project.
 
-  Check out this [Blog post](https://blog.jetbrains.com/kotlin/2021/07/multiplatform-gradle-plugin-improved-for-connecting-kmm-modules/) to learn about the new framework-packing task and how to remove from the `packForXcode` task from your build script.
+  Check out this [blog post](https://blog.jetbrains.com/kotlin/2021/07/multiplatform-gradle-plugin-improved-for-connecting-kmm-modules/) to learn about the new framework-packing task and how to remove from the `packForXcode` task from your build script.
 
 Learn more about [what's new in Kotlin 1.5.20](https://kotlinlang.org/docs/whatsnew1520.html).
 
