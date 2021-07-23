@@ -9,7 +9,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
 <table>
     <tr>
       <td></td>
-      <td><strong>What is shared</strong></td>
+      <td><strong>What's shared?</strong></td>
       <td><strong>Popular Libraries Used</strong></td>
       <td><strong>UI Framework</strong>/td>
       <td><strong>iOS integration</strong></td>
