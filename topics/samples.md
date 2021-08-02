@@ -11,7 +11,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td></td>
       <td><strong>What's shared?</strong></td>
       <td><strong>Popular Libraries Used</strong></td>
-      <td><strong>UI Framework</strong>/td>
+      <td><strong>UI Framework</strong></td>
       <td><strong>iOS integration</strong></td>
       <td><strong>Platform API's</strong></td>
       <td><strong>Tests</strong></td>
