@@ -40,6 +40,32 @@ Compatible Kotlin version
 <tr>
 <td>
 
+**0.2.7**
+
+Released: August 2, 2021
+
+</td>
+<td>
+
+* [Added Xcode configuration option for AppleRunConfiguration](https://youtrack.jetbrains.com/issue/KTIJ-19054).
+* [Added support Apple M1 simulators](https://youtrack.jetbrains.com/issue/KT-47618).
+* [Added information about Xcode integration options in Project Wizard](https://youtrack.jetbrains.com/issue/KT-47466).
+* [Added error notification after a project with CocoaPods was generated, but the CocoaPods gem has not been installed](https://youtrack.jetbrains.com/issue/KT-47329).
+* [Added support Apple M1 simulator target in generated shared module with Kotlin 1.5.30](https://youtrack.jetbrains.com/issue/KT-47631).
+* [Cleared generated Xcode project with Kotlin 1.5.20](https://youtrack.jetbrains.com/issue/KT-47465).
+* Fixed launching Xcode Release configuration on a real iOS device.
+* Fixed simulator launching with Xcode 12.5.
+
+</td>
+<td>
+
+* [Kotlin 1.5.10](https://kotlinlang.org/releases.html#release-details)
+
+</td>
+</tr>
+<tr>
+<td>
+
 **0.2.6**
 
 Released: June 10, 2021
