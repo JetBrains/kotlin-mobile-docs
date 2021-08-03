@@ -9,7 +9,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
 ## KMM sample
 
 This sample project from the Kotlin team demonstrates the Kotlin Multiplatform Mobile (KMM) basic concepts. 
-Learn how to configure Gradle to build a simple KMM project with Android and iOS targets, how to share code in a common source set, and how to use expect and actual declarations in cases where code cannot be shared: [https://github.com/Kotlin/kmm-sample](https://github.com/Kotlin/kmm-sample).
+Learn how to configure Gradle to build a simple KMM project with Android and iOS targets, how to share code in a common source set, and how to use expect and actual declarations in cases where code cannot be shared: [https://github.com/Kotlin/kmm-basic-sample](https://github.com/Kotlin/kmm-basic-sample).
 
 ## KMM RSS Reader production sample
 
@@ -27,8 +27,8 @@ Complete [this step-by-step tutorial](integrate-in-existing-app.md) or check out
 ## CocoaPods integration samples
 
 These samples from the Kotlin team demonstrate how to use CocoaPods in KMM projects.  
-* Learn how to add CocoaPods dependencies to a Kotlin project: [https://github.com/Kotlin/kotlin-with-cocoapods-sample](https://github.com/Kotlin/kotlin-with-cocoapods-sample)  
-* Learn how to connect a Kotlin framework to an Xcode project using CocoaPods: [https://github.com/Kotlin/multitarget-xcode-with-kotlin-cocoapods-sample](https://github.com/Kotlin/multitarget-xcode-with-kotlin-cocoapods-sample)
+* Learn how to add CocoaPods dependencies to a Kotlin project: [https://github.com/Kotlin/kmm-with-cocoapods-sample](https://github.com/Kotlin/kmm-with-cocoapods-sample)  
+* Learn how to connect a Kotlin framework to an Xcode project using CocoaPods: [https://github.com/Kotlin/kmm-with-cocoapods-multitarget-xcode-sample](https://github.com/Kotlin/kmm-with-cocoapods-multitarget-xcode-sample)
 
 ## KaMP Kit
 
