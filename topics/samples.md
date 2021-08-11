@@ -25,7 +25,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Algorithms</td>
       <td>-</td>
       <td>XML, SwiftUI</td>
-      <td>Framework</td>
+      <td>Xcode build phases</td>
       <td>✅</td>
       <td>-</td>
       <td>-</td>
@@ -38,7 +38,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Networking, Data Storage, UI State</td>
       <td>SQLDelight, Ktor, DateTime, MultiplatformSettings</td>
       <td>Jetpack Compose, SwiftUI</td>
-      <td>Framework</td>
+      <td>Xcode build phases</td>
       <td>✅</td>
       <td>-</td>
       <td>-</td>
@@ -93,13 +93,13 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Networking, Interactors</td>
       <td>Ktor</td>
       <td>XML, UIKit</td>
-      <td>Framework</td>
+      <td>Xcode build phases</td>
       <td>-</td>
       <td>-</td>
       <td>✅</td>
       <td>
         <ul>
-            <li>GitLab Multiplatform SDK — Integrated into Flutter app</li>
+            <li>Integrated into Flutter app</li>
         </ul>
 </td>
     </tr>
@@ -110,7 +110,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Networking, Data Storage, ViewModels, Navigation</td>
       <td>SQLDelight, Ktor, DateTime, MultiplatformSettings</td>
       <td>Jetpack Compose, SwiftUI</td>
-      <td>Framework</td>
+      <td>Xcode build phases</td>
       <td>-</td>
       <td>✅</td>
       <td>✅</td>
