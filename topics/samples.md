@@ -8,28 +8,28 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
 
 <table>
     <tr>
-      <td></td>
-      <td><strong>What's shared?</strong></td>
-      <td><strong>Popular Libraries Used</strong></td>
-      <td><strong>UI Framework</strong></td>
-      <td><strong>iOS integration</strong></td>
-      <td><strong>Platform API's</strong></td>
-      <td><strong>Tests</strong></td>
-      <td><strong>JS target</strong></td>
-      <td><strong>More features</strong></td>
+      <td>Sample name</td>
+      <td>What's shared?</td>
+      <td>Popular libraries used</td>
+      <td>UI Framework</td>
+      <td>iOS integration</td>
+      <td>Platform APIs</td>
+      <td>Tests</td>
+      <td>JS target</td>
+      <td>Features</td>
     </tr>
     <tr>
       <td>
-        <strong><a href="https://github.com/Kotlin/kmm-sample">kmm-sample</a></strong>
+        <strong><a href="https://github.com/Kotlin/kmm-basic-sample">kmm-basic-sample</a></strong>
       </td>
       <td>Algorithms</td>
-      <td></td>
+      <td>-</td>
       <td>XML, SwiftUI</td>
       <td>Framework</td>
       <td>✅</td>
-      <td></td>
-      <td></td>
-      <td><ul><li>expect/actual declarations</li></ul></td>
+      <td>-</td>
+      <td>-</td>
+      <td><ul><li><code>expect</code>/<code>actual</code> declarations</li></ul></td>
     </tr>
     <tr>
       <td>
@@ -40,9 +40,9 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Jetpack Compose, SwiftUI</td>
       <td>Framework</td>
       <td>✅</td>
-      <td></td>
-      <td></td>
-      <td><ul><li>Redux for sharing UI State </li>
+      <td>-</td>
+      <td>-</td>
+      <td><ul><li>Redux for sharing UI State</li>
 <li>Published to Google Play and AppStore</li></ul></td>
     </tr>
     <tr>
@@ -52,11 +52,11 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Networking, Data Storage, ViewModels</td>
       <td>Koin, SQLDelight, Ktor, DateTime</td>
       <td>XML, UIKit</td>
-      <td>Cocoapods</td>
-      <td></td>
+      <td>CocoaPods</td>
+      <td>-</td>
       <td>✅</td>
-      <td></td>
-      <td></td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>
@@ -64,13 +64,13 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       </td>
       <td>Networking, Data Storage, ViewModels</td>
       <td>Moko Libraries, Ktor, MultiplatformSettings</td>
-      <td></td>
-      <td>Cocoapods</td>
-      <td></td>
+      <td>-</td>
+      <td>CocoaPods</td>
+      <td>-</td>
       <td>✅</td>
-      <td></td>
+      <td>-</td>
       <td><ul><li>Modular architecture</li>
-<li>Shared Features: Resource management, Runtime permissions access, Media access, UI lists management</li><li>Network layer generation from OpenAPI.</li></ul></td>
+<li>Shared features: Resource management, Runtime permissions access, Media access, UI lists management</li><li>Network layer generation from OpenAPI.</li></ul></td>
     </tr>
     <tr>
       <td>
@@ -79,11 +79,11 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Networking, Data Storage</td>
       <td>Koin, SQLDelight, Ktor</td>
       <td>Jetpack Compose, SwiftUI</td>
-      <td>Cocoadpos, Swift Packages</td>
-      <td></td>
+      <td>CocoaPods, Swift Packages</td>
+      <td>-</td>
       <td>✅</td>
       <td>✅</td>
-      <td><ul><li>Targets list: Android Wear OS, iOS watchOS, macOS Desktop <strong>(Compose for Desktop)</strong>, Web <strong>(Compose for Web)</strong>, Web (Kotlin/JS + React Wrapper), JVM </li></ul>
+      <td><ul>Targets list:<li> Android Wear OS</li><li>iOS</li><li>watchOS</li><li>macOS Desktop (Compose for Desktop)</li><li>Web (Compose for Web)</li><li>Web (Kotlin/JS + React Wrapper)</li><li>JVM</li></ul>
 </td>
     </tr>
     <tr>
@@ -94,12 +94,12 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Ktor</td>
       <td>XML, UIKit</td>
       <td>Framework</td>
-      <td></td>
-      <td></td>
+      <td>-</td>
+      <td>-</td>
       <td>✅</td>
       <td>
         <ul>
-            <li>GitLab Multiplatform SDK - Integrated into Flutter app</li>
+            <li>GitLab Multiplatform SDK — Integrated into Flutter app</li>
         </ul>
 </td>
     </tr>
@@ -111,7 +111,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>SQLDelight, Ktor, DateTime, MultiplatformSettings</td>
       <td>Jetpack Compose, SwiftUI</td>
       <td>Framework</td>
-      <td></td>
+      <td>-</td>
       <td>✅</td>
       <td>✅</td>
       <td>
@@ -128,36 +128,36 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>Networking, Data Storage, Interactors</td>
       <td>SQLDelight, Ktor, DateTime</td>
       <td>Jetpack Compose, SwiftUI</td>
-      <td>Cocoapods</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>CocoaPods</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>
-        <strong><a href="https://github.com/Kotlin/kotlin-with-cocoapods-sample">kotlin-with-cocoapods-sample</a></strong>
+        <strong><a href="https://github.com/Kotlin/kmm-with-cocoapods-sample">kmm-with-cocoapods-sample</a></strong>
       </td>
       <td>-</td>
-      <td></td>
       <td>-</td>
-      <td>Cocoapods</td>
+      <td>-</td>
+      <td>CocoaPods</td>
       <td>✅</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>
-        <strong><a href="https://github.com/Kotlin/multitarget-xcode-with-kotlin-cocoapods-sample">multitarget-xcode-with-kotlin-cocoapods-sample</a></strong>
+        <strong><a href="https://github.com/Kotlin/kmm-with-cocoapods-multitarget-xcode-sample">kmm-with-cocoapods-multitarget-xcode-sample</a></strong>
       </td>
       <td>-</td>
-      <td></td>
       <td>-</td>
-      <td>Cocoapods</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>-</td>
+      <td>CocoaPods</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
 </table>
