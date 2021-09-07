@@ -101,7 +101,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
         <ul>
             <li>Integrated into Flutter app</li>
         </ul>
-</td>
+      </td>
     </tr>
     <tr>
       <td>
@@ -134,7 +134,7 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>-</td>
       <td>-</td>
     </tr>
- <tr>
+    <tr>
       <td>
         <strong><a href="https://github.com/KaterinaPetrova/kmm-ktor-sample">kmm-ktor-sample</a></strong>
       </td>
@@ -145,21 +145,21 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
       <td>-</td>
       <td>-</td>
       <td>-</td>
-      <td><ul><li><a href="https://www.youtube.com/watch?v=_Q62iJoNOfg&list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C&index=2">Video tutorial</a></li></ul></td>
-</tr>
- <tr>
+      <td><ul><li><a href="https://www.youtube.com/watch?v=_Q62iJoNOfg&amp;list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C&amp;index=2">Video tutorial</a></li></ul></td>
+    </tr>
+    <tr>
       <td>
         <strong><a href="https://github.com/CurrencyConverterCalculator/CCC">Currency Converter Calculator</a></strong>
       </td>
       <td>Models, Networking, Data Storage, Algorithms, ViewModels</td>
-      <td>Ktor, SQLDelight, koin, moko-resources, kotlinx.datetime, multiplatform-settings </td>
+      <td>Ktor, SQLDelight, koin, moko-resources, kotlinx.datetime, multiplatform-settings</td>
       <td>XML, SwiftUI</td>
-      <td>Cocoapods</td>
+      <td>CocoaPods</td>
       <td>✅</td>
       <td>✅</td>
       <td>-</td>
       <td><ul><li>Logic shared with the backend</li></ul></td>
-</tr>
+    </tr>
     <tr>
       <td>
         <strong><a href="https://github.com/Kotlin/kmm-with-cocoapods-sample">kmm-with-cocoapods-sample</a></strong>
