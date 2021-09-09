@@ -50,8 +50,8 @@ Feel free to [reach out to us](mailto:kmm.feedback@kotlinlang.org) and tell us a
         <strong><a href="https://github.com/touchlab/KaMPKit">KaMPKit</a></strong>
       </td>
       <td>Models, Networking, Data Storage, ViewModels</td>
-      <td>Koin, SQLDelight, Ktor, DateTime</td>
-      <td>XML, UIKit</td>
+      <td>Koin, SQLDelight, Ktor, DateTime, multiplatform-settings, Kermit</td>
+      <td>Jetpack Compose, SwiftUI</td>
       <td>CocoaPods</td>
       <td>-</td>
       <td>✅</td>
